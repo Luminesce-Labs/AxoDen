@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AxoDen Forensic Intelligence — Deterministic SOC Investigation | Luminesce Limited</title>
+<meta name="description" content="Deterministic forensic middleware for security operations. Validated against MITRE-MORDOR: 1M events in 6.4 seconds. Causal traversal and Patient Zero identification are deterministic properties of the World Graph topology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070b14;color:#b8d0e4;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:root{
+  --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
+  --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;--red:#e05555;--green:#4caf50;
+  --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
+  --mono:'DM Mono',monospace;--serif:'Instrument Serif',Georgia,serif;
+  --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
+}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
+.header-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{font-family:var(--mono);font-size:0.8rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-h)}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-m);transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--cyan)}
+.nav-cta{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.45rem 1.1rem;transition:background 0.2s}
+.nav-cta:hover{background:var(--cyan-b)}
+.page-hero{padding:calc(64px + 5rem) var(--pad) 4rem;background:linear-gradient(135deg,#070b14,#0a1022);position:relative;overflow:hidden;border-bottom:1px solid var(--bg-rule)}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,174,204,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,174,204,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);z-index:0}
+.page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.breadcrumb a{color:var(--text-d);transition:color 0.2s}.breadcrumb a:hover{color:var(--cyan)}
+.page-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.8;margin-bottom:1rem}
+.page-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;font-style:italic;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
+.page-lead{font-size:1rem;line-height:1.8;color:var(--text-b);max-width:700px;margin-bottom:2rem;border-left:2px solid rgba(0,174,204,0.3);padding-left:1.25rem}
+.page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.page-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid}
+.badge-live{background:rgba(76,175,80,0.1);color:#4caf50;border-color:rgba(76,175,80,0.25)}
+.badge-doi{background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
+.badge-val{background:rgba(200,168,75,0.08);color:var(--gold);border-color:rgba(200,168,75,0.2)}
+.content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.section{padding:5rem 0}
+.section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
+.section-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
+.section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:700px;margin-bottom:2.5rem}
+.divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
+
+/* MORDOR BANNER */
+.mordor-banner{background:linear-gradient(135deg,#091520,#0d1e30);border:1px solid rgba(0,174,204,0.2);border-radius:6px;padding:2.5rem 3rem;position:relative;overflow:hidden;margin-bottom:3rem}
+.mordor-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,174,204,0.6),transparent)}
+.mordor-stats{display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.mstat{display:flex;flex-direction:column;gap:0.2rem}
+.mstat-n{font-family:var(--mono);font-size:1.8rem;font-weight:500;color:var(--text-h);letter-spacing:-0.02em}
+.mstat-l{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-d)}
+.mordor-desc{font-size:0.82rem;line-height:1.75;color:var(--text-m);max-width:700px}
+.mordor-desc strong{color:var(--text-b)}
+
+/* FAILURE MODES */
+.failures-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.fail-card{background:rgba(224,85,85,0.04);border:1px solid rgba(224,85,85,0.12);border-radius:4px;padding:1.5rem}
+.fail-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);opacity:0.75;margin-bottom:0.5rem}
+.fail-title{font-size:0.85rem;font-weight:600;color:var(--text-h);margin-bottom:0.4rem;line-height:1.3}
+.fail-body{font-size:0.74rem;line-height:1.65;color:var(--text-m)}
+
+/* INNATE CLAIM */
+.innate-block{background:linear-gradient(135deg,#091828,#0d1e36);border:1px solid rgba(0,174,204,0.15);border-radius:6px;padding:3rem;position:relative;overflow:hidden;margin:3rem 0}
+.innate-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,174,204,0.5),transparent)}
+.innate-quote{font-family:var(--serif);font-size:clamp(1rem,1.6vw,1.25rem);font-style:italic;color:var(--text-h);line-height:1.6;border-left:2px solid var(--cyan);padding-left:1.5rem;margin-bottom:1.5rem}
+.innate-explain{font-size:0.82rem;line-height:1.8;color:var(--text-m);max-width:760px}
+.innate-explain strong{color:var(--text-b)}
+
+/* PIPELINE */
+.pipeline-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.pipe-step{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.75rem;position:relative}
+.pipe-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);opacity:0.5;margin-bottom:0.5rem}
+.pipe-title{font-size:0.88rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.3}
+.pipe-body{font-size:0.76rem;line-height:1.7;color:var(--text-m)}
+.pipe-output{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--cyan);opacity:0.6;margin-top:0.6rem}
+
+/* LABELS */
+.labels-row{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+.label-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem 2rem;flex:1;min-width:200px}
+.label-tag{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.5rem;padding:0.25rem 0.6rem;border-radius:2px;display:inline-block}
+.l-obs{background:rgba(0,174,204,0.1);color:var(--cyan);border:1px solid rgba(0,174,204,0.2)}
+.l-inf{background:rgba(200,168,75,0.1);color:var(--gold);border:1px solid rgba(200,168,75,0.2)}
+.l-ver{background:rgba(76,175,80,0.1);color:#4caf50;border:1px solid rgba(76,175,80,0.2)}
+.label-desc{font-size:0.78rem;line-height:1.7;color:var(--text-m);margin-top:0.6rem}
+.label-gate{font-family:var(--mono);font-size:0.62rem;color:var(--text-d);margin-top:0.5rem}
+
+/* COMPARISON TABLE */
+.comp-wrap{overflow-x:auto;margin-top:2rem}
+.comp-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.comp-table thead tr{border-bottom:1px solid rgba(0,174,204,0.2)}
+.comp-table th{text-align:left;padding:0.65rem 1rem;font-family:var(--mono);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;color:var(--text-d)}
+.comp-table th:last-child{color:var(--cyan);opacity:0.8}
+.comp-table td{padding:0.6rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:var(--text-m)}
+.comp-table td:first-child{color:var(--text-b);font-weight:500}
+.comp-table td em{font-style:normal;color:var(--cyan)}
+.tick{color:#4caf50}.cross{color:var(--red)}
+.comp-table tr:hover td{background:rgba(255,255,255,0.015)}
+
+/* DIFFERENTIATORS */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.diff-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem}
+.diff-id{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;color:var(--cyan);opacity:0.6;margin-bottom:0.5rem}
+.diff-title{font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.4rem;line-height:1.35}
+.diff-body{font-size:0.74rem;line-height:1.65;color:var(--text-m)}
+.diff-patent{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-top:0.5rem}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal.visible{opacity:1;transform:none}
+.btn-primary{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.7rem 1.6rem;transition:background 0.2s;display:inline-block;margin-top:1rem}
+.btn-primary:hover{background:var(--cyan-b)}
+.btn-outline{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,174,204,0.35);border-radius:2px;padding:0.7rem 1.6rem;transition:border-color 0.2s;display:inline-block;margin-top:1rem;margin-left:1rem}
+footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-copy{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;color:var(--text-d)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}.footer-link:hover{color:var(--cyan)}
+@media(max-width:900px){nav{display:none}.failures-grid,.pipeline-steps,.diff-grid{grid-template-columns:1fr}.labels-row{flex-direction:column}}
+@media(max-width:600px){.failures-grid,.pipeline-steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0"><defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="400" height="400" fill="#05080F"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/><line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/><line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/><line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/><circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/><rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/><text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text><text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text></svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link active">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Forensic Intelligence</span></div>
+    <p class="page-eyebrow">Cybersecurity &middot; SOC Operations &middot; Incident Response &mdash; Operationalised</p>
+    <h1 class="page-h1">The SOC does not need a smarter AI. It needs deterministic forensics.</h1>
+    <p class="page-lead">AxoDen Forensic Intelligence is deterministic forensic middleware between SIEM/SOAR and analyst workflow. The system does not learn to find Patient Zero. It finds it because the mathematical structure of the World Graph makes causal traversal, temporal separation, and lateral movement detection deterministic properties of the design.</p>
+    <div class="page-meta-row">
+      <span class="page-badge badge-live">Dockerised &mdash; operationalised</span>
+      <span class="page-badge badge-doi">81 tests passing</span>
+      <span class="page-badge badge-val">MITRE-MORDOR validated</span>
+      <span class="page-badge badge-doi">1M events &mdash; ~6.4 seconds</span>
+      <span class="page-badge badge-doi">~95% noise reduction</span>
+    </div>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#0a1422,#0d1a2e);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
+  <div style="max-width:1280px;margin:0 auto">
+    <p style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
+    <p style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.05rem,1.8vw,1.35rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs.&rdquo;</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Validation result &mdash; MITRE-MORDOR dataset</p>
+    <h2 class="section-h2">The only number that matters in SOC evaluation: does it actually work?</h2>
+  </div>
+  <div class="mordor-banner reveal">
+    <div class="mordor-stats">
+      <div class="mstat"><p class="mstat-n">1,000,000+</p><p class="mstat-l">Events ingested (MITRE-MORDOR)</p></div>
+      <div class="mstat"><p class="mstat-n">~6.4 sec</p><p class="mstat-l">End-to-end processing time</p></div>
+      <div class="mstat"><p class="mstat-n">2,067</p><p class="mstat-l">Candidate events after distillation</p></div>
+      <div class="mstat"><p class="mstat-n">98</p><p class="mstat-l">High-signal events to analyst</p></div>
+      <div class="mstat"><p class="mstat-n">4</p><p class="mstat-l">Confirmed findings</p></div>
+      <div class="mstat"><p class="mstat-n">~95%</p><p class="mstat-l">Noise reduction</p></div>
+    </div>
+    <p class="mordor-desc">The MITRE-MORDOR dataset is a curated collection of security events with ground-truth attacker simulation, generated by the MITRE ATT&amp;CK team using real attack tooling. <strong>This is not a synthetic benchmark.</strong> The same input produces identical output on every run. Determinism is a first-class design property, not a performance claim.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">The structural gap in modern SOC tooling</p>
+    <h2 class="section-h2">Why modern SOCs are structurally failing</h2>
+    <p class="section-sub">The problem is not the volume of alerts. It is that existing tooling cannot structurally separate signal from noise. The failures are architectural, not operational.</p>
+  </div>
+  <div class="failures-grid">
+    <div class="fail-card reveal"><p class="fail-num">Failure 01</p><p class="fail-title">Alert saturation makes genuine signals invisible</p><p class="fail-body">SIEM tools surface thousands of events per hour. Without structural triage, the ratio of genuine signals to noise approaches zero. Adding more AI models to alert triage adds more noise, not less.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">Failure 02</p><p class="fail-title">No causal structure in the evidence chain</p><p class="fail-body">Timeline-based tools present events in temporal sequence without causal structure. Patient Zero identification requires causal graph traversal. Timeline analysis cannot substitute for it.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">Failure 03</p><p class="fail-title">AI triage tools conflate observation with inference</p><p class="fail-body">Most AI-augmented SOAR platforms produce findings without epistemic labels. An analyst cannot distinguish a directly observed event from a model-interpolated inference. The distinction is legally and operationally material.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">Failure 04</p><p class="fail-title">Results are not reproducible across runs or analysts</p><p class="fail-body">Non-deterministic AI triage produces different findings on different runs. Incident reports written six months later may reflect a reconstruction, not the original investigation. No legal defensibility.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">Failure 05</p><p class="fail-title">No structural separation of high-stakes from low-stakes findings</p><p class="fail-body">Lateral movement, data exfiltration, and credential compromise require different analytical rigour than routine policy violations. Undifferentiated alert queues treat them identically.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">Failure 06</p><p class="fail-title">Threat intelligence correlation is manual</p><p class="fail-body">Mapping findings to MITRE ATT&amp;CK tactics requires analyst time. Without automated adversarial pattern binding, threat intelligence remains a retrospective annotation task rather than a real-time analytical tool.</p></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">The AxoDen answer</p>
+    <h2 class="section-h2">Forensic reasoning as an innate property of graph topology</h2>
+  </div>
+  <div class="innate-block reveal">
+    <p class="innate-quote">"The system does not learn to find Patient Zero. It finds it because the mathematical structure of the World Graph makes causal traversal, temporal separation, and lateral movement detection a deterministic property of the design."</p>
+    <p class="innate-explain">Conventional AI SOC tools train models to recognise attack patterns. The model quality determines the finding quality. Pattern drift, adversarial evasion, and training data staleness degrade results over time. <strong>AxoDen Forensic Intelligence has no model to degrade.</strong> The World Graph is a directed, typed graph where causal edges are distinct from temporal edges. Lateral movement detection is a graph reachability query. Temporal separation is a topological property. These do not change with adversary behaviour. They are properties of the evidence structure, not properties of a trained model.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Six-stage investigation pipeline</p>
+    <h2 class="section-h2">From raw event stream to analyst artefact bundle</h2>
+    <p class="section-sub">Every stage is deterministic. The same input produces the same output on every run. Bit-exact replay is a design requirement, not a performance characteristic.</p>
+  </div>
+  <div class="pipeline-steps">
+    <div class="pipe-step reveal"><p class="pipe-num">Stage 01</p><p class="pipe-title">Entropy tri-band ingestion and admissibility gating</p><p class="pipe-body">Incoming events are classified into three entropy bands and subjected to admissibility gating before entering the World Graph. Events outside the normative entropy envelope are rejected and logged, not silently dropped.</p><p class="pipe-output">Output: admitted events with entropy classification (D25)</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Stage 02</p><p class="pipe-title">World Graph construction with typed edge classification</p><p class="pipe-body">Admitted events are ingested into the World Graph as nodes with typed causal, temporal, and lateral edges. The graph structure makes relationships between events first-class objects, not derived annotations.</p><p class="pipe-output">Output: World Graph with typed edge set</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Stage 03</p><p class="pipe-title">Causal and temporal traversal for Patient Zero identification</p><p class="pipe-body">Depth-first causal traversal identifies origin nodes. Temporal separation analysis identifies co-occurrence without causal linkage. Lateral movement detection is a typed reachability query. All three are deterministic graph operations, not model inferences.</p><p class="pipe-output">Output: Patient Zero candidates, lateral movement chains (D29)</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Stage 04</p><p class="pipe-title">Three-ledger investigation chain</p><p class="pipe-body">Findings are committed to three separate ledgers: the evidence ledger (raw admitted events), the inference ledger (derived relationships), and the verification ledger (confirmed findings with statistical gate). The separation is structural and auditable.</p><p class="pipe-output">Output: three-ledger chain (D26)</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Stage 05</p><p class="pipe-title">Claim-label discipline with statistical verification gate</p><p class="pipe-body">Every finding carries one of three epistemic labels: OBSERVED (directly evidenced), INFERRED (derived by graph traversal), or VERIFIED (passed the statistical gate: CMI + permutation p-value + bootstrap CI). An analyst can act on VERIFIED findings with legal defensibility.</p><p class="pipe-output">Output: labelled findings with epistemic status (D28)</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Stage 06</p><p class="pipe-title">Analyst artefact bundle with reproducibility envelope</p><p class="pipe-body">The investigation produces a complete artefact bundle: findings with labels, the World Graph snapshot, the three-ledger chain, the reproducibility manifest (input hash, processing version, output hash), and MITRE ATT&amp;CK tactic bindings. Any analyst, on any platform, at any future date, can reproduce the investigation from the manifest.</p><p class="pipe-output">Output: analyst artefact bundle, reproducibility envelope (D27, D30)</p></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Epistemic governance</p>
+    <h2 class="section-h2">OBSERVED / INFERRED / VERIFIED: the only honest claim labels in forensic AI</h2>
+    <p class="section-sub">The distinction between observation and inference is legally and operationally material. No existing AI SOC platform enforces this distinction structurally. AxoDen makes it a first-class design requirement.</p>
+  </div>
+  <div class="labels-row">
+    <div class="label-card reveal"><span class="label-tag l-obs">OBSERVED</span><p class="label-desc">Directly evidenced by a raw event in the admitted event stream. No model inference involved. The event is in the evidence ledger. An OBSERVED claim is the strongest possible claim in a forensic investigation.</p><p class="label-gate">Gate: admission to evidence ledger</p></div>
+    <div class="label-card reveal"><span class="label-tag l-inf">INFERRED</span><p class="label-desc">Derived by causal or temporal graph traversal from OBSERVED events. No model inference involved &mdash; this is a graph operation. An INFERRED claim can be independently reproduced from the World Graph by any analyst with access to the evidence ledger.</p><p class="label-gate">Gate: causal or temporal graph edge traversal</p></div>
+    <div class="label-card reveal"><span class="label-tag l-ver">VERIFIED</span><p class="label-desc">Passed a three-part statistical gate: Conditional Mutual Information (CMI) to confirm the relationship is not spurious; permutation p-value to establish significance under the null hypothesis; bootstrap confidence interval to bound the effect size. VERIFIED findings carry legal defensibility.</p><p class="label-gate">Gate: CMI + permutation p-value + bootstrap CI</p></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Competitive position</p>
+    <h2 class="section-h2">AxoDen Forensic Intelligence vs. conventional AI SOC tools</h2>
+  </div>
+  <div class="comp-wrap reveal">
+    <table class="comp-table">
+      <thead><tr><th>Capability</th><th>Conventional AI SOC Tools</th><th>AxoDen Forensic Intelligence</th></tr></thead>
+      <tbody>
+        <tr><td>Patient Zero identification</td><td>Model-dependent classification</td><td><em>Deterministic graph causal traversal &mdash; no model required</em></td></tr>
+        <tr><td>Lateral movement detection</td><td>Signature matching + anomaly scoring</td><td><em>Typed graph reachability query &mdash; no signatures, no model</em></td></tr>
+        <tr><td>Reproducibility</td><td>Non-deterministic &mdash; results vary per run</td><td><em>Bit-exact replay guaranteed &mdash; reproducibility manifest included</em></td></tr>
+        <tr><td>Epistemic labelling</td><td>None &mdash; all outputs presented as findings</td><td><em>OBSERVED / INFERRED / VERIFIED enforced structurally</em></td></tr>
+        <tr><td>Alert noise reduction</td><td>Varies &mdash; typically 40-70% with tuning</td><td><em>~95% on MITRE-MORDOR ground-truth dataset</em></td></tr>
+        <tr><td>Model retraining required?</td><td>Yes &mdash; as attack patterns evolve</td><td><em>No &mdash; graph topology is invariant to adversary behaviour</em></td></tr>
+        <tr><td>Legal defensibility of findings</td><td>None &mdash; model outputs are not legally attributable</td><td><em>VERIFIED label + reproducibility envelope = legally defensible record</em></td></tr>
+        <tr><td>Audit trail</td><td>Post-hoc log</td><td><em>Three-ledger chain with structural separation of evidence, inference, and verification</em></td></tr>
+        <tr><td>Certification path</td><td>None</td><td><em>ASIL-M L2/L3 artefact bundle available for regulated environments</em></td></tr>
+        <tr><td>Integration</td><td>API or SIEM plugin</td><td><em>Dockerised &mdash; deploys alongside existing SIEM/SOAR stack</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Registered differentiators &mdash; D25 through D30</p>
+    <h2 class="section-h2">Six technical innovations with no equivalent in existing platforms</h2>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card reveal"><p class="diff-id">D25</p><p class="diff-title">Entropy tri-band admissibility classification</p><p class="diff-body">Incoming events classified into three entropy bands before World Graph admission. Events outside the normative envelope are rejected and logged. No existing SIEM or SOAR platform performs entropy-based admissibility gating.</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D26</p><p class="diff-title">Three-ledger investigation chain</p><p class="diff-body">Structural separation of the evidence ledger, inference ledger, and verification ledger. The separation is enforced at write time, not annotated retrospectively. No existing forensic platform provides this structural separation.</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D27 &mdash; High patent potential</p><p class="diff-title">Reproducibility envelope as a first-class artefact</p><p class="diff-body">The investigation manifest records input hash, processing version, and output hash, enabling bit-exact reproduction of any investigation by any analyst at any future date. No existing forensic platform treats reproducibility as a first-class deliverable.</p><p class="diff-patent">Patent evaluation in progress</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D28 &mdash; High patent potential</p><p class="diff-title">Claim-label discipline with statistical verification gate</p><p class="diff-body">The OBSERVED / INFERRED / VERIFIED label system is enforced structurally. VERIFIED requires passing CMI + permutation p-value + bootstrap CI. No existing AI SOC platform enforces epistemic claim labels with statistical gates.</p><p class="diff-patent">Patent evaluation in progress</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D29</p><p class="diff-title">Temporal and counterfactual traversal analytics</p><p class="diff-body">Counterfactual traversal enables investigators to query the World Graph for events that would have occurred under alternative hypotheses. This is a structural capability of the graph, not a model capability.</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D30</p><p class="diff-title">Analyst artefact bundle with multi-format output</p><p class="diff-body">The investigation produces a structured artefact bundle including findings, World Graph snapshot, three-ledger chain, reproducibility manifest, and MITRE ATT&amp;CK tactic bindings. Designed for SOC workflow integration, not raw data export.</p></div>
+  </div>
+  <div style="margin-top:2.5rem;padding:2rem;background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px" class="reveal">
+    <p style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.75rem">Extended deployment &mdash; SFA Agentic Triage Platform</p>
+    <p style="font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem">Full inline safety-kernel-gated SOC system (373 tests passing)</p>
+    <p style="font-size:0.78rem;line-height:1.75;color:var(--text-m)">The SFA Agentic Triage platform is the full production deployment layer built on top of Forensic Intelligence middleware. It adds a bounded intelligence layer with safety-kernel gating, an immutable forensic ledger, and structured export to STIX 2.1 and OCSF. Dockerised and locally deployed. 373 automated tests passing. This is the system that a regulated enterprise SOC would deploy; Forensic Intelligence is the certifiable forensic middleware layer it depends on.</p>
+  </div>
+  <div style="margin-top:2.5rem" class="reveal">
+    <a href="index.html#contact" class="btn-primary">Request evaluation briefing</a>
+    <a href="kernel.html" class="btn-outline">Kernel technical foundations &rarr;</a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="kernel.html" class="footer-link">Kernel</a>
+      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
+      <a href="research.html" class="footer-link">Research</a>
+    </div>
+  </div>
+</footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

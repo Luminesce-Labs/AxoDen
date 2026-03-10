@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AxoDen Grid Flight Recorder — Verified Actuation for Cyber-Physical Systems | Luminesce Limited</title>
+<meta name="description" content="Runtime execution assurance for safety-critical cyber-physical systems. Addresses the Zombie Intent Hazard: TLA+ verified across 2.4 million reachable states. No irreversible actuation without valid evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070b14;color:#b8d0e4;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:root{
+  --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
+  --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;--red:#e05555;--green:#4caf50;
+  --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
+  --mono:'DM Mono',monospace;--serif:'Instrument Serif',Georgia,serif;
+  --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
+}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
+.header-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{font-family:var(--mono);font-size:0.8rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-h)}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-m);transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--cyan)}
+.nav-cta{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.45rem 1.1rem;transition:background 0.2s}
+.nav-cta:hover{background:var(--cyan-b)}
+.page-hero{padding:calc(64px + 5rem) var(--pad) 4rem;background:linear-gradient(135deg,#070b14,#0d1008);position:relative;overflow:hidden;border-bottom:1px solid var(--bg-rule)}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(224,85,85,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(224,85,85,0.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);z-index:0}
+.page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.breadcrumb a{color:var(--text-d);transition:color 0.2s}.breadcrumb a:hover{color:var(--cyan)}
+.page-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);opacity:0.8;margin-bottom:1rem}
+.page-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;font-style:italic;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
+.page-lead{font-size:1rem;line-height:1.8;color:var(--text-b);max-width:700px;margin-bottom:2rem;border-left:2px solid rgba(224,85,85,0.35);padding-left:1.25rem}
+.page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.page-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid}
+.badge-design{background:rgba(200,168,75,0.08);color:var(--gold);border-color:rgba(200,168,75,0.2)}
+.badge-tla{background:rgba(224,85,85,0.08);color:var(--red);border-color:rgba(224,85,85,0.2)}
+.badge-doi{background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
+.content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.section{padding:5rem 0}
+.section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
+.section-label-red{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);opacity:0.8;margin-bottom:0.75rem}
+.section-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
+.section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:700px;margin-bottom:2.5rem}
+.divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
+
+/* ZIH BLOCK */
+.zih-block{background:linear-gradient(135deg,#120808,#1a0c0c);border:1px solid rgba(224,85,85,0.2);border-radius:6px;padding:3rem;position:relative;overflow:hidden;margin-bottom:3rem}
+.zih-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(224,85,85,0.5),transparent)}
+.zih-title{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400;color:var(--text-h);margin-bottom:1.5rem;line-height:1.4}
+.zih-sequence{display:flex;flex-direction:column;gap:0;margin:1.5rem 0}
+.zih-step{display:grid;grid-template-columns:28px 1fr;gap:1rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.78rem;line-height:1.6}
+.zih-step:last-child{border-bottom:none}
+.zih-step-icon{font-family:var(--mono);font-size:0.6rem;font-weight:600;color:var(--red);opacity:0.7;padding-top:0.15rem}
+.zih-step-text{color:var(--text-m)}.zih-step-text strong{color:var(--text-b)}
+.zih-formula{font-family:var(--mono);font-size:0.72rem;background:rgba(0,0,0,0.3);border:1px solid rgba(224,85,85,0.15);border-radius:3px;padding:0.75rem 1rem;margin:0.5rem 0;line-height:1.6;color:var(--text-b)}
+.zih-stats{display:flex;gap:2.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap}
+.zih-stat-n{font-family:var(--mono);font-size:1.4rem;font-weight:500;color:var(--text-h)}
+.zih-stat-l{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-d)}
+
+/* THREE INVARIANTS */
+.invariants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.inv-card{background:rgba(76,175,80,0.04);border:1px solid rgba(76,175,80,0.15);border-radius:4px;padding:2rem}
+.inv-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:#4caf50;opacity:0.8;margin-bottom:0.6rem}
+.inv-name{font-size:0.88rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.35}
+.inv-formula{font-family:var(--mono);font-size:0.66rem;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:0.6rem 0.85rem;margin:0.6rem 0;line-height:1.6;color:#7dc880}
+.inv-body{font-size:0.76rem;line-height:1.7;color:var(--text-m)}
+
+/* MECHANISMS */
+.mech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
+.mech-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:2rem}
+.mech-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.65rem}
+.mech-name{font-size:0.9rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem}
+.mech-body{font-size:0.78rem;line-height:1.7;color:var(--text-m)}
+.mech-body strong{color:var(--text-b)}
+.mech-spec{font-family:var(--mono);font-size:0.66rem;background:rgba(0,0,0,0.25);border:1px solid var(--bg-rule);border-radius:3px;padding:0.7rem 0.9rem;margin:0.75rem 0;line-height:1.6;color:var(--cyan);letter-spacing:0.04em}
+
+/* METRICS */
+.metrics-row{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+.metric-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem;flex:1;min-width:160px}
+.metric-n{font-family:var(--mono);font-size:1.6rem;font-weight:500;color:var(--text-h);margin-bottom:0.25rem}
+.metric-l{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-d);line-height:1.5}
+.metric-pass{color:#4caf50}.metric-zero{color:var(--cyan)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal.visible{opacity:1;transform:none}
+.btn-primary{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.7rem 1.6rem;transition:background 0.2s;display:inline-block;margin-top:1rem}
+.btn-primary:hover{background:var(--cyan-b)}
+.btn-outline{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,174,204,0.35);border-radius:2px;padding:0.7rem 1.6rem;transition:border-color 0.2s;display:inline-block;margin-top:1rem;margin-left:1rem}
+footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-copy{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;color:var(--text-d)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}.footer-link:hover{color:var(--cyan)}
+@media(max-width:900px){nav{display:none}.invariants-grid,.mech-grid{grid-template-columns:1fr}.metrics-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0"><defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="400" height="400" fill="#05080F"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/><line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/><line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/><line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/><circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/><rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/><text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text><text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text></svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link active">Grid Flight Recorder</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Grid Flight Recorder</span></div>
+    <p class="page-eyebrow">Cyber-Physical Systems &middot; Critical Infrastructure &middot; In Design &mdash; Prior art Feb 2026</p>
+    <h1 class="page-h1">A flight recorder that is also a safety gate</h1>
+    <p class="page-lead">The Grid Flight Recorder enforces one contract: no irreversible physical actuation occurs unless safety, policy, and evidence conditions are all valid at the moment of execution. It is not a passive audit log. It is an active enforcement boundary. The audit trail it produces is a by-product of enforcement, not a retrospective reconstruction.</p>
+    <div class="page-meta-row">
+      <span class="page-badge badge-design">In Design &mdash; Prior art February 2026</span>
+      <span class="page-badge badge-tla">TLA+ Verified &mdash; 2.4M states</span>
+      <span class="page-badge badge-doi">DOI: 10.5281/zenodo.18768569</span>
+    </div>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#0a1422,#0d1a2e);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
+  <div style="max-width:1280px;margin:0 auto">
+    <p style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
+    <p style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.05rem,1.8vw,1.35rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs.&rdquo;</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label-red">The Zombie Intent Hazard &mdash; prior art February 2026</p>
+    <h2 class="section-h2">The structural failure class that three frontier AI systems missed</h2>
+    <p class="section-sub">The Zombie Intent Hazard is not a cybersecurity vulnerability or an edge case. It is a fundamental structural failure class in any system where AI decisions are queued, buffered, or persisted before physical execution. It applies to power grids, autonomous vehicles, medical devices, industrial control systems, autonomous drones, and any system with write-ahead intent and physical actuation.</p>
+  </div>
+  <div class="zih-block reveal">
+    <p class="zih-title">The formal state desynchronisation</p>
+    <div class="zih-sequence">
+      <div class="zih-step"><span class="zih-step-icon">t</span><div class="zih-step-text"><strong>Initial observation:</strong> The AI model observes state S<sub>t</sub> at time t and computes command C<sub>t</sub> = f(S<sub>t</sub>). The command is valid under S<sub>t</sub>.</div></div>
+      <div class="zih-step"><span class="zih-step-icon">!</span><div class="zih-step-text"><strong>Fault event:</strong> Command C<sub>t</sub> is queued due to a communications outage, power cycle, or system fault. The intent is serialised into a write-ahead buffer.</div></div>
+      <div class="zih-step"><span class="zih-step-icon">&Delta;</span><div class="zih-step-text"><strong>State change:</strong> The environment transitions to state S<sub>t+k</sub> where S<sub>t+k</sub> &ne; S<sub>t</sub>. Wind shifts. Load changes. Temperature drops below viability threshold. Position changes. Policy updates.</div></div>
+      <div class="zih-step" style="border-color:rgba(224,85,85,0.2)"><span class="zih-step-icon" style="color:var(--red)">&#9760;</span><div class="zih-step-text" style="color:var(--text-b)"><strong>Standard stack execution (unsafe):</strong> Upon reconnection, the standard stack executes the stale command blindly. execute(C<sub>t</sub>) under S<sub>t+k</sub>. The decision was valid. The conditions are not. The execution is irreversible.</div></div>
+    </div>
+    <div style="margin-top:1.5rem;padding:1.25rem;background:rgba(76,175,80,0.06);border:1px solid rgba(76,175,80,0.15);border-radius:4px">
+      <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#4caf50;margin-bottom:0.75rem">AxoDen GFR intervention (safe)</p>
+      <div class="zih-formula">IF session_ID(C<sub>t</sub>) &ne; boot_session_ID_new : DENY<br>&#9474;&nbsp;Write DENY record to CAR ledger<br>&#9474;&nbsp;Invalidate queued command<br>&#9492;&nbsp;Force AI model to re-evaluate under S<sub>t+k</sub> : C<sub>t+k</sub> = f(S<sub>t+k</sub>)</div>
+    </div>
+    <div class="zih-stats">
+      <div><p class="zih-stat-n">2,400,000+</p><p class="zih-stat-l">Reachable states verified (TLC model checker)</p></div>
+      <div><p class="zih-stat-n">0</p><p class="zih-stat-l">Counterexamples found</p></div>
+      <div><p class="zih-stat-n">52</p><p class="zih-stat-l">Named state transitions across intent lifecycle</p></div>
+      <div><p class="zih-stat-n">3</p><p class="zih-stat-l">Core safety invariants verified</p></div>
+    </div>
+    <p style="font-size:0.78rem;line-height:1.7;color:var(--text-m);margin-top:1.25rem">The Zombie Intent Hazard was independently submitted as an architectural review question to GPT-4, Claude, and Gemini. All three systems failed to identify the structural failure class. This is not a failure of intelligence. It is a failure of architectural scope: frontier AI models are not designed to audit their own safety-critical architectural properties. Mathematical verification frameworks that operate independently of model outputs are a necessary complement, not a niche concern. <a href="https://doi.org/10.5281/zenodo.18768569" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18768569</a></p>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">TLA+ formal verification</p>
+    <h2 class="section-h2">Three safety invariants machine-verified across 2.4 million reachable states</h2>
+    <p class="section-sub">The specification covers the complete intent lifecycle: PROPOSED &rarr; VERIFIED &rarr; AUTHORISED &rarr; ACTUATED / BLOCKED &rarr; EXPIRED. Zero counterexamples across all reachable states for all three invariants.</p>
+  </div>
+  <div class="invariants-grid">
+    <div class="inv-card reveal">
+      <p class="inv-tag">Invariant 1 &mdash; Anti-Zombie</p>
+      <p class="inv-name">Freshness Exclusion</p>
+      <div class="inv-formula">&#9633; &forall; i &isin; Intents :<br>&nbsp;&nbsp;state(i) = AUTHORISED<br>&nbsp;&nbsp;&rArr; session(i) = CurrentBootSession</div>
+      <p class="inv-body">No intent may reach the AUTHORISED state unless its session binding matches the current live boot-session ID. The Zombie Intent Hazard is excluded by construction. This invariant holds across all 2.4 million verifiable states.</p>
+    </div>
+    <div class="inv-card reveal">
+      <p class="inv-tag">Invariant 2 &mdash; Quorum Gate</p>
+      <p class="inv-name">Quorum Integrity</p>
+      <div class="inv-formula">&#9633; &forall; i &isin; Intents :<br>&nbsp;&nbsp;state(i) = AUTHORISED<br>&nbsp;&nbsp;&rArr; |FreshAttestations(i)| &ge; &lceil;(N+1)/2&rceil;</div>
+      <p class="inv-body">No intent may be authorised unless a strict sensor quorum Q has attested freshness of the current context. Single-sensor dropout or drift cannot unilaterally satisfy the authorisation condition. Risk-Adaptive Quorum Thresholds (RAQT, D84) extend this with deterministic adaptive thresholds.</p>
+    </div>
+    <div class="inv-card reveal">
+      <p class="inv-tag">Invariant 3 &mdash; Audit Completeness</p>
+      <p class="inv-name">Gapless CAR Ledger</p>
+      <div class="inv-formula">&#9633; &forall; i &isin; Intents :<br>&nbsp;&nbsp;(state(i) = PROPOSED<br>&nbsp;&nbsp;&and; state'(i) &ne; PROPOSED)<br>&nbsp;&nbsp;&rArr; |CARs(i)| = |CARs(i)|_prev + 1</div>
+      <p class="inv-body">Every transition out of the PROPOSED state produces exactly one Canonical Attestation Record. The audit ledger is gapless by construction. There is no execution path that advances intent state without a corresponding CAR entry.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Core mechanisms</p>
+    <h2 class="section-h2">Four enforcement components that compose into a complete actuation firewall</h2>
+  </div>
+  <div class="mech-grid">
+    <div class="mech-card reveal">
+      <p class="mech-tag">EOA-Latch</p>
+      <p class="mech-name">Evidence-or-Actuate Latch</p>
+      <p class="mech-body">The single most important architectural constraint in the Grid Flight Recorder: <strong>no physical actuation occurs unless AxoDen mathematically verifies context freshness, safety invariants, and sensor quorum integrity at the moment of execution.</strong> The EOA-Latch is not a check before actuation. It is the actuation precondition. Evidence existence is logically prior to physical action.</p>
+      <div class="mech-spec">EOA-Latch state machine:<br>
+PENDING &rarr; EVIDENCE_CHECK &rarr; QUORUM_CHECK &rarr; FRESHNESS_CHECK<br>
+&nbsp;&nbsp;&rarr; AUTHORISED &rarr; ACTUATED (signed auth token emitted)<br>
+&nbsp;&nbsp;&rarr; BLOCKED &rarr; DENY_CAR (written, intent invalidated)</div>
+    </div>
+    <div class="mech-card reveal">
+      <p class="mech-tag">Reboot-Safe Session Binding</p>
+      <p class="mech-name">Volatile Boot-Session ID Invalidation</p>
+      <p class="mech-body">Queued intents are strictly bound to volatile boot-session IDs. A reboot, power cycle, or controlled restart <strong>mathematically invalidates all previously queued intents</strong> by invalidating the session ID. Commands computed under old state cannot execute under new state. This is the direct structural countermeasure to the Zombie Intent Hazard.</p>
+      <div class="mech-spec">boot_session_ID := HMAC-SHA256(device_key, boot_timestamp || entropy_seed)<br>
+All queued intents carry session_ID binding<br>
+Mismatch: DENY + write DENY_CAR + force re-evaluation</div>
+    </div>
+    <div class="mech-card reveal">
+      <p class="mech-tag">OTT &mdash; D81</p>
+      <p class="mech-name">One-Time Actuation Tickets</p>
+      <p class="mech-body">Class H (high-consequence) actions are authorised by single-use tokens. Once consumed, the token is spent. An adversary cannot replay a captured authorisation to trigger a second actuation. The token is bound to the specific intent, the current session, and the current quorum attestation.</p>
+      <div class="mech-spec">OTT := Ed25519_sign(intent_hash || session_ID || quorum_hash || timestamp)<br>
+Consumption index recorded in CAR chain<br>
+Replay attempt: DENY + forensic alert</div>
+    </div>
+    <div class="mech-card reveal">
+      <p class="mech-tag">ACFF &mdash; D83</p>
+      <p class="mech-name">Attested Control-Flow Fingerprint</p>
+      <p class="mech-body">Firmware hashes prove code presence, not execution path. The ACFF binds the policy digest, the WASM module hash, the configuration hash, and the precedence traversal indices into a single verifiable fingerprint. An auditor can verify not only <em>what code ran</em> but <em>how it decided</em>.</p>
+      <div class="mech-spec">ACFF := SHA-256(policy_digest || WASM_hash || config_hash || precedence_indices)<br>
+Bound into CAR at every authorisation<br>
+Verifiable by any party with the ACFF and the CAR</div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Performance targets and kill criteria</p>
+    <h2 class="section-h2">Measurable, falsifiable, kill-criteria governed</h2>
+    <p class="section-sub">The design specifies explicit performance targets and a go/no-go kill criterion. If the system cannot meet the latency target or fails to prevent stale actuation under physical reboot injection, the design halts or pivots to a narrower actuator class.</p>
+  </div>
+  <div class="metrics-row">
+    <div class="metric-card reveal"><p class="metric-n metric-pass">100%</p><p class="metric-l">Zombie Intent prevention rate across induced fault tests (N &ge; 200 HWIL physical trials)</p></div>
+    <div class="metric-card reveal"><p class="metric-n metric-zero">0</p><p class="metric-l">Unsafe actuations across defined hazard scenarios</p></div>
+    <div class="metric-card reveal"><p class="metric-n">&lt; 10ms</p><p class="metric-l">Added authorisation latency at the actuator gate (ARV O(1) evaluation)</p></div>
+    <div class="metric-card reveal"><p class="metric-n metric-pass">100%</p><p class="metric-l">Audit completeness &mdash; every intent transition produces exactly one CAR</p></div>
+    <div class="metric-card reveal"><p class="metric-n">&lt; 0.05 FTE</p><p class="metric-l">Integration overhead for system-focused teams via C/Rust/ROS2 API wrappers</p></div>
+  </div>
+  <div style="margin-top:2rem;padding:1.25rem;background:rgba(224,85,85,0.04);border:1px solid rgba(224,85,85,0.15);border-radius:4px" class="reveal">
+    <p style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">Kill Criteria &mdash; Month 12 Go/No-Go</p>
+    <p style="font-size:0.78rem;line-height:1.7;color:var(--text-m)">If the system cannot maintain authorisation overhead below 10ms, OR fails to prevent stale actuation under physical reboot injection in hardware-in-the-loop testing, the project halts or pivots to a narrower actuator class. The kill criteria are defined in the design document and are not negotiable.</p>
+  </div>
+  <div style="margin-top:2.5rem" class="reveal">
+    <a href="index.html#contact" class="btn-primary">Enquire about defence integration</a>
+    <a href="kernel.html" class="btn-outline">Kernel foundations &rarr;</a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="kernel.html" class="footer-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
+      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="research.html" class="footer-link">Research</a>
+    </div>
+  </div>
+</footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

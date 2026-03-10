@@ -3,989 +3,986 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AxoDen — Luminesce Limited</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<title>AxoDen — Certifiable AI by Mathematics | Luminesce Limited</title>
+<meta name="description" content="AxoDen is a compositional AI safety kernel that makes high-stakes AI certifiable through mathematical proof of governance architecture. Structural assurance for defence, critical infrastructure, and regulated industry.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#070b14;
+  color:#b8d0e4;
+  font-family:'Geist',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+sub{font-size:0.65em;vertical-align:sub}
 
-  :root {
-    --bg-deep:      #070b14;
-    --bg-navy:      #0b1120;
-    --bg-card:      #0f1828;
-    --bg-card-alt:  #111d30;
-    --bg-rule:      rgba(255,255,255,0.07);
-    --text:         #dce9f2;
-    --text-mid:     #8faec4;
-    --text-soft:    #5a7a94;
-    --text-muted:   #304a60;
-    --cyan:         #00aecc;
-    --cyan-bright:  #00d4f5;
-    --gold:         #c8a84b;
-    --danger:       #e05555;
-    --mono: 'DM Mono', monospace;
-    --serif: 'Instrument Serif', Georgia, serif;
-    --sans: 'Geist', system-ui, sans-serif;
-  }
+/* ── TOKENS ── */
+:root{
+  --bg:        #070b14;
+  --bg-mid:    #0b1120;
+  --bg-card:   #0f1828;
+  --bg-rule:   rgba(255,255,255,0.07);
+  --cyan:      #00aecc;
+  --cyan-b:    #00d4f5;
+  --gold:      #c8a84b;
+  --red:       #e05555;
+  --text-h:    #dce9f2;
+  --text-b:    #b8d0e4;
+  --text-m:    #7a9cb8;
+  --text-d:    #3d607a;
+  --mono:      'DM Mono',monospace;
+  --serif:     'Instrument Serif',Georgia,serif;
+  --sans:      'Geist',system-ui,sans-serif;
+  --max:       1280px;
+  --pad:       clamp(1.5rem,4vw,3rem);
+}
 
-  html { scroll-behavior: smooth; }
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(7,11,20,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bg-rule);
+  height:64px;
+  display:flex;align-items:center;
+  padding:0 var(--pad);
+}
+.header-inner{
+  max-width:var(--max);width:100%;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{
+  font-family:var(--mono);font-size:0.8rem;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--text-h);
+}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--text-m);
+  transition:color 0.2s;
+}
+.nav-link:hover{color:var(--cyan)}
+.nav-cta{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--bg);
+  background:var(--cyan);border-radius:2px;
+  padding:0.45rem 1.1rem;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--cyan-b)}
 
-  body {
-    background: var(--bg-deep);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(64px + 5rem) var(--pad) 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,90,140,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(40,0,100,0.12) 0%, transparent 60%),
+    #070b14;
+  z-index:0;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,174,204,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,174,204,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  z-index:0;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+}
+.hero-inner{
+  max-width:var(--max);width:100%;margin:0 auto;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 420px;
+  gap:4rem;align-items:center;
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--cyan);opacity:0.85;
+  margin-bottom:1.5rem;
+}
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:400;font-style:italic;
+  color:var(--text-h);line-height:1.15;
+  margin-bottom:2rem;
+}
+.hero-h1 em{font-style:normal;color:var(--cyan)}
+.hero-thesis{
+  font-size:1rem;line-height:1.8;color:var(--text-b);
+  max-width:600px;margin-bottom:1rem;
+  border-left:2px solid rgba(0,174,204,0.3);
+  padding-left:1.25rem;
+}
+.hero-subthesis{
+  font-size:0.88rem;line-height:1.75;color:var(--text-m);
+  max-width:580px;margin-bottom:2.5rem;
+}
+.hero-actions{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.btn-primary{
+  font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--bg);
+  background:var(--cyan);border-radius:2px;
+  padding:0.7rem 1.6rem;
+  transition:background 0.2s,transform 0.15s;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--cyan-b);transform:translateY(-1px)}
+.btn-outline{
+  font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--cyan);
+  border:1px solid rgba(0,174,204,0.35);border-radius:2px;
+  padding:0.7rem 1.6rem;
+  transition:border-color 0.2s,color 0.2s;
+  display:inline-block;
+}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan-b)}
+.hero-stats{
+  display:flex;gap:2rem;margin-top:3rem;
+  padding-top:2rem;border-top:1px solid var(--bg-rule);
+  flex-wrap:wrap;
+}
+.stat{display:flex;flex-direction:column;gap:0.2rem}
+.stat-n{
+  font-family:var(--mono);font-size:1.4rem;font-weight:500;
+  color:var(--text-h);letter-spacing:-0.02em;
+}
+.stat-l{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--text-d);
+}
 
-  /* ── HEADER ── */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 64px;
-    background: rgba(7,11,20,0.9);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--bg-rule);
-  }
+/* hero logo panel */
+.hero-logo-panel{
+  display:flex;flex-direction:column;align-items:center;gap:2rem;
+}
+.hero-logo-wrap{
+  position:relative;
+  width:280px;height:280px;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-logo-ring{
+  position:absolute;inset:-20px;
+  border-radius:50%;
+  border:1px solid rgba(0,174,204,0.15);
+  animation:spin 20s linear infinite;
+}
+.hero-logo-ring::before{
+  content:'';
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:6px;height:6px;border-radius:50%;
+  background:var(--cyan);margin-top:-3px;
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-logo-inner svg{width:240px;height:240px}
 
-  .header-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-  }
-  .header-logo svg { width: 36px; height: 36px; }
-  .header-logo-text { display: flex; flex-direction: column; line-height: 1; }
-  .header-logo-text .name {
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--text);
-  }
-  .header-logo-text .sub {
-    font-family: var(--mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    color: var(--text-soft);
-    text-transform: uppercase;
-    margin-top: 3px;
-  }
+/* tagline beneath logo */
+.hero-logo-tag{
+  font-family:var(--mono);font-size:0.58rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--text-d);text-align:center;
+  line-height:1.8;
+}
 
-  nav { display: flex; gap: 2.5rem; align-items: center; }
-  nav a {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-soft);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--cyan-bright); }
-  nav .cta {
-    color: var(--bg-deep);
-    background: var(--cyan);
-    padding: 0.45rem 1.2rem;
-    border-radius: 2px;
-    transition: background 0.2s;
-  }
-  nav .cta:hover { background: var(--cyan-bright); }
+/* ── SHANNON BAND ── */
+.shannon-band{
+  background:linear-gradient(135deg,#0a1422,#0d1a2e);
+  border-top:1px solid var(--bg-rule);
+  border-bottom:1px solid var(--bg-rule);
+  padding:5rem var(--pad);
+}
+.shannon-inner{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+}
+.shannon-quote-wrap{}
+.shannon-kicker{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--gold);opacity:0.8;
+  margin-bottom:1.25rem;
+}
+.shannon-quote{
+  font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.55rem);
+  font-style:italic;color:var(--text-h);line-height:1.5;
+  margin-bottom:1rem;
+}
+.shannon-source{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;
+  color:var(--text-d);
+}
+.shannon-body{}
+.shannon-body p{
+  font-size:0.9rem;line-height:1.8;color:var(--text-m);
+  margin-bottom:1rem;
+}
+.shannon-body p:last-child{margin-bottom:0}
+.shannon-body strong{color:var(--text-b);font-weight:500}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    padding-top: 64px;
-    position: relative;
-    overflow: hidden;
-  }
+/* ── SECTION COMMON ── */
+.section{padding:6rem var(--pad);max-width:var(--max);margin:0 auto}
+.section-label{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--cyan);opacity:0.75;
+  margin-bottom:0.75rem;
+}
+.section-h2{
+  font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:400;color:var(--text-h);line-height:1.2;
+  margin-bottom:1rem;
+}
+.section-sub{
+  font-size:0.9rem;line-height:1.8;color:var(--text-m);
+  max-width:680px;margin-bottom:3rem;
+}
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(15,28,65,0.9) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 85% 20%, rgba(30,15,70,0.55) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 10% 80%, rgba(0,80,110,0.2) 0%, transparent 60%),
-      linear-gradient(160deg, #070b14 0%, #0c1428 40%, #0f1040 70%, #080b18 100%);
-    pointer-events: none;
-  }
+/* ── PROBLEM ── */
+.problem-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:3rem;
+}
+.prob-card{
+  background:var(--bg-card);
+  border:1px solid var(--bg-rule);
+  border-radius:4px;padding:1.75rem;
+}
+.prob-icon{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--red);opacity:0.8;
+  margin-bottom:0.85rem;
+}
+.prob-title{
+  font-size:0.92rem;font-weight:600;color:var(--text-h);
+  margin-bottom:0.6rem;line-height:1.4;
+}
+.prob-body{font-size:0.8rem;line-height:1.7;color:var(--text-m)}
 
-  .hero-hexgrid {
-    position: absolute;
-    inset: 0;
-    opacity: 0.06;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104'%3E%3Cpolygon points='60,4 112,32 112,72 60,100 8,72 8,32' fill='none' stroke='%2300aecc' stroke-width='0.8'/%3E%3C/svg%3E");
-    background-size: 120px 104px;
-    pointer-events: none;
-  }
+/* ── SOLUTION THESIS ── */
+.thesis-wrap{
+  background:linear-gradient(135deg,#0a1828,#0d1e34);
+  border:1px solid rgba(0,174,204,0.12);
+  border-radius:6px;
+  padding:3rem 3.5rem;
+  margin-top:3rem;
+  position:relative;overflow:hidden;
+}
+.thesis-wrap::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,174,204,0.5),transparent);
+}
+.thesis-statement{
+  font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);
+  font-style:italic;color:var(--text-h);line-height:1.6;
+  margin-bottom:2rem;
+  border-left:2px solid var(--cyan);
+  padding-left:1.5rem;
+}
+.thesis-pillars{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  margin-top:2rem;padding-top:2rem;border-top:1px solid var(--bg-rule);
+}
+.pillar{}
+.pillar-num{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;
+  color:var(--cyan);opacity:0.6;margin-bottom:0.5rem;
+}
+.pillar-name{
+  font-size:0.88rem;font-weight:600;color:var(--text-h);
+  margin-bottom:0.4rem;line-height:1.3;
+}
+.pillar-body{font-size:0.78rem;line-height:1.7;color:var(--text-m)}
 
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    padding: 6rem 3rem 4rem;
-    max-width: 1280px;
-    margin: 0 auto;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-  }
+/* ── PRODUCTS ── */
+.products-intro{margin-bottom:3.5rem}
+.product-tiles{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;
+}
+.ptile{
+  background:var(--bg-card);
+  border:1px solid var(--bg-rule);
+  border-radius:6px;
+  padding:2rem 2.25rem;
+  display:flex;flex-direction:column;
+  gap:1rem;
+  transition:border-color 0.2s,transform 0.2s;
+  position:relative;overflow:hidden;
+}
+.ptile:hover{border-color:rgba(0,174,204,0.3);transform:translateY(-2px)}
+.ptile::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(0,174,204,0.25),transparent);
+  opacity:0;transition:opacity 0.2s;
+}
+.ptile:hover::after{opacity:1}
+.ptile-status{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:2px;
+  display:inline-block;width:fit-content;
+}
+.s-live{background:rgba(40,167,69,0.1);color:#4caf50;border:1px solid rgba(40,167,69,0.2)}
+.s-mvp{background:rgba(200,168,75,0.1);color:var(--gold);border:1px solid rgba(200,168,75,0.2)}
+.s-design{background:rgba(100,100,180,0.1);color:#8888cc;border:1px solid rgba(100,100,180,0.2)}
+.ptile-domain{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--text-d);
+}
+.ptile-name{
+  font-family:var(--serif);font-size:1.4rem;font-weight:400;
+  color:var(--text-h);line-height:1.2;
+}
+.ptile-body{font-size:0.82rem;line-height:1.75;color:var(--text-m)}
+.ptile-proof{
+  margin-top:auto;padding-top:1rem;
+  border-top:1px solid var(--bg-rule);
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;
+  color:var(--text-d);line-height:1.8;
+}
+.ptile-proof span{color:var(--cyan);opacity:0.7}
+.ptile-link{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--cyan);
+  display:inline-flex;align-items:center;gap:0.4rem;
+  margin-top:0.5rem;
+  transition:gap 0.2s;
+}
+.ptile:hover .ptile-link{gap:0.7rem}
 
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 1.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.1s forwards;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 28px;
-    height: 1px;
-    background: var(--cyan);
-  }
+/* ── COMPETITOR ── */
+.comp-wrap{
+  margin-top:4rem;
+  overflow-x:auto;
+}
+.comp-table{
+  width:100%;border-collapse:collapse;
+  font-size:0.78rem;
+}
+.comp-table thead tr{border-bottom:1px solid rgba(0,174,204,0.2)}
+.comp-table th{
+  text-align:left;padding:0.65rem 1rem;
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;
+  text-transform:uppercase;font-weight:400;color:var(--text-d);
+}
+.comp-table th:last-child{color:var(--cyan);opacity:0.8}
+.comp-table td{
+  padding:0.55rem 1rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  vertical-align:top;
+  color:var(--text-m);
+}
+.comp-table td:first-child{color:var(--text-b);font-weight:500}
+.comp-table td:last-child{color:var(--text-b)}
+.comp-table td em{
+  font-style:normal;color:var(--cyan);font-weight:500;
+}
+.comp-table tr:hover td{background:rgba(255,255,255,0.015)}
 
-  .hero-heading {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 5vw, 4.8rem);
-    line-height: 1.08;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.25s forwards;
-  }
-  .hero-heading em { font-style: italic; color: var(--cyan-bright); }
+/* ── CREDENTIALS BAND ── */
+.cred-band{
+  background:linear-gradient(135deg,#090f1c,#0c1626);
+  border-top:1px solid var(--bg-rule);
+  border-bottom:1px solid var(--bg-rule);
+  padding:5rem var(--pad);
+}
+.cred-inner{max-width:var(--max);margin:0 auto}
+.cred-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+  margin-top:3rem;
+}
+.cred-numbers{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+}
+.cred-num{
+  background:var(--bg-card);border:1px solid var(--bg-rule);
+  border-radius:4px;padding:1.5rem;
+}
+.cred-n{
+  font-family:var(--mono);font-size:2rem;font-weight:500;
+  color:var(--text-h);letter-spacing:-0.03em;margin-bottom:0.3rem;
+}
+.cred-l{
+  font-family:var(--mono);font-size:0.56rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--text-d);line-height:1.6;
+}
+.cred-story p{
+  font-size:0.88rem;line-height:1.85;color:var(--text-m);
+  margin-bottom:1rem;
+}
+.cred-story p:last-child{margin-bottom:0}
+.cred-story strong{color:var(--text-b);font-weight:500}
 
-  .hero-subheading {
-    font-size: 0.975rem;
-    line-height: 1.8;
-    color: var(--text-mid);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
-  }
-  .hero-subheading strong { color: var(--text); font-weight: 500; }
+/* ── RESEARCH TEASER ── */
+.research-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+  margin-top:3rem;
+}
+.rstrip-card{
+  background:var(--bg-card);border:1px solid var(--bg-rule);
+  border-radius:4px;padding:1.5rem;
+  transition:border-color 0.2s;
+}
+.rstrip-card:hover{border-color:rgba(0,174,204,0.2)}
+.rstrip-doi{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;
+  color:var(--cyan);opacity:0.6;margin-bottom:0.75rem;
+}
+.rstrip-title{
+  font-size:0.82rem;font-weight:600;color:var(--text-b);
+  line-height:1.45;margin-bottom:0.5rem;
+}
+.rstrip-desc{font-size:0.74rem;line-height:1.65;color:var(--text-m)}
 
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.55s forwards;
-  }
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 340px;
+  gap:4rem;align-items:start;
+  margin-top:3rem;
+}
+.about-body p{
+  font-size:0.88rem;line-height:1.85;color:var(--text-m);
+  margin-bottom:1rem;
+}
+.about-body strong{color:var(--text-b);font-weight:500}
+.about-meta{
+  background:var(--bg-card);border:1px solid var(--bg-rule);
+  border-radius:4px;padding:1.75rem;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.meta-row{display:flex;flex-direction:column;gap:0.2rem}
+.meta-label{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--text-d);
+}
+.meta-val{
+  font-size:0.8rem;color:var(--text-b);
+  font-family:var(--mono);
+}
+.meta-val a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;opacity:0.85}
 
-  .btn-primary {
-    display: inline-block;
-    background: var(--cyan);
-    color: var(--bg-deep);
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 0.85rem 2rem;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .btn-primary:hover { background: var(--cyan-bright); transform: translateY(-1px); }
+/* ── CONTACT BAND ── */
+.contact-band{
+  background:linear-gradient(135deg,#080d1a,#0a1325);
+  border-top:1px solid var(--bg-rule);
+  padding:5rem var(--pad);
+}
+.contact-inner{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+}
+.contact-left h2{
+  font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:400;color:var(--text-h);margin-bottom:1rem;
+}
+.contact-left p{font-size:0.88rem;line-height:1.8;color:var(--text-m);margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem}
+.contact-link{
+  font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;
+  color:var(--text-m);display:flex;align-items:center;gap:0.6rem;
+  transition:color 0.2s;
+}
+.contact-link:hover{color:var(--cyan)}
+.contact-link-label{
+  font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--text-d);min-width:70px;
+}
+.contact-right{}
+.contact-right p{font-size:0.82rem;line-height:1.8;color:var(--text-m);margin-bottom:1.25rem}
 
-  .btn-secondary {
-    display: inline-block;
-    color: var(--text-mid);
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 0.85rem 2rem;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 2px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan-bright); }
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--bg-rule);
+  padding:2.5rem var(--pad);
+}
+.footer-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;
+}
+.footer-copy{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
+  color:var(--text-d);
+}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--text-d);
+  transition:color 0.2s;
+}
+.footer-link:hover{color:var(--cyan)}
 
-  .hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    animation: fadeIn 1.2s ease 0.6s forwards;
-  }
-  .hero-logo-wrap {
-    position: relative;
-    width: 360px;
-    height: 360px;
-  }
-  .hero-logo-wrap svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 0 48px rgba(0,174,204,0.22));
-  }
-  .hero-logo-ring {
-    position: absolute;
-    inset: -24px;
-    border-radius: 50%;
-    border: 1px solid rgba(0,174,204,0.07);
-    animation: slowSpin 40s linear infinite;
-  }
-  @keyframes slowSpin { to { transform: rotate(360deg); } }
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
 
-  .hero-stats {
-    padding: 2rem 3rem;
-    max-width: 1280px;
-    margin: 0 auto;
-    width: 100%;
-    border-top: 1px solid var(--bg-rule);
-    display: flex;
-    gap: 4rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.8s forwards;
-  }
-  .stat { display: flex; flex-direction: column; gap: 0.2rem; }
-  .stat-num {
-    font-family: var(--mono);
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--cyan-bright);
-  }
-  .stat-label {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-soft);
-  }
-
-  /* ── SHARED ── */
-  .section { padding: 7rem 3rem; max-width: 1280px; margin: 0 auto; }
-  .band { padding: 6rem 3rem; }
-  .band-inner { max-width: 1280px; margin: 0 auto; }
-
-  .lbl {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .lbl::before { content: ''; display: block; width: 20px; height: 1px; background: var(--cyan); opacity: 0.5; }
-
-  .hdg {
-    font-family: var(--serif);
-    font-size: clamp(1.9rem, 3vw, 2.8rem);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-  }
-  .hdg em { font-style: italic; color: var(--cyan-bright); }
-
-  .bdy { font-size: 0.95rem; line-height: 1.8; color: var(--text-mid); max-width: 540px; }
-
-  /* ── THESIS ── */
-  .thesis-band {
-    background: linear-gradient(135deg, #0c1428 0%, #111040 50%, #0c1428 100%);
-    border-top: 1px solid var(--bg-rule);
-    border-bottom: 1px solid var(--bg-rule);
-  }
-  .thesis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .thesis-quote {
-    font-family: var(--serif);
-    font-size: clamp(1.5rem, 2.2vw, 2rem);
-    line-height: 1.4;
-    color: var(--text);
-  }
-  .thesis-quote em {
-    font-style: italic;
-    color: var(--cyan-bright);
-    display: block;
-    margin-top: 1.25rem;
-    font-size: 1.15em;
-  }
-  .thesis-items { display: flex; flex-direction: column; }
-  .thesis-item { border-top: 1px solid var(--bg-rule); padding: 1.75rem 0; }
-  .thesis-item:last-child { border-bottom: 1px solid var(--bg-rule); }
-  .thesis-item-lbl {
-    font-family: var(--mono);
-    font-size: 0.63rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 0.5rem;
-  }
-  .thesis-item-txt { font-size: 0.875rem; line-height: 1.75; color: var(--text-mid); }
-
-  /* ── PRINCIPLES ── */
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--bg-rule);
-    border: 1px solid var(--bg-rule);
-    margin-top: 4rem;
-  }
-  .principle { background: var(--bg-card); padding: 2.5rem 2rem; transition: background 0.2s; }
-  .principle:hover { background: var(--bg-card-alt); }
-  .principle-num { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--cyan); opacity: 0.6; margin-bottom: 1.25rem; }
-  .principle-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--text); margin-bottom: 0.75rem; }
-  .principle-body { font-size: 0.85rem; line-height: 1.75; color: var(--text-mid); }
-
-  /* ── PRODUCTS ── */
-  .products-hdr { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3rem; }
-  .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--bg-rule); border: 1px solid var(--bg-rule); }
-
-  .product-card { background: var(--bg-card); padding: 2.5rem; transition: background 0.2s; position: relative; }
-  .product-card:hover { background: var(--bg-card-alt); }
-
-  .product-card.kernel {
-    grid-column: span 2;
-    background: linear-gradient(135deg, #0f1828 0%, #111a35 100%);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    border-bottom: 1px solid var(--bg-rule);
-  }
-  .product-card.kernel::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    opacity: 0.35;
-  }
-
-  .ptag {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 0.28rem 0.65rem;
-    border-radius: 2px;
-    margin-bottom: 1.5rem;
-  }
-  .tag-live   { background: rgba(0,174,204,0.1);  color: var(--cyan-bright); border: 1px solid rgba(0,174,204,0.2); }
-  .tag-mvp    { background: rgba(50,100,200,0.1); color: #7aabff;            border: 1px solid rgba(50,100,200,0.2); }
-  .tag-design { background: rgba(200,168,75,0.1); color: var(--gold);        border: 1px solid rgba(200,168,75,0.2); }
-
-  .p-role { font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.12em; color: var(--text-soft); margin-bottom: 0.75rem; text-transform: uppercase; }
-  .p-name { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; color: var(--text); margin-bottom: 0.75rem; line-height: 1.2; }
-  .p-body { font-size: 0.85rem; line-height: 1.75; color: var(--text-mid); margin-bottom: 1.5rem; }
-  .p-feat { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-  .p-feat li { font-family: var(--mono); font-size: 0.7rem; color: var(--text-soft); display: flex; align-items: baseline; gap: 0.6rem; line-height: 1.5; }
-  .p-feat li::before { content: '→'; color: var(--cyan); opacity: 0.6; flex-shrink: 0; }
-
-  /* ── FEATURED WORK ── */
-  .featured-band {
-    border-top: 1px solid var(--bg-rule);
-    border-bottom: 1px solid var(--bg-rule);
-  }
-  .featured-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .featured-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 2rem 2.25rem;
-    background: var(--bg-card);
-    border: 1px solid var(--bg-rule);
-    border-radius: 3px;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .featured-card:hover { background: var(--bg-card-alt); }
-  .featured-card:first-child { border-top: 1px solid rgba(224,85,85,0.25); }
-  .featured-card:first-child:hover { border-color: rgba(224,85,85,0.4); }
-  .featured-card:last-child { border-top: 1px solid rgba(0,174,204,0.25); }
-  .featured-card:last-child:hover { border-color: rgba(0,174,204,0.35); }
-
-  .featured-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .featured-tag {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    border-radius: 2px;
-  }
-  .featured-tag.danger { background: rgba(224,85,85,0.1); color: var(--danger); border: 1px solid rgba(224,85,85,0.2); }
-  .featured-tag.cyan   { background: rgba(0,174,204,0.1); color: var(--cyan-bright); border: 1px solid rgba(0,174,204,0.2); }
-  .featured-arrow {
-    font-size: 1.1rem;
-    color: var(--text-soft);
-    transition: color 0.2s, transform 0.2s;
-  }
-  .featured-card:hover .featured-arrow { color: var(--cyan-bright); transform: translate(2px, -2px); }
-  .featured-title {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--text);
-    line-height: 1.25;
-  }
-  .featured-body {
-    font-size: 0.85rem;
-    line-height: 1.75;
-    color: var(--text-mid);
-    flex: 1;
-  }
-  .featured-doi {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    color: var(--text-soft);
-    margin-top: 0.25rem;
-  }
-
-  /* ── ZOMBIE ── */
-  .zombie-band {
-    background: linear-gradient(135deg, #0f0c1c 0%, #1a0c0c 60%, #0f0c1c 100%);
-    border-top: 1px solid var(--bg-rule);
-    border-bottom: 1px solid var(--bg-rule);
-  }
-  .zombie-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
-  .zombie-badge {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--danger);
-    background: rgba(224,85,85,0.1);
-    border: 1px solid rgba(224,85,85,0.2);
-    padding: 0.3rem 0.7rem;
-    border-radius: 2px;
-    margin-bottom: 1.5rem;
-  }
-  .zombie-hdg { font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.4rem); font-weight: 400; line-height: 1.2; color: var(--text); }
-  .zombie-hdg em { font-style: italic; color: var(--danger); }
-  .zombie-beat { border-top: 1px solid rgba(224,85,85,0.12); padding: 1.5rem 0; }
-  .zombie-beat-lbl {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--danger);
-    opacity: 0.7;
-    margin-bottom: 0.6rem;
-  }
-  .zombie-body { font-size: 0.9rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 0; }
-  .zombie-body strong { color: var(--text); font-weight: 500; }
-  .zombie-missed { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.75rem; border-top: 1px solid var(--bg-rule); }
-  .missed-lbl { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); margin-right: 0.25rem; }
-  .missed-tag { font-family: var(--mono); font-size: 0.68rem; padding: 0.28rem 0.7rem; background: rgba(255,255,255,0.04); border: 1px solid var(--bg-rule); border-radius: 2px; color: var(--text-soft); }
-  .missed-tag.ok { background: rgba(0,174,204,0.1); border-color: rgba(0,174,204,0.25); color: var(--cyan-bright); }
-
-  /* ── EXPLORER CARD ── */
-  .explorer-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2.5rem;
-    margin-bottom: 2rem;
-    padding: 2rem 2.5rem;
-    background: linear-gradient(135deg, #0f1828 0%, #111a35 100%);
-    border: 1px solid rgba(0,174,204,0.2);
-    border-radius: 3px;
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .explorer-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    opacity: 0.5;
-  }
-  .explorer-card:hover {
-    border-color: rgba(0,212,245,0.4);
-    background: linear-gradient(135deg, #111d35 0%, #131f40 100%);
-  }
-  .explorer-label {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 0.5rem;
-  }
-  .explorer-title {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-  .explorer-body {
-    font-size: 0.875rem;
-    line-height: 1.7;
-    color: var(--text-mid);
-    max-width: 640px;
-  }
-  .explorer-arrow {
-    font-size: 1.8rem;
-    color: var(--cyan);
-    opacity: 0.6;
-    flex-shrink: 0;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .explorer-card:hover .explorer-arrow { opacity: 1; transform: translate(3px, -3px); }
-
-  /* ── PUBLICATIONS ── */
-  .pubs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--bg-rule); border: 1px solid var(--bg-rule); margin-top: 3rem; }
-  .pub-item { background: var(--bg-card); padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 0.5rem; transition: background 0.15s; }
-  .pub-item:hover { background: var(--bg-card-alt); }
-  .pub-cat { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); opacity: 0.7; }
-  .pub-title { font-size: 0.83rem; line-height: 1.55; color: var(--text); }
-  .pub-doi { font-family: var(--mono); font-size: 0.62rem; color: var(--text-soft); text-decoration: none; transition: color 0.15s; }
-  .pub-doi:hover { color: var(--cyan-bright); }
-
-  /* ── ABOUT ── */
-  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 6rem; align-items: start; }
-  .about-body { font-size: 0.975rem; line-height: 1.85; color: var(--text-mid); }
-  .about-body p + p { margin-top: 1.25rem; }
-  .about-body strong { color: var(--text); font-weight: 500; }
-  .about-note { margin-top: 2rem; padding-top: 1.75rem; border-top: 1px solid var(--bg-rule); font-size: 0.82rem; color: var(--text-soft); }
-  .about-meta { display: flex; flex-direction: column; }
-  .meta-block { border-top: 1px solid var(--bg-rule); padding: 1rem 0; }
-  .meta-lbl { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 0.35rem; }
-  .meta-val { font-family: var(--mono); font-size: 0.72rem; color: var(--text-mid); line-height: 1.6; }
-  .meta-val a { color: var(--cyan); text-decoration: none; }
-  .meta-val a:hover { color: var(--cyan-bright); }
-
-  /* ── CONTACT ── */
-  .contact-band {
-    background: linear-gradient(135deg, #0c1428 0%, #0f1040 50%, #0c1428 100%);
-    border-top: 1px solid var(--bg-rule);
-  }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-hdg { font-family: var(--serif); font-size: clamp(2rem, 3vw, 3rem); font-weight: 400; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
-  .contact-hdg em { font-style: italic; color: var(--cyan-bright); }
-  .contact-sub { font-size: 0.875rem; line-height: 1.8; color: var(--text-mid); }
-  .contact-items { display: flex; flex-direction: column; }
-  .contact-item { border-top: 1px solid var(--bg-rule); padding: 1.1rem 0; }
-  .contact-item-lbl { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 0.35rem; }
-  .contact-item-val { font-family: var(--mono); font-size: 0.75rem; color: var(--text-mid); line-height: 1.5; }
-  .contact-item-val a { color: var(--cyan); text-decoration: none; }
-  .contact-item-val a:hover { color: var(--cyan-bright); }
-
-  /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--bg-rule); padding: 1.75rem 3rem; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); background: var(--bg-deep); }
-
-  .rule { border: none; border-top: 1px solid var(--bg-rule); margin: 0; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    header { padding: 0 1.5rem; }
-    nav a:not(.cta) { display: none; }
-    .hero-content { grid-template-columns: 1fr; padding: 4rem 1.5rem 3rem; }
-    .hero-right { display: none; }
-    .hero-stats { padding: 2rem 1.5rem; gap: 2rem; }
-    .section { padding: 5rem 1.5rem; }
-    .band { padding: 5rem 1.5rem; }
-    .thesis-grid, .contact-grid, .about-grid, .featured-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .principles-grid, .pubs-grid { grid-template-columns: 1fr; }
-    .products-hdr { grid-template-columns: 1fr; gap: 2rem; }
-    .products-grid { grid-template-columns: 1fr; }
-    .product-card.kernel { grid-column: span 1; grid-template-columns: 1fr; gap: 2rem; }
-    .zombie-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
-  }
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .hero-logo-panel{display:none}
+  .shannon-inner{grid-template-columns:1fr;gap:3rem}
+  .problem-grid{grid-template-columns:1fr}
+  .thesis-pillars{grid-template-columns:1fr}
+  .product-tiles{grid-template-columns:1fr}
+  .cred-grid{grid-template-columns:1fr;gap:3rem}
+  .research-strip{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .contact-inner{grid-template-columns:1fr;gap:3rem}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  nav{display:none}
+}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <a href="#" class="header-logo">
-    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <defs><filter id="hg" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-      <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/>
-      <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/>
-      <line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/>
-      <line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/>
-      <line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/>
-      <circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#hg)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/>
-      <rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#hg)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/>
-      <text x="200" y="184" text-anchor="end" font-family="'Arial Narrow','Arial',sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text>
-      <text x="200" y="234" text-anchor="start" font-family="'Arial Narrow','Arial',sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text>
-    </svg>
-    <div class="header-logo-text">
-      <span class="name">AxoDen</span>
-      <span class="sub">Luminesce Limited</span>
-    </div>
-  </a>
-  <nav>
-    <a href="#products">Products</a>
-    <a href="#research">Research</a>
-    <a href="#about">About</a>
-    <a href="#contact" class="cta">Contact</a>
-  </nav>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0">
+        <defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <rect width="400" height="400" fill="#05080F"/>
+        <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/>
+        <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5" stroke-linecap="butt"/>
+        <line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5" stroke-linecap="butt"/>
+        <line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5" stroke-linecap="butt"/>
+        <circle cx="30" cy="192" r="14" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+        <circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/>
+        <circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/>
+        <rect x="356" y="178" width="28" height="28" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+        <rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/>
+        <rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/>
+        <text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text>
+        <text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text>
+      </svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-hexgrid"></div>
-  <div class="hero-content">
-    <div>
-      <p class="hero-eyebrow">Luminesce Limited introduces AxoDen</p>
-      <h1 class="hero-heading">AI safety enforced<br>by <em>mathematical</em><br>contract.</h1>
-      <p class="hero-subheading">
-        AxoDen enforces AI safety by mathematical contract. Every decision is deterministic, ledger-backed, and independently replayable.<br>
-        <strong>Not a benchmark. Not a confidence score.</strong> A certification artefact.
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Luminesce Limited &mdash; Guildford, UK &mdash; est. 2023</p>
+      <h1 class="hero-h1">
+        Certifiable AI<br>by <em>mathematics</em>
+      </h1>
+      <p class="hero-thesis">
+        The field needs what Shannon gave information theory: foundational mathematical definitions that make provable guarantees possible. Not more empirical tooling.
+      </p>
+      <p class="hero-subthesis">
+        AxoDen is the compositional AI safety kernel that makes high-stakes AI certifiable through structural proof of governance architecture &mdash; not statistical testing of behaviour. It produces artefacts that safety assessors under DO-178C, IEC&nbsp;61508, and DEF&nbsp;STAN&nbsp;00-56 already know how to evaluate.
       </p>
       <div class="hero-actions">
-        <a href="#products" class="btn-primary">Explore Products</a>
-        <a href="#research" class="btn-secondary">View Research</a>
+        <a href="kernel.html" class="btn-primary">Explore the Kernel</a>
+        <a href="research.html" class="btn-outline">16 DOI-registered papers &rarr;</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n">794</span><span class="stat-l">Automated tests across all systems</span></div>
+        <div class="stat"><span class="stat-n">10</span><span class="stat-l">Formally proved theorems</span></div>
+        <div class="stat"><span class="stat-n">103</span><span class="stat-l">Registered differentiators</span></div>
+        <div class="stat"><span class="stat-n">v0.8.1</span><span class="stat-l">Kernel &mdash; C-API frozen</span></div>
+        <div class="stat"><span class="stat-n">O(E)</span><span class="stat-l">Topology verification</span></div>
       </div>
     </div>
-    <div class="hero-right">
+    <div class="hero-logo-panel">
       <div class="hero-logo-wrap">
         <div class="hero-logo-ring"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-          <defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-          <rect width="400" height="400" fill="#05080F" rx="6"/>
-          <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/>
-          <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/>
-          <line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/>
-          <line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/>
-          <line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/>
-          <circle cx="30" cy="192" r="14" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
-          <circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/>
-          <circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/>
-          <rect x="356" y="178" width="28" height="28" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
-          <rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/>
-          <rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/>
-          <text x="200" y="184" text-anchor="end" font-family="'Arial Narrow','Arial',sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text>
-          <text x="200" y="234" text-anchor="start" font-family="'Arial Narrow','Arial',sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text>
-          <text x="200" y="368" text-anchor="middle" font-family="'Arial Narrow','Arial',sans-serif" font-weight="400" font-size="11" letter-spacing="4" fill="#0D3A52">LUMINESCE LIMITED</text>
-        </svg>
-      </div>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat"><span class="stat-num">316</span><span class="stat-label">Passing Tests</span></div>
-    <div class="stat"><span class="stat-num">16+</span><span class="stat-label">DOI Papers</span></div>
-    <div class="stat"><span class="stat-num">v0.8.1</span><span class="stat-label">Kernel Baseline</span></div>
-    <div class="stat"><span class="stat-num">O(E)</span><span class="stat-label">Verification Complexity</span></div>
-    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Conformance Profiles</span></div>
-  </div>
-</div>
-
-<!-- THESIS -->
-<div class="thesis-band band">
-  <div class="band-inner">
-    <div class="thesis-grid reveal">
-      <div>
-        <p class="lbl">The thesis</p>
-        <p class="thesis-quote">The same principle that made aviation certifiable applies to AI.<br><em>Prove the design,<br>not every flight.</em></p>
-      </div>
-      <div class="thesis-items">
-        <div class="thesis-item">
-          <p class="thesis-item-lbl">Structural over behavioural</p>
-          <p class="thesis-item-txt">Where others test outputs and hope behaviour holds, AxoDen proves structure and guarantees it does. Mathematical constraints prevent entire classes of failure by design, not by detection.</p>
-        </div>
-        <div class="thesis-item">
-          <p class="thesis-item-lbl">Certification-ready by default</p>
-          <p class="thesis-item-txt">AxoDen produces the artefacts that certification bodies, regulators, and insurers already require — entropy budgets, independence scores, cryptographic ledgers, topology certificates. No new standards required.</p>
-        </div>
-        <div class="thesis-item">
-          <p class="thesis-item-lbl">Enforcement, not assessment</p>
-          <p class="thesis-item-txt">AxoDen is not an evaluation tool. It is a runtime enforcement kernel. It governs what AI systems are permitted to act on, records every gated decision, and fails closed when contracts are violated.</p>
+        <div class="hero-logo-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="240" height="240">
+            <defs><filter id="ng2" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <rect width="400" height="400" fill="#05080F"/>
+            <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/>
+            <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/>
+            <line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/>
+            <line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/>
+            <circle cx="30" cy="192" r="14" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+            <circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng2)"/>
+            <circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/>
+            <rect x="356" y="178" width="28" height="28" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+            <rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng2)"/>
+            <rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/>
+            <text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text>
+            <text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text>
+          </svg>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- FEATURED WORK -->
-<div class="featured-band band">
-  <div class="band-inner">
-    <p class="lbl">Featured work</p>
-    <div class="featured-grid">
-
-      <a href="https://doi.org/10.5281/zenodo.18768569" target="_blank" class="featured-card">
-        <div class="featured-card-top">
-          <span class="featured-tag danger">Discovery · February 2026</span>
-          <span class="featured-arrow">↗</span>
-        </div>
-        <h3 class="featured-title">The Zombie Intent Hazard</h3>
-        <p class="featured-body">A previously undocumented structural safety vulnerability in write-ahead audit architectures for cyber-physical systems. Formally characterised, TLA+-verified, and DOI-registered. GPT-4, Claude, and Gemini each independently failed to identify it during architectural review.</p>
-        <p class="featured-doi">10.5281/zenodo.18768569</p>
-      </a>
-
-      <a href="https://luminesce-labs.github.io/axoden-math-foundations" target="_blank" class="featured-card">
-        <div class="featured-card-top">
-          <span class="featured-tag cyan">Interactive</span>
-          <span class="featured-arrow">↗</span>
-        </div>
-        <h3 class="featured-title">Mathematical Lineage Explorer</h3>
-        <p class="featured-body">Click any node to trace how 300+ years of mathematics — from Euler and Shannon to 2-adic metrics and rotation systems — compose into the AxoDen pillars. The intellectual foundations of certifiable AI, made navigable.</p>
-        <p class="featured-doi">luminesce-labs.github.io/axoden-math-foundations</p>
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<!-- PRINCIPLES -->
-<section class="section">
-  <p class="lbl">Design principles</p>
-  <h2 class="hdg">Three contracts. Every product.</h2>
-  <div class="principles-grid">
-    <div class="principle reveal">
-      <p class="principle-num">01</p>
-      <h3 class="principle-title">Kernel-first</h3>
-      <p class="principle-body">A shared control vocabulary, evidence identity rules, and determinism contracts are fixed at the platform layer. Domain products import these rather than re-implementing them, so semantics and audit posture cannot drift across deployments.</p>
-    </div>
-    <div class="principle reveal">
-      <p class="principle-num">02</p>
-      <h3 class="principle-title">Fail-closed by contract</h3>
-      <p class="principle-body">When the declared operating envelope is violated, the system degrades, inhibits, or halts — and records why. Safe degradation is not a fallback. It is a first-class output with a logged, auditable decision record.</p>
-    </div>
-    <div class="principle reveal">
-      <p class="principle-num">03</p>
-      <h3 class="principle-title">Replay over rhetoric</h3>
-      <p class="principle-body">Every decision is designed to be independently re-run and assessed against the original evidence. Replayability is the assurance claim, not a confidence score. Third parties can verify findings without accessing the live environment.</p>
+      <p class="hero-logo-tag">Kernel v0.8.1 &middot; C-API frozen<br>794 tests across all systems &middot; 4 deployments</p>
     </div>
   </div>
 </section>
 
-<hr class="rule">
+<!-- SHANNON / THESIS BAND -->
+<div class="shannon-band">
+  <div class="shannon-inner">
+    <div class="shannon-quote-wrap reveal">
+      <p class="shannon-kicker">The governing thesis</p>
+      <p class="shannon-quote">"The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs."</p>
+      <p class="shannon-source">Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application. Luminesce Limited.</p>
+    </div>
+    <div class="shannon-body reveal">
+      <p>Aviation software engineering resolved the testing problem fifty years ago. DO-178C requires <strong>structural proof of the design</strong> rather than exhaustive testing of outputs. AI safety has not made this transition.</p>
+      <p>AxoDen makes it. The framework does not prove individual models correct &mdash; that remains intractable at production scale. It proves the correctness of the <strong>governance architecture around the model</strong>. The kernel's guarantees are independent of which model is used inside it.</p>
+      <p>The result: entropy budgets, independence scores, topology certificates, and cryptographic ledger records &mdash; artefacts that existing safety assessors already know how to evaluate. <strong>No new certification path required.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">The structural gap</p>
+    <h2 class="section-h2">Why regulated industries cannot certify AI today</h2>
+    <p class="section-sub">Regulators under the EU AI Act, ISO 26262, DO-178C, IEC 61508, and IEC 62304 require formal certification evidence for high-stakes AI. No current platform produces that evidence through mathematical proof.</p>
+  </div>
+  <div class="problem-grid">
+    <div class="prob-card reveal">
+      <p class="prob-icon">Gap 01</p>
+      <p class="prob-title">Behavioural testing cannot provide structural guarantees</p>
+      <p class="prob-body">No finite test suite covers the input space of a real system. Vendors produce statistical dashboards. Assessors need structural certificates. The gap is categorical, not quantitative.</p>
+    </div>
+    <div class="prob-card reveal">
+      <p class="prob-icon">Gap 02</p>
+      <p class="prob-title">Independence is assumed, never engineered or proved</p>
+      <p class="prob-body">Every multi-agent safety architecture implicitly assumes constituent nodes fail independently. When correlated failures occur, Byzantine assumptions break and audit chains are silently invalidated. No framework currently proves this property.</p>
+    </div>
+    <div class="prob-card reveal">
+      <p class="prob-icon">Gap 03</p>
+      <p class="prob-title">RF and sensor modalities have no certification path at all</p>
+      <p class="prob-body">The NASEM workshop on non-linguistic AI (August 2025) named four specific RF-AI integration barriers with no current solution: no natural token boundaries, throughput mismatch, Shannon-limit ambiguity, and common-mode failure risk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION THESIS -->
+<section class="section" style="padding-top:0">
+  <div class="thesis-wrap reveal">
+    <p class="section-label">The AxoDen answer</p>
+    <p class="thesis-statement">Every existing approach treats independence as something to be observed. AxoDen treats it as something to be engineered and proved. This is the distinction ARIA identifies as missing from the field.</p>
+    <div class="thesis-pillars">
+      <div class="pillar">
+        <p class="pillar-num">EBDP</p>
+        <p class="pillar-name">Entropy-Bounded Data Pipelines</p>
+        <p class="pillar-body">Hard information-theoretic ceilings H(X<sub>k</sub>&nbsp;|&nbsp;X<sub>k-1</sub>) &le; H<sup>max</sup><sub>k</sub> on uncertainty accumulation at every pipeline stage. Uncertainty cannot silently compound.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">EFI</p>
+        <p class="pillar-name">Entropy-Frugal Intelligence</p>
+        <p class="pillar-body">Stage-level influence bounds I(X<sub>k</sub>;&nbsp;M<sub>k</sub>) &le; &epsilon;<sub>k</sub> detect and reject fabricated outputs by bounding the information a model may introduce without evidential backing. Hallucinations are structurally bounded.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">CFS</p>
+        <p class="pillar-name">Coprime-Factor Security</p>
+        <p class="pillar-body">Independence engineered across four orthogonal planes: cryptographic, vendor, supply-chain, and operational. CMRI := sup&nbsp;&rho;&#772;<sub>ij</sub>(&omega;) &le; 1 &minus; IS<sub>min</sub> + &epsilon;<sub>A</sub>. A design constraint, not a dashboard reading.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PRODUCTS -->
 <section class="section" id="products">
-  <div class="products-hdr">
-    <div>
-      <p class="lbl">Product portfolio</p>
-      <h2 class="hdg">One kernel. <em>Three domains.</em></h2>
-    </div>
-    <p class="bdy">Wedge products import the kernel so enforcement semantics and evidence handling stay consistent across cybersecurity, RF-AI integration, and cyber-physical control.</p>
+  <div class="reveal">
+    <p class="section-label">The product stack</p>
+    <h2 class="section-h2">From kernel to domain deployment</h2>
+    <p class="section-sub">AxoDen is not a cybersecurity product or an AI safety tool. It is a formal governance substrate &mdash; the certifiable mathematical layer that any AI system in any safety-critical domain can be built on top of. The Kernel is the core. Forensic Intelligence and Spectrum Bridge are proof that the mathematical abstraction generalises across maximally different domains. Each is an instantiation, not a separate product.</p>
   </div>
-  <div class="products-grid">
-    <div class="product-card kernel reveal">
-      <div>
-        <span class="ptag tag-live">Implemented — v0.8.1</span>
-        <p class="p-role">Platform Infrastructure</p>
-        <h3 class="p-name">AxoDen Kernel</h3>
-        <p class="p-body">The control and assurance substrate all domain products import. Licensable as an SDK or deployed as a standalone sidecar. Deterministic enforcement, bounded autonomy, cryptographic audit trails, and composable safety proofs in a single certifiable kernel.</p>
-        <p class="p-body">The kernel codifies operational guarantees — determinism, policy invariants, evidence integrity, replayability, and topology-aware structural assurance — that are difficult to recreate independently.</p>
-      </div>
-      <ul class="p-feat">
-        <li>Registry-governed control vocabulary — IDs immutable across deployments</li>
-        <li>RFC 8785 JCS + SHA-256 evidence canonicalisation with hash-chained ledger</li>
-        <li>Fail-closed by contract — invalid states produce a logged halt, not best-effort output</li>
-        <li>Conformance profiles bind thresholds for portability across domains</li>
-        <li>Replay packs and certification artefacts as first-class outputs</li>
-        <li>316 passing tests · Python SDK · Reference sidecar API</li>
-        <li>Five conformance profiles: cix · cix-1 · sfa · regnav · spectrum</li>
-      </ul>
-    </div>
-    <div class="product-card reveal">
-      <span class="ptag tag-live">Operationalised</span>
-      <p class="p-role">Cybersecurity Operations</p>
-      <h3 class="p-name">AxoDen Forensic Intelligence</h3>
-      <p class="p-body">Deterministic forensic middleware between your SIEM/SOAR and analyst workflow. Produces structured, replayable, audit-grade investigation packages via graph reasoning and statistics — not model inference. Every claim is labelled OBSERVED, INFERRED, or VERIFIED, where VERIFIED is gated by explicit statistical tests.</p>
-      <ul class="p-feat">
-        <li>~95% event reduction via admissibility gating (dataset-dependent)</li>
-        <li>Patient Zero hunting via separate temporal and structural analyses</li>
-        <li>Three-ledger hash-chained investigation chain</li>
-        <li>Reproducibility manifest — same input yields identical artefacts</li>
-        <li>Local Docker · CLI and API modes</li>
-      </ul>
-    </div>
-    <div class="product-card reveal">
-      <span class="ptag tag-mvp">MVP</span>
-      <p class="p-role">RF-AI Integration · Defence</p>
-      <h3 class="p-name">AxoDen Spectrum Bridge</h3>
-      <p class="p-body">Deterministic assurance layer between RF sensing and downstream AI. Enforces an explicit evidence contract at the RF-AI boundary: signal physics must be valid, preprocessing must be deterministic, and evidence must be independently replayable before it reaches the model.</p>
-      <ul class="p-feat">
-        <li>Four-state envelope: NOMINAL / DEGRADED / SAFE_MODE / HALT</li>
-        <li>Four admissibility gates: signal integrity, determinism, throughput, independence</li>
-        <li>Engineered independence bounds common-mode failure risk</li>
-        <li>Bit-exact Evidence Objects with cryptographic binding</li>
-      </ul>
-    </div>
-    <div class="product-card reveal" style="grid-column: span 2;">
-      <span class="ptag tag-design">In Design</span>
-      <p class="p-role">Cyber-Physical Systems · Critical Infrastructure</p>
-      <h3 class="p-name">AxoDen Grid Flight Recorder</h3>
-      <p class="p-body" style="max-width: 700px;">Runtime execution assurance for microgrids and industrial control. Enforces one contract: no irreversible physical actuation occurs unless safety, policy, and evidence conditions are valid at the moment of execution. Addresses the Zombie Intent Hazard — a safety vulnerability in write-ahead architectures independently missed by leading AI systems during architectural review.</p>
-    </div>
+  <div class="product-tiles">
+
+    <a href="kernel.html" class="ptile reveal">
+      <span class="ptile-status s-live">Operationalised &mdash; v0.8.1</span>
+      <p class="ptile-domain">Core Platform &middot; Defence &middot; Critical Infrastructure</p>
+      <p class="ptile-name">AxoDen Kernel</p>
+      <p class="ptile-body">The compositional safety kernel. Enforces entropy bounds, independence scores, and topology certificates across any AI deployment. 316 automated tests. Engine Room v1.0.4 canonical formula registry. C-API contract frozen at v0.6.0. Five conformance profiles: cix, cix-1, sfa, regnav, spectrum. All safety guarantees proved at the governance layer, independently of which AI model is governed.</p>
+      <p class="ptile-proof"><span>10 formally proved theorems</span> &middot; 103 registered differentiators &middot; TLA+ verified &middot; DO-178C / IEC 61508 / DEF STAN 00-56 aligned</p>
+      <span class="ptile-link">Kernel technical detail &rarr;</span>
+    </a>
+
+    <a href="forensic-intelligence.html" class="ptile reveal">
+      <span class="ptile-status s-live">Operationalised &mdash; Dockerised</span>
+      <p class="ptile-domain">Cybersecurity Operations &middot; SOC &middot; Incident Response</p>
+      <p class="ptile-name">AxoDen Forensic Intelligence</p>
+      <p class="ptile-body">Deterministic forensic middleware between SIEM/SOAR and analyst workflow. The forensic reasoning capability is innate &mdash; built into a graph-native World Graph architecture. The system does not learn to find Patient Zero. Graph topology makes causal traversal, temporal separation, and lateral movement detection a deterministic property of the design. No model retraining required.</p>
+      <p class="ptile-proof">Validated: <span>MITRE-MORDOR &mdash; 1M events in ~6.4 seconds</span> &middot; ~95% noise reduction &middot; 81 FI tests &middot; SFA Agentic Triage: 373 tests, STIX 2.1 / OCSF exports</p>
+      <span class="ptile-link">Full technical detail &rarr;</span>
+    </a>
+
+    <a href="spectrum-bridge.html" class="ptile reveal">
+      <span class="ptile-status s-mvp">MVP &mdash; Phase 1 complete</span>
+      <p class="ptile-domain">RF-AI Integration &middot; Defence &middot; SIGINT &middot; Radar</p>
+      <p class="ptile-name">AxoDen Spectrum Bridge</p>
+      <p class="ptile-body">The missing certification layer at the RF-to-AI boundary. Physics-informed pre-gates enforce a four-state operating envelope (NOMINAL / DEGRADED / SAFE_MODE / HALT). The system cannot silently emit evidence beyond its physical capability. Addresses the four NASEM-identified RF-AI barriers: token boundaries, throughput mismatch, Shannon-limit ambiguity, and common-mode failure risk.</p>
+      <p class="ptile-proof"><span>NeuralSAT-compatible</span> fixed-point architecture &middot; 24 tests passing &middot; Phase 1 MVE complete &middot; shared-kernel parity verified &middot; physical field validation in progress</p>
+      <span class="ptile-link">Spectrum Bridge detail &rarr;</span>
+    </a>
+
+    <a href="grid-flight-recorder.html" class="ptile reveal">
+      <span class="ptile-status s-design">In Design &mdash; Prior art Feb 2026</span>
+      <p class="ptile-domain">Cyber-Physical Systems &middot; Microgrid &middot; Industrial Control</p>
+      <p class="ptile-name">AxoDen Grid Flight Recorder</p>
+      <p class="ptile-body">Runtime execution assurance for critical cyber-physical systems. Enforces one contract: no irreversible physical actuation occurs unless safety, policy, and evidence conditions are valid at the moment of execution. Addresses the Zombie Intent Hazard &mdash; a structural safety vulnerability in write-ahead architectures, TLA+ verified across 2.4 million reachable states, independently missed by GPT-4, Claude, and Gemini.</p>
+      <p class="ptile-proof"><span>TLA+ verified &mdash; 52 state transitions &mdash; zero counterexamples</span> &middot; EOA-Latch &middot; One-Time Actuation Tickets &middot; CAR audit chain</p>
+      <span class="ptile-link">Grid Flight Recorder detail &rarr;</span>
+    </a>
+
   </div>
 </section>
 
-<!-- ZOMBIE -->
-<div class="zombie-band band">
-  <div class="band-inner">
-    <div class="zombie-grid">
-      <div class="reveal">
-        <span class="zombie-badge">Previously undocumented · February 2026</span>
-        <h2 class="zombie-hdg">A structural safety hazard at the<br><em>digital-physical<br>boundary.</em></h2>
+<!-- COMPETITOR DISPLACEMENT -->
+<section class="section" style="padding-top:0" id="differentiation">
+  <div class="reveal">
+    <p class="section-label">Competitive position</p>
+    <h2 class="section-h2">Where every existing approach falls short</h2>
+    <p class="section-sub">Every existing framework treats independence as something to observe. The distinction is categorical.</p>
+  </div>
+  <div class="comp-wrap reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Comparator</th>
+          <th>Their approach</th>
+          <th>AxoDen distinction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Intel SGX / AMD SEV-SNP</td>
+          <td>Trust that hardware TEE roots fail independently</td>
+          <td><em>ASIL-M engineers &rho; &le; &epsilon; as a design-time invariant. Independence is proved, not assumed.</em></td>
+        </tr>
+        <tr>
+          <td>DARPA CHESS / SOTERIA</td>
+          <td>Software correctness verification</td>
+          <td><em>Do not address CMRI, the Zombie Intent Hazard, or compositional independence theorems across domains.</em></td>
+        </tr>
+        <tr>
+          <td>LangChain / AutoGPT / CrewAI</td>
+          <td>Agent orchestration</td>
+          <td><em>No formal safety layer, no independence metric, no certification path. AxoDen operates as the governance layer above these frameworks.</em></td>
+        </tr>
+        <tr>
+          <td>in-toto / SLSA</td>
+          <td>Build-time supply-chain provenance</td>
+          <td><em>Static. Does not address runtime independence under adversarial negotiation or correlated failure across agent coalitions.</em></td>
+        </tr>
+        <tr>
+          <td>PBFT / HotStuff / Raft</td>
+          <td>Assume f &lt; n/3 Byzantine nodes fail independently</td>
+          <td><em>No mechanism to verify or engineer the independence assumption itself. AxoDen is the missing layer beneath Byzantine consensus.</em></td>
+        </tr>
+        <tr>
+          <td>Generic SIEM/SOAR + AI triage</td>
+          <td>Train LLMs to reason about incidents</td>
+          <td><em>Forensic Intelligence does not learn. Causal traversal and Patient Zero identification are deterministic properties of the graph topology. Same input, identical output, every time.</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CREDENTIALS BAND -->
+<div class="cred-band">
+  <div class="cred-inner">
+    <div class="reveal">
+      <p class="section-label">Track record</p>
+      <h2 class="section-h2">Built independently. Validated against real problems.</h2>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-numbers">
+        <div class="cred-num reveal"><p class="cred-n">16</p><p class="cred-l">DOI-registered Zenodo publications</p></div>
+        <div class="cred-num reveal"><p class="cred-n">10</p><p class="cred-l">Formally proved compositional theorems</p></div>
+        <div class="cred-num reveal"><p class="cred-n">794</p><p class="cred-l">Automated tests across all systems (316 kernel &middot; 81 FI &middot; 373 SFA &middot; 24 SB)</p></div>
+        <div class="cred-num reveal"><p class="cred-n">3yrs</p><p class="cred-l">Solo development &mdash; zero external funding until 2026</p></div>
+        <div class="cred-num reveal"><p class="cred-n">4</p><p class="cred-l">Operational deployments &mdash; Dockerised and locally deployed</p></div>
+        <div class="cred-num reveal"><p class="cred-n">25yrs</p><p class="cred-l">Regulated enterprise &mdash; defence, financial services, critical infrastructure</p></div>
       </div>
-      <div class="reveal">
-
-        <div class="zombie-beat">
-          <p class="zombie-beat-lbl">01 · The discovery</p>
-          <p class="zombie-body">Many safety-critical systems implement write-ahead logging: record intent, then execute. In pure data systems, replaying a logged intent is safe — the target is a database record. At the digital-physical boundary, it is not. An intent recorded at time t₀ may be replayed after an outage or restart, executing against physical conditions that have changed by time t₁. The system believes it is following correct discipline. The actuation is unsafe. This structural hazard — arising from the architecture itself, not from adversarial action — had not been previously documented in the safety or systems engineering literature.</p>
-        </div>
-
-        <div class="zombie-beat">
-          <p class="zombie-beat-lbl">02 · Formal characterisation and solution</p>
-          <p class="zombie-body">We formally characterised this as the <strong>Zombie Intent Hazard</strong> and documented it in a DOI-registered paper (10.5281/zenodo.18768569, February 2026). The TLA+-verified solution is session-bound intent validation at the moment of execution: an intent is only admissible if its originating session is still valid and the physical preconditions recorded at intent-formation time still hold. During independent architectural review, GPT-4, Claude, and Gemini each failed to identify the hazard — corroborating that it is non-obvious and not surfaced by behavioural review.</p>
-        </div>
-
-        <div class="zombie-beat" style="border-bottom: none; padding-bottom: 0;">
-          <p class="zombie-beat-lbl">03 · Implementation</p>
-          <p class="zombie-body">Session-bound intent validation is now a first-class safety invariant in the AxoDen kernel. The Grid Flight Recorder — currently in design — is the domain product that enforces this contract in cyber-physical deployments: no irreversible physical actuation occurs unless safety, policy, and evidence conditions are valid at the moment of execution, not merely at the moment of intent formation.</p>
-        </div>
-
-        <div class="zombie-missed">
-          <span class="missed-lbl">Missed during independent AI review by</span>
-          <span class="missed-tag">GPT-4</span>
-          <span class="missed-tag">Claude</span>
-          <span class="missed-tag">Gemini</span>
-          <span class="missed-tag ok">TLA+ verified ✓</span>
-          <span class="missed-tag ok">DOI registered ✓</span>
-        </div>
-
+      <div class="cred-story reveal">
+        <p>AxoDen was built from a concrete observation: <strong>safety-critical AI deployments consistently fail at the governance layer, not the model layer.</strong> Red-teaming, constitutional AI, and runtime monitoring all detect failure. AxoDen is designed to prevent it.</p>
+        <p>The work was built entirely in evenings and weekends alongside a full-time consulting contract until January 2026, without institutional support or external funding. Four papers and two MVP implementations developed simultaneously. The output is a coherent, versioned body of work &mdash; not a proposal for work that might be done.</p>
+        <p>The theoretical foundations already exist. They are DOI-registered, version-controlled, and implemented across four systems with 794 automated tests in total: 316 across the Kernel, 81 across Forensic Intelligence middleware, 373 across the SFA Agentic Triage platform, and 24 across the Spectrum Bridge SDK. Active grant applications to ARIA Mathematics for Safe AI (&pound;293,400), ENCODE Fellowship at Pillar VC, and LTFF fund the next phase: machine-checking, independent validation, and standards-body engagement.</p>
+        <p>The application domain breadth is extraordinary. Beyond cybersecurity and RF-AI: microgrids and critical infrastructure, ecological robotics (ROS2/PX4), medical devices, autonomous vehicles, and industrial control systems. The Zombie Intent Hazard is not a cybersecurity finding &mdash; it is a universal structural failure class in any system with write-ahead intent and physical execution, applicable equally across all of these domains.</p>
+        <p><strong>Academic collaboration:</strong> Professor Yanguo Jing, Dean of AI, University of Cumbria (established February 2026). References: Professor Ioana Boureanu, University of Surrey (Cybersecurity); Professor Tom Carlson, UCL (Robotics).</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PUBLICATIONS -->
+<!-- RESEARCH TEASER -->
 <section class="section" id="research">
-  <p class="lbl">Academic corpus</p>
-  <h2 class="hdg">Mathematical foundations.<br><em>DOI-registered.</em></h2>
-  <p class="bdy">Kernel and wedge products are implementations derived from DOI-registered canon. Some items are access-controlled due to patent activity — review access available under appropriate frameworks.</p>
-
-  <!-- EXPLORER CALLOUT -->
-  <a href="https://luminesce-labs.github.io/axoden-math-foundations" target="_blank" class="explorer-card">
-    <div class="explorer-left">
-      <p class="explorer-label">Interactive</p>
-      <p class="explorer-title">Explore the mathematical lineage</p>
-      <p class="explorer-body">Click any node to trace how 300+ years of mathematics — from Euler and Shannon to 2-adic metrics and rotation systems — compose into the AxoDen pillars.</p>
-    </div>
-    <div class="explorer-arrow">↗</div>
-  </a>
-
-  <div class="pubs-grid reveal">
-    <div class="pub-item"><span class="pub-cat">Foundational Theory</span><p class="pub-title">The Thermodynamics of Agency: Why Unbounded Intelligence Fails and How Architecture Restores Control</p><a href="https://doi.org/10.5281/zenodo.18146418" class="pub-doi" target="_blank">10.5281/zenodo.18146418 ↗</a></div>
-    <div class="pub-item"><span class="pub-cat">Compositional Framework</span><p class="pub-title">Entropy-Bounded Data Pipelines and Entropy-Frugal Intelligence: A Compositional Framework for Quantitative Assurance</p><a href="https://doi.org/10.5281/zenodo.17709557" class="pub-doi" target="_blank">10.5281/zenodo.17709557 ↗</a></div>
-    <div class="pub-item"><span class="pub-cat">Topology of Reasoning</span><p class="pub-title">The Topology of Reasoning: Structural Invariants for Certifiable AI — Part I</p><a href="https://doi.org/10.5281/zenodo.18769043" class="pub-doi" target="_blank">10.5281/zenodo.18769043 ↗</a></div>
-    <div class="pub-item"><span class="pub-cat">Multi-Root Trust · ASIL-M</span><p class="pub-title">ASIL-M: AI Safety Integrity Level — Multi-Root Trust Architecture</p><a href="https://doi.org/10.5281/zenodo.17690760" class="pub-doi" target="_blank">10.5281/zenodo.17690760 ↗</a></div>
-    <div class="pub-item"><span class="pub-cat">Hazard Analysis</span><p class="pub-title">The Zombie Intent Hazard: A Safety Violation in Write-Ahead Audit Architectures for Safety-Critical Systems</p><a href="https://doi.org/10.5281/zenodo.18768569" class="pub-doi" target="_blank">10.5281/zenodo.18768569 ↗</a></div>
-    <div class="pub-item"><span class="pub-cat">Certification Artefacts</span><p class="pub-title">ER-topo.cert v0.3: A Certification Artifact for Topological Evidence in Replayable Assurance</p><a href="https://doi.org/10.5281/zenodo.18320118" class="pub-doi" target="_blank">10.5281/zenodo.18320118 ↗</a></div>
+  <div class="reveal">
+    <p class="section-label">Publication record</p>
+    <h2 class="section-h2">DOI-registered theoretical foundations</h2>
+    <p class="section-sub">16 publications on Zenodo. All prior art dated and registered. Patent evaluation in progress across 8 identified clusters, 47 high-potential differentiators.</p>
+  </div>
+  <div class="research-strip">
+    <a href="https://doi.org/10.5281/zenodo.18633407" target="_blank" class="rstrip-card reveal">
+      <p class="rstrip-doi">10.5281/zenodo.18633407</p>
+      <p class="rstrip-title">AxoDen Unified Mathematical Backbone: A Compositional Theory</p>
+      <p class="rstrip-desc">Nine compositional theorems across classical, kinetic, ransomware, and quantum-classical domains. Local safety constraints proven to compose into global guarantees.</p>
+    </a>
+    <a href="https://doi.org/10.5281/zenodo.18700538" target="_blank" class="rstrip-card reveal">
+      <p class="rstrip-doi">10.5281/zenodo.18700538</p>
+      <p class="rstrip-title">The Topology of Reasoning: Structural Invariants for Certifiable AI</p>
+      <p class="rstrip-desc">Establishes that AI reasoning certifiability is a topological problem. Introduces Topological Slack S&nbsp;=&nbsp;(3V&minus;6)&minus;E as a continuous safety metric. Formalises non-orientability as a forensic signal.</p>
+    </a>
+    <a href="https://doi.org/10.5281/zenodo.18768569" target="_blank" class="rstrip-card reveal">
+      <p class="rstrip-doi">10.5281/zenodo.18768569</p>
+      <p class="rstrip-title">The Zombie Intent Hazard: A Safety Violation in Write-Ahead Audit Architectures</p>
+      <p class="rstrip-desc">Formally characterises a previously undocumented structural hazard at the digital-physical boundary. TLA+ verified. Independently missed by GPT-4, Claude, and Gemini during architectural review.</p>
+    </a>
+    <a href="https://doi.org/10.5281/zenodo.17690760" target="_blank" class="rstrip-card reveal">
+      <p class="rstrip-doi">10.5281/zenodo.17690760</p>
+      <p class="rstrip-title">ASIL-M: AI Safety Integrity Level &mdash; Multi-Root Trust Architecture</p>
+      <p class="rstrip-desc">Five deployment profiles (L0&ndash;L4) enforcing trust-failure correlation &rho;&nbsp;&le;&nbsp;&epsilon; as a structural invariant. Aligned to EU AI Act, NIST AI RMF, ISO 26262, and DO-178C.</p>
+    </a>
+    <a href="https://doi.org/10.5281/zenodo.17709557" target="_blank" class="rstrip-card reveal">
+      <p class="rstrip-doi">10.5281/zenodo.17709557</p>
+      <p class="rstrip-title">Entropy-Bounded Data Pipelines and Entropy-Frugal Intelligence</p>
+      <p class="rstrip-desc">EBDP and EFI compositional certification framework. Stage-level entropy and influence bounds that compose algebraically into system-wide safety guarantees.</p>
+    </a>
+    <a href="research.html" class="rstrip-card reveal" style="border-color:rgba(0,174,204,0.15);background:linear-gradient(135deg,rgba(0,174,204,0.04),var(--bg-card));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem">
+      <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);opacity:0.8">Full publication record</p>
+      <p style="font-family:var(--serif);font-size:1.2rem;color:var(--text-h)">16 DOI-registered papers &rarr;</p>
+      <p style="font-size:0.74rem;color:var(--text-m)">ORCID: 0009-0008-6435-3530<br>Mathematical Lineage Explorer</p>
+    </a>
   </div>
 </section>
 
-<hr class="rule">
-
 <!-- ABOUT -->
 <section class="section" id="about">
-  <p class="lbl">About</p>
+  <div class="reveal">
+    <p class="section-label">About</p>
+    <h2 class="section-h2">Erkan Yalcinkaya &mdash; Luminesce Limited</h2>
+  </div>
   <div class="about-grid">
     <div class="about-body reveal">
-      <p>Luminesce Limited is a UK deep-tech company founded by <strong>Erkan Yalcinkaya</strong>, Engineering Physicist, with 25 years of experience delivering technology in regulated, safety-critical environments.</p>
-      <p>That background shaped a single design requirement: <strong>assurance evidence must be the kind that assessors, regulators, and governance boards already know how to evaluate</strong> — replayable, auditable, and contract-bound. Not a new certification path. Artefacts that fit the paths that already exist.</p>
-      <p>Luminesce combines mathematical rigour — first-principles constraints and evidence formation — with deployment reality: what regulated operations require in practice. AxoDen is the result: a kernel-and-wedges product line for deterministic assurance middleware in safety-critical AI.</p>
-      <p class="about-note">Open to mission partnerships (government and defence), academic research partnerships, and industrial pilots in security operations, RF-AI integration, and regulated infrastructure.</p>
+      <p>Erkan is the architect of the AxoDen framework and the sole author of all primary theoretical contributions. He brings over 25 years of experience across defence systems engineering, software architecture, and applied AI, with particular depth in formal verification, information theory, distributed systems, and safety-critical architecture.</p>
+      <p>An Engineering Physics background gives the habit of deriving from first principles rather than borrowing adjacent frameworks. Two decades inside regulated enterprises &mdash; financial services, critical infrastructure, defence supply chain &mdash; gave operational understanding of what certification evidence actually looks like from the assessor's side of the table.</p>
+      <p>AxoDen was built from a concrete observation: <strong>safety-critical AI deployments consistently fail at the governance layer, not the model layer.</strong> The capacity to hold Shannon information theory, topological graph theory, safety certification standards, and cryptographic protocols simultaneously across three years of solo development reflects both the commitment and the cognitive architecture the problem required.</p>
+      <p>Active academic collaboration with Professor Yanguo Jing (Dean of AI, University of Cumbria), established February 2026. The University of Cumbria recognised the significance of creating a compositional AI safety framework with a working kernel and domain-specific applications.</p>
     </div>
     <div class="about-meta reveal">
-      <div class="meta-block"><p class="meta-lbl">Company</p><p class="meta-val">Luminesce Limited (UK)<br>Co. no. 15317429 · VAT 474096567</p></div>
-      <div class="meta-block"><p class="meta-lbl">ORCID</p><p class="meta-val"><a href="https://orcid.org/0009-0008-6435-3530" target="_blank">0009-0008-6435-3530 ↗</a></p></div>
-      <div class="meta-block"><p class="meta-lbl">GitHub</p><p class="meta-val"><a href="https://github.com/Luminesce-Labs" target="_blank">Luminesce-Labs ↗</a></p></div>
-      <div class="meta-block"><p class="meta-lbl">LinkedIn</p><p class="meta-val"><a href="https://www.linkedin.com/in/eyk/" target="_blank">Erkan Yalcinkaya ↗</a></p></div>
-      <div class="meta-block"><p class="meta-lbl">Licensing</p><p class="meta-val">Free for academic research.<br>Commercial use requires licence.</p></div>
+      <div class="meta-row">
+        <span class="meta-label">Company</span>
+        <span class="meta-val">Luminesce Limited</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Companies House</span>
+        <span class="meta-val">15317429</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">VAT</span>
+        <span class="meta-val">474096567</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">D-U-N-S</span>
+        <span class="meta-val">231242963</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">ISNI</span>
+        <span class="meta-val">0000000529733416</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Ringgold</span>
+        <span class="meta-val">847099</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">ORCID</span>
+        <span class="meta-val"><a href="https://orcid.org/0009-0008-6435-3530" target="_blank">0009-0008-6435-3530</a></span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">GitHub</span>
+        <span class="meta-val"><a href="https://github.com/Luminesce-Labs" target="_blank">Luminesce-Labs</a></span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">LinkedIn</span>
+        <span class="meta-val"><a href="https://www.linkedin.com/in/eyk/" target="_blank">linkedin.com/in/eyk</a></span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Location</span>
+        <span class="meta-val">Guildford, Surrey, UK</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<div class="contact-band band" id="contact">
-  <div class="band-inner">
-    <div class="contact-grid">
-      <div class="reveal">
-        <p class="lbl">Get in touch</p>
-        <h2 class="contact-hdg">Start with a<br><em>use case.</em></h2>
-        <p class="contact-sub">A typical starting point: use-case → conformance profile → evidence artefacts expected (CAR / replay pack / certificates) → disclosure constraints.</p>
+<div class="contact-band" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <h2>Work with Luminesce Limited</h2>
+      <p>Evaluation engagements, pilot deployments, certification consultancy, and licensing enquiries welcome. Particular interest in defence prime contractors, CNI operators, and MDR/IR firms seeking certifiable forensic infrastructure.</p>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#d8bbb7b6acb9bbac98b4adb5b1b6bdabbbbdb4b1b5b1acbdbcf6bbb7b5" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          <span class="__cf_email__" data-cfemail="caa9a5a4beaba9be8aa6bfa7a3a4afb9a9afa6a3a7a3beafaee4a9a5a7">[email&#160;protected]</span>
+        </a>
+        <a href="https://www.linkedin.com/in/eyk/" target="_blank" class="contact-link">
+          <span class="contact-link-label">LinkedIn</span>
+          linkedin.com/in/eyk
+        </a>
+        <a href="https://github.com/Luminesce-Labs" target="_blank" class="contact-link">
+          <span class="contact-link-label">GitHub</span>
+          Luminesce-Labs
+        </a>
+        <a href="https://luminesce-labs.github.io/axoden-math-foundations" target="_blank" class="contact-link">
+          <span class="contact-link-label">Maths</span>
+          Mathematical Lineage Explorer
+        </a>
       </div>
-      <div class="contact-items reveal">
-        <div class="contact-item"><p class="contact-item-lbl">Founder &amp; Principal Systems Architect</p><p class="contact-item-val">Erkan Yalcinkaya · Luminesce Limited</p></div>
-        <div class="contact-item"><p class="contact-item-lbl">Email</p><p class="contact-item-val"><a href="/cdn-cgi/l/email-protection#781b17160c191b0c38140d1511161d0b1b1d141115110c1d1c561b1715"><span class="__cf_email__" data-cfemail="ed8e8283998c8e99ad8198808483889e8e8881848084998889c38e8280">[email&#160;protected]</span> ↗</a></p></div>
-        <div class="contact-item"><p class="contact-item-lbl">LinkedIn</p><p class="contact-item-val"><a href="https://www.linkedin.com/in/eyk/" target="_blank">linkedin.com/in/eyk ↗</a></p></div>
-        <div class="contact-item"><p class="contact-item-lbl">GitHub</p><p class="contact-item-val"><a href="https://github.com/Luminesce-Labs" target="_blank">github.com/Luminesce-Labs ↗</a></p></div>
-        <div class="contact-item"><p class="contact-item-lbl">Mathematical Foundations Explorer</p><p class="contact-item-val"><a href="https://luminesce-labs.github.io/axoden-math-foundations" target="_blank">luminesce-labs.github.io/axoden-math-foundations ↗</a></p></div>
-      </div>
+    </div>
+    <div class="contact-right reveal">
+      <p>The framework is <strong>implemented and operationalised</strong>. Three domain deployments are Dockerised and locally deployed. The Kernel C-API is frozen at v0.6.0 &mdash; integrators can build against it with confidence in backward compatibility.</p>
+      <p>Active grant applications to ARIA Mathematics for Safe AI (&pound;293,400 submitted March 2026), ENCODE Fellowship at Pillar VC (12-month programme), and LTFF. These fund machine-checking, independent validation, and standards-body engagement &mdash; not building from scratch.</p>
+      <p style="margin-bottom:1.5rem">For technical evaluation material including customer evaluation briefs, conformance profile documentation, and the reproducibility manifest from MITRE-MORDOR validation, please make contact directly.</p>
+      <a href="/cdn-cgi/l/email-protection#3754585943565443775b425a5e59524454525b5e5a5e4352531954585a" class="btn-primary">Get in touch</a>
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <span>© Luminesce Limited 2023–2026 · All rights reserved</span>
-  <span>AxoDen is a product line of Luminesce Limited (UK) · Co. no. 15317429</span>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved. Commercial use requires licensing from Luminesce Limited. Academic use permitted with citation.</p>
+    <div class="footer-links">
+      <a href="kernel.html" class="footer-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
+      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
+      <a href="research.html" class="footer-link">Research</a>
+    </div>
+  </div>
 </footer>
 
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 90);
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-  reveals.forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email

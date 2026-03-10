@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AxoDen Spectrum Bridge — RF-AI Certification Layer | Luminesce Limited</title>
+<meta name="description" content="The missing certification layer at the RF-to-AI boundary. Addresses the four NASEM-identified RF-AI integration barriers. Physics-informed pre-gates enforce a four-state operating envelope.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070b14;color:#b8d0e4;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:root{
+  --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
+  --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;--red:#e05555;--green:#4caf50;
+  --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
+  --mono:'DM Mono',monospace;--serif:'Instrument Serif',Georgia,serif;
+  --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
+}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
+.header-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{font-family:var(--mono);font-size:0.8rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-h)}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-m);transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--cyan)}
+.nav-cta{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.45rem 1.1rem;transition:background 0.2s}
+.nav-cta:hover{background:var(--cyan-b)}
+.page-hero{padding:calc(64px + 5rem) var(--pad) 4rem;background:linear-gradient(135deg,#070b14,#081820);position:relative;overflow:hidden;border-bottom:1px solid var(--bg-rule)}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,174,204,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,174,204,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);z-index:0}
+.page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.breadcrumb a{color:var(--text-d);transition:color 0.2s}.breadcrumb a:hover{color:var(--cyan)}
+.page-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.8;margin-bottom:1rem}
+.page-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;font-style:italic;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
+.page-lead{font-size:1rem;line-height:1.8;color:var(--text-b);max-width:700px;margin-bottom:2rem;border-left:2px solid rgba(0,174,204,0.3);padding-left:1.25rem}
+.page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.page-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid}
+.badge-mvp{background:rgba(200,168,75,0.08);color:var(--gold);border-color:rgba(200,168,75,0.2)}
+.badge-doi{background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
+.content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.section{padding:5rem 0}
+.section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
+.section-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
+.section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:700px;margin-bottom:2.5rem}
+.divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
+.barriers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem}
+.barrier-card{background:rgba(224,85,85,0.04);border:1px solid rgba(224,85,85,0.12);border-radius:4px;padding:1.75rem}
+.barrier-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);opacity:0.75;margin-bottom:0.5rem}
+.barrier-title{font-size:0.88rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.3}
+.barrier-prob{font-size:0.76rem;line-height:1.65;color:var(--text-m);margin-bottom:0.5rem}
+.barrier-sol{font-size:0.74rem;line-height:1.6;color:#4caf50;border-left:1px solid rgba(76,175,80,0.3);padding-left:0.75rem}
+.stages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.stage-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.75rem}
+.stage-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);opacity:0.5;margin-bottom:0.5rem}
+.stage-status{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;margin-bottom:0.75rem;display:inline-block}
+.s-complete{background:rgba(76,175,80,0.1);color:#4caf50;border:1px solid rgba(76,175,80,0.2)}
+.s-active{background:rgba(0,174,204,0.08);color:var(--cyan);border:1px solid rgba(0,174,204,0.2)}
+.s-planned{background:rgba(200,168,75,0.08);color:var(--gold);border:1px solid rgba(200,168,75,0.2)}
+.stage-title{font-size:0.88rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.3}
+.stage-body{font-size:0.76rem;line-height:1.7;color:var(--text-m)}
+.envelope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem}
+.env-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem;text-align:center}
+.env-state{font-family:var(--mono);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;margin-bottom:0.5rem}
+.env-desc{font-size:0.72rem;line-height:1.65;color:var(--text-m)}
+.s-nom{color:#4caf50}.s-deg{color:var(--gold)}.s-saf{color:var(--cyan)}.s-hlt{color:var(--red)}
+.diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem}
+.diff-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem}
+.diff-id{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;color:var(--cyan);opacity:0.6;margin-bottom:0.5rem}
+.diff-title{font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.4rem;line-height:1.35}
+.diff-body{font-size:0.74rem;line-height:1.65;color:var(--text-m)}
+.diff-patent{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-top:0.5rem}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal.visible{opacity:1;transform:none}
+.btn-primary{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.7rem 1.6rem;transition:background 0.2s;display:inline-block;margin-top:1rem}
+.btn-primary:hover{background:var(--cyan-b)}
+.btn-outline{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,174,204,0.35);border-radius:2px;padding:0.7rem 1.6rem;transition:border-color 0.2s;display:inline-block;margin-top:1rem;margin-left:1rem}
+footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-copy{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;color:var(--text-d)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}.footer-link:hover{color:var(--cyan)}
+@media(max-width:900px){nav{display:none}.barriers-grid,.stages-grid,.envelope-grid,.diff-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.stages-grid{grid-template-columns:1fr}.envelope-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0"><defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="400" height="400" fill="#05080F"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/><line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/><line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/><line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/><circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/><rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/><text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text><text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text></svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link active">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Spectrum Bridge</span></div>
+    <p class="page-eyebrow">RF-AI Integration &middot; Defence &middot; SIGINT &middot; Radar &mdash; MVP Phase 1 complete</p>
+    <h1 class="page-h1">The missing certification layer at the RF-to-AI boundary</h1>
+    <p class="page-lead">No current AI safety framework addresses the four foundational barriers at the RF-to-AI integration boundary. The NASEM workshop on non-linguistic AI (August 2025) named them specifically as unsolved. Spectrum Bridge is the only published architecture that treats all four as formal assurance requirements.</p>
+    <div class="page-meta-row">
+      <span class="page-badge badge-mvp">Phase 1 MVE complete</span>
+      <span class="page-badge badge-doi">24 tests passing</span>
+      <span class="page-badge badge-doi">NASEM validated problem statement</span>
+      <span class="page-badge badge-doi">NeuralSAT-compatible architecture</span>
+      <span class="page-badge badge-mvp">Shared-kernel parity verified</span>
+    </div>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#0a1422,#0d1a2e);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
+  <div style="max-width:1280px;margin:0 auto">
+    <p style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
+    <p style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.05rem,1.8vw,1.35rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs.&rdquo;</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">The four NASEM barriers &mdash; August 2025</p>
+    <h2 class="section-h2">Four RF-AI integration problems with no current solution</h2>
+    <p class="section-sub">The National Academies of Sciences, Engineering, and Medicine workshop on non-linguistic AI (August 2025) named four specific barriers at the RF-AI boundary. Spectrum Bridge is designed to address all four as formal assurance requirements, not engineering workarounds.</p>
+  </div>
+  <div class="barriers-grid">
+    <div class="barrier-card reveal">
+      <p class="barrier-num">NASEM Barrier 1</p>
+      <p class="barrier-title">No natural token boundaries</p>
+      <p class="barrier-prob">Language-centric AI safety approaches assume tokenisable input. Continuous RF waveforms have no natural token boundary. Standard EBDP stage gates cannot be directly applied without a tokenisation layer that preserves information content and physical meaning.</p>
+      <p class="barrier-sol">Spectrum Bridge S1: deterministic adaptive scale activation with token budgets derived from physical waveform characteristics, not arbitrary tokenisation.</p>
+    </div>
+    <div class="barrier-card reveal">
+      <p class="barrier-num">NASEM Barrier 2</p>
+      <p class="barrier-title">Throughput mismatch</p>
+      <p class="barrier-prob">RF sample rates (MHz to GHz) are orders of magnitude higher than AI inference rates. No existing framework manages the evidence-integrity implications of mandatory downsampling at this scale. Evidence admitted after downsampling may not be representative of the original signal.</p>
+      <p class="barrier-sol">Spectrum Bridge S2: per-scale quantisation preserving cross-platform determinism with EBDP bounds applied at each decimation stage.</p>
+    </div>
+    <div class="barrier-card reveal">
+      <p class="barrier-num">NASEM Barrier 3</p>
+      <p class="barrier-title">Shannon-limit ambiguity</p>
+      <p class="barrier-prob">RF signals near the Shannon capacity limit are physically ambiguous &mdash; multiple signal hypotheses are equally consistent with the observed waveform. Standard AI classification produces confident outputs on ambiguous inputs. Confidence is not a valid substitute for physical resolubility.</p>
+      <p class="barrier-sol">Spectrum Bridge S3: physics-informed pre-gates reject physically impossible or ambiguous signals before AI inference. MQ manages Shannon-limit states explicitly.</p>
+    </div>
+    <div class="barrier-card reveal">
+      <p class="barrier-num">NASEM Barrier 4</p>
+      <p class="barrier-title">Common-mode failure risk</p>
+      <p class="barrier-prob">Redundant AI systems processing the same RF signals from the same antenna array share common-mode failure risk. The CMRI independence assumption fails if redundant components share physical signal paths. Standard multi-agent independence assumptions do not account for shared RF infrastructure.</p>
+      <p class="barrier-sol">Spectrum Bridge: mathematical root independence on shared hardware enforced by CFS coprime monitor architecture. Shared RF path acknowledged as a constraint, not ignored.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Five-stage execution path</p>
+    <h2 class="section-h2">From RF signal to certified Evidence Object</h2>
+    <p class="section-sub">The Spectrum Bridge execution path transforms raw RF signals into Evidence Objects that carry full cryptographic provenance and admissibility certification. Every stage is deterministic. The same input produces the same Evidence Object on every platform.</p>
+  </div>
+  <div class="stages-grid">
+    <div class="stage-card reveal"><p class="stage-num">S1</p><span class="stage-status s-active">Active development &mdash; 90-day target</span><p class="stage-title">Scale Activation &mdash; Deterministic Token Budgets</p><p class="stage-body">Deterministic adaptive scale activation derives token budgets from physical waveform characteristics. Scale selection is governed by entropy bounds, not heuristic thresholds. Token budget is committed into the Evidence Object provenance chain.</p></div>
+    <div class="stage-card reveal"><p class="stage-num">S2</p><span class="stage-status s-active">Active development &mdash; 90-day target</span><p class="stage-title">Quantisation &mdash; Cross-Platform Determinism</p><p class="stage-body">Per-scale quantisation policy preserving cross-platform determinism. Bit-exact output guaranteed across hardware platforms within the quantisation policy envelope. EBDP bounds applied at each decimation stage prevent silent information loss.</p></div>
+    <div class="stage-card reveal"><p class="stage-num">S3</p><span class="stage-status s-active">Active development &mdash; 90-day target</span><p class="stage-title">Physics Pre-Gates &mdash; Reject Before Inference</p><p class="stage-body">Physics-informed pre-gates enforce normative constraints derived from signal physics before any AI inference occurs. Physically impossible signals (below noise floor, outside bandwidth, Shannon-limit ambiguous) are rejected and logged. No AI model ever sees physically invalid input.</p></div>
+    <div class="stage-card reveal"><p class="stage-num">S4</p><span class="stage-status s-planned">Parallel design</span><p class="stage-title">Admissibility Gating &mdash; Evidence Quality Gate</p><p class="stage-body">G1-G4 gate sequence enforcing the normative operating envelope. Each gate evaluates a specific physical or informational constraint. A signal failing any gate is rejected, not downgraded. The gate outcomes are committed to the Evidence Object chain.</p></div>
+    <div class="stage-card reveal"><p class="stage-num">S5</p><span class="stage-status s-planned">Parallel design</span><p class="stage-title">Evidence Node Emission &mdash; CAR-Compatible EO</p><p class="stage-body">Evidence Objects with full cryptographic provenance: signal hash, scale and quantisation policy digest, gate outcomes, EBDP stage receipts, Ed25519 producer signature, RFC 3161 timestamp. Compatible with the CAR audit chain. Any independent party can verify the EO without access to the RF hardware.</p></div>
+    <div class="stage-card reveal" style="background:linear-gradient(135deg,rgba(0,174,204,0.04),var(--bg-card));border-color:rgba(0,174,204,0.15)"><p class="stage-num">Validation</p><span class="stage-status s-complete">Completed &mdash; Phase 1</span><p class="stage-title">Shared-Kernel Parity Verification</p><p class="stage-body">Phase 1 validation confirmed that the same AxoDen Kernel governing Forensic Intelligence cybersecurity evidence graphs governs Spectrum Bridge RF evidence objects. Domain-generality is proved by construction, not asserted. This is the core thesis of the compositional kernel architecture.</p></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Operating envelope</p>
+    <h2 class="section-h2">Four-state MQ operating envelope enforced at the RF boundary</h2>
+    <p class="section-sub">The Monitoring Quad applies to the RF-AI boundary as directly as to any other domain. A Spectrum Bridge deployment is always in exactly one of four states. Transitions are deterministic, logged, and auditable.</p>
+  </div>
+  <div class="envelope-grid">
+    <div class="env-card reveal"><p class="env-state s-nom">NOMINAL</p><p class="env-desc">All physics pre-gates passing. Signal quality within normative envelope. EBDP bounds not exceeded at any scale. Evidence Objects emitted with full provenance.</p></div>
+    <div class="env-card reveal"><p class="env-state s-deg">DEGRADED</p><p class="env-desc">One or more pre-gates marginal. EBDP bound approaching ceiling at one or more scales. Evidence Objects emitted with degradation flags. Human oversight recommended.</p></div>
+    <div class="env-card reveal"><p class="env-state s-saf">SAFE_MODE</p><p class="env-desc">Pre-gate failure or EBDP ceiling exceeded. Evidence emission suspended. Last-known-good snapshot committed. Downstream AI inference blocked until gate conditions restored.</p></div>
+    <div class="env-card reveal"><p class="env-state s-hlt">HALT</p><p class="env-desc">Unrecoverable physics violation or security invariant breach. All emission halted. CAR written with HALT state. Manual intervention required for recovery.</p></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Registered differentiators</p>
+    <h2 class="section-h2">Four technical innovations with no equivalent in RF-AI literature</h2>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card reveal"><p class="diff-id">D77 &mdash; High patent potential</p><p class="diff-title">Normative operating-envelope enforcement (G1-G4 gate sequence)</p><p class="diff-body">The G1-G4 physics pre-gate sequence enforces the normative operating envelope as a formal constraint, not a monitoring threshold. A signal failing any gate is rejected before AI inference. No existing RF-AI framework treats operating envelope as a normative boundary.</p><p class="diff-patent">Patent evaluation in progress</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D78</p><p class="diff-title">Audit-grade Evidence Objects with CAR-compatible chain</p><p class="diff-body">Evidence Objects produced by Spectrum Bridge are compatible with the AxoDen CAR audit chain. The same artefact format that governs cybersecurity evidence governs RF signal evidence. A single audit chain covers multi-domain deployments.</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D79 &mdash; High patent potential</p><p class="diff-title">NeuralSAT-compatible deterministic fixed-point architecture</p><p class="diff-body">The Spectrum Bridge architecture is designed for compatibility with NeuralSAT formal verification tooling (VNN-COMP 2024). Safety properties are declared in the normative contract at design time, not asserted post-hoc after deployment. No evaluated RF-AI framework declares NeuralSAT compatibility at design time.</p><p class="diff-patent">Patent evaluation in progress</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D33 &mdash; High patent potential</p><p class="diff-title">Physics-informed pre-gates before neural inference</p><p class="diff-body">Physics pre-gates enforce constraints derived from signal physics (Shannon capacity, noise floor, bandwidth limits) before any neural inference occurs. This is architecturally distinct from post-hoc output filtering: the physics constraints are the admission criteria, not the evaluation criteria.</p><p class="diff-patent">Patent evaluation in progress</p></div>
+  </div>
+  <div style="margin-top:2.5rem" class="reveal">
+    <a href="index.html#contact" class="btn-primary">Enquire about RF-AI integration</a>
+    <a href="kernel.html" class="btn-outline">Kernel foundations &rarr;</a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="kernel.html" class="footer-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
+      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
+      <a href="research.html" class="footer-link">Research</a>
+    </div>
+  </div>
+</footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

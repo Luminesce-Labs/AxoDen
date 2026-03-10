@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AxoDen Kernel — Compositional AI Safety Infrastructure | Luminesce Limited</title>
+<meta name="description" content="Ten compositional theorems, CMRI independence bound, ASIL-M trust profiles, and O(E) topology verification. Certifiable AI governance for defence, aviation, and critical infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070b14;color:#b8d0e4;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+sub,sup{font-size:0.65em}sub{vertical-align:sub}sup{vertical-align:super}
+:root{
+  --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
+  --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;--red:#e05555;--green:#4caf50;
+  --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
+  --mono:'DM Mono',monospace;--serif:'Instrument Serif',Georgia,serif;
+  --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
+}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
+.header-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{font-family:var(--mono);font-size:0.8rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-h)}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-m);transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--cyan)}
+.nav-cta{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.45rem 1.1rem;transition:background 0.2s}
+.nav-cta:hover{background:var(--cyan-b)}
+.page-hero{padding:calc(64px + 5rem) var(--pad) 4rem;background:linear-gradient(135deg,#070b14,#0a1320);position:relative;overflow:hidden;border-bottom:1px solid var(--bg-rule)}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,174,204,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,174,204,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);z-index:0}
+.page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.breadcrumb a{color:var(--text-d);transition:color 0.2s}.breadcrumb a:hover{color:var(--cyan)}
+.page-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.8;margin-bottom:1rem}
+.page-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;font-style:italic;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
+.page-lead{font-size:1rem;line-height:1.8;color:var(--text-b);max-width:700px;margin-bottom:2rem;border-left:2px solid rgba(0,174,204,0.3);padding-left:1.25rem}
+.page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.page-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid}
+.badge-live{background:rgba(76,175,80,0.1);color:#4caf50;border-color:rgba(76,175,80,0.25)}
+.badge-doi{background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
+.badge-std{background:rgba(200,168,75,0.08);color:var(--gold);border-color:rgba(200,168,75,0.2)}
+.content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.section{padding:5rem 0}
+.section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
+.section-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
+.section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:700px;margin-bottom:2.5rem}
+.divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
+.cmri-block{background:linear-gradient(135deg,#0a1828,#0e1e34);border:1px solid rgba(0,174,204,0.15);border-radius:6px;padding:3rem;position:relative;overflow:hidden;margin-bottom:3rem}
+.cmri-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,174,204,0.5),transparent)}
+.cmri-formula-wrap{text-align:center;padding:2rem 0;margin:1.5rem 0}
+.cmri-formula{font-family:var(--mono);font-size:clamp(0.8rem,1.6vw,1rem);color:var(--text-h);line-height:2;letter-spacing:0.03em;background:rgba(0,0,0,0.3);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem 2rem;display:inline-block}
+.cmri-formula .def{color:var(--cyan)}.cmri-formula .bound{color:var(--gold)}
+.cmri-note{font-size:0.8rem;line-height:1.7;color:var(--text-m);max-width:700px;margin:0 auto;text-align:center;margin-top:1rem}
+.cmri-note strong{color:var(--text-b)}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.pillar-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:2rem;position:relative;overflow:hidden}
+.pillar-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.pillar-ebdp::after{background:linear-gradient(90deg,transparent,rgba(0,174,204,0.4),transparent)}
+.pillar-efi::after{background:linear-gradient(90deg,transparent,rgba(200,168,75,0.4),transparent)}
+.pillar-cfs::after{background:linear-gradient(90deg,transparent,rgba(76,175,80,0.4),transparent)}
+.pillar-tag{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem}
+.pillar-ebdp .pillar-tag{color:var(--cyan)}.pillar-efi .pillar-tag{color:var(--gold)}.pillar-cfs .pillar-tag{color:var(--green)}
+.pillar-name{font-size:0.9rem;font-weight:600;color:var(--text-h);margin-bottom:0.75rem;line-height:1.3}
+.pillar-formula{font-family:var(--mono);font-size:0.72rem;color:var(--text-b);background:rgba(0,0,0,0.25);border:1px solid var(--bg-rule);border-radius:3px;padding:0.6rem 0.85rem;margin:0.75rem 0;letter-spacing:0.03em;line-height:1.6}
+.pillar-body{font-size:0.78rem;line-height:1.7;color:var(--text-m)}
+.theorems-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.theorem-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem}
+.theorem-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);opacity:0.6;margin-bottom:0.5rem}
+.theorem-name{font-size:0.85rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.35}
+.theorem-domain{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.5rem}
+.theorem-body{font-size:0.76rem;line-height:1.65;color:var(--text-m)}
+.runtime-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.rt-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:2rem}
+.rt-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.65rem}
+.rt-name{font-size:0.9rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem}
+.rt-full{font-size:0.74rem;color:var(--text-d);margin-bottom:0.85rem;font-family:var(--mono);letter-spacing:0.06em}
+.rt-body{font-size:0.78rem;line-height:1.7;color:var(--text-m)}
+.rt-states{display:flex;flex-direction:column;gap:0.35rem;margin-top:0.85rem}
+.rt-state{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;padding:0.25rem 0.6rem;border-radius:2px;display:inline-block;width:fit-content}
+.st-nominal{background:rgba(76,175,80,0.1);color:#4caf50;border:1px solid rgba(76,175,80,0.2)}
+.st-degraded{background:rgba(200,168,75,0.1);color:var(--gold);border:1px solid rgba(200,168,75,0.2)}
+.st-safe{background:rgba(0,174,204,0.08);color:var(--cyan);border:1px solid rgba(0,174,204,0.2)}
+.st-halt{background:rgba(224,85,85,0.1);color:var(--red);border:1px solid rgba(224,85,85,0.2)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.ertopo-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:2rem}
+.ertopo-title{font-size:0.9rem;font-weight:600;color:var(--text-h);margin-bottom:0.75rem}
+.ertopo-body{font-size:0.8rem;line-height:1.75;color:var(--text-m)}
+.ertopo-body strong{color:var(--text-b)}
+.ertopo-spec{font-family:var(--mono);font-size:0.66rem;background:rgba(0,0,0,0.3);border:1px solid var(--bg-rule);border-radius:3px;padding:0.85rem 1rem;margin:0.85rem 0;line-height:1.7;color:var(--cyan);letter-spacing:0.04em}
+.asil-wrap{overflow-x:auto;margin-top:2rem}
+.asil-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.asil-table thead tr{border-bottom:1px solid rgba(0,174,204,0.2)}
+.asil-table th{text-align:left;padding:0.65rem 1rem;font-family:var(--mono);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;color:var(--text-d)}
+.asil-table td{padding:0.6rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:var(--text-m)}
+.asil-table td:first-child{font-family:var(--mono);font-weight:600;color:var(--cyan);font-size:0.8rem}
+.asil-table td:nth-child(2){color:var(--text-b)}
+.asil-table tr:hover td{background:rgba(255,255,255,0.015)}
+.vuln-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.vuln-card{background:rgba(224,85,85,0.04);border:1px solid rgba(224,85,85,0.15);border-radius:4px;padding:1.75rem}
+.vuln-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);opacity:0.8;margin-bottom:0.6rem}
+.vuln-name{font-size:0.88rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.35}
+.vuln-body{font-size:0.76rem;line-height:1.7;color:var(--text-m)}
+.vuln-doi{font-family:var(--mono);font-size:0.58rem;color:var(--cyan);opacity:0.6;margin-top:0.6rem}
+.std-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem}
+.std-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem;text-align:center}
+.std-name{font-family:var(--mono);font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;letter-spacing:0.05em;line-height:1.3}
+.std-desc{font-size:0.72rem;line-height:1.65;color:var(--text-m)}
+.std-status{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;margin-top:0.6rem;display:inline-block;background:rgba(0,174,204,0.08);color:var(--cyan);border:1px solid rgba(0,174,204,0.15)}
+.comp-wrap{overflow-x:auto;margin-top:2rem}
+.comp-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.comp-table thead tr{border-bottom:1px solid rgba(0,174,204,0.2)}
+.comp-table th{text-align:left;padding:0.65rem 1rem;font-family:var(--mono);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;color:var(--text-d)}
+.comp-table th:last-child{color:var(--cyan);opacity:0.8}
+.comp-table td{padding:0.55rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:var(--text-m)}
+.comp-table td:first-child{color:var(--text-b);font-weight:500}
+.comp-table td em{font-style:normal;color:var(--cyan)}
+.comp-table tr:hover td{background:rgba(255,255,255,0.015)}
+.pathway-steps{display:flex;flex-direction:column;gap:0;margin-top:2rem}
+.pathway-step{display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--bg-rule)}
+.pathway-step:last-child{border-bottom:none}
+.step-num{font-family:var(--mono);font-size:1.4rem;font-weight:500;color:var(--text-d);line-height:1;padding-top:0.25rem}
+.step-title{font-size:0.88rem;font-weight:600;color:var(--text-h);margin-bottom:0.4rem}
+.step-desc{font-size:0.78rem;line-height:1.7;color:var(--text-m)}
+.step-artefact{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;color:var(--cyan);opacity:0.7;margin-top:0.4rem}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal.visible{opacity:1;transform:none}
+.btn-primary{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.7rem 1.6rem;transition:background 0.2s;display:inline-block;margin-top:1rem}
+.btn-primary:hover{background:var(--cyan-b)}
+.btn-outline{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,174,204,0.35);border-radius:2px;padding:0.7rem 1.6rem;transition:border-color 0.2s;display:inline-block;margin-top:1rem;margin-left:1rem}
+.btn-outline:hover{border-color:var(--cyan)}
+footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-copy{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;color:var(--text-d)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}
+.footer-link:hover{color:var(--cyan)}
+@media(max-width:900px){nav{display:none}.pillars-grid,.runtime-grid,.vuln-grid,.two-col,.std-grid{grid-template-columns:1fr}.theorems-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.theorems-grid{grid-template-columns:1fr}.std-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0"><defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="400" height="400" fill="#05080F"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/><line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/><line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/><line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/><circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/><rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/><text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text><text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text></svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link active">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Kernel</span></div>
+    <p class="page-eyebrow">Core Platform &mdash; v0.8.1 &mdash; C-API frozen</p>
+    <h1 class="page-h1">The Kernel: AI governance proved, not tested</h1>
+    <p class="page-lead">The AxoDen Kernel enforces hard information-theoretic, independence, and topological invariants on any AI reasoning system. Its guarantees are independent of which model operates inside its enforcement boundary. It does not make models more accurate. It makes their governance architecture certifiable.</p>
+    <div class="page-meta-row">
+      <span class="page-badge badge-live">316 kernel tests passing</span>
+      <span class="page-badge badge-doi">10 formally proved theorems</span>
+      <span class="page-badge badge-std">DO-178C &middot; IEC 61508 &middot; DEF STAN 00-56</span>
+      <span class="page-badge badge-doi">DOI: 10.5281/zenodo.18633407</span>
+    </div>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#0a1422,#0d1a2e);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
+  <div style="max-width:1280px;margin:0 auto">
+    <p style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
+    <p style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.05rem,1.8vw,1.35rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">"The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs."</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">The governing invariant</p>
+    <h2 class="section-h2">The CMRI Bound: Independence as a design constraint</h2>
+    <p class="section-sub">The Correlation-Minimised Redundancy Invariant is a normative requirement, not a statistical measurement. A system either satisfies it by construction or it does not. No test suite can substitute for this guarantee.</p>
+  </div>
+  <div class="cmri-block reveal">
+    <div class="cmri-formula-wrap">
+      <div class="cmri-formula">
+        <span class="def">CMRI</span> := sup<sub>&omega;&isin;&Omega;</sub> max<sub>i&lt;j</sub> <span class="def">&rho;&#772;<sub>ij</sub>(&omega;)</span> &le; <span class="bound">1 &minus; IS<sub>min</sub> + &epsilon;<sub>A</sub></span>
+      </div>
+    </div>
+    <p class="cmri-note">Where <strong>&rho;&#772;<sub>ij</sub>(&omega;)</strong> is the trust-failure correlation between any two redundant AI components at operating point &omega;, <strong>IS<sub>min</sub></strong> is the minimum independence score threshold (0.85 at ASIL-M L3), and <strong>&epsilon;<sub>A</sub></strong> is the architectural tolerance. Enforced by structural CFS constraints &mdash; not measured post-hoc. Every existing framework assumes this bound holds. AxoDen is the first to prove it.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Mathematical foundations</p>
+    <h2 class="section-h2">Three compositional pillars</h2>
+    <p class="section-sub">EBDP, EFI, and CFS are independently certifiable and compose algebraically: local constraints become global guarantees. When a component changes, only local constraints require re-verification.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card pillar-ebdp reveal">
+      <p class="pillar-tag">EBDP</p>
+      <p class="pillar-name">Entropy-Bounded Data Pipelines</p>
+      <div class="pillar-formula">H(X<sub>k</sub> | X<sub>k-1</sub>) &le; H<sup>max</sup><sub>k</sub></div>
+      <p class="pillar-body">At every pipeline stage k, uncertainty accumulation is bounded from above. Entropy cannot silently compound across stages. A breach is a detectable invariant violation, not a statistical anomaly. Applied to sensor fusion, RAG pipelines, multi-hop reasoning chains, and RF signal ingestion. DOI: <a href="https://doi.org/10.5281/zenodo.17709557" target="_blank" style="color:var(--cyan)">10.5281/zenodo.17709557</a></p>
+    </div>
+    <div class="pillar-card pillar-efi reveal">
+      <p class="pillar-tag">EFI</p>
+      <p class="pillar-name">Entropy-Frugal Intelligence</p>
+      <div class="pillar-formula">I(X<sub>k</sub> ; M<sub>k</sub>) &le; &epsilon;<sub>k</sub></div>
+      <p class="pillar-body">The mutual information a model may introduce at stage k &mdash; not derivable from evidential inputs &mdash; is bounded by &epsilon;<sub>k</sub>. Model-injected hallucination is structurally limited, not behaviourally monitored. The bound is derivable from the Evidence Object chain without inspecting model internals.</p>
+    </div>
+    <div class="pillar-card pillar-cfs reveal">
+      <p class="pillar-tag">CFS</p>
+      <p class="pillar-name">Coprime-Factor Security</p>
+      <div class="pillar-formula">IS<sub>att</sub> &ge; IS<sub>min</sub> &nbsp;&nbsp; v<sub>2</sub>(h<sub>A</sub> &oplus; h<sub>B</sub>) &le; k<sub>max</sub></div>
+      <p class="pillar-body">Independence engineered across four planes: cryptographic roots, vendor supply chains, operational domains, and hardware platforms. The 2-adic distance metric v<sub>2</sub>(h<sub>A</sub> &oplus; h<sub>B</sub>) provides bit-level structural correlation detection with no dependency on behavioural observation. DOI: <a href="https://doi.org/10.5281/zenodo.17690358" target="_blank" style="color:var(--cyan)">10.5281/zenodo.17690358</a></p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Formal proof corpus &mdash; DOI: 10.5281/zenodo.18633407</p>
+    <h2 class="section-h2">Ten compositional theorems across five domains</h2>
+    <p class="section-sub">Each theorem proves that a local AxoDen constraint composes into a global safety guarantee. Together they span classical pipelines, kinetic cyber defence, ransomware recovery, hybrid quantum-classical systems, and adversarial conditions.</p>
+  </div>
+  <div class="theorems-grid">
+    <div class="theorem-card reveal"><p class="theorem-num">T-01</p><p class="theorem-domain">Classical &middot; EBDP</p><p class="theorem-name">Entropy Ceiling Composition</p><p class="theorem-body">Stage-level entropy bounds compose into a system-level Shannon entropy ceiling. A pipeline satisfying EBDP at every stage satisfies it globally without recomputing global state.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-02</p><p class="theorem-domain">Classical &middot; EFI</p><p class="theorem-name">Influence Bound Propagation</p><p class="theorem-body">Model-injected mutual information cannot exceed the sum of stage-level EFI bounds. Hallucination accumulation is globally bounded from local stage contracts alone.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-03</p><p class="theorem-domain">Classical &middot; CFS</p><p class="theorem-name">Coprime Independence Guarantee</p><p class="theorem-body">Algebraically coprime monitor-root pairs cannot share a common factor vulnerability. Independence is a constructive property, not a probabilistic assertion.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-04</p><p class="theorem-domain">Kinetic &middot; EBDP+CFS</p><p class="theorem-name">Kinetic Control Constraint Composition</p><p class="theorem-body">Under bounded physical disturbance and adversarial negotiation, kinetic control commands satisfy the CMRI bound with probability derivable from structural parameters alone.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-05</p><p class="theorem-domain">Kinetic &middot; EFI</p><p class="theorem-name">Actuation Influence Ceiling</p><p class="theorem-body">The EFI bound on actuator command pipelines guarantees no single sensor modality contributes disproportionate mutual information to an irreversible actuation decision.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-06</p><p class="theorem-domain">Ransomware &middot; CFS</p><p class="theorem-name">Ransomware Recovery Isolation</p><p class="theorem-body">Under CFS constraints, a ransomware event on one monitor root cannot propagate to coprime roots. Recovery corridors are structurally isolated by construction.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-07</p><p class="theorem-domain">Adversarial &middot; EBDP</p><p class="theorem-name">Adversarial Entropy Resistance</p><p class="theorem-body">Under bounded adversarial injection, EBDP stage ceilings remain valid provided the adversary cannot exceed H<sup>max</sup><sub>k</sub> without triggering a detectable stage violation.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-08</p><p class="theorem-domain">Adversarial &middot; EFI+CFS</p><p class="theorem-name">Coordinated Attack Bound</p><p class="theorem-body">A coordinated adversary targeting multiple AI components cannot corrupt the CMRI bound without violating at least one EFI or CFS constraint that is independently detectable.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-09</p><p class="theorem-domain">Quantum-Classical &middot; EBDP</p><p class="theorem-name">Von Neumann-Shannon Entropy Bridge</p><p class="theorem-body">Q-EBDP extends classical entropy bounds to quantum subsystems using von Neumann entropy S(&rho;). The EBDP composition theorem holds across classical and quantum pipeline stages without modification.</p></div>
+    <div class="theorem-card reveal"><p class="theorem-num">T-10</p><p class="theorem-domain">Quantum-Classical &middot; CFS</p><p class="theorem-name">Quantum Coprime Basis Independence</p><p class="theorem-body">Coprime-basis engineering over GF(2<sup>n</sup>) polynomial factorisation prevents common-mode calibration failures across redundant quantum-classical AI components. <a href="https://doi.org/10.5281/zenodo.18213048" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18213048</a></p></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Runtime enforcement</p>
+    <h2 class="section-h2">Three runtime control modules</h2>
+    <p class="section-sub">The Kernel enforces its invariants at runtime through three coupled modules. All state transitions are deterministic, ledger-backed, and cryptographically auditable. There is no ambiguity in adversarial conditions.</p>
+  </div>
+  <div class="runtime-grid">
+    <div class="rt-card reveal">
+      <p class="rt-tag">ARV</p>
+      <p class="rt-name">Adaptive Runtime Verifier</p>
+      <p class="rt-full">Autonomous Recovery Valve</p>
+      <p class="rt-body">Deterministic fail-closed policy enforcement via a named precedence chain. When multiple rules apply, the highest-precedence rule governs &mdash; no ambiguity under adversarial conditions. Evaluates intents against topological geofence and quorum-state bounds in O(1) time with respect to intent count, ensuring bounded authorisation latency regardless of queue depth.</p>
+    </div>
+    <div class="rt-card reveal">
+      <p class="rt-tag">MQ</p>
+      <p class="rt-name">Monitoring Quad</p>
+      <p class="rt-full">Four explicit operating states &mdash; no implicit state</p>
+      <p class="rt-body">State coupling and degradation management across four explicit operating states. Every AI component governed by the Kernel is in exactly one state at all times. Transitions are deterministic and logged as Canonical Attestation Records (CARs). No silent state drift.</p>
+      <div class="rt-states">
+        <span class="rt-state st-nominal">NOMINAL</span>
+        <span class="rt-state st-degraded">DEGRADED</span>
+        <span class="rt-state st-safe">SAFE_MODE</span>
+        <span class="rt-state st-halt">HALT</span>
+      </div>
+    </div>
+    <div class="rt-card reveal">
+      <p class="rt-tag">VSR</p>
+      <p class="rt-name">Verification &amp; Safety Register</p>
+      <p class="rt-full">Certificate-based topology verification</p>
+      <p class="rt-body">Maintains the ER-topo.cert rotation system certificate for the current evidence graph. Verifies topology in O(E) time without recomputing the embedding. The verification key is decoupled from the construction key &mdash; any independent party can verify the topology certificate without access to the construction process or trust in the constructor.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Key innovation &mdash; patent evaluation in progress</p>
+    <h2 class="section-h2">ER-topo.cert: O(E) certificate-based topology verification</h2>
+    <p class="section-sub">The same asymmetry that makes public-key cryptography operationally feasible, applied to AI evidence graph topology. Construction is expensive, done once by a trusted producer. Verification is linear time, done by any independent party. Prior art established and DOI-registered February 2026.</p>
+  </div>
+  <div class="two-col">
+    <div class="ertopo-card reveal">
+      <p class="ertopo-title">Construction-verification separation</p>
+      <p class="ertopo-body">A trusted producer constructs the rotation system certificate for the evidence graph (O(E log g) where g is genus). Any verifier checks the certificate in O(E) time by traversing the face-cycle structure. The verifier does not recompute the embedding. <strong>No equivalent architecture exists in distributed systems or formal verification literature.</strong></p>
+      <div class="ertopo-spec">ER-topo.cert v0.3<br>
+Mode A &mdash; external certificate, pre-built by trusted producer<br>
+Mode B &mdash; reserved (authority delegation)<br>
+Mode C &mdash; JIT heuristic-construct / exact-verify pipeline<br>
+DOI: 10.5281/zenodo.18320118</div>
+      <p class="ertopo-body">The three-mode protocol means the certificate can be pre-computed for known topologies, delegated for dynamic environments, or constructed just-in-time under time pressure with exact verification following independently.</p>
+    </div>
+    <div class="ertopo-card reveal">
+      <p class="ertopo-title">Flat torus wrap-ledger representation</p>
+      <p class="ertopo-body">Non-planar evidence graphs &mdash; arising in multi-agent systems with lateral movement, recursive reasoning, or cross-domain data flows &mdash; require a representation preserving topological structure across ledger operations.</p>
+      <div class="ertopo-spec">Flat torus [0,2&pi;) &times; [0,2&pi;) with explicit wrap shifts<br>
+Per-dart wrap shift: &delta;<sub>w</sub> = (dx, dy) &isin; &#8484;<sub>2</sub> &times; &#8484;<sub>2</sub><br>
+Face-cycle shift invariant: &sum; &delta;<sub>w</sub> = 0 (mod 2) per face<br>
+Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
+      <p class="ertopo-body">This representation enables certificate-based verification of higher-genus evidence graphs without coordinate projection or global state recomputation. <strong>No equivalent in distributed ledger or formal verification literature.</strong> Part II extending to genus-2+ surfaces is the primary current research deliverable.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Deployment profiles</p>
+    <h2 class="section-h2">ASIL-M: Five graduated trust profiles</h2>
+    <p class="section-sub">ASIL-M provides five deployment profiles mapping AxoDen invariants onto existing safety standards. No new certification path is invented. Existing assessors evaluate existing artefact types at each level. <a href="https://doi.org/10.5281/zenodo.17690760" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.17690760</a></p>
+  </div>
+  <div class="asil-wrap reveal">
+    <table class="asil-table">
+      <thead><tr><th>Profile</th><th>Deployment context</th><th>IS<sub>min</sub></th><th>Correlation bound</th><th>Standards alignment</th><th>Evidence artefacts</th></tr></thead>
+      <tbody>
+        <tr><td>L0</td><td>Development and research &mdash; no safety-critical deployment</td><td>&mdash;</td><td>&mdash;</td><td>None required</td><td>Entropy logs, basic ledger</td></tr>
+        <tr><td>L1</td><td>Monitored production &mdash; human-in-the-loop mandatory</td><td>0.60</td><td>&rho; &le; 0.40</td><td>ISO 27001, NIST AI RMF</td><td>EBDP budget, MQ state log, CAR chain</td></tr>
+        <tr><td>L2</td><td>Regulated automated decision &mdash; reversible consequences</td><td>0.75</td><td>&rho; &le; 0.25</td><td>EU AI Act (high-risk), ISO 26262 ASIL-B</td><td>EFI proof, topology certificate, independence score</td></tr>
+        <tr><td>L3</td><td>Safety-critical &mdash; irreversible physical consequences possible</td><td>0.85</td><td>&rho; &le; 0.15</td><td>DO-178C DAL-C, IEC 61508 SIL 3, IEC 62443</td><td>Full bundle: EBDP+EFI+CFS+topo cert+TAPL digest+CAR chain</td></tr>
+        <tr><td>L4</td><td>Mission-critical &mdash; loss-of-life or national security consequences</td><td>0.95</td><td>&rho; &le; 0.05</td><td>DO-178C DAL-A, DEF STAN 00-56, IEC 61508 SIL 4</td><td>As L3 plus asymmetric dual verification, RFC 3161 timestamp, external assessor sign-off</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:1.5rem" class="reveal">
+    <p style="font-size:0.8rem;line-height:1.75;color:var(--text-m);max-width:800px"><strong style="color:var(--text-b)">Asymmetric Dual Verification (ASIL-M Appendix D, D75):</strong> Formally proved 62% risk reduction without 2&times; compute overhead. Symmetric dual redundancy is the only currently documented alternative; no competing framework has quantified an asymmetric variant. Patent evaluation in progress.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Impossibility results and structural mechanisms &mdash; prior art February 2026</p>
+    <h2 class="section-h2">Eight named prior art records in AI governance architecture</h2>
+    <p class="section-sub">Eight previously undocumented failure classes and structural mechanisms, each named, dated, and registered as prior art in February 2026. Three are vulnerability classes (ZIH, God Key, AIC). Five are novel architectural mechanisms without equivalent in existing literature. The ZIH result precisely: three frontier AI systems independently failed to identify this structural failure class during architectural review; prior art established February 2026; TLA+ verified across 2.4 million reachable states; zero counterexamples. That is a verifiable scientific statement, not a marketing claim. None of these appear in STRIDE, PASTA, or any standard threat or design taxonomy.</p>
+  </div>
+  <div class="vuln-grid">
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">ZIH &mdash; TLA+ Verified &mdash; Universal failure class</p>
+      <p class="vuln-name">Zombie Intent Hazard</p>
+      <p class="vuln-body">A universal structural failure class in any system where AI decisions are queued, buffered, or persisted before physical execution. Not a cybersecurity vulnerability. Applies equally to power grids, autonomous vehicles, medical devices, industrial control systems, and autonomous drones. A stale intent executes under conditions for which it was never valid. Three frontier AI systems independently failed to identify the class during architectural review. TLA+ verified, 52 named state transitions, zero counterexamples across 2.4M states.</p>
+      <p class="vuln-doi"><a href="https://doi.org/10.5281/zenodo.18768569" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18768569</a></p>
+    </div>
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">God Key &mdash; Named, February 2026</p>
+      <p class="vuln-name">God Key &mdash; Single Root Silent Invalidation</p>
+      <p class="vuln-body">An audit architecture with a single signing root allows silent, retroactive invalidation of the entire audit chain. Compromise of one key undermines all past audit evidence without any observable indicator. The CFS multi-root architecture with coprime signing keys is the direct structural countermeasure.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; DOI registration in progress</p>
+    </div>
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">AIC &mdash; Named, February 2026</p>
+      <p class="vuln-name">Async Ingestion Collapse</p>
+      <p class="vuln-body">Adversarial flooding of an asynchronous ingestion pipeline saturates the control-plane evidence capacity without triggering rate-limit alerts. The governance layer operates on stale or partial evidence with no observable indication. EBDP stage ceilings provide direct detection and hard rejection of this failure mode.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; DOI registration in progress</p>
+    </div>
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">EOA-Latch &mdash; Mechanism, February 2026</p>
+      <p class="vuln-name">Evidence-of-Authorisation Latch</p>
+      <p class="vuln-body">The structural mechanism that makes physical actuation logically subsequent to evidence existence rather than temporally prior to it. No irreversible action may be initiated unless the AxoDen Kernel has verified context freshness, safety invariants, and sensor quorum integrity at the moment of execution. Prior art established February 2026.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; Grid Flight Recorder architecture</p>
+    </div>
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">OTT &mdash; Mechanism, February 2026</p>
+      <p class="vuln-name">One-Time Actuation Ticket</p>
+      <p class="vuln-body">A cryptographically scoped, single-use authorisation token that binds a specific intent to a specific boot session, preventing replay across state boundaries. Directly prevents the Zombie Intent Hazard at the authorisation layer. Novel mechanism with no equivalent in existing access control or Byzantine consensus literature. Prior art established February 2026.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; Grid Flight Recorder architecture</p>
+    </div>
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">RAQT &mdash; Mechanism, February 2026</p>
+      <p class="vuln-name">Reboot-Anchored Quorum Token</p>
+      <p class="vuln-body">Queued intents are bound to volatile boot-session IDs derived from device key, boot timestamp, and entropy seed. A reboot, power cycle, or controlled restart mathematically invalidates all previously queued intents. Commands computed under old state cannot execute under new state. Novel session-binding mechanism. Prior art established February 2026.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; Grid Flight Recorder architecture</p>
+    </div>
+  </div>
+  <div class="vuln-grid" style="margin-top:1.25rem">
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">Diversity Beacon &mdash; Mechanism, February 2026</p>
+      <p class="vuln-name">Diversity Beacon</p>
+      <p class="vuln-body">A cryptographic liveness and diversity signal broadcast periodically from each CFS monitor root to prove operational independence in real time. Unlike static attestation, the Diversity Beacon establishes that independence claims are active rather than historical. Novel mechanism with no equivalent in TEE attestation or Byzantine consensus literature. Prior art established February 2026.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; CFS architecture</p>
+    </div>
+    <div class="vuln-card reveal">
+      <p class="vuln-tag">Grid Flight Recorder &mdash; Architecture, February 2026</p>
+      <p class="vuln-name">Grid Flight Recorder &mdash; Verified Actuation Firewall</p>
+      <p class="vuln-body">The architectural pattern of combining an append-only, hash-chained actuation record (analogous to an aviation flight data recorder) with an active enforcement boundary that gates physical actuation on evidence validity. The combination of immutable record and active gate is novel. Prior art as architecture established February 2026.</p>
+      <p class="vuln-doi">Prior art: February 2026 &middot; <a href="grid-flight-recorder.html" style="color:var(--cyan)">Full technical detail &rarr;</a></p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Regulatory alignment</p>
+    <h2 class="section-h2">Existing certification paths. No new approval route required.</h2>
+    <p class="section-sub">AxoDen produces artefacts that assessors under existing standards already know how to evaluate. The certification path is not novel. The evidence package that fills it is.</p>
+  </div>
+  <div class="std-grid">
+    <div class="std-card reveal"><p class="std-name">DO-178C</p><p class="std-desc">Aviation software. DAL-A through DAL-E. ASIL-M L3/L4 maps onto DAL-A/B structural coverage objectives. CAR chain satisfies traceability requirements.</p><span class="std-status">ASIL-M L3/L4</span></div>
+    <div class="std-card reveal"><p class="std-name">DEF STAN 00-56</p><p class="std-desc">UK defence safety. IL1-IL4. EBDP+EFI+CFS artefact bundle maps onto IL3/IL4 hazard analysis and safety case requirements.</p><span class="std-status">IL3 / IL4</span></div>
+    <div class="std-card reveal"><p class="std-name">IEC 61508</p><p class="std-desc">Functional safety for E/E/PE systems. SIL 3/4. MQ state machine satisfies systematic capability and common cause failure requirements.</p><span class="std-status">SIL 3 / SIL 4</span></div>
+    <div class="std-card reveal"><p class="std-name">EU AI Act</p><p class="std-desc">High-risk AI conformity assessment. Annex III. AxoDen artefact bundles produce the technical documentation required for notified body review.</p><span class="std-status">High-risk AI</span></div>
+    <div class="std-card reveal"><p class="std-name">ISO 26262</p><p class="std-desc">Road vehicle functional safety. ASIL-A through ASIL-D. CMRI bound maps onto ASIL-D systematic failure rate requirements for AI inference components.</p><span class="std-status">ASIL-D</span></div>
+    <div class="std-card reveal"><p class="std-name">ISO/IEC TR 5469:2024</p><p class="std-desc">Functional safety and AI systems. Directly addresses the gap AxoDen closes. Framework produces the evidence category this standard requires but does not specify how to generate.</p><span class="std-status">Direct alignment</span></div>
+    <div class="std-card reveal"><p class="std-name">IEC 62443</p><p class="std-desc">Industrial cybersecurity for OT/ICS. Security Level 3/4. CFS independence architecture and CAR audit chain satisfy SL-3/SL-4 zone requirements.</p><span class="std-status">SL-3 / SL-4</span></div>
+    <div class="std-card reveal"><p class="std-name">NERC CIP</p><p class="std-desc">North American critical infrastructure. Bulk power systems. EBDP pipeline bounds and append-only ledger satisfy CIP-007 and CIP-010 monitoring requirements.</p><span class="std-status">CIP-007 / 010</span></div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Competitive displacement</p>
+    <h2 class="section-h2">Where every existing approach stops</h2>
+  </div>
+  <div class="comp-wrap reveal">
+    <table class="comp-table">
+      <thead><tr><th>Comparator</th><th>Their approach</th><th>Structural gap</th><th>AxoDen position</th></tr></thead>
+      <tbody>
+        <tr><td>Intel SGX / AMD SEV-SNP</td><td>Hardware-enforced trust isolation</td><td>Assumes TEE roots fail independently. No mechanism to verify or engineer this assumption.</td><td><em>ASIL-M engineers &rho; &le; &epsilon; as a structural invariant. Independence is proved, not assumed.</em></td></tr>
+        <tr><td>DARPA CHESS / SOTERIA</td><td>Formal software correctness verification</td><td>Proves model correctness &mdash; intractable at production scale. Does not address CMRI, ZIH, or compositional independence across domains.</td><td><em>Proves governance architecture correctness. Tractable at production scale. Model-agnostic.</em></td></tr>
+        <tr><td>LangChain / AutoGPT / CrewAI</td><td>Multi-agent orchestration</td><td>No formal safety layer, no independence metric, no certification path, no deterministic audit trail.</td><td><em>AxoDen is the governance layer above these frameworks. Not a competitor &mdash; a prerequisite for regulated deployment.</em></td></tr>
+        <tr><td>in-toto / SLSA</td><td>Build-time supply-chain provenance</td><td>Static. No runtime independence enforcement. No adversarial negotiation model. No live topology certification.</td><td><em>Runtime governance, adversarial-resistant independence, and live topology certification are orthogonal capabilities not in their scope.</em></td></tr>
+        <tr><td>PBFT / HotStuff / Raft</td><td>Byzantine fault tolerant consensus assuming f &lt; n/3 independent failures</td><td>The independence of Byzantine failures is an unverified assumption. No mechanism to audit or enforce it.</td><td><em>AxoDen is the missing layer beneath Byzantine consensus that proves the independence assumption holds by construction.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">From deployment to certification</p>
+    <h2 class="section-h2">The certification pathway</h2>
+    <p class="section-sub">These are the steps from initial deployment to certification-grade evidence submission. AxoDen does not invent a new certification route. It produces evidence for existing ones.</p>
+  </div>
+  <div class="pathway-steps">
+    <div class="pathway-step reveal"><span class="step-num">01</span><div><p class="step-title">Select ASIL-M conformance profile</p><p class="step-desc">Choose L1 through L4 based on consequence severity and applicable standards. The profile determines which artefact categories are required and the IS<sub>min</sub> threshold the design must satisfy.</p><p class="step-artefact">Deliverable: conformance profile selection document</p></div></div>
+    <div class="pathway-step reveal"><span class="step-num">02</span><div><p class="step-title">Configure EBDP and EFI bounds</p><p class="step-desc">Define H<sup>max</sup><sub>k</sub> and &epsilon;<sub>k</sub> for each pipeline stage based on domain physics and information flow requirements. The Kernel enforces these bounds at runtime and logs every violation as a CAR.</p><p class="step-artefact">Deliverable: entropy budget document; stage-level EFI ceiling specification</p></div></div>
+    <div class="pathway-step reveal"><span class="step-num">03</span><div><p class="step-title">Commission CFS independence analysis</p><p class="step-desc">Document coprime monitor root selection across the four independence planes. Produce IS<sub>att</sub> measurement demonstrating compliance with IS<sub>min</sub> at the chosen ASIL-M level.</p><p class="step-artefact">Deliverable: CFS independence report; ER-cfs audit artefacts; CMRI bound verification</p></div></div>
+    <div class="pathway-step reveal"><span class="step-num">04</span><div><p class="step-title">Generate and verify ER-topo.cert certificate</p><p class="step-desc">Construct the rotation system certificate for the evidence graph topology. Any independent party can verify it in O(E) time. This is the structural safety proof &mdash; the certificate that distinguishes AxoDen from every preceding framework.</p><p class="step-artefact">Deliverable: ER-topo.cert certificate file; verifier test results; topological slack S measurement</p></div></div>
+    <div class="pathway-step reveal"><span class="step-num">05</span><div><p class="step-title">Commission TAPL policy and produce CAR baseline</p><p class="step-desc">Formalise governing policies in TAPL. Run the system under the target workload profile and produce the baseline CAR chain demonstrating deterministic behaviour. Bit-exact replay verification confirms determinism across runs and platforms.</p><p class="step-artefact">Deliverable: TAPL policy corpus; CAR chain baseline; replay verification log</p></div></div>
+    <div class="pathway-step reveal"><span class="step-num">06</span><div><p class="step-title">Submit artefact bundle to assessor</p><p class="step-desc">The assembled artefact bundle maps directly onto evidence categories existing safety assessors already evaluate under DO-178C, IEC 61508, or DEF STAN 00-56. No new certification path. No novel evidence category. The assessor already knows what to do with this.</p><p class="step-artefact">Deliverable: complete ASIL-M artefact bundle; assessor-ready evidence package</p></div></div>
+  </div>
+  <div style="margin-top:2.5rem" class="reveal">
+    <a href="index.html#contact" class="btn-primary">Enquire about evaluation engagement</a>
+    <a href="research.html" class="btn-outline">DOI-registered foundations &rarr;</a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
+      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
+      <a href="research.html" class="footer-link">Research</a>
+    </div>
+  </div>
+</footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
