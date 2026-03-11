@@ -7,7 +7,7 @@
 <meta name="description" content="AxoDen is a compositional AI safety kernel that makes high-stakes AI certifiable through mathematical proof of governance architecture. Structural assurance for defence, critical infrastructure, and regulated industry.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -39,7 +39,7 @@ sub{font-size:0.65em;vertical-align:sub}
   --text-m:    #7a9cb8;
   --text-d:    #3d607a;
   --mono:      'DM Mono',monospace;
-  --serif:     'Instrument Serif',Georgia,serif;
+  --serif:'Syne',system-ui,sans-serif;
   --sans:      'Geist',system-ui,sans-serif;
   --max:       1280px;
   --pad:       clamp(1.5rem,4vw,3rem);
@@ -117,9 +117,9 @@ nav{display:flex;align-items:center;gap:2rem}
   margin-bottom:1.5rem;
 }
 .hero-h1{
-  font-family:var(--serif);
+  letter-spacing:-0.02em;font-family:var(--serif);
   font-size:clamp(2.4rem,4.5vw,4rem);
-  font-weight:400;font-style:italic;
+  font-weight:400;font-weight:700;
   color:var(--text-h);line-height:1.15;
   margin-bottom:2rem;
 }
@@ -136,7 +136,7 @@ nav{display:flex;align-items:center;gap:2rem}
 }
 .hero-actions{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
 .btn-primary{
-  font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;
+  font-family:var(--mono);font-size:0.84rem;letter-spacing:0.15em;
   text-transform:uppercase;color:var(--bg);
   background:var(--cyan);border-radius:2px;
   padding:0.7rem 1.6rem;
@@ -145,7 +145,7 @@ nav{display:flex;align-items:center;gap:2rem}
 }
 .btn-primary:hover{background:var(--cyan-b);transform:translateY(-1px)}
 .btn-outline{
-  font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;
+  font-family:var(--mono);font-size:0.84rem;letter-spacing:0.15em;
   text-transform:uppercase;color:var(--cyan);
   border:1px solid rgba(0,174,204,0.35);border-radius:2px;
   padding:0.7rem 1.6rem;
@@ -219,8 +219,8 @@ nav{display:flex;align-items:center;gap:2rem}
   margin-bottom:1.25rem;
 }
 .shannon-quote{
-  font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.55rem);
-  font-style:italic;color:var(--text-h);line-height:1.5;
+  letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.55rem);
+  font-weight:700;color:var(--text-h);line-height:1.5;
   margin-bottom:1rem;
 }
 .shannon-source{
@@ -243,7 +243,7 @@ nav{display:flex;align-items:center;gap:2rem}
   margin-bottom:0.75rem;
 }
 .section-h2{
-  font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);
+  letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);
   font-weight:400;color:var(--text-h);line-height:1.2;
   margin-bottom:1rem;
 }
@@ -288,8 +288,8 @@ nav{display:flex;align-items:center;gap:2rem}
   background:linear-gradient(90deg,transparent,rgba(0,174,204,0.5),transparent);
 }
 .thesis-statement{
-  font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);
-  font-style:italic;color:var(--text-h);line-height:1.6;
+  letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);
+  font-weight:700;color:var(--text-h);line-height:1.6;
   margin-bottom:2rem;
   border-left:2px solid var(--cyan);
   padding-left:1.5rem;
@@ -347,14 +347,14 @@ nav{display:flex;align-items:center;gap:2rem}
   text-transform:uppercase;color:var(--text-d);
 }
 .ptile-name{
-  font-family:var(--serif);font-size:1.4rem;font-weight:400;
+  letter-spacing:-0.02em;font-family:var(--serif);font-size:1.4rem;font-weight:400;
   color:var(--text-h);line-height:1.2;
 }
 .ptile-body{font-size:0.9rem;line-height:1.75;color:var(--text-m)}
 .ptile-proof{
   margin-top:auto;padding-top:1rem;
   border-top:1px solid var(--bg-rule);
-  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;
+  font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;
   color:var(--text-d);line-height:1.8;
 }
 .ptile-proof span{color:var(--cyan);opacity:0.7}
@@ -491,7 +491,7 @@ nav{display:flex;align-items:center;gap:2rem}
   gap:5rem;align-items:center;
 }
 .contact-left h2{
-  font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);
+  letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);
   font-weight:400;color:var(--text-h);margin-bottom:1rem;
 }
 .contact-left p{font-size:0.88rem;line-height:1.8;color:var(--text-m);margin-bottom:2rem}
@@ -532,8 +532,8 @@ footer{
 .footer-link:hover{color:var(--cyan)}
 
 /* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
-.reveal.visible{opacity:1;transform:none}
+.reveal{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.will-animate{opacity:0;transform:translateY(14px)}
 
 
 /* hero category line */
@@ -580,7 +580,7 @@ footer{
 @media(max-width:700px){.routing-cards{grid-template-columns:1fr}}
 
 .ptile-bestfor{
-  font-size:0.82rem;font-style:italic;color:var(--text-m);
+  font-size:0.90rem;font-style:italic;color:var(--text-m);
   line-height:1.55;margin-top:0.1rem;
   padding-bottom:0.6rem;border-bottom:1px solid var(--bg-rule);
 }
@@ -971,7 +971,7 @@ footer{
     <div class="about-body reveal">
       <p>Erkan Yalcinkaya is the architect of AxoDen and the sole author of all primary theoretical contributions. Over 25 years across defence systems engineering, software architecture, and applied AI &mdash; with particular depth in formal verification, information theory, and safety-critical certification.</p>
       <p>An Engineering Physics background. Two decades inside regulated enterprises gave direct understanding of what certification evidence actually looks like from the assessor's side of the table. <strong>AxoDen was built from a concrete observation: safety-critical AI deployments consistently fail at the governance layer, not the model layer.</strong></p>
-      <p>Three years of solo development, evenings and weekends alongside full-time consulting. Zero external funding until 2026. 16 DOI-registered publications and four implemented, tested systems before a single grant application was submitted. The work is complete, not proposed.</p>
+      <p>Three years of solo development alongside full-time consulting. 16 DOI-registered publications and four implemented, tested systems before a single grant application was submitted. The work is complete, not proposed.</p>
       <p><strong>Academic collaboration:</strong> Professor Yanguo Jing, Dean of AI, University of Cumbria (est. February 2026). References: Professor Ioana Boureanu, University of Surrey; Professor Tom Carlson, UCL.</p>
     </div>
     <div class="about-meta reveal">
@@ -1026,7 +1026,7 @@ footer{
       <h2>Work with Luminesce Limited</h2>
       <p>Evaluation engagements, pilot deployments, certification consultancy, and licensing enquiries welcome. Particular interest in defence prime contractors, CNI operators, and MDR/IR firms. Contact to request an evaluation brief or book a technical review.</p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#d8bbb7b6acb9bbac98b4adb5b1b6bdabbbbdb4b1b5b1acbdbcf6bbb7b5" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#6704080913060413270b120a0e09021404020b0e0a0e1302034904080a" class="contact-link">
           <span class="contact-link-label">Email</span>
           <span class="__cf_email__" data-cfemail="caa9a5a4beaba9be8aa6bfa7a3a4afb9a9afa6a3a7a3beafaee4a9a5a7">[email&#160;protected]</span>
         </a>
@@ -1048,8 +1048,8 @@ footer{
       <p>The framework is <strong>implemented and operationalised</strong>. Three domain deployments are Dockerised and locally deployed. The Kernel C-API is frozen at v0.6.0 &mdash; integrators can build against it with confidence in backward compatibility.</p>
       <p>Active grant applications to ARIA Mathematics for Safe AI (&pound;293,400 submitted March 2026), ENCODE Fellowship at Pillar VC (12-month programme), and LTFF. These fund machine-checking, independent validation, and standards-body engagement &mdash; not building from scratch.</p>
       <p style="margin-bottom:1.5rem">For technical evaluation material including customer evaluation briefs, conformance profile documentation, and the reproducibility manifest from MITRE-MORDOR validation, please make contact directly.</p>
-      <a href="mailto:contact@luminescelimited.com" class="btn-primary">Request evaluation brief</a>
-      <a href="mailto:contact@luminescelimited.com" class="btn-outline" style="margin-left:1rem">Book technical review</a>
+      <a href="/cdn-cgi/l/email-protection#197a76776d787a6d59756c7470777c6a7a7c757074706d7c7d377a7674" class="btn-primary">Request evaluation brief</a>
+      <a href="/cdn-cgi/l/email-protection#3c5f5352485d5f487c5049515552594f5f5950555155485958125f5351" class="btn-outline" style="margin-left:1rem">Book technical review</a>
     </div>
   </div>
 </div>
@@ -1068,4 +1068,50 @@ footer{
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email
+
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.remove('will-animate');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el) {
+    var r = el.getBoundingClientRect();
+    if (r.top > window.innerHeight) {
+      el.classList.add('will-animate');
+      io.observe(el);
+    }
+  });
+
+  // Logo ring slow rotation
+  var ring = document.querySelector('.hero-logo-ring');
+  if (ring) {
+    var angle = 0;
+    setInterval(function() {
+      angle += 0.07;
+      ring.style.transform = 'rotate(' + angle + 'deg)';
+    }, 16);
+  }
+})();
+</script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.remove('will-animate');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el) {
+    var r = el.getBoundingClientRect();
+    if (r.top > window.innerHeight) {
+      el.classList.add('will-animate');
+      io.observe

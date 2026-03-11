@@ -7,7 +7,7 @@
 <meta name="description" content="The missing certification layer at the RF-to-AI boundary. Addresses the four NASEM-identified RF-AI integration barriers. Physics-informed pre-gates enforce a four-state operating envelope.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -17,7 +17,7 @@ a{color:inherit;text-decoration:none}
   --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
   --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;--red:#e05555;--green:#4caf50;
   --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
-  --mono:'DM Mono',monospace;--serif:'Instrument Serif',Georgia,serif;
+  --mono:'DM Mono',monospace;--serif:'Syne',system-ui,sans-serif;
   --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
 }
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
@@ -35,7 +35,7 @@ nav{display:flex;align-items:center;gap:2rem}
 .breadcrumb{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
 .breadcrumb a{color:var(--text-d);transition:color 0.2s}.breadcrumb a:hover{color:var(--cyan)}
 .page-eyebrow{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.8;margin-bottom:1rem}
-.page-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;font-style:italic;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
+.page-h1{letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;font-weight:700;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
 .page-lead{font-size:1rem;line-height:1.8;color:var(--text-b);max-width:700px;margin-bottom:2rem;border-left:2px solid rgba(0,174,204,0.3);padding-left:1.25rem}
 .page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 .page-badge{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid}
@@ -44,7 +44,7 @@ nav{display:flex;align-items:center;gap:2rem}
 .content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 .section{padding:5rem 0}
 .section-label{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
-.section-h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
+.section-h2{letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
 .section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:700px;margin-bottom:2.5rem}
 .divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
 .barriers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem}
@@ -73,8 +73,10 @@ nav{display:flex;align-items:center;gap:2rem}
 .diff-title{font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.4rem;line-height:1.35}
 .diff-body{font-size:0.82rem;line-height:1.65;color:var(--text-m)}
 .diff-patent{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-top:0.5rem}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.will-animate{opacity:0;transform:translateY(16px)}
 .reveal.visible{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
 .btn-primary{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.7rem 1.6rem;transition:background 0.2s;display:inline-block;margin-top:1rem}
 .btn-primary:hover{background:var(--cyan-b)}
 .btn-outline{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,174,204,0.35);border-radius:2px;padding:0.7rem 1.6rem;transition:border-color 0.2s;display:inline-block;margin-top:1rem;margin-left:1rem}
@@ -122,10 +124,10 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   </div>
 </div>
 
-<div style="background:linear-gradient(135deg,#0a1422,#0d1a2e);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
+<div style="background:#0b1220;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
   <div style="max-width:1280px;margin:0 auto">
     <p style="font-family:'DM Mono',monospace;font-size:0.71rem;letter-spacing:0.13em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
-    <p style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.1rem,1.9vw,1.4rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs.&rdquo;</p>
+    <p style="font-family:'Syne',system-ui,sans-serif;font-weight:700;font-size:clamp(1.1rem,1.9vw,1.4rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs.&rdquo;</p>
   </div>
 </div>
 
@@ -230,8 +232,23 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   </div>
 </footer>
 <script>
-const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.06});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Progressive reveal — elements start visible; JS hides off-screen ones then reveals on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.remove('will-animate');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
+revealEls.forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top > window.innerHeight) {
+    el.classList.add('will-animate');
+    io.observe(el);
+  }
+});
 </script>
 </body>
 </html>
