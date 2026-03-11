@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Notice &mdash; Luminesce Limited / AxoDen</title>
+<meta name="description" content="Privacy notice for axoden.io and luminescelimited.com. Luminesce Limited, registered in England and Wales.">
+<meta name="robots" content="noindex">
+<style>
+
+/* ── SELF-HOSTED FONTS — no third-party requests ── */
+@font-face {
+  font-family: 'Syne';
+  src: url('fonts/syne-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Syne';
+  src: url('fonts/syne-latin-500-normal.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Syne';
+  src: url('fonts/syne-latin-600-normal.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Syne';
+  src: url('fonts/syne-latin-700-normal.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Syne';
+  src: url('fonts/syne-latin-800-normal.woff2') format('woff2');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('fonts/dm-mono-latin-300-normal.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('fonts/dm-mono-latin-300-italic.woff2') format('woff2');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('fonts/dm-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('fonts/dm-mono-latin-400-italic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('fonts/dm-mono-latin-500-normal.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('fonts/dm-mono-latin-500-italic.woff2') format('woff2');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('fonts/GeistVariable.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#070b14;
+  color:#b8d0e4;
+  font-family:'Geist',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+sub{font-size:0.65em;vertical-align:sub}
+
+/* ── TOKENS ── */
+:root{
+  --bg:        #070b14;
+  --bg-mid:    #0b1120;
+  --bg-card:   #0f1828;
+  --bg-rule:   rgba(255,255,255,0.07);
+  --cyan:      #00aecc;
+  --cyan-b:    #00d4f5;
+  --gold:      #c8a84b;
+  --red:       #e05555;
+  --text-h:    #dce9f2;
+  --text-b:    #b8d0e4;
+  --text-m:    #7a9cb8;
+  --text-d:    #3d607a;
+  --mono:      'DM Mono',monospace;
+  --serif:'Syne',system-ui,sans-serif;
+  --sans:      'Geist',system-ui,sans-serif;
+  --max:       1280px;
+  --pad:       clamp(1.5rem,4vw,3rem);
+}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(7,11,20,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bg-rule);
+  height:64px;
+  display:flex;align-items:center;
+  padding:0 var(--pad);
+}
+.header-inner{
+  max-width:var(--max);width:100%;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{
+  font-family:var(--mono);font-size:0.8rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--text-h);
+}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{
+  font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--text-m);
+  transition:color 0.2s;
+}
+.nav-link:hover{color:var(--cyan)}
+.nav-cta{
+  font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--bg);
+  background:var(--cyan);border-radius:2px;
+  padding:0.45rem 1.1rem;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--cyan-b)}
+
+
+
+/* ── PAGE LAYOUT ── */
+.page-wrap{
+  max-width:780px;
+  margin:0 auto;
+  padding:6rem var(--pad) 5rem;
+}
+.page-eyebrow{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  opacity:0.75;
+  margin-bottom:1rem;
+}
+.page-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:700;
+  letter-spacing:-0.02em;
+  color:var(--text-h);
+  line-height:1.15;
+  margin-bottom:0.75rem;
+}
+.page-meta{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  color:var(--text-d);
+  letter-spacing:0.08em;
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--bg-rule);
+}
+.priv-section{
+  margin-bottom:2.75rem;
+}
+.priv-section h2{
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--text-h);
+  margin-bottom:0.9rem;
+  padding-bottom:0.5rem;
+  border-bottom:1px solid var(--bg-rule);
+}
+.priv-section p{
+  font-size:0.95rem;
+  line-height:1.85;
+  color:var(--text-m);
+  margin-bottom:0.9rem;
+}
+.priv-section ul{
+  margin:0.5rem 0 0.9rem 1.25rem;
+  padding:0;
+}
+.priv-section li{
+  font-size:0.95rem;
+  line-height:1.8;
+  color:var(--text-m);
+  margin-bottom:0.3rem;
+}
+.priv-section a{
+  color:var(--cyan);
+  text-decoration:none;
+}
+.priv-section a:hover{
+  text-decoration:underline;
+}
+.callout{
+  background:var(--bg-card);
+  border:1px solid var(--bg-rule);
+  border-left:3px solid var(--cyan);
+  border-radius:0 4px 4px 0;
+  padding:1.25rem 1.5rem;
+  margin:1.25rem 0;
+}
+.callout p{
+  margin-bottom:0 !important;
+}
+table.priv-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:1rem 0 1.5rem;
+  font-size:0.88rem;
+}
+.priv-table th{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text-d);
+  text-align:left;
+  padding:0.6rem 0.75rem;
+  border-bottom:1px solid rgba(0,174,204,0.2);
+  background:var(--bg-card);
+}
+.priv-table td{
+  padding:0.75rem;
+  color:var(--text-m);
+  line-height:1.65;
+  border-bottom:1px solid var(--bg-rule);
+  vertical-align:top;
+}
+.priv-table tr:last-child td{
+  border-bottom:none;
+}
+@media(max-width:600px){
+  nav{display:none}
+  .priv-table{font-size:0.82rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0">
+        <defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <rect width="400" height="400" fill="#05080F"/>
+        <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/>
+        <polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5" stroke-linecap="butt"/>
+        <line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5" stroke-linecap="butt"/>
+        <line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5" stroke-linecap="butt"/>
+        <circle cx="30" cy="192" r="14" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+        <circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/>
+        <circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/>
+        <rect x="356" y="178" width="28" height="28" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+        <rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/>
+        <rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/>
+        <text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text>
+        <text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text>
+      </svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <p class="page-eyebrow">Legal &mdash; Data Protection</p>
+  <h1 class="page-title">Privacy Notice</h1>
+  <p class="page-meta">Luminesce Limited &mdash; Last updated: March 2026 &mdash; Applies to axoden.io and luminescelimited.com</p>
+
+  <div class="priv-section">
+    <h2>1. Who we are</h2>
+    <p>The data controller for this website is <strong>Luminesce Limited</strong>, a company registered in England and Wales.</p>
+    <div class="callout">
+      <p>
+        <strong>Luminesce Limited</strong><br>
+        Company number: 15317429<br>
+        VAT number: 474096567<br>
+        Registered in England and Wales<br>
+        Contact: <a href="mailto:contact@luminescelimited.com">contact@luminescelimited.com</a>
+      </p>
+    </div>
+    <p>We operate the AxoDen research programme and the axoden.io website. Questions about this notice or your personal data should be directed to the address above.</p>
+  </div>
+
+  <div class="priv-section">
+    <h2>2. What data we collect and why</h2>
+    <table class="priv-table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>How collected</th>
+          <th>Purpose</th>
+          <th>Legal basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name, email address, and message content</td>
+          <td>Contact form or direct email</td>
+          <td>Responding to enquiries about evaluation, licensing, or partnership</td>
+          <td>Legitimate interests (Article 6(1)(f) UK GDPR) &mdash; responding to a direct enquiry is a legitimate interest of both parties</td>
+        </tr>
+        <tr>
+          <td>IP address and HTTP request metadata</td>
+          <td>Cloudflare Pages server logs (automatic)</td>
+          <td>Security, abuse prevention, and aggregate traffic analysis</td>
+          <td>Legitimate interests &mdash; operating a secure website</td>
+        </tr>
+        <tr>
+          <td>Browser type, referring URL, page visited, timestamp</td>
+          <td>Cloudflare Analytics (aggregate, cookieless)</td>
+          <td>Understanding which pages are useful; no individual-level tracking</td>
+          <td>Legitimate interests &mdash; improving the website</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>We do not use cookies for tracking or advertising. We do not use Google Analytics or any analytics platform that sets persistent identifiers. We do not run advertising of any kind.</p>
+  </div>
+
+  <div class="priv-section">
+    <h2>3. Fonts and third-party resources</h2>
+    <p>All fonts used on this website (Syne, DM Mono, and Geist) are <strong>self-hosted</strong> on our own servers. No request is made to Google Fonts, Adobe Fonts, or any other third-party font service when you visit this site. Your IP address is not transmitted to any font provider.</p>
+    <p>The website is hosted on <strong>Cloudflare Pages</strong>. Cloudflare processes connection-level data (IP address, request headers) as part of delivering the site and providing DDoS protection. Cloudflare acts as a data processor under a data processing agreement. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare&rsquo;s privacy policy</a> for details of their processing.</p>
+    <p>No other third-party scripts, pixels, trackers, or external resources are loaded by this website.</p>
+  </div>
+
+  <div class="priv-section">
+    <h2>4. How long we keep your data</h2>
+    <ul>
+      <li><strong>Enquiry emails and contact form submissions:</strong> retained for up to 24 months from the date of last correspondence, or until you ask us to delete them, whichever is sooner. If an enquiry leads to a business relationship, data is retained for the duration of that relationship plus six years (standard UK commercial retention for contractual records).</li>
+      <li><strong>Server logs:</strong> retained by Cloudflare for up to 30 days in accordance with their standard data retention policies.</li>
+      <li><strong>Aggregate analytics:</strong> retained indefinitely in anonymised, aggregated form with no individual-level identifiers.</li>
+    </ul>
+  </div>
+
+  <div class="priv-section">
+    <h2>5. Who we share data with</h2>
+    <p>We do not sell, rent, or trade personal data. We do not share enquiry data with any third party except:</p>
+    <ul>
+      <li><strong>Cloudflare, Inc.</strong> &mdash; as our hosting and CDN provider, acting as a data processor.</li>
+      <li><strong>Legal obligation:</strong> where we are required to disclose data by law, court order, or regulatory authority.</li>
+    </ul>
+    <p>No data is transferred outside the UK or European Economic Area except via Cloudflare&rsquo;s infrastructure, which operates under standard contractual clauses approved for UK GDPR purposes.</p>
+  </div>
+
+  <div class="priv-section">
+    <h2>6. Your rights under UK GDPR</h2>
+    <p>You have the following rights in relation to your personal data:</p>
+    <ul>
+      <li><strong>Right of access</strong> &mdash; to receive a copy of the personal data we hold about you.</li>
+      <li><strong>Right to rectification</strong> &mdash; to have inaccurate data corrected.</li>
+      <li><strong>Right to erasure</strong> &mdash; to have your data deleted, subject to any legal retention obligations.</li>
+      <li><strong>Right to restriction</strong> &mdash; to ask us to limit how we use your data while a dispute is resolved.</li>
+      <li><strong>Right to object</strong> &mdash; to object to processing based on legitimate interests.</li>
+      <li><strong>Right to data portability</strong> &mdash; to receive your data in a structured, machine-readable format where processing is automated and consent or contract-based.</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:contact@luminescelimited.com">contact@luminescelimited.com</a>. We will respond within one calendar month.</p>
+  </div>
+
+  <div class="priv-section">
+    <h2>7. Complaints</h2>
+    <p>If you are unhappy with how we handle your personal data, you have the right to lodge a complaint with the <strong>Information Commissioner&rsquo;s Office (ICO)</strong>, the UK&rsquo;s supervisory authority for data protection.</p>
+    <div class="callout">
+      <p>
+        Information Commissioner&rsquo;s Office<br>
+        Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF<br>
+        Tel: 0303 123 1113<br>
+        <a href="https://ico.org.uk/make-a-complaint/" target="_blank">ico.org.uk/make-a-complaint</a>
+      </p>
+    </div>
+    <p>We would, however, welcome the opportunity to address any concerns directly before you contact the ICO.</p>
+  </div>
+
+  <div class="priv-section">
+    <h2>8. Changes to this notice</h2>
+    <p>We may update this notice from time to time. The date at the top of this page reflects when it was last revised. Material changes will be noted in the page header. We recommend checking this page periodically if you have an ongoing relationship with us.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved. Commercial use requires licensing from Luminesce Limited. Academic use permitted with citation.</p>
+    <div class="footer-links">
+      <a href="kernel.html" class="footer-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
+      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
+      <a href="research.html" class="footer-link">Research</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var ring = document.querySelector('.hero-logo-ring');
+  if (ring) {
+    var angle = 0;
+    setInterval(function() {
+      angle += 0.07;
+      ring.style.transform = 'rotate(' + angle + 'deg)';
+    }, 16);
+  }
+})();
+</script>
+</body>
+</html>
