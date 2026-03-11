@@ -289,7 +289,7 @@ Mismatch: DENY + write DENY_CAR + force re-evaluation</div>
       <p class="mech-tag">OTT &mdash; D81</p>
       <p class="mech-name">One-Time Actuation Tickets</p>
       <p class="mech-body">Class H (high-consequence) actions are authorised by single-use tokens. Once consumed, the token is spent. An adversary cannot replay a captured authorisation to trigger a second actuation. The token is bound to the specific intent, the current session, and the current quorum attestation.</p>
-      <div class="mech-spec">OTT := Ed25519_sign(intent_hash || session_ID || quorum_hash || timestamp)<br>
+      <div class="mech-spec">Cryptographically scoped single-use token binding intent identity, boot session, and quorum attestation<br>
 Consumption index recorded in CAR chain<br>
 Replay attempt: DENY + forensic alert</div>
     </div>
@@ -297,7 +297,7 @@ Replay attempt: DENY + forensic alert</div>
       <p class="mech-tag">ACFF &mdash; D83</p>
       <p class="mech-name">Attested Control-Flow Fingerprint</p>
       <p class="mech-body">Firmware hashes prove code presence, not execution path. The ACFF binds the policy digest, the WASM module hash, the configuration hash, and the precedence traversal indices into a single verifiable fingerprint. An auditor can verify not only <em>what code ran</em> but <em>how it decided</em>.</p>
-      <div class="mech-spec">ACFF := SHA-256(policy_digest || WASM_hash || config_hash || precedence_indices)<br>
+      <div class="mech-spec">Verifiable fingerprint binding the policy digest, code module, configuration, and decision path traversal into a single auditable record<br>
 Bound into CAR at every authorisation<br>
 Verifiable by any party with the ACFF and the CAR</div>
     </div>

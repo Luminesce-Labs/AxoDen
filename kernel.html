@@ -258,7 +258,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
         <span class="def">CMRI</span> := sup<sub>&omega;&isin;&Omega;</sub> max<sub>i&lt;j</sub> <span class="def">&rho;&#772;<sub>ij</sub>(&omega;)</span> &le; <span class="bound">1 &minus; IS<sub>min</sub> + &epsilon;<sub>A</sub></span>
       </div>
     </div>
-    <p class="cmri-note">Where <strong>&rho;&#772;<sub>ij</sub>(&omega;)</strong> is the trust-failure correlation between any two redundant AI components at operating point &omega;, <strong>IS<sub>min</sub></strong> is the minimum independence score threshold (0.85 at ASIL-M L3), and <strong>&epsilon;<sub>A</sub></strong> is the architectural tolerance. Enforced by structural CFS constraints &mdash; not measured post-hoc. Every existing framework assumes this bound holds. AxoDen is the first to prove it.</p>
+    <p class="cmri-note">Where <strong>&rho;&#772;<sub>ij</sub>(&omega;)</strong> is the trust-failure correlation between any two redundant AI components at operating point &omega;, <strong>IS<sub>min</sub></strong> is the minimum independence score threshold, defined per ASIL-M deployment level, and <strong>&epsilon;<sub>A</sub></strong> is the architectural tolerance. Enforced by structural CFS constraints &mdash; not measured post-hoc. Every existing framework assumes this bound holds. AxoDen is the first to prove it.</p>
   </div>
 </section>
 <hr class="divider">
@@ -389,10 +389,10 @@ Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
       <thead><tr><th>Profile</th><th>Deployment context</th><th>IS<sub>min</sub></th><th>Correlation bound</th><th>Standards alignment</th><th>Evidence artefacts</th></tr></thead>
       <tbody>
         <tr><td>L0</td><td>Development and research &mdash; no safety-critical deployment</td><td>&mdash;</td><td>&mdash;</td><td>None required</td><td>Entropy logs, basic ledger</td></tr>
-        <tr><td>L1</td><td>Monitored production &mdash; human-in-the-loop mandatory</td><td>0.60</td><td>&rho; &le; 0.40</td><td>ISO 27001, NIST AI RMF</td><td>EBDP budget, MQ state log, CAR chain</td></tr>
-        <tr><td>L2</td><td>Regulated automated decision &mdash; reversible consequences</td><td>0.75</td><td>&rho; &le; 0.25</td><td>EU AI Act (high-risk), ISO 26262 ASIL-B</td><td>EFI proof, topology certificate, independence score</td></tr>
-        <tr><td>L3</td><td>Safety-critical &mdash; irreversible physical consequences possible</td><td>0.85</td><td>&rho; &le; 0.15</td><td>DO-178C DAL-C, IEC 61508 SIL 3, IEC 62443</td><td>Full bundle: EBDP+EFI+CFS+topo cert+TAPL digest+CAR chain</td></tr>
-        <tr><td>L4</td><td>Mission-critical &mdash; loss-of-life or national security consequences</td><td>0.95</td><td>&rho; &le; 0.05</td><td>DO-178C DAL-A, DEF STAN 00-56, IEC 61508 SIL 4</td><td>As L3 plus asymmetric dual verification, RFC 3161 timestamp, external assessor sign-off</td></tr>
+        <tr><td>L1</td><td>Monitored production &mdash; human-in-the-loop mandatory</td><td>Defined in evaluation brief</td><td>Defined in evaluation brief</td><td>ISO 27001, NIST AI RMF</td><td>EBDP budget, MQ state log, CAR chain</td></tr>
+        <tr><td>L2</td><td>Regulated automated decision &mdash; reversible consequences</td><td>Defined in evaluation brief</td><td>Defined in evaluation brief</td><td>EU AI Act (high-risk), ISO 26262 ASIL-B</td><td>EFI proof, topology certificate, independence score</td></tr>
+        <tr><td>L3</td><td>Safety-critical &mdash; irreversible physical consequences possible</td><td>Defined in evaluation brief</td><td>Defined in evaluation brief</td><td>DO-178C DAL-C, IEC 61508 SIL 3, IEC 62443</td><td>Full bundle: EBDP+EFI+CFS+topo cert+TAPL digest+CAR chain</td></tr>
+        <tr><td>L4</td><td>Mission-critical &mdash; loss-of-life or national security consequences</td><td>Defined in evaluation brief</td><td>Defined in evaluation brief</td><td>DO-178C DAL-A, DEF STAN 00-56, IEC 61508 SIL 4</td><td>As L3 plus asymmetric dual verification, RFC 3161 timestamp, external assessor sign-off</td></tr>
       </tbody>
     </table>
   </div>
