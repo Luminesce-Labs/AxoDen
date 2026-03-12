@@ -691,6 +691,7 @@ footer{
       <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
       <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
       <a href="research.html" class="nav-link">Research</a>
+      <a href="privacy.html" class="nav-link">Privacy</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </nav>
   </div>
@@ -1085,7 +1086,7 @@ footer{
       <h2>Work with Luminesce Limited</h2>
       <p>Evaluation engagements, pilot deployments, certification consultancy, and licensing enquiries welcome. Particular interest in defence prime contractors, CNI operators, and MDR/IR firms. Contact to request an evaluation brief or book a technical review.</p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#6704080913060413270b120a0e09021404020b0e0a0e1302034904080a" class="contact-link">
+        <a href="mailto:contact@luminescelimited.com" class="contact-link">
           <span class="contact-link-label">Email</span>
           <span class="__cf_email__" data-cfemail="caa9a5a4beaba9be8aa6bfa7a3a4afb9a9afa6a3a7a3beafaee4a9a5a7">[email&#160;protected]</span>
         </a>
@@ -1107,8 +1108,8 @@ footer{
       <p>The framework is <strong>implemented and operationalised</strong>. Three domain deployments are Dockerised and locally deployed. The Kernel C-API is frozen at v0.6.0 &mdash; integrators can build against it with confidence in backward compatibility.</p>
       <p>Active grant applications to ARIA Mathematics for Safe AI (&pound;293,400 submitted March 2026), ENCODE Fellowship at Pillar VC (12-month programme), and LTFF. These fund machine-checking, independent validation, and standards-body engagement &mdash; not building from scratch.</p>
       <p style="margin-bottom:1.5rem">For technical evaluation material including customer evaluation briefs, conformance profile documentation, and the reproducibility manifest from MITRE-MORDOR validation, please make contact directly.</p>
-      <a href="/cdn-cgi/l/email-protection#197a76776d787a6d59756c7470777c6a7a7c757074706d7c7d377a7674" class="btn-primary">Request evaluation brief</a>
-      <a href="/cdn-cgi/l/email-protection#3c5f5352485d5f487c5049515552594f5f5950555155485958125f5351" class="btn-outline" style="margin-left:1rem">Book technical review</a>
+      <a href="mailto:contact@luminescelimited.com" class="btn-primary">Request evaluation brief</a>
+      <a href="mailto:contact@luminescelimited.com" class="btn-outline" style="margin-left:1rem">Book technical review</a>
     </div>
   </div>
 </div>
@@ -1159,7 +1160,7 @@ footer{
 })();
 </script>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function() {
   var els = document.querySelectorAll('.reveal');
   var io = new IntersectionObserver(function(entries) {
@@ -1174,4 +1175,18 @@ footer{
     var r = el.getBoundingClientRect();
     if (r.top > window.innerHeight) {
       el.classList.add('will-animate');
-      io.observe
+      io.observe(el);
+    }
+  });
+  var ring = document.querySelector('.hero-logo-ring');
+  if (ring) {
+    var angle = 0;
+    setInterval(function() {
+      angle += 0.07;
+      ring.style.transform = 'rotate(' + angle + 'deg)';
+    }, 16);
+  }
+})();
+</script>
+</body>
+</html>
