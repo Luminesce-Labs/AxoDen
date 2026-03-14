@@ -1061,37 +1061,6 @@ footer{
   </div>
 </footer>
 
-
-(function() {
-  var els = document.querySelectorAll('.reveal');
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.remove('will-animate');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
-  els.forEach(function(el) {
-    var r = el.getBoundingClientRect();
-    if (r.top > window.innerHeight) {
-      el.classList.add('will-animate');
-      io.observe(el);
-    }
-  });
-
-  // Logo ring slow rotation
-  var ring = document.querySelector('.hero-logo-ring');
-  if (ring) {
-    var angle = 0;
-    setInterval(function() {
-      angle += 0.07;
-      ring.style.transform = 'rotate(' + angle + 'deg)';
-    }, 16);
-  }
-})();
-</script>
-
 <script>
 (function() {
   var els = document.querySelectorAll('.reveal');
