@@ -5,68 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AxoDen Grid Flight Recorder — Verified Actuation for Cyber-Physical Systems | Luminesce Limited</title>
 <meta name="description" content="Runtime execution assurance for safety-critical cyber-physical systems. Addresses the Zombie Intent Hazard: TLA+ verified across 2.4 million reachable states. No irreversible actuation without valid evidence.">
+<link rel="icon" type="image/png" href="favicon-32.png">
 <style>
-/* ── SELF-HOSTED FONTS — no third-party requests ── */
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-400-normal.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-500-normal.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-600-normal.woff2') format('woff2');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-700-normal.woff2') format('woff2');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-800-normal.woff2') format('woff2');
-  font-weight: 800; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-300-normal.woff2') format('woff2');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-300-italic.woff2') format('woff2');
-  font-weight: 300; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-400-normal.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-400-italic.woff2') format('woff2');
-  font-weight: 400; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-500-normal.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-500-italic.woff2') format('woff2');
-  font-weight: 500; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Geist';
-  src: url('fonts/GeistVariable.woff2') format('woff2');
-  font-weight: 100 900; font-style: normal; font-display: swap;
-}
+/* Using system stacks to avoid broken asset references in the static deploy. */
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -173,7 +114,6 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
       <a href="kernel.html" class="nav-link">Kernel</a>
       <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
       <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
-      <a href="grid-flight-recorder.html" class="nav-link active">Grid Flight Recorder</a>
       <a href="research.html" class="nav-link">Research</a>
       <a href="privacy.html" class="nav-link">Privacy</a>
       <a href="index.html#contact" class="nav-cta">Contact</a>
@@ -184,12 +124,12 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 <div class="page-hero">
   <div class="page-hero-grid"></div>
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Grid Flight Recorder</span></div>
-    <p class="page-eyebrow">Cyber-Physical Systems &middot; Critical Infrastructure &middot; In Design &mdash; Prior art Feb 2026</p>
+    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Kernel Instantiation</span></div>
+    <p class="page-eyebrow">Kernel domain instantiation &middot; Cyber-Physical Systems &middot; Research and design</p>
     <h1 class="page-h1">A flight recorder that is also a safety gate</h1>
-    <p class="page-lead">The Grid Flight Recorder enforces one contract: no irreversible physical actuation occurs unless safety, policy, and evidence conditions are all valid at the moment of execution. It is not a passive audit log. It is an active enforcement boundary. The audit trail it produces is a by-product of enforcement, not a retrospective reconstruction.</p>
+    <p class="page-lead">The Grid Flight Recorder is a cyber-physical kernel instantiation for environments where stale or replayed commands can create physical harm. It enforces one contract: no irreversible physical actuation occurs unless safety, policy, and evidence conditions are all valid at the moment of execution. It is not a passive audit log. It is an active enforcement boundary.</p>
     <div class="page-meta-row">
-      <span class="page-badge badge-design">In Design &mdash; Prior art February 2026</span>
+      <span class="page-badge badge-design">Research instantiation &mdash; prior art February 2026</span>
       <span class="page-badge badge-tla">TLA+ Verified &mdash; 2.4M states</span>
       <span class="page-badge badge-doi">DOI: 10.5281/zenodo.18768569</span>
     </div>
@@ -207,7 +147,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label-red">The Zombie Intent Hazard &mdash; prior art February 2026</p>
+      <p class="section-label-red">Kernel domain instantiation &mdash; Zombie Intent Hazard prior art February 2026</p>
     <h2 class="section-h2">The structural failure class that three frontier AI systems missed</h2>
     <p class="section-sub">The Zombie Intent Hazard is not a cybersecurity vulnerability or an edge case. It is a fundamental structural failure class in any system where AI decisions are queued, buffered, or persisted before physical execution. It applies to power grids, autonomous vehicles, medical devices, industrial control systems, autonomous drones, and any system with write-ahead intent and physical actuation.</p>
   </div>

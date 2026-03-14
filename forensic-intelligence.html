@@ -5,68 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AxoDen Forensic Intelligence — Deterministic SOC Investigation | Luminesce Limited</title>
 <meta name="description" content="Deterministic forensic middleware for security operations. Validated against MITRE-MORDOR: 1M events in 6.4 seconds. Causal traversal and Patient Zero identification are deterministic properties of the World Graph topology.">
+<link rel="icon" type="image/png" href="favicon-32.png">
 <style>
-/* ── SELF-HOSTED FONTS — no third-party requests ── */
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-400-normal.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-500-normal.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-600-normal.woff2') format('woff2');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-700-normal.woff2') format('woff2');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('fonts/syne-latin-800-normal.woff2') format('woff2');
-  font-weight: 800; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-300-normal.woff2') format('woff2');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-300-italic.woff2') format('woff2');
-  font-weight: 300; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-400-normal.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-400-italic.woff2') format('woff2');
-  font-weight: 400; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-500-normal.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'DM Mono';
-  src: url('fonts/dm-mono-latin-500-italic.woff2') format('woff2');
-  font-weight: 500; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Geist';
-  src: url('fonts/GeistVariable.woff2') format('woff2');
-  font-weight: 100 900; font-style: normal; font-display: swap;
-}
+/* Using system stacks to avoid broken asset references in the static deploy. */
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -197,7 +138,6 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
       <a href="kernel.html" class="nav-link">Kernel</a>
       <a href="forensic-intelligence.html" class="nav-link active">Forensic Intelligence</a>
       <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
-      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
       <a href="research.html" class="nav-link">Research</a>
       <a href="privacy.html" class="nav-link">Privacy</a>
       <a href="index.html#contact" class="nav-cta">Contact</a>
@@ -349,9 +289,9 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
     <div class="diff-card reveal"><p class="diff-id">D30</p><p class="diff-title">Analyst artefact bundle with multi-format output</p><p class="diff-body">The investigation produces a structured artefact bundle including findings, World Graph snapshot, three-ledger chain, reproducibility manifest, and MITRE ATT&amp;CK tactic bindings. Designed for SOC workflow integration, not raw data export.</p></div>
   </div>
   <div style="margin-top:2.5rem;padding:2rem;background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px" class="reveal">
-    <p style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.75rem">Extended deployment &mdash; SFA Agentic Triage Platform</p>
-    <p style="font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem">Full inline safety-kernel-gated SOC system (373 tests passing)</p>
-    <p style="font-size:0.78rem;line-height:1.75;color:var(--text-m)">The SFA Agentic Triage platform is the full production deployment layer built on top of Forensic Intelligence middleware. It adds a bounded intelligence layer with safety-kernel gating, an immutable forensic ledger, and structured export to STIX 2.1 and OCSF. Dockerised and locally deployed. 373 automated tests passing. This is the system that a regulated enterprise SOC would deploy; Forensic Intelligence is the certifiable forensic middleware layer it depends on.</p>
+    <p style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.75rem">Current productisation path &mdash; CIX deployment line</p>
+    <p style="font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem">Kernel-governed graph investigation workflow for SOC teams</p>
+    <p style="font-size:0.78rem;line-height:1.75;color:var(--text-m)">The current deployment path builds Forensic Intelligence into a kernel-governed investigation workflow with reproducibility manifests, graph-backed analyst outputs, and structured export for downstream SOC tooling. The certifiable substrate is the forensic middleware and World Graph layer described on this page; productisation sits above it, not beside it as a separate wedge.</p>
   </div>
   <div style="margin-top:2.5rem" class="reveal">
     <a href="index.html#contact" class="btn-primary">Request evaluation briefing</a>
@@ -368,7 +308,6 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
       <a href="index.html" class="footer-link">Home</a>
       <a href="kernel.html" class="footer-link">Kernel</a>
       <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
-      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
       <a href="research.html" class="footer-link">Research</a>
       <a href="privacy.html" class="footer-link">Privacy</a>
     </div>
