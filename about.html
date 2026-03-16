@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Erkan Yalcinkaya | AxoDen | Luminesce Limited</title>
+<meta name="description" content="About Erkan Yalcinkaya, engineering physicist, systems architect, and sole author of the AxoDen framework.">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<style>
+/* Using system stacks to avoid broken asset references in the static deploy. */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070b14;color:#b8d0e4;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:root{
+  --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
+  --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;
+  --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
+  --mono:'DM Mono',monospace;--serif:'Syne',system-ui,sans-serif;
+  --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
+}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
+.header-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo-link{display:flex;align-items:center;gap:0.75rem}
+.logo-name{font-family:var(--mono);font-size:0.8rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-h)}
+nav{display:flex;align-items:center;gap:2rem}
+.nav-link{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-m);transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--cyan)}
+.nav-cta{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.45rem 1.1rem;transition:background 0.2s}
+.nav-cta:hover{background:var(--cyan-b)}
+.page-hero{padding:calc(64px + 5rem) var(--pad) 4rem;background:#070b14;position:relative;overflow:hidden;border-bottom:1px solid var(--bg-rule)}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,174,204,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,174,204,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);z-index:0}
+.page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.breadcrumb a{color:var(--text-d);transition:color 0.2s}
+.breadcrumb a:hover{color:var(--cyan)}
+.page-eyebrow{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.8;margin-bottom:1rem}
+.page-h1{letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:900px}
+.page-lead{font-size:1rem;line-height:1.85;color:var(--text-b);max-width:820px;margin-bottom:2rem;border-left:2px solid rgba(0,174,204,0.3);padding-left:1.25rem}
+.page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.page-badge{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid;background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
+.content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.section{padding:5rem 0}
+.section-label{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
+.section-h2{letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
+.section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:760px;margin-bottom:2.5rem}
+.divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
+.about-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,0.85fr);gap:2rem;align-items:start}
+.essay-card,.signal-card,.contact-band{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:6px}
+.essay-card{padding:2.25rem}
+.essay-card p{font-size:0.92rem;line-height:1.9;color:var(--text-b);margin-bottom:1.25rem}
+.essay-card p:last-child{margin-bottom:0}
+.signal-stack{display:flex;flex-direction:column;gap:1.25rem}
+.signal-card{padding:1.5rem}
+.signal-label{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.75rem}
+.signal-title{font-size:1rem;font-weight:600;color:var(--text-h);margin-bottom:0.75rem;line-height:1.4}
+.signal-body{font-size:0.84rem;line-height:1.75;color:var(--text-m)}
+.proof-band{background:linear-gradient(135deg,#0d1e36,#091528);border:1px solid rgba(0,174,204,0.12);border-radius:6px;padding:3rem;position:relative;overflow:hidden}
+.proof-band::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,174,204,0.4),transparent)}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.proof-card{background:rgba(7,11,20,0.55);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.35rem}
+.proof-value{font-family:var(--mono);font-size:1.5rem;color:var(--text-h);margin-bottom:0.4rem}
+.proof-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.5rem}
+.proof-copy{font-size:0.82rem;line-height:1.7;color:var(--text-m)}
+.id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.id-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem}
+.id-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.3rem}
+.id-val{font-family:var(--mono);font-size:0.82rem;color:var(--text-b);line-height:1.5}
+.id-val a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;opacity:0.85}
+.contact-band{padding:2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.contact-band p{font-size:0.9rem;line-height:1.8;color:var(--text-m)}
+.contact-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-end}
+.btn-primary,.btn-outline{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;padding:0.7rem 1.4rem;display:inline-block;transition:background 0.2s,border-color 0.2s,color 0.2s}
+.btn-primary{color:var(--bg);background:var(--cyan)}
+.btn-primary:hover{background:var(--cyan-b)}
+.btn-outline{color:var(--cyan);border:1px solid rgba(0,174,204,0.35)}
+.btn-outline:hover{border-color:var(--cyan)}
+.reveal{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.will-animate{opacity:0;transform:translateY(16px)}
+.reveal.visible{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
+footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-copy{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;color:var(--text-d)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-link{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}
+.footer-link:hover{color:var(--cyan)}
+@media(max-width:900px){
+  nav{display:none}
+  .about-grid,.proof-grid,.contact-band{grid-template-columns:1fr}
+  .contact-actions{justify-content:flex-start}
+  .id-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .id-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0"><defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="400" height="400" fill="#05080F"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/><line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/><line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/><line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/><circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/><rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/><text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text><text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text></svg>
+      <span class="logo-name">AxoDen</span>
+    </a>
+    <nav>
+      <a href="kernel.html" class="nav-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
+      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="privacy.html" class="nav-link">Privacy</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>About</span></div>
+    <p class="page-eyebrow">Founder profile &middot; Framework author &middot; Information Physics</p>
+    <h1 class="page-h1">Erkan Yalcinkaya builds certifiable AI from mathematical structure, not behavioural heuristics.</h1>
+    <p class="page-lead">Erkan Yalcinkaya is an engineering physicist, systems architect, and the sole author of the AxoDen framework. With 25 years of experience across defence systems, software architecture, and applied AI, his work pioneers the emerging discipline of Information Physics, shifting AI safety from behavioural heuristics to certifiable mathematical structure.</p>
+    <div class="page-meta-row">
+      <span class="page-badge">25 years across defence, software, and applied AI</span>
+      <span class="page-badge">Sole author of AxoDen</span>
+      <span class="page-badge">17 DOI-registered publications</span>
+      <span class="page-badge">4 implemented and tested systems</span>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Biography</p>
+    <h2 class="section-h2">From regulated systems to structural AI assurance</h2>
+    <p class="section-sub">The AxoDen thesis comes from direct experience inside environments where certification evidence is scrutinised by assessors, not imagined by product teams.</p>
+  </div>
+  <div class="about-grid">
+    <div class="essay-card reveal">
+      <p>Erkan Yalcinkaya is an engineering physicist, systems architect, and the sole author of the AxoDen framework. With 25 years of experience across defence systems, software architecture, and applied AI, his work pioneers the emerging discipline of Information Physics, shifting AI safety from behavioural heuristics to certifiable mathematical structure.</p>
+      <p>Having spent two decades inside highly regulated enterprises, Erkan understands exactly what certification evidence looks like from an assessor's side of the table. AxoDen was built from a harsh, practical observation: safety-critical AI consistently fails at the governance layer because the industry is trapped managing the bureaucracy of risk rather than the physics of risk. By converting static assumptions into a dynamic Reflexive Epistemic Fabric, his framework ensures that AI systems are mathematically bounded by their structural geometry.</p>
+      <p>AxoDen is the result of three years of solo development alongside full-time consulting. Before a single grant application was submitted, Erkan delivered 17 DOI-registered publications and four fully implemented, tested systems. This is not academic theory; the work is complete, not proposed.</p>
+    </div>
+    <div class="signal-stack">
+      <div class="signal-card reveal">
+        <p class="signal-label">Operating thesis</p>
+        <p class="signal-title">Certification fails when AI governance is treated as paperwork instead of physics.</p>
+        <p class="signal-body">AxoDen reframes safety as a structural property of the evidence graph and governance fabric. The point is not to add another monitoring dashboard. The point is to make safety claims certifiable in the same way other engineering disciplines certify bounded systems.</p>
+      </div>
+      <div class="signal-card reveal">
+        <p class="signal-label">Authorial position</p>
+        <p class="signal-title">The framework was built solo, then published and implemented before funding.</p>
+        <p class="signal-body">That sequencing matters. The publications, implementations, and tests were completed before grant-led scaling activity, which keeps the site’s technical claims grounded in delivered artefacts rather than roadmap language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Delivery record</p>
+    <h2 class="section-h2">Completed work before funding</h2>
+  </div>
+  <div class="proof-band reveal">
+    <div class="proof-grid">
+      <div class="proof-card">
+        <p class="proof-value">17</p>
+        <p class="proof-label">DOI publications</p>
+        <p class="proof-copy">A dated and citable prior-art record covering the AxoDen foundations, topology, runtime governance, and deployment wedges.</p>
+      </div>
+      <div class="proof-card">
+        <p class="proof-value">4</p>
+        <p class="proof-label">Implemented systems</p>
+        <p class="proof-copy">Built, tested systems delivered before grant applications, including the core kernel and domain-specific operational wedges.</p>
+      </div>
+      <div class="proof-card">
+        <p class="proof-value">3 yrs</p>
+        <p class="proof-label">Solo development</p>
+        <p class="proof-copy">Framework development executed alongside full-time consulting, which sharpens the practical bias of the architecture and evidence model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section">
+  <div class="reveal">
+    <p class="section-label">Identifiers</p>
+    <h2 class="section-h2">Company and author registry details</h2>
+  </div>
+  <div class="id-grid">
+    <div class="id-card reveal"><p class="id-label">Company</p><p class="id-val">Luminesce Limited</p></div>
+    <div class="id-card reveal"><p class="id-label">Companies House</p><p class="id-val">15317429</p></div>
+    <div class="id-card reveal"><p class="id-label">VAT</p><p class="id-val">474096567</p></div>
+    <div class="id-card reveal"><p class="id-label">D-U-N-S</p><p class="id-val">231242963</p></div>
+    <div class="id-card reveal"><p class="id-label">ISNI</p><p class="id-val">0000000529733416</p></div>
+    <div class="id-card reveal"><p class="id-label">Ringgold</p><p class="id-val">847099</p></div>
+    <div class="id-card reveal"><p class="id-label">ORCID</p><p class="id-val"><a href="https://orcid.org/0009-0008-6435-3530" target="_blank">0009-0008-6435-3530</a></p></div>
+    <div class="id-card reveal"><p class="id-label">GitHub</p><p class="id-val"><a href="https://github.com/Luminesce-Labs" target="_blank">Luminesce-Labs</a></p></div>
+    <div class="id-card reveal"><p class="id-label">LinkedIn</p><p class="id-val"><a href="https://www.linkedin.com/in/eyk/" target="_blank">linkedin.com/in/eyk</a></p></div>
+    <div class="id-card reveal"><p class="id-label">Location</p><p class="id-val">Guildford, Surrey, UK</p></div>
+    <div class="id-card reveal"><p class="id-label">Copyright</p><p class="id-val">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. Academic use permitted with citation. Commercial use requires licensing.</p></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="contact-band reveal">
+    <div>
+      <p class="section-label" style="margin-bottom:0.5rem">Contact</p>
+      <h2 class="section-h2" style="margin-bottom:0.75rem">Request evaluation material or a technical review</h2>
+      <p>For customer evaluation briefs, conformance profile documentation, licensing enquiries, or technical review sessions, contact Luminesce Limited directly.</p>
+    </div>
+    <div class="contact-actions">
+      <a href="mailto:contact@luminescelimited.com" class="btn-primary">Request evaluation brief</a>
+      <a href="mailto:contact@luminescelimited.com" class="btn-outline">Book technical review</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="kernel.html" class="footer-link">Kernel</a>
+      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
+      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="research.html" class="footer-link">Research</a>
+      <span class="footer-link" style="cursor:default;opacity:0.75">About</span>
+      <a href="privacy.html" class="footer-link">Privacy</a>
+    </div>
+  </div>
+</footer>
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.remove('will-animate');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
+revealEls.forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top > window.innerHeight) {
+    el.classList.add('will-animate');
+    io.observe(el);
+  }
+});
+</script>
+</body>
+</html>

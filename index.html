@@ -452,33 +452,6 @@ nav{display:flex;align-items:center;gap:2rem}
 }
 .rstrip-desc{font-size:0.9rem;line-height:1.65;color:var(--text-m)}
 
-/* ── ABOUT ── */
-.about-grid{
-  display:grid;grid-template-columns:1fr 340px;
-  gap:4rem;align-items:start;
-  margin-top:3rem;
-}
-.about-body p{
-  font-size:0.88rem;line-height:1.85;color:var(--text-m);
-  margin-bottom:1rem;
-}
-.about-body strong{color:var(--text-b);font-weight:500}
-.about-meta{
-  background:var(--bg-card);border:1px solid var(--bg-rule);
-  border-radius:4px;padding:1.75rem;
-  display:flex;flex-direction:column;gap:1rem;
-}
-.meta-row{display:flex;flex-direction:column;gap:0.2rem}
-.meta-label{
-  font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--text-d);
-}
-.meta-val{
-  font-size:0.8rem;color:var(--text-b);
-  font-family:var(--mono);
-}
-.meta-val a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;opacity:0.85}
-
 /* ── CONTACT BAND ── */
 .contact-band{
   background:linear-gradient(135deg,#080d1a,#0a1325);
@@ -632,6 +605,7 @@ footer{
       <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
       <a href="research.html" class="nav-link">Research</a>
       <a href="privacy.html" class="nav-link">Privacy</a>
+      <a href="about.html" class="nav-link">About</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </nav>
   </div>
@@ -656,7 +630,7 @@ footer{
       </p>
       <div class="hero-actions">
         <a href="kernel.html" class="btn-primary">See kernel architecture</a>
-        <a href="research.html" class="btn-outline">16 DOI-registered papers &rarr;</a>
+        <a href="research.html" class="btn-outline">17 DOI-registered papers &rarr;</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-n">421</span><span class="stat-l">Automated tests across the active platform and wedges</span></div>
@@ -895,7 +869,7 @@ footer{
     </div>
     <div class="cred-grid">
       <div class="cred-numbers">
-        <div class="cred-num reveal"><p class="cred-n">16</p><p class="cred-l">DOI-registered Zenodo publications</p></div>
+        <div class="cred-num reveal"><p class="cred-n">17</p><p class="cred-l">DOI-registered Zenodo publications</p></div>
         <div class="cred-num reveal"><p class="cred-n">10</p><p class="cred-l">Formally proved compositional theorems</p></div>
         <div class="cred-num reveal"><p class="cred-n">421</p><p class="cred-l">Automated tests across the active platform and wedges (316 kernel &middot; 81 FI &middot; 24 SB)</p></div>
         <div class="cred-num reveal"><p class="cred-n">3yrs</p><p class="cred-l">Solo development &mdash; zero external funding until 2026</p></div>
@@ -918,7 +892,7 @@ footer{
   <div class="reveal">
     <p class="section-label">Publication record</p>
     <h2 class="section-h2">DOI-registered theoretical foundations</h2>
-    <p class="section-sub">16 publications on Zenodo. All prior art dated and registered. Patent evaluation in progress across 8 identified clusters, 47 high-potential differentiators.</p>
+    <p class="section-sub">17 publications on Zenodo. All prior art dated and registered. Patent evaluation in progress across 8 identified clusters, 47 high-potential differentiators.</p>
   </div>
   <div class="research-strip">
     <a href="https://doi.org/10.5281/zenodo.18633407" target="_blank" class="rstrip-card reveal">
@@ -948,67 +922,9 @@ footer{
     </a>
     <a href="research.html" class="rstrip-card reveal" style="border-color:rgba(0,174,204,0.15);background:linear-gradient(135deg,rgba(0,174,204,0.04),var(--bg-card));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem">
       <p style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);opacity:0.8">Full publication record</p>
-      <p style="font-family:var(--serif);font-size:1.2rem;color:var(--text-h)">16 DOI-registered papers &rarr;</p>
+      <p style="font-family:var(--serif);font-size:1.2rem;color:var(--text-h)">17 DOI-registered papers &rarr;</p>
       <p style="font-size:0.74rem;color:var(--text-m)">ORCID: 0009-0008-6435-3530<br>Mathematical Lineage Explorer</p>
     </a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="reveal">
-    <p class="section-label">About</p>
-    <h2 class="section-h2">Erkan Yalcinkaya &mdash; Luminesce Limited</h2>
-  </div>
-  <div class="about-grid">
-    <div class="about-body reveal">
-      <p>Erkan Yalcinkaya is the architect of AxoDen and the sole author of all primary theoretical contributions. Over 25 years across defence systems engineering, software architecture, and applied AI &mdash; with particular depth in formal verification, information theory, and safety-critical certification.</p>
-      <p>An Engineering Physics background. Two decades inside regulated enterprises gave direct understanding of what certification evidence actually looks like from the assessor's side of the table. <strong>AxoDen was built from a concrete observation: safety-critical AI deployments consistently fail at the governance layer, not the model layer.</strong></p>
-      <p>Three years of solo development alongside full-time consulting. 16 DOI-registered publications and four implemented, tested systems before a single grant application was submitted. The work is complete, not proposed.</p>
-      <p><strong>Academic collaboration:</strong> Professor Yanguo Jing, Dean of AI, University of Cumbria (est. February 2026). References: Professor Ioana Boureanu, University of Surrey; Professor Tom Carlson, UCL.</p>
-    </div>
-    <div class="about-meta reveal">
-      <div class="meta-row">
-        <span class="meta-label">Company</span>
-        <span class="meta-val">Luminesce Limited</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Companies House</span>
-        <span class="meta-val">15317429</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">VAT</span>
-        <span class="meta-val">474096567</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">D-U-N-S</span>
-        <span class="meta-val">231242963</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">ISNI</span>
-        <span class="meta-val">0000000529733416</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Ringgold</span>
-        <span class="meta-val">847099</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">ORCID</span>
-        <span class="meta-val"><a href="https://orcid.org/0009-0008-6435-3530" target="_blank">0009-0008-6435-3530</a></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">GitHub</span>
-        <span class="meta-val"><a href="https://github.com/Luminesce-Labs" target="_blank">Luminesce-Labs</a></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">LinkedIn</span>
-        <span class="meta-val"><a href="https://www.linkedin.com/in/eyk/" target="_blank">linkedin.com/in/eyk</a></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Location</span>
-        <span class="meta-val">Guildford, Surrey, UK</span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1056,6 +972,7 @@ footer{
       <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
       <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
       <a href="research.html" class="footer-link">Research</a>
+      <a href="about.html" class="footer-link">About</a>
       <a href="privacy.html" class="footer-link">Privacy</a>
     </div>
   </div>
