@@ -41,6 +41,10 @@ nav{display:flex;align-items:center;gap:2rem}
 .page-badge{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid}
 .badge-mvp{background:rgba(200,168,75,0.08);color:var(--gold);border-color:rgba(200,168,75,0.2)}
 .badge-doi{background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
+.hero-video-shell{margin-top:2rem;max-width:1120px}
+.hero-video-frame{background:rgba(4,9,18,0.92);border:1px solid rgba(0,174,204,0.16);border-radius:6px;padding:1rem;box-shadow:0 18px 60px rgba(0,0,0,0.22)}
+.hero-video-player{display:block;width:100%;height:auto;border-radius:4px;background:#02060d}
+.hero-video-note{font-size:0.8rem;line-height:1.7;color:var(--text-d);margin-top:0.85rem}
 .content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 .section{padding:5rem 0}
 .section-label{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
@@ -121,6 +125,15 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
       <span class="page-badge badge-doi">NASEM validated problem statement</span>
       <span class="page-badge badge-doi">NeuralSAT-compatible architecture</span>
       <span class="page-badge badge-mvp">Shared-kernel parity verified</span>
+    </div>
+    <div class="hero-video-shell">
+      <div class="hero-video-frame">
+        <video class="hero-video-player" controls playsinline preload="metadata">
+          <source src="AxoDen__The_Circuit_Breaker_for_AI_Reality.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p class="hero-video-note">Spectrum Bridge overview video served directly from the AxoDen site using browser-native MP4 playback.</p>
+      </div>
     </div>
   </div>
 </div>
