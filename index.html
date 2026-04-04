@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AxoDen — Bounded Trust for AI | By Maths and Information Physics | Luminesce Limited</title>
-<meta name="description" content="AxoDen delivers bounded trust for AI by maths and information physics. Structural proof of governance for regulated industries, critical infrastructure, and high-stakes AI systems.">
+<title>AxoDen — Bounded Trust for High-Stakes AI | Luminesce Limited</title>
+<meta name="description" content="AxoDen is a governance layer for high-stakes AI. It helps regulated teams review evidence, control boundaries, and safety constraints around AI systems.">
 <link rel="icon" type="image/png" href="favicon-32.png">
 <style>
 /* Using system stacks to avoid broken asset references in the static deploy. */
@@ -620,12 +620,12 @@ footer{
       <h1 class="hero-h1">
         Bounded Trust<br>for <em>AI</em>
       </h1>
-      <p class="hero-category">By Maths and Information Physics.</p>
+      <p class="hero-category">For safety-critical AI.</p>
       <p class="hero-thesis">
-        The field needs what Shannon gave information theory: foundational mathematical definitions that make provable guarantees possible. Not more empirical tooling.
+        AxoDen is a governance layer for AI systems that need to be trusted in the real world.
       </p>
       <p class="hero-subthesis">
-        AxoDen delivers bounded trust for autonomous and high-stakes AI systems through structural proof rather than statistical testing of behaviour. Entropy budgets, independence scores, and topology certificates produce artefacts that safety assessors under DO-178C, IEC&nbsp;61508, and DEF&nbsp;STAN&nbsp;00-56 already know how to evaluate.
+        It does not try to prove that a model is always right. It proves that the system around the model stays within clear safety, evidence, and control boundaries. That gives evaluators something they can actually assess.
       </p>
       <div class="hero-actions">
         <a href="kernel.html" class="btn-primary">See kernel architecture</a>
@@ -634,9 +634,9 @@ footer{
       <div class="hero-stats">
         <div class="stat"><span class="stat-n">19</span><span class="stat-l">DOI-listed records in the maintained canonical list</span></div>
         <div class="stat"><span class="stat-n">10</span><span class="stat-l">Formally proved theorems</span></div>
-        <div class="stat"><span class="stat-n">1M+</span><span class="stat-l">MITRE-MORDOR events processed in current wedge validation</span></div>
+        <div class="stat"><span class="stat-n">1M+</span><span class="stat-l">MITRE-MORDOR events processed in wedge validation</span></div>
         <div class="stat"><span class="stat-n">v0.9.0</span><span class="stat-l">Kernel runtime posture in the March 2026 canon</span></div>
-        <div class="stat"><span class="stat-n">O(E)</span><span class="stat-l">Topology verification</span></div>
+        <div class="stat"><span class="stat-n">2</span><span class="stat-l">Active commercial wedge lines</span></div>
       </div>
     </div>
     <div class="hero-logo-panel">
@@ -695,18 +695,18 @@ footer{
   </div>
 </div>
 
-<!-- SHANNON / THESIS BAND -->
+<!-- WHAT AXODEN CHANGES -->
 <div class="shannon-band">
   <div class="shannon-inner">
     <div class="shannon-quote-wrap reveal">
-      <p class="shannon-kicker">The governing thesis</p>
-      <p class="shannon-quote">"The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs."</p>
-      <p class="shannon-source">Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application. Luminesce Limited.</p>
+      <p class="shannon-kicker">What AxoDen changes</p>
+      <p class="shannon-quote">Move AI assurance from output scoring to system control.</p>
+      <p class="shannon-source">In plain terms: fewer assumptions, clearer evidence, and safer decisions.</p>
     </div>
     <div class="shannon-body reveal">
-      <p>Aviation software engineering resolved the testing problem fifty years ago. DO-178C requires <strong>structural proof of the design</strong> rather than exhaustive testing of outputs. AI safety has not made this transition.</p>
-      <p>AxoDen makes it. The framework does not prove individual models correct &mdash; that remains intractable at production scale. It proves the correctness of the <strong>governance architecture around the model</strong>. The kernel's guarantees are independent of which model is used inside it.</p>
-      <p>The result: entropy budgets, independence scores, topology certificates, and cryptographic ledger records &mdash; artefacts that existing safety assessors already know how to evaluate. <strong>No new certification path required.</strong></p>
+      <p>Most AI safety tooling watches model outputs and hopes that enough testing will reveal the important failures.</p>
+      <p>AxoDen takes a different route. It controls how evidence enters the system, how decisions are checked, and what is allowed to happen next.</p>
+      <p>The result is a set of audit-ready records and safety controls that existing assessors can review without inventing a new approval route.</p>
     </div>
   </div>
 </div>
@@ -716,23 +716,23 @@ footer{
   <div class="reveal">
     <p class="section-label">The structural gap</p>
     <h2 class="section-h2">Why regulated industries cannot certify AI today</h2>
-    <p class="section-sub">Regulators under the EU AI Act, ISO 26262, DO-178C, IEC 61508, and IEC 62304 require formal certification evidence for high-stakes AI. ISO/IEC TR 5469:2024 identifies the gap explicitly: no existing approach produces compositional independence certificates from structural proof rather than statistical testing.</p>
+    <p class="section-sub">High-stakes sectors need evidence that a system will stay inside safe limits. Most AI tooling can produce dashboards and test results, but not the kind of structural evidence a regulator or safety assessor expects.</p>
   </div>
   <div class="problem-grid">
     <div class="prob-card reveal">
       <p class="prob-icon">Gap 01</p>
       <p class="prob-title">Behavioural testing cannot provide structural guarantees</p>
-      <p class="prob-body">No finite test suite covers the input space of a real system. Vendors produce statistical dashboards. Assessors need structural certificates. The gap is categorical, not quantitative.</p>
+      <p class="prob-body">No test set can cover a real production system. Vendors can show output scores; assessors still need evidence about how the system is built and controlled.</p>
     </div>
     <div class="prob-card reveal">
       <p class="prob-icon">Gap 02</p>
       <p class="prob-title">Independence is assumed, never engineered or proved</p>
-      <p class="prob-body">Every multi-agent safety architecture implicitly assumes constituent nodes fail independently. When correlated failures occur, Byzantine assumptions break and audit chains are silently invalidated. No published framework produces a constructive independence certificate of this form — the gap is identified in the ARIA Mathematics for Safe AI programme call.</p>
+      <p class="prob-body">Many safety architectures assume that backup components fail independently. When that assumption is wrong, the safety case weakens without warning.</p>
     </div>
     <div class="prob-card reveal">
       <p class="prob-icon">Gap 03</p>
       <p class="prob-title">RF and sensor modalities have no certification path at all</p>
-      <p class="prob-body">The NASEM workshop on non-linguistic AI (August 2025) named four specific RF-AI integration barriers with no current solution: no natural token boundaries, throughput mismatch, Shannon-limit ambiguity, and common-mode failure risk.</p>
+      <p class="prob-body">At the RF and sensor boundary, the assurance problem is harder again. The evidence can be ambiguous, too fast, or shared across components in ways that break ordinary AI safety assumptions.</p>
     </div>
   </div>
 </section>
@@ -741,22 +741,22 @@ footer{
 <section class="section" style="padding-top:0">
   <div class="thesis-wrap reveal">
     <p class="section-label">The AxoDen answer</p>
-    <p class="thesis-statement">Every existing approach treats independence as something to be observed. AxoDen treats it as something to be engineered and proved. This is the distinction ARIA identifies as missing from the field.</p>
+    <p class="thesis-statement">AxoDen turns the safety case into a design problem. Instead of asking whether the model looks reliable after the fact, it asks whether the whole system is built so unsafe states are bounded, visible, and governable.</p>
     <div class="thesis-pillars">
       <div class="pillar">
         <p class="pillar-num">EBDP</p>
         <p class="pillar-name">Entropy-Bounded Data Pipelines</p>
-        <p class="pillar-body">Hard information-theoretic ceilings H(X<sub>k</sub>&nbsp;|&nbsp;X<sub>k-1</sub>) &le; H<sup>max</sup><sub>k</sub> on uncertainty accumulation at every pipeline stage. Uncertainty cannot silently compound.</p>
+        <p class="pillar-body">Controls how uncertainty builds up across a pipeline so it cannot silently compound.</p>
       </div>
       <div class="pillar">
         <p class="pillar-num">EFI</p>
         <p class="pillar-name">Entropy-Frugal Intelligence</p>
-        <p class="pillar-body">Stage-level influence bounds I(X<sub>k</sub>;&nbsp;M<sub>k</sub>) &le; &epsilon;<sub>k</sub> detect and reject fabricated outputs by bounding the information a model may introduce without evidential backing. Hallucinations are structurally bounded.</p>
+        <p class="pillar-body">Limits how much unsupported information a model can add, so fabricated outputs are constrained by design.</p>
       </div>
       <div class="pillar">
         <p class="pillar-num">CFS</p>
         <p class="pillar-name">Coprime-Factor Security</p>
-        <p class="pillar-body">Independence engineered across four orthogonal planes: cryptographic, vendor, supply-chain, and operational. CMRI := sup&nbsp;&rho;&#772;<sub>ij</sub>(&omega;) &le; 1 &minus; IS<sub>min</sub> + &epsilon;<sub>A</sub>. A design constraint, not a dashboard reading.</p>
+        <p class="pillar-body">Builds independence into the architecture across multiple trust layers, instead of assuming it will appear in testing.</p>
       </div>
     </div>
   </div>
@@ -767,7 +767,7 @@ footer{
   <div class="reveal">
     <p class="section-label">The product stack</p>
     <h2 class="section-h2">One platform. Two wedges. Multiple domain instantiations.</h2>
-    <p class="section-sub">AxoDen is a formal governance substrate for high-stakes AI. The Kernel is the core platform. Forensic Intelligence and Spectrum Bridge are the two active commercial wedges. Grid Flight Recorder and related cyber-physical work are domain instantiations of the same kernel, not separate product lines.</p>
+    <p class="section-sub">The Kernel is the core platform. Forensic Intelligence and Spectrum Bridge are the two current commercial wedges. Grid Flight Recorder and related cyber-physical work show how the same Kernel can be applied in other domains.</p>
   </div>
   <div class="product-tiles">
 
@@ -776,7 +776,7 @@ footer{
       <p class="ptile-domain">Core Platform &middot; Defence &middot; Critical Infrastructure</p>
       <p class="ptile-bestfor">Best for: defence primes and CNI operators needing a certifiable governance layer for any AI system</p>
       <p class="ptile-name">AxoDen Kernel</p>
-      <p class="ptile-body">The compositional safety kernel. Enforces entropy bounds, independence scores, and topology certificates across AI deployments. The maintained canon tracks Engine Room, runtime controls, ASIL-M, and topological certification as the core platform spine. Current implementation posture is tracked in downstream repos, with active conformance surfaces including forensic and spectrum deployments.</p>
+      <p class="ptile-body">The core governance layer for high-stakes AI. It keeps evidence, control, and independence inside defined limits so assessors can review the system in a structured way.</p>
       <p class="ptile-proof"><span>10 formally proved theorems</span> &middot; 103 registered differentiators &middot; TLA+ verified &middot; DO-178C / IEC 61508 / DEF STAN 00-56 aligned</p>
       <span class="ptile-link">Kernel technical detail &rarr;</span>
     </a>
@@ -786,7 +786,7 @@ footer{
       <p class="ptile-domain">Cybersecurity Operations &middot; SOC &middot; Incident Response</p>
       <p class="ptile-bestfor">Best for: SOC/IR teams and MSSPs needing deterministic, legally defensible forensic investigation with no model dependency</p>
       <p class="ptile-name">AxoDen Forensic Intelligence</p>
-      <p class="ptile-body">Deterministic forensic middleware between SIEM/SOAR and analyst workflow. The forensic reasoning capability is innate &mdash; built into a graph-native World Graph architecture. The system does not learn to find Patient Zero. Graph topology makes causal traversal, temporal separation, and lateral movement detection a deterministic property of the design. No model retraining required.</p>
+      <p class="ptile-body">Deterministic forensic middleware between SIEM/SOAR and analyst workflow. It reconstructs incidents through graph structure rather than model guesswork, so the same evidence gives the same result every time.</p>
       <p class="ptile-proof">Validated: <span>MITRE-MORDOR &mdash; 1M events in ~6.4 seconds</span> &middot; ~95% noise reduction &middot; replay-grade artefact bundle &middot; STIX 2.1 / OCSF-ready outputs</p>
       <span class="ptile-link">Full technical detail &rarr;</span>
     </a>
@@ -796,7 +796,7 @@ footer{
       <p class="ptile-domain">RF-AI Integration &middot; Defence &middot; SIGINT &middot; Radar</p>
       <p class="ptile-bestfor">Best for: defence programmes integrating AI at the RF boundary where no certification path currently exists</p>
       <p class="ptile-name">AxoDen Spectrum Bridge</p>
-      <p class="ptile-body">The missing certification layer at the RF-to-AI boundary. Physics-informed pre-gates enforce a four-state operating envelope (NOMINAL / DEGRADED / SAFE_MODE / HALT). The system cannot silently emit evidence beyond its physical capability. Addresses the four NASEM-identified RF-AI barriers: token boundaries, throughput mismatch, Shannon-limit ambiguity, and common-mode failure risk.</p>
+      <p class="ptile-body">A control layer between RF sensing and downstream AI. It blocks signals that fall outside the allowed physical envelope and keeps the evidence chain honest before inference begins.</p>
       <p class="ptile-proof"><span>Profile-bound assurance posture</span> &middot; Phase 1 MVE complete &middot; shared-kernel parity verified &middot; field validation in progress</p>
       <span class="ptile-link">Spectrum Bridge detail &rarr;</span>
     </a>
@@ -812,7 +812,7 @@ footer{
   <div class="reveal">
     <p class="section-label">Competitive position</p>
     <h2 class="section-h2">Where every existing approach falls short</h2>
-    <p class="section-sub">Every existing framework in this comparison treats independence as something to observe rather than to engineer and prove. The distinction is categorical, and it is the basis of the ARIA programme call.</p>
+    <p class="section-sub">Most comparators solve part of the problem: model orchestration, software verification, hardware trust, or supply-chain provenance. AxoDen is different because it focuses on the governance layer that ties those pieces together.</p>
   </div>
   <div class="comp-wrap reveal">
     <table class="comp-table">
@@ -863,8 +863,8 @@ footer{
 <div class="cred-band">
   <div class="cred-inner">
     <div class="reveal">
-      <p class="section-label">Track record</p>
-      <h2 class="section-h2">Built independently. Validated against real problems.</h2>
+    <p class="section-label">Track record</p>
+    <h2 class="section-h2">Built independently. Validated against real problems.</h2>
     </div>
     <div class="cred-grid">
       <div class="cred-numbers">
@@ -876,10 +876,9 @@ footer{
         <div class="cred-num reveal"><p class="cred-n">25yrs</p><p class="cred-l">Regulated enterprise &mdash; defence, financial services, critical infrastructure</p></div>
       </div>
       <div class="cred-story reveal">
-        <p>AxoDen was built from a concrete observation: <strong>safety-critical AI deployments consistently fail at the governance layer, not the model layer.</strong> Red-teaming, constitutional AI, and runtime monitoring all detect failure. AxoDen is designed to prevent it.</p>
-        <p>The work was built entirely in evenings and weekends alongside a full-time consulting contract until January 2026, without institutional support or external funding. The result is a coherent, versioned body of work with a stable platform nucleus and two active wedge lines &mdash; not a proposal for work that might be done.</p>
-        <p>The theoretical foundations already exist. They are DOI-registered, version-controlled, and linked to active downstream runtime work, with current implementation posture tracked in the March 2026 canon. Active submissions to ARIA Mathematics for Safe AI, ENCODE Fellowship, LTFF, and related programmes are intended to fund machine-checking, independent validation, and standards-body engagement.</p>
-        <p>The domain breadth remains important, but it now serves a clearer portfolio structure. Cybersecurity and RF-AI are the two active wedge paths. Microgrids, industrial control, medical devices, autonomous vehicles, and related cyber-physical systems remain evidence that the kernel generalises beyond a single market.</p>
+        <p>AxoDen started from one observation: safety-critical AI systems usually fail at the governance layer, not because the model is slightly less accurate than expected.</p>
+        <p>The work was built independently until early 2026 and already exists as a versioned body of research, runtime work, and product wedges. It is not a concept deck waiting to be started.</p>
+        <p>Cybersecurity and RF-AI are the two current wedge paths. The wider cyber-physical work shows that the same Kernel can generalise beyond one market.</p>
         <p><strong>Academic collaboration:</strong> Professor Yanguo Jing, Dean of AI, University of Cumbria (established February 2026). References: Professor Ioana Boureanu, University of Surrey (Cybersecurity); Professor Tom Carlson, UCL (Robotics).</p>
       </div>
     </div>
@@ -891,7 +890,7 @@ footer{
   <div class="reveal">
     <p class="section-label">Publication record</p>
     <h2 class="section-h2">DOI-registered theoretical foundations</h2>
-    <p class="section-sub">The maintained canonical inventory tracks 19 DOI-listed Zenodo records as of 30 March 2026. All prior art is dated and registered. Patent evaluation is in progress across 8 identified clusters and 47 high-potential differentiators.</p>
+    <p class="section-sub">The maintained canonical inventory tracks 19 DOI-listed Zenodo records as of 30 March 2026. The research page is the best place to browse the record in a simpler, structured format.</p>
   </div>
   <div class="research-strip">
     <a href="https://doi.org/10.5281/zenodo.18633407" target="_blank" class="rstrip-card reveal">

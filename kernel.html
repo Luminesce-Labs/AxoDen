@@ -168,7 +168,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
     <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Kernel</span></div>
     <p class="page-eyebrow">Core Platform &mdash; current runtime posture v0.9.0</p>
     <h1 class="page-h1">The Kernel: AI governance proved, not tested</h1>
-    <p class="page-lead">The AxoDen Kernel enforces hard information-theoretic, independence, and topological invariants on any AI reasoning system. Its guarantees are independent of which model operates inside its enforcement boundary. It does not make models more accurate. It makes their governance architecture bounded and provable.</p>
+    <p class="page-lead">The AxoDen Kernel is the control layer around an AI system. It limits how uncertainty builds up, checks that safety components are genuinely independent, and produces evidence that an assessor can review. It does not try to prove a model is perfect. It proves that the surrounding governance system stays within defined bounds.</p>
     <div class="page-meta-row">
       <span class="page-badge badge-live">Runtime posture tracked in canon</span>
       <span class="page-badge badge-doi">10 formally proved theorems</span>
@@ -180,8 +180,8 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 
 <div style="background:#0b1220;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
   <div style="max-width:1280px;margin:0 auto">
-    <p style="font-family:'DM Mono',monospace;font-size:0.71rem;letter-spacing:0.13em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
-    <p style="font-family:'Syne',system-ui,sans-serif;font-weight:700;font-size:clamp(1.1rem,1.9vw,1.4rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">"The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs."</p>
+    <p style="font-family:'DM Mono',monospace;font-size:0.71rem;letter-spacing:0.13em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">In plain English</p>
+    <p style="font-family:'Syne',system-ui,sans-serif;font-weight:700;font-size:clamp(1.1rem,1.9vw,1.4rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">The Kernel decides what evidence must exist before an AI system is trusted, what limits it must stay inside, and what must be logged for later review.</p>
   </div>
 </div>
 
@@ -189,9 +189,9 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">The governing invariant</p>
-    <h2 class="section-h2">The CMRI Bound: Independence as a design constraint</h2>
-    <p class="section-sub">The Correlation-Minimised Redundancy Invariant is a normative requirement, not a statistical measurement. A system either satisfies it by construction or it does not. No test suite can substitute for this guarantee.</p>
+    <p class="section-label">What the Kernel does in practice</p>
+    <h2 class="section-h2">It proves that backup safety components are not failing in the same way</h2>
+    <p class="section-sub">A safety architecture is not meaningfully redundant if every checker shares the same weakness. The Kernel treats independence as a design requirement, not a hope. The CMRI bound is the formal rule used to express that requirement for technical reviewers.</p>
   </div>
   <div class="cmri-block reveal">
     <div class="cmri-formula-wrap">
@@ -199,35 +199,35 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
         <span class="def">CMRI</span> := sup<sub>&omega;&isin;&Omega;</sub> max<sub>i&lt;j</sub> <span class="def">&rho;&#772;<sub>ij</sub>(&omega;)</span> &le; <span class="bound">1 &minus; IS<sub>min</sub> + &epsilon;<sub>A</sub></span>
       </div>
     </div>
-    <p class="cmri-note">Where <strong>&rho;&#772;<sub>ij</sub>(&omega;)</strong> is the trust-failure correlation between any two redundant AI components at operating point &omega;, <strong>IS<sub>min</sub></strong> is the minimum independence score threshold, defined per ASIL-M deployment level, and <strong>&epsilon;<sub>A</sub></strong> is the architectural tolerance. Enforced by structural CFS constraints &mdash; not measured post-hoc. AxoDen&apos;s contribution is to engineer and verify this bound through structural constraints and audit-grade evidence, rather than assume it holds.</p>
+    <p class="cmri-note">In plain terms, this asks a simple question: if one safeguard fails, how likely is it that the others fail for the same reason? <strong>IS<sub>min</sub></strong> is the minimum independence level required for a deployment profile, and <strong>&epsilon;<sub>A</sub></strong> is the small design tolerance allowed by the architecture. The Kernel is built to engineer and verify this bound, not measure it after the fact and hope for the best.</p>
   </div>
 </section>
 <hr class="divider">
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">Mathematical foundations</p>
-    <h2 class="section-h2">Three compositional pillars</h2>
-    <p class="section-sub">EBDP, EFI, and CFS are independently certifiable and compose algebraically: local constraints become global guarantees. When a component changes, only local constraints require re-verification.</p>
+    <p class="section-label">Three controls the Kernel enforces</p>
+    <h2 class="section-h2">Local checks that add up to a system-level safety case</h2>
+    <p class="section-sub">The Kernel is built around three controls. Each one can be reviewed on its own, and together they form the broader safety case. When one component changes, only the local control around that component needs to be checked again.</p>
   </div>
   <div class="pillars-grid">
     <div class="pillar-card pillar-ebdp reveal">
       <p class="pillar-tag">EBDP</p>
       <p class="pillar-name">Entropy-Bounded Data Pipelines</p>
-      <div class="pillar-formula">H(X<sub>k</sub> | X<sub>k-1</sub>) &le; H<sup>max</sup><sub>k</sub></div>
-      <p class="pillar-body">At every pipeline stage k, uncertainty accumulation is bounded from above. Entropy cannot silently compound across stages. A breach is a detectable invariant violation, not a statistical anomaly. Applied to sensor fusion, RAG pipelines, multi-hop reasoning chains, and RF signal ingestion. DOI: <a href="https://doi.org/10.5281/zenodo.17709557" target="_blank" style="color:var(--cyan)">10.5281/zenodo.17709557</a></p>
+      <div class="pillar-formula">Limits how uncertainty grows</div>
+      <p class="pillar-body">Each pipeline stage has a defined ceiling for uncertainty. If a stage goes beyond that ceiling, the system treats it as a clear control breach rather than a vague warning sign. Applied to sensor fusion, RAG pipelines, multi-step reasoning, and RF ingestion. DOI: <a href="https://doi.org/10.5281/zenodo.17709557" target="_blank" style="color:var(--cyan)">10.5281/zenodo.17709557</a></p>
     </div>
     <div class="pillar-card pillar-efi reveal">
       <p class="pillar-tag">EFI</p>
       <p class="pillar-name">Entropy-Frugal Intelligence</p>
-      <div class="pillar-formula">I(X<sub>k</sub> ; M<sub>k</sub>) &le; &epsilon;<sub>k</sub></div>
-      <p class="pillar-body">The mutual information a model may introduce at stage k &mdash; not derivable from evidential inputs &mdash; is bounded by &epsilon;<sub>k</sub>. Model-injected hallucination is structurally limited, not behaviourally monitored. The bound is derivable from the Evidence Object chain without inspecting model internals.</p>
+      <div class="pillar-formula">Limits unsupported model influence</div>
+      <p class="pillar-body">A model is only allowed to add a bounded amount of information that is not already supported by the evidence it received. That means hallucinations are constrained by design, not merely watched after they happen.</p>
     </div>
     <div class="pillar-card pillar-cfs reveal">
       <p class="pillar-tag">CFS</p>
       <p class="pillar-name">Coprime-Factor Security</p>
-      <div class="pillar-formula">IS<sub>att</sub> &ge; IS<sub>min</sub> &nbsp;&nbsp; v<sub>2</sub>(h<sub>A</sub> &oplus; h<sub>B</sub>) &le; k<sub>max</sub></div>
-      <p class="pillar-body">Independence engineered across four planes: cryptographic roots, vendor supply chains, operational domains, and hardware platforms. The 2-adic distance metric v<sub>2</sub>(h<sub>A</sub> &oplus; h<sub>B</sub>) provides bit-level structural correlation detection with no dependency on behavioural observation. DOI: <a href="https://doi.org/10.5281/zenodo.17690358" target="_blank" style="color:var(--cyan)">10.5281/zenodo.17690358</a></p>
+      <div class="pillar-formula">Builds independence into trust layers</div>
+      <p class="pillar-body">The Kernel separates trust across cryptographic roots, vendors, operations, and hardware so one shared weakness cannot silently invalidate the whole safety case. DOI: <a href="https://doi.org/10.5281/zenodo.17690358" target="_blank" style="color:var(--cyan)">10.5281/zenodo.17690358</a></p>
     </div>
   </div>
 </section>
@@ -237,7 +237,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   <div class="reveal">
     <p class="section-label">Formal proof corpus &mdash; DOI: 10.5281/zenodo.18633407</p>
     <h2 class="section-h2">Ten compositional theorems across five domains</h2>
-    <p class="section-sub">Each theorem proves that a local AxoDen constraint composes into a global safety guarantee. Together they span classical pipelines, kinetic cyber defence, ransomware recovery, hybrid quantum-classical systems, and adversarial conditions.</p>
+    <p class="section-sub">These theorems show that local Kernel constraints can add up to a wider safety guarantee. They cover classical pipelines, cyber defence, ransomware recovery, hybrid quantum-classical systems, and adversarial conditions.</p>
   </div>
   <div class="theorems-grid">
     <div class="theorem-card reveal"><p class="theorem-num">T-01</p><p class="theorem-domain">Classical &middot; EBDP</p><p class="theorem-name">Entropy Ceiling Composition</p><p class="theorem-body">Stage-level entropy bounds compose into a system-level Shannon entropy ceiling. A pipeline satisfying EBDP at every stage satisfies it globally without recomputing global state.</p></div>
@@ -258,20 +258,20 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   <div class="reveal">
     <p class="section-label">Runtime enforcement</p>
     <h2 class="section-h2">Three runtime control modules</h2>
-    <p class="section-sub">The Kernel enforces its invariants at runtime through three coupled modules. All state transitions are deterministic, ledger-backed, and cryptographically auditable. There is no ambiguity in adversarial conditions.</p>
+    <p class="section-sub">The Kernel uses three runtime modules to enforce its controls. Together they decide what state the system is in, what actions are allowed, and what evidence must be kept.</p>
   </div>
   <div class="runtime-grid">
     <div class="rt-card reveal">
       <p class="rt-tag">ARV</p>
       <p class="rt-name">Adaptive Runtime Verifier</p>
       <p class="rt-full">Autonomous Recovery Valve</p>
-      <p class="rt-body">Deterministic fail-closed policy enforcement via a named precedence chain. When multiple rules apply, the highest-precedence rule governs &mdash; no ambiguity under adversarial conditions. Evaluates intents against topological geofence and quorum-state bounds in O(1) time with respect to intent count, ensuring bounded authorisation latency regardless of queue depth.</p>
+      <p class="rt-body">A fail-closed policy engine. When several rules apply, it follows a clear priority order so the system does not drift into ambiguous behaviour under pressure.</p>
     </div>
     <div class="rt-card reveal">
       <p class="rt-tag">MQ</p>
       <p class="rt-name">Monitoring Quad</p>
       <p class="rt-full">Four explicit operating states &mdash; no implicit state</p>
-      <p class="rt-body">State coupling and degradation management across four explicit operating states. Every AI component governed by the Kernel is in exactly one state at all times. Transitions are deterministic and logged as Canonical Attestation Records (CARs). No silent state drift.</p>
+      <p class="rt-body">A simple four-state operating model. Every governed component is always in one known state, and every state change is logged as a Canonical Attestation Record.</p>
       <div class="rt-states">
         <span class="rt-state st-nominal">NOMINAL</span>
         <span class="rt-state st-degraded">DEGRADED</span>
@@ -283,7 +283,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
       <p class="rt-tag">VSR</p>
       <p class="rt-name">Verification &amp; Safety Register</p>
       <p class="rt-full">Certificate-based topology verification</p>
-      <p class="rt-body">Maintains the ER-topo.cert rotation system certificate for the current evidence graph. Verifies topology in O(E) time without recomputing the embedding. The verification key is decoupled from the construction key &mdash; any independent party can verify the topology certificate without access to the construction process or trust in the constructor.</p>
+      <p class="rt-body">Keeps the current topology certificate for the evidence graph and lets an independent reviewer verify it without recreating the whole graph construction process.</p>
     </div>
   </div>
 </section>
