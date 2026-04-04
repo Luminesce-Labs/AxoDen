@@ -807,64 +807,12 @@ footer{
   </div>
 </section>
 
-<!-- COMPETITOR DISPLACEMENT -->
-<section class="section" style="padding-top:0" id="differentiation">
-  <div class="reveal">
-    <p class="section-label">Competitive position</p>
-    <h2 class="section-h2">Where every existing approach falls short</h2>
-    <p class="section-sub">Most comparators solve part of the problem: model orchestration, software verification, hardware trust, or supply-chain provenance. AxoDen is different because it focuses on the governance layer that ties those pieces together.</p>
-  </div>
-  <div class="comp-wrap reveal">
-    <table class="comp-table">
-      <thead>
-        <tr>
-          <th>Comparator</th>
-          <th>Their approach</th>
-          <th>AxoDen distinction</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Intel SGX / AMD SEV-SNP</td>
-          <td>Trust that hardware TEE roots fail independently</td>
-          <td><em>ASIL-M engineers &rho; &le; &epsilon; as a design-time invariant. Independence is proved, not assumed.</em></td>
-        </tr>
-        <tr>
-          <td>DARPA CHESS / SOTERIA</td>
-          <td>Software correctness verification</td>
-          <td><em>Do not address CMRI, the Zombie Intent Hazard, or compositional independence theorems across domains.</em></td>
-        </tr>
-        <tr>
-          <td>LangChain / AutoGPT / CrewAI</td>
-          <td>Agent orchestration</td>
-          <td><em>No formal safety layer, no independence metric, no certification path. AxoDen operates as the governance layer above these frameworks.</em></td>
-        </tr>
-        <tr>
-          <td>in-toto / SLSA</td>
-          <td>Build-time supply-chain provenance</td>
-          <td><em>Static. Does not address runtime independence under adversarial negotiation or correlated failure across agent coalitions.</em></td>
-        </tr>
-        <tr>
-          <td>PBFT / HotStuff / Raft</td>
-          <td>Assume f &lt; n/3 Byzantine nodes fail independently</td>
-          <td><em>No mechanism to verify or engineer the independence assumption itself. AxoDen is the missing layer beneath Byzantine consensus.</em></td>
-        </tr>
-        <tr>
-          <td>Generic SIEM/SOAR + AI triage</td>
-          <td>Train LLMs to reason about incidents</td>
-          <td><em>Forensic Intelligence does not learn. Causal traversal and Patient Zero identification are deterministic properties of the graph topology. Same input, identical output, every time.</em></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
 <!-- CREDENTIALS BAND -->
 <div class="cred-band">
   <div class="cred-inner">
     <div class="reveal">
-    <p class="section-label">Track record</p>
-    <h2 class="section-h2">Built independently. Validated against real problems.</h2>
+      <p class="section-label">Track record</p>
+      <h2 class="section-h2">Built independently. Validated against real problems.</h2>
     </div>
     <div class="cred-grid">
       <div class="cred-numbers">
@@ -876,9 +824,7 @@ footer{
         <div class="cred-num reveal"><p class="cred-n">25yrs</p><p class="cred-l">Regulated enterprise &mdash; defence, financial services, critical infrastructure</p></div>
       </div>
       <div class="cred-story reveal">
-        <p>AxoDen started from one observation: safety-critical AI systems usually fail at the governance layer, not because the model is slightly less accurate than expected.</p>
-        <p>The work was built independently until early 2026 and already exists as a versioned body of research, runtime work, and product wedges. It is not a concept deck waiting to be started.</p>
-        <p>Cybersecurity and RF-AI are the two current wedge paths. The wider cyber-physical work shows that the same Kernel can generalise beyond one market.</p>
+        <p>AxoDen started from one observation: high-stakes AI usually fails at the governance layer. The work now exists as a versioned research record, a core platform, and two active wedge paths in cybersecurity and RF-AI.</p>
         <p><strong>Academic collaboration:</strong> Professor Yanguo Jing, Dean of AI, University of Cumbria (established February 2026). References: Professor Ioana Boureanu, University of Surrey (Cybersecurity); Professor Tom Carlson, UCL (Robotics).</p>
       </div>
     </div>
@@ -893,35 +839,10 @@ footer{
     <p class="section-sub">The maintained canonical inventory tracks 19 DOI-listed Zenodo records as of 30 March 2026. The research page is the best place to browse the record in a simpler, structured format.</p>
   </div>
   <div class="research-strip">
-    <a href="https://doi.org/10.5281/zenodo.18633407" target="_blank" class="rstrip-card reveal">
-      <p class="rstrip-doi">10.5281/zenodo.18633407</p>
-      <p class="rstrip-title">AxoDen Unified Mathematical Backbone</p>
-      <p class="rstrip-desc">Formal system-level AI assurance framework unifying bounded uncertainty, bounded influence, engineered independence, multi-agent coherence, and closed-loop verification.</p>
-    </a>
-    <a href="https://doi.org/10.5281/zenodo.18146418" target="_blank" class="rstrip-card reveal">
-      <p class="rstrip-doi">10.5281/zenodo.18146418</p>
-      <p class="rstrip-title">The Thermodynamics of Agency</p>
-      <p class="rstrip-desc">Explains why unbounded intelligence fails in safety-critical settings and why architecture, rather than output monitoring alone, must restore control.</p>
-    </a>
-    <a href="https://doi.org/10.5281/zenodo.18700538" target="_blank" class="rstrip-card reveal">
-      <p class="rstrip-doi">10.5281/zenodo.18700538</p>
-      <p class="rstrip-title">The Topology of Reasoning</p>
-      <p class="rstrip-desc">Develops the structural invariants and topological safety metrics used to certify AI evidence graphs rather than merely score model outputs.</p>
-    </a>
-    <a href="https://doi.org/10.5281/zenodo.18757292" target="_blank" class="rstrip-card reveal">
-      <p class="rstrip-doi">10.5281/zenodo.18757292</p>
-      <p class="rstrip-title">The Zombie Intent Hazard</p>
-      <p class="rstrip-desc">Identifies and formally solves a crash-persistence safety hazard in which stale intents can be executed after reboot under changed physical conditions.</p>
-    </a>
-    <a href="https://doi.org/10.5281/zenodo.17690760" target="_blank" class="rstrip-card reveal">
-      <p class="rstrip-doi">10.5281/zenodo.17690760</p>
-      <p class="rstrip-title">ASIL-M: AI Safety Integrity Level &mdash; Multi-Root Trust Architecture</p>
-      <p class="rstrip-desc">Engineers trust diversity through multi-root attestation, cryptographic heterogeneity, and formal non-correlation rather than assumed independence.</p>
-    </a>
     <a href="research.html" class="rstrip-card reveal" style="border-color:rgba(0,174,204,0.15);background:linear-gradient(135deg,rgba(0,174,204,0.04),var(--bg-card));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem">
-      <p style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);opacity:0.8">Full publication record</p>
+      <p style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);opacity:0.8">Research record</p>
       <p style="font-family:var(--serif);font-size:1.2rem;color:var(--text-h)">19 DOI-listed records &rarr;</p>
-      <p style="font-size:0.74rem;color:var(--text-m)">ORCID: 0009-0008-6435-3530<br>Mathematical Lineage Explorer</p>
+      <p style="font-size:0.74rem;color:var(--text-m)">Browse the maintained publication list and the simplified research summary.</p>
     </a>
   </div>
 </section>

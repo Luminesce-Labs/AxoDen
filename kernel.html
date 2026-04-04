@@ -235,27 +235,6 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">Formal proof corpus &mdash; DOI: 10.5281/zenodo.18633407</p>
-    <h2 class="section-h2">Ten compositional theorems across five domains</h2>
-    <p class="section-sub">These theorems show that local Kernel constraints can add up to a wider safety guarantee. They cover classical pipelines, cyber defence, ransomware recovery, hybrid quantum-classical systems, and adversarial conditions.</p>
-  </div>
-  <div class="theorems-grid">
-    <div class="theorem-card reveal"><p class="theorem-num">T-01</p><p class="theorem-domain">Classical &middot; EBDP</p><p class="theorem-name">Entropy Ceiling Composition</p><p class="theorem-body">Stage-level entropy bounds compose into a system-level Shannon entropy ceiling. A pipeline satisfying EBDP at every stage satisfies it globally without recomputing global state.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-02</p><p class="theorem-domain">Classical &middot; EFI</p><p class="theorem-name">Influence Bound Propagation</p><p class="theorem-body">Model-injected mutual information cannot exceed the sum of stage-level EFI bounds. Hallucination accumulation is globally bounded from local stage contracts alone.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-03</p><p class="theorem-domain">Classical &middot; CFS</p><p class="theorem-name">Coprime Independence Guarantee</p><p class="theorem-body">Algebraically coprime monitor-root pairs cannot share a common factor vulnerability. Independence is a constructive property, not a probabilistic assertion.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-04</p><p class="theorem-domain">Kinetic &middot; EBDP+CFS</p><p class="theorem-name">Kinetic Control Constraint Composition</p><p class="theorem-body">Under bounded physical disturbance and adversarial negotiation, kinetic control commands satisfy the CMRI bound with probability derivable from structural parameters alone.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-05</p><p class="theorem-domain">Kinetic &middot; EFI</p><p class="theorem-name">Actuation Influence Ceiling</p><p class="theorem-body">The EFI bound on actuator command pipelines guarantees no single sensor modality contributes disproportionate mutual information to an irreversible actuation decision.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-06</p><p class="theorem-domain">Ransomware &middot; CFS</p><p class="theorem-name">Ransomware Recovery Isolation</p><p class="theorem-body">Under CFS constraints, a ransomware event on one monitor root cannot propagate to coprime roots. Recovery corridors are structurally isolated by construction.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-07</p><p class="theorem-domain">Adversarial &middot; EBDP</p><p class="theorem-name">Adversarial Entropy Resistance</p><p class="theorem-body">Under bounded adversarial injection, EBDP stage ceilings remain valid provided the adversary cannot exceed H<sup>max</sup><sub>k</sub> without triggering a detectable stage violation.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-08</p><p class="theorem-domain">Adversarial &middot; EFI+CFS</p><p class="theorem-name">Coordinated Attack Bound</p><p class="theorem-body">A coordinated adversary targeting multiple AI components cannot corrupt the CMRI bound without violating at least one EFI or CFS constraint that is independently detectable.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-09</p><p class="theorem-domain">Quantum-Classical &middot; EBDP</p><p class="theorem-name">Von Neumann-Shannon Entropy Bridge</p><p class="theorem-body">Q-EBDP extends classical entropy bounds to quantum subsystems using von Neumann entropy S(&rho;). The EBDP composition theorem holds across classical and quantum pipeline stages without modification.</p></div>
-    <div class="theorem-card reveal"><p class="theorem-num">T-10</p><p class="theorem-domain">Quantum-Classical &middot; CFS</p><p class="theorem-name">Quantum Coprime Basis Independence</p><p class="theorem-body">Coprime-basis engineering over GF(2<sup>n</sup>) polynomial factorisation prevents common-mode calibration failures across redundant quantum-classical AI components. <a href="https://doi.org/10.5281/zenodo.18213048" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18213048</a></p></div>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
     <p class="section-label">Runtime enforcement</p>
     <h2 class="section-h2">Three runtime control modules</h2>
     <p class="section-sub">The Kernel uses three runtime modules to enforce its controls. Together they decide what state the system is in, what actions are allowed, and what evidence must be kept.</p>
@@ -291,39 +270,9 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">Key innovation &mdash; patent evaluation in progress</p>
-    <h2 class="section-h2">ER-topo.cert: O(E) certificate-based topology verification</h2>
-    <p class="section-sub">The same asymmetry that makes public-key cryptography operationally feasible, applied to AI evidence graph topology. Construction is expensive, done once by a trusted producer. Verification is linear time, done by any independent party. Prior art established and DOI-registered February 2026.</p>
-  </div>
-  <div class="two-col">
-    <div class="ertopo-card reveal">
-      <p class="ertopo-title">Construction-verification separation</p>
-      <p class="ertopo-body">A trusted producer constructs the rotation system certificate for the evidence graph (O(E log g) where g is genus). Any verifier checks the certificate in O(E) time by traversing the face-cycle structure. The verifier does not recompute the embedding. <strong>No equivalent architecture exists in distributed systems or formal verification literature.</strong></p>
-      <div class="ertopo-spec">ER-topo.cert v0.3<br>
-Mode A &mdash; external certificate, pre-built by trusted producer<br>
-Mode B &mdash; reserved (authority delegation)<br>
-Mode C &mdash; JIT heuristic-construct / exact-verify pipeline<br>
-DOI: 10.5281/zenodo.18320118</div>
-      <p class="ertopo-body">The three-mode protocol means the certificate can be pre-computed for known topologies, delegated for dynamic environments, or constructed just-in-time under time pressure with exact verification following independently.</p>
-    </div>
-    <div class="ertopo-card reveal">
-      <p class="ertopo-title">Flat torus wrap-ledger representation</p>
-      <p class="ertopo-body">Non-planar evidence graphs &mdash; arising in multi-agent systems with lateral movement, recursive reasoning, or cross-domain data flows &mdash; require a representation preserving topological structure across ledger operations.</p>
-      <div class="ertopo-spec">Flat torus [0,2&pi;) &times; [0,2&pi;) with explicit wrap shifts<br>
-Per-dart wrap shift: &delta;<sub>w</sub> = (dx, dy) &isin; &#8484;<sub>2</sub> &times; &#8484;<sub>2</sub><br>
-Face-cycle shift invariant: &sum; &delta;<sub>w</sub> = 0 (mod 2) per face<br>
-Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
-      <p class="ertopo-body">This representation enables certificate-based verification of higher-genus evidence graphs without coordinate projection or global state recomputation. <strong>No equivalent in distributed ledger or formal verification literature.</strong> Part II extending to genus-2+ surfaces is the primary current research deliverable.</p>
-    </div>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
     <p class="section-label">Deployment profiles</p>
     <h2 class="section-h2">ASIL-M: Five graduated trust profiles</h2>
-    <p class="section-sub">ASIL-M provides five deployment profiles mapping AxoDen invariants onto existing safety standards. No new certification path is invented. Existing assessors evaluate existing artefact types at each level. <a href="https://doi.org/10.5281/zenodo.17690760" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.17690760</a></p>
+    <p class="section-sub">ASIL-M maps the Kernel onto existing safety standards. In practice, it gives evaluators a graded route from monitored deployment to mission-critical use. <a href="https://doi.org/10.5281/zenodo.17690760" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.17690760</a></p>
   </div>
   <div class="asil-wrap reveal">
     <table class="asil-table">
@@ -338,68 +287,7 @@ Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
     </table>
   </div>
   <div style="margin-top:1.5rem" class="reveal">
-    <p style="font-size:0.8rem;line-height:1.75;color:var(--text-m);max-width:800px"><strong style="color:var(--text-b)">Asymmetric Dual Verification (ASIL-M Appendix D, D75):</strong> Formally proved 62% risk reduction without 2&times; compute overhead. Symmetric dual redundancy is the only currently documented alternative; no competing framework has quantified an asymmetric variant. Patent evaluation in progress.</p>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Impossibility results and structural mechanisms &mdash; prior art February 2026</p>
-    <h2 class="section-h2">Eight named prior art records in AI governance architecture</h2>
-    <p class="section-sub">Eight previously undocumented failure classes and structural mechanisms, each named, dated, and registered as prior art in February 2026. Three are vulnerability classes (ZIH, God Key, AIC). Five are novel architectural mechanisms without equivalent in existing literature. The ZIH result includes an internal, prompt-sensitive architectural review finding in which evaluated frontier-model runs did not identify the hazard class, alongside TLA+ verification across 2.4 million reachable states with zero counterexamples. None of these appear in STRIDE, PASTA, or any standard threat or design taxonomy.</p>
-  </div>
-  <div class="vuln-grid">
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">ZIH &mdash; TLA+ Verified &mdash; Universal failure class</p>
-      <p class="vuln-name">Zombie Intent Hazard</p>
-      <p class="vuln-body">A universal structural failure class in any system where AI decisions are queued, buffered, or persisted before physical execution. Not a cybersecurity vulnerability. Applies equally to power grids, autonomous vehicles, medical devices, industrial control systems, and autonomous drones. A stale intent executes under conditions for which it was never valid. In the internal architectural review used for this work, evaluated frontier-model runs did not identify the class. TLA+ verified, 52 named state transitions, zero counterexamples across 2.4M states.</p>
-      <p class="vuln-doi"><a href="https://doi.org/10.5281/zenodo.18757292" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18757292</a></p>
-    </div>
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">God Key &mdash; Named, February 2026</p>
-      <p class="vuln-name">God Key &mdash; Single Root Silent Invalidation</p>
-      <p class="vuln-body">An audit architecture with a single signing root allows silent, retroactive invalidation of the entire audit chain. Compromise of one key undermines all past audit evidence without any observable indicator. The CFS multi-root architecture with coprime signing keys is the direct structural countermeasure.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; DOI registration in progress</p>
-    </div>
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">AIC &mdash; Named, February 2026</p>
-      <p class="vuln-name">Async Ingestion Collapse</p>
-      <p class="vuln-body">Adversarial flooding of an asynchronous ingestion pipeline saturates the control-plane evidence capacity without triggering rate-limit alerts. The governance layer operates on stale or partial evidence with no observable indication. EBDP stage ceilings provide direct detection and hard rejection of this failure mode.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; DOI registration in progress</p>
-    </div>
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">EOA-Latch &mdash; Mechanism, February 2026</p>
-      <p class="vuln-name">Evidence-of-Authorisation Latch</p>
-      <p class="vuln-body">The structural mechanism that makes physical actuation logically subsequent to evidence existence rather than temporally prior to it. No irreversible action may be initiated unless the AxoDen Kernel has verified context freshness, safety invariants, and sensor quorum integrity at the moment of execution. Prior art established February 2026.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; Grid Flight Recorder architecture</p>
-    </div>
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">OTT &mdash; Mechanism, February 2026</p>
-      <p class="vuln-name">One-Time Actuation Ticket</p>
-      <p class="vuln-body">A cryptographically scoped, single-use authorisation token that binds a specific intent to a specific boot session, preventing replay across state boundaries. Directly prevents the Zombie Intent Hazard at the authorisation layer. Novel mechanism with no equivalent in existing access control or Byzantine consensus literature. Prior art established February 2026.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; Grid Flight Recorder architecture</p>
-    </div>
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">RAQT &mdash; Mechanism, February 2026</p>
-      <p class="vuln-name">Reboot-Anchored Quorum Token</p>
-      <p class="vuln-body">Queued intents are bound to volatile boot-session IDs derived from device key, boot timestamp, and entropy seed. A reboot, power cycle, or controlled restart mathematically invalidates all previously queued intents. Commands computed under old state cannot execute under new state. Novel session-binding mechanism. Prior art established February 2026.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; Grid Flight Recorder architecture</p>
-    </div>
-  </div>
-  <div class="vuln-grid" style="margin-top:1.25rem">
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">Diversity Beacon &mdash; Mechanism, February 2026</p>
-      <p class="vuln-name">Diversity Beacon</p>
-      <p class="vuln-body">A cryptographic liveness and diversity signal broadcast periodically from each CFS monitor root to prove operational independence in real time. Unlike static attestation, the Diversity Beacon establishes that independence claims are active rather than historical. Novel mechanism with no equivalent in TEE attestation or Byzantine consensus literature. Prior art established February 2026.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; CFS architecture</p>
-    </div>
-    <div class="vuln-card reveal">
-      <p class="vuln-tag">Grid Flight Recorder &mdash; Architecture, February 2026</p>
-      <p class="vuln-name">Grid Flight Recorder &mdash; Verified Actuation Firewall</p>
-      <p class="vuln-body">The architectural pattern of combining an append-only, hash-chained actuation record (analogous to an aviation flight data recorder) with an active enforcement boundary that gates physical actuation on evidence validity. The combination of immutable record and active gate is novel. Prior art as architecture established February 2026.</p>
-      <p class="vuln-doi">Prior art: February 2026 &middot; <a href="grid-flight-recorder.html" style="color:var(--cyan)">Full technical detail &rarr;</a></p>
-    </div>
+    <p style="font-size:0.8rem;line-height:1.75;color:var(--text-m);max-width:800px"><strong style="color:var(--text-b)">Asymmetric Dual Verification:</strong> a lower-overhead alternative to symmetric dual redundancy, documented in the ASIL-M appendix and treated as part of the current patent review set.</p>
   </div>
 </section>
 <hr class="divider">
@@ -408,7 +296,7 @@ Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
   <div class="reveal">
     <p class="section-label">Regulatory alignment</p>
     <h2 class="section-h2">Existing certification paths. No new approval route required.</h2>
-    <p class="section-sub">AxoDen produces artefacts that assessors under existing standards already know how to evaluate. The certification path is not novel. The evidence package that fills it is.</p>
+    <p class="section-sub">AxoDen is designed to fit existing review routes. The novelty is the evidence package, not the approval route.</p>
   </div>
   <div class="std-grid">
     <div class="std-card reveal"><p class="std-name">DO-178C</p><p class="std-desc">Aviation software. DAL-A through DAL-E. ASIL-M L3/L4 maps onto DAL-A/B structural coverage objectives. CAR chain satisfies traceability requirements.</p><span class="std-status">ASIL-M L3/L4</span></div>
@@ -425,29 +313,9 @@ Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">Competitive displacement</p>
-    <h2 class="section-h2">Where every existing approach stops</h2>
-  </div>
-  <div class="comp-wrap reveal">
-    <table class="comp-table">
-      <thead><tr><th>Comparator</th><th>Their approach</th><th>Structural gap</th><th>AxoDen position</th></tr></thead>
-      <tbody>
-        <tr><td>Intel SGX / AMD SEV-SNP</td><td>Hardware-enforced trust isolation</td><td>Assumes TEE roots fail independently. No mechanism to verify or engineer this assumption.</td><td><em>ASIL-M engineers &rho; &le; &epsilon; as a structural invariant. Independence is proved, not assumed.</em></td></tr>
-        <tr><td>DARPA CHESS / SOTERIA</td><td>Formal software correctness verification</td><td>Proves model correctness &mdash; intractable at production scale. Does not address CMRI, ZIH, or compositional independence across domains.</td><td><em>Proves governance architecture correctness. Tractable at production scale. Model-agnostic.</em></td></tr>
-        <tr><td>LangChain / AutoGPT / CrewAI</td><td>Multi-agent orchestration</td><td>No formal safety layer, no independence metric, no certification path, no deterministic audit trail.</td><td><em>AxoDen is the governance layer above these frameworks. Not a competitor &mdash; a prerequisite for regulated deployment.</em></td></tr>
-        <tr><td>in-toto / SLSA</td><td>Build-time supply-chain provenance</td><td>Static. No runtime independence enforcement. No adversarial negotiation model. No live topology certification.</td><td><em>Runtime governance, adversarial-resistant independence, and live topology certification are orthogonal capabilities not in their scope.</em></td></tr>
-        <tr><td>PBFT / HotStuff / Raft</td><td>Byzantine fault tolerant consensus assuming f &lt; n/3 independent failures</td><td>The independence of Byzantine failures is an unverified assumption. No mechanism to audit or enforce it.</td><td><em>AxoDen is the missing layer beneath Byzantine consensus that proves the independence assumption holds by construction.</em></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
     <p class="section-label">From deployment to certification</p>
     <h2 class="section-h2">The certification pathway</h2>
-    <p class="section-sub">These are the steps from initial deployment to certification-grade evidence submission. AxoDen does not invent a new certification route. It produces evidence for existing ones.</p>
+    <p class="section-sub">These are the steps from initial deployment to certification-grade evidence submission.</p>
   </div>
   <div class="pathway-steps">
     <div class="pathway-step reveal"><span class="step-num">01</span><div><p class="step-title">Select ASIL-M conformance profile</p><p class="step-desc">Choose L1 through L4 based on consequence severity and applicable standards. The profile determines which artefact categories are required and the IS<sub>min</sub> threshold the design must satisfy.</p><p class="step-artefact">Deliverable: conformance profile selection document</p></div></div>
