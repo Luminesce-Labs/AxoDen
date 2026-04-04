@@ -117,12 +117,12 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
     <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Spectrum Bridge</span></div>
     <p class="page-eyebrow">RF-AI Integration &middot; Defence &middot; SIGINT &middot; Radar &mdash; MVP Phase 1 complete</p>
     <h1 class="page-h1">The missing certification layer at the RF-to-AI boundary</h1>
-    <p class="page-lead">No current AI safety framework addresses the four foundational barriers at the RF-to-AI integration boundary. The NASEM workshop on non-linguistic AI (August 2025) named them specifically as unsolved. Spectrum Bridge is the only published architecture that treats all four as formal assurance requirements.</p>
+    <p class="page-lead">No current AI safety framework adequately addresses the four foundational barriers at the RF-to-AI integration boundary. The NASEM workshop on non-linguistic AI (August 2025) named them specifically as unsolved. Spectrum Bridge is a published architecture designed around all four as formal assurance requirements.</p>
     <div class="page-meta-row">
       <span class="page-badge badge-mvp">Phase 1 MVE complete</span>
-      <span class="page-badge badge-doi">24 tests passing</span>
+      <span class="page-badge badge-doi">Prototype runtime active</span>
       <span class="page-badge badge-doi">NASEM validated problem statement</span>
-      <span class="page-badge badge-doi">NeuralSAT-compatible architecture</span>
+      <span class="page-badge badge-doi">Formal-assurance posture is profile-bound</span>
       <span class="page-badge badge-mvp">Shared-kernel parity verified</span>
     </div>
     <div class="hero-video-shell">
@@ -221,7 +221,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   <div class="diff-grid">
     <div class="diff-card reveal"><p class="diff-id">D77 &mdash; High patent potential</p><p class="diff-title">Normative operating-envelope enforcement (G1-G4 gate sequence)</p><p class="diff-body">The G1-G4 physics pre-gate sequence enforces the normative operating envelope as a formal constraint, not a monitoring threshold. A signal failing any gate is rejected before AI inference. No existing RF-AI framework treats operating envelope as a normative boundary.</p><p class="diff-patent">Patent evaluation in progress</p></div>
     <div class="diff-card reveal"><p class="diff-id">D78</p><p class="diff-title">Audit-grade Evidence Objects with CAR-compatible chain</p><p class="diff-body">Evidence Objects produced by Spectrum Bridge are compatible with the AxoDen CAR audit chain. The same artefact format that governs cybersecurity evidence governs RF signal evidence. A single audit chain covers multi-domain deployments.</p></div>
-    <div class="diff-card reveal"><p class="diff-id">D79 &mdash; High patent potential</p><p class="diff-title">NeuralSAT-compatible deterministic fixed-point architecture</p><p class="diff-body">The Spectrum Bridge architecture is designed for compatibility with NeuralSAT formal verification tooling (VNN-COMP 2024). Safety properties are declared in the normative contract at design time, not asserted post-hoc after deployment. No evaluated RF-AI framework declares NeuralSAT compatibility at design time.</p><p class="diff-patent">Patent evaluation in progress</p></div>
+    <div class="diff-card reveal"><p class="diff-id">D79 &mdash; High patent potential</p><p class="diff-title">Deterministic fixed-point architecture for future formal tooling</p><p class="diff-body">The Spectrum Bridge architecture is designed so formal-assurance encodings can be added without changing the normative contract. Tool-specific claims remain dependent on published encodings and proof artefacts, so the current posture is design-aligned rather than externally verified.</p><p class="diff-patent">Patent evaluation in progress</p></div>
     <div class="diff-card reveal"><p class="diff-id">D33 &mdash; High patent potential</p><p class="diff-title">Physics-informed pre-gates before neural inference</p><p class="diff-body">Physics pre-gates enforce constraints derived from signal physics (Shannon capacity, noise floor, bandwidth limits) before any neural inference occurs. This is architecturally distinct from post-hoc output filtering: the physics constraints are the admission criteria, not the evaluation criteria.</p><p class="diff-patent">Patent evaluation in progress</p></div>
   </div>
   <div style="margin-top:2.5rem" class="reveal">

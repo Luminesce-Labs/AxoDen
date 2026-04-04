@@ -166,11 +166,11 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   <div class="page-hero-grid"></div>
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Kernel</span></div>
-    <p class="page-eyebrow">Core Platform &mdash; v0.8.1 &mdash; C-API frozen</p>
+    <p class="page-eyebrow">Core Platform &mdash; current runtime posture v0.9.0</p>
     <h1 class="page-h1">The Kernel: AI governance proved, not tested</h1>
     <p class="page-lead">The AxoDen Kernel enforces hard information-theoretic, independence, and topological invariants on any AI reasoning system. Its guarantees are independent of which model operates inside its enforcement boundary. It does not make models more accurate. It makes their governance architecture bounded and provable.</p>
     <div class="page-meta-row">
-      <span class="page-badge badge-live">316 kernel tests passing</span>
+      <span class="page-badge badge-live">Runtime posture tracked in canon</span>
       <span class="page-badge badge-doi">10 formally proved theorems</span>
       <span class="page-badge badge-std">DO-178C &middot; IEC 61508 &middot; DEF STAN 00-56</span>
       <span class="page-badge badge-doi">DOI: 10.5281/zenodo.18633407</span>
@@ -199,7 +199,7 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
         <span class="def">CMRI</span> := sup<sub>&omega;&isin;&Omega;</sub> max<sub>i&lt;j</sub> <span class="def">&rho;&#772;<sub>ij</sub>(&omega;)</span> &le; <span class="bound">1 &minus; IS<sub>min</sub> + &epsilon;<sub>A</sub></span>
       </div>
     </div>
-    <p class="cmri-note">Where <strong>&rho;&#772;<sub>ij</sub>(&omega;)</strong> is the trust-failure correlation between any two redundant AI components at operating point &omega;, <strong>IS<sub>min</sub></strong> is the minimum independence score threshold, defined per ASIL-M deployment level, and <strong>&epsilon;<sub>A</sub></strong> is the architectural tolerance. Enforced by structural CFS constraints &mdash; not measured post-hoc. Every existing framework assumes this bound holds. AxoDen is the first to prove it.</p>
+    <p class="cmri-note">Where <strong>&rho;&#772;<sub>ij</sub>(&omega;)</strong> is the trust-failure correlation between any two redundant AI components at operating point &omega;, <strong>IS<sub>min</sub></strong> is the minimum independence score threshold, defined per ASIL-M deployment level, and <strong>&epsilon;<sub>A</sub></strong> is the architectural tolerance. Enforced by structural CFS constraints &mdash; not measured post-hoc. AxoDen&apos;s contribution is to engineer and verify this bound through structural constraints and audit-grade evidence, rather than assume it holds.</p>
   </div>
 </section>
 <hr class="divider">
@@ -347,14 +347,14 @@ Genus extension: Part II &mdash; surfaces of genus &ge; 2</div>
   <div class="reveal">
     <p class="section-label">Impossibility results and structural mechanisms &mdash; prior art February 2026</p>
     <h2 class="section-h2">Eight named prior art records in AI governance architecture</h2>
-    <p class="section-sub">Eight previously undocumented failure classes and structural mechanisms, each named, dated, and registered as prior art in February 2026. Three are vulnerability classes (ZIH, God Key, AIC). Five are novel architectural mechanisms without equivalent in existing literature. The ZIH result precisely: three frontier AI systems independently failed to identify this structural failure class during architectural review; prior art established February 2026; TLA+ verified across 2.4 million reachable states; zero counterexamples. That is a verifiable scientific statement, not a marketing claim. None of these appear in STRIDE, PASTA, or any standard threat or design taxonomy.</p>
+    <p class="section-sub">Eight previously undocumented failure classes and structural mechanisms, each named, dated, and registered as prior art in February 2026. Three are vulnerability classes (ZIH, God Key, AIC). Five are novel architectural mechanisms without equivalent in existing literature. The ZIH result includes an internal, prompt-sensitive architectural review finding in which evaluated frontier-model runs did not identify the hazard class, alongside TLA+ verification across 2.4 million reachable states with zero counterexamples. None of these appear in STRIDE, PASTA, or any standard threat or design taxonomy.</p>
   </div>
   <div class="vuln-grid">
     <div class="vuln-card reveal">
       <p class="vuln-tag">ZIH &mdash; TLA+ Verified &mdash; Universal failure class</p>
       <p class="vuln-name">Zombie Intent Hazard</p>
-      <p class="vuln-body">A universal structural failure class in any system where AI decisions are queued, buffered, or persisted before physical execution. Not a cybersecurity vulnerability. Applies equally to power grids, autonomous vehicles, medical devices, industrial control systems, and autonomous drones. A stale intent executes under conditions for which it was never valid. Three frontier AI systems independently failed to identify the class during architectural review. TLA+ verified, 52 named state transitions, zero counterexamples across 2.4M states.</p>
-      <p class="vuln-doi"><a href="https://doi.org/10.5281/zenodo.18768569" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18768569</a></p>
+      <p class="vuln-body">A universal structural failure class in any system where AI decisions are queued, buffered, or persisted before physical execution. Not a cybersecurity vulnerability. Applies equally to power grids, autonomous vehicles, medical devices, industrial control systems, and autonomous drones. A stale intent executes under conditions for which it was never valid. In the internal architectural review used for this work, evaluated frontier-model runs did not identify the class. TLA+ verified, 52 named state transitions, zero counterexamples across 2.4M states.</p>
+      <p class="vuln-doi"><a href="https://doi.org/10.5281/zenodo.18757292" target="_blank" style="color:var(--cyan)">DOI: 10.5281/zenodo.18757292</a></p>
     </div>
     <div class="vuln-card reveal">
       <p class="vuln-tag">God Key &mdash; Named, February 2026</p>
