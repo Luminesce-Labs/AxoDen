@@ -162,13 +162,6 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
   </div>
 </div>
 
-<div style="background:#0b1220;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
-  <div style="max-width:1280px;margin:0 auto">
-    <p style="font-family:'DM Mono',monospace;font-size:0.71rem;letter-spacing:0.13em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">The governing thesis &mdash; Yalcinkaya, E. (2026). ARIA Mathematics for Safe AI application.</p>
-    <p style="font-family:'Syne',system-ui,sans-serif;font-weight:700;font-size:clamp(1.1rem,1.9vw,1.4rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;The properties that determine whether AI reasoning is certifiable are topological invariants of the evidence graph &mdash; not statistics of model outputs.&rdquo;</p>
-  </div>
-</div>
-
 <div class="content-wrap">
 
 <section class="section">
@@ -192,17 +185,14 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">The structural gap in modern SOC tooling</p>
-    <h2 class="section-h2">Why modern SOCs are structurally failing</h2>
-    <p class="section-sub">The problem is not the volume of alerts. It is that existing tooling cannot structurally separate signal from noise. The failures are architectural, not operational.</p>
+    <p class="section-label">Why it works</p>
+    <h2 class="section-h2">Three differences from conventional AI SOC tooling</h2>
+    <p class="section-sub">The goal is not to add another model on top of the alert stream. The goal is to make investigations reproducible, explainable, and useful to analysts.</p>
   </div>
   <div class="failures-grid">
-    <div class="fail-card reveal"><p class="fail-num">Failure 01</p><p class="fail-title">Alert saturation makes genuine signals invisible</p><p class="fail-body">SIEM tools surface thousands of events per hour. Without structural triage, the ratio of genuine signals to noise approaches zero. Adding more AI models to alert triage adds more noise, not less.</p></div>
-    <div class="fail-card reveal"><p class="fail-num">Failure 02</p><p class="fail-title">No causal structure in the evidence chain</p><p class="fail-body">Timeline-based tools present events in temporal sequence without causal structure. Patient Zero identification requires causal graph traversal. Timeline analysis cannot substitute for it.</p></div>
-    <div class="fail-card reveal"><p class="fail-num">Failure 03</p><p class="fail-title">AI triage tools conflate observation with inference</p><p class="fail-body">Most AI-augmented SOAR platforms produce findings without epistemic labels. An analyst cannot distinguish a directly observed event from a model-interpolated inference. The distinction is legally and operationally material.</p></div>
-    <div class="fail-card reveal"><p class="fail-num">Failure 04</p><p class="fail-title">Results are not reproducible across runs or analysts</p><p class="fail-body">Non-deterministic AI triage produces different findings on different runs. Incident reports written six months later may reflect a reconstruction, not the original investigation. No legal defensibility.</p></div>
-    <div class="fail-card reveal"><p class="fail-num">Failure 05</p><p class="fail-title">No structural separation of high-stakes from low-stakes findings</p><p class="fail-body">Lateral movement, data exfiltration, and credential compromise require different analytical rigour than routine policy violations. Undifferentiated alert queues treat them identically.</p></div>
-    <div class="fail-card reveal"><p class="fail-num">Failure 06</p><p class="fail-title">Threat intelligence correlation is manual</p><p class="fail-body">Mapping findings to MITRE ATT&amp;CK tactics requires analyst time. Without automated adversarial pattern binding, threat intelligence remains a retrospective annotation task rather than a real-time analytical tool.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">01</p><p class="fail-title">It cuts noise before the analyst sees it</p><p class="fail-body">The system reduces a very large event stream into a much smaller set of high-signal findings, instead of asking analysts to work through raw alert volume.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">02</p><p class="fail-title">It follows causal structure, not just event order</p><p class="fail-body">Patient Zero identification and lateral movement tracing come from graph traversal, not from model guesswork or timeline correlation alone.</p></div>
+    <div class="fail-card reveal"><p class="fail-num">03</p><p class="fail-title">It keeps investigations reproducible</p><p class="fail-body">The same evidence gives the same result on every run, with clear labels showing what was observed directly and what was derived.</p></div>
   </div>
 </section>
 <hr class="divider">
@@ -210,28 +200,25 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 <section class="section">
   <div class="reveal">
     <p class="section-label">The AxoDen answer</p>
-    <h2 class="section-h2">Forensic reasoning as an innate property of graph topology</h2>
+    <h2 class="section-h2">Forensic reasoning built into the structure of the system</h2>
   </div>
   <div class="innate-block reveal">
-    <p class="innate-quote">"The system does not learn to find Patient Zero. It finds it because the mathematical structure of the World Graph makes causal traversal, temporal separation, and lateral movement detection a deterministic property of the design."</p>
-    <p class="innate-explain">Conventional AI SOC tools train models to recognise attack patterns. The model quality determines the finding quality. Pattern drift, adversarial evasion, and training data staleness degrade results over time. <strong>AxoDen Forensic Intelligence has no model to degrade.</strong> The World Graph is a directed, typed graph where causal edges are distinct from temporal edges. Lateral movement detection is a graph reachability query. Temporal separation is a topological property. These do not change with adversary behaviour. They are properties of the evidence structure, not properties of a trained model.</p>
+    <p class="innate-quote">The system does not guess where an attack started. It traces the chain of evidence.</p>
+    <p class="innate-explain">Conventional AI SOC tools depend on model quality and retraining. AxoDen Forensic Intelligence instead uses a graph structure where causal, temporal, and lateral relationships are explicit. That means core investigation tasks come from the evidence structure itself, not from a model trying to infer what probably happened.</p>
   </div>
 </section>
 <hr class="divider">
 
 <section class="section">
   <div class="reveal">
-    <p class="section-label">Six-stage investigation pipeline</p>
-    <h2 class="section-h2">From raw event stream to analyst artefact bundle</h2>
-    <p class="section-sub">Every stage is deterministic. The same input produces the same output on every run. Bit-exact replay is a design requirement, not a performance characteristic.</p>
+    <p class="section-label">Investigation workflow</p>
+    <h2 class="section-h2">From raw events to an analyst-ready record</h2>
+    <p class="section-sub">The workflow is deterministic from start to finish. The same input produces the same output on every run.</p>
   </div>
   <div class="pipeline-steps">
-    <div class="pipe-step reveal"><p class="pipe-num">Stage 01</p><p class="pipe-title">Entropy tri-band ingestion and admissibility gating</p><p class="pipe-body">Incoming events are classified into three entropy bands and subjected to admissibility gating before entering the World Graph. Events outside the normative entropy envelope are rejected and logged, not silently dropped.</p><p class="pipe-output">Output: admitted events with entropy classification (D25)</p></div>
-    <div class="pipe-step reveal"><p class="pipe-num">Stage 02</p><p class="pipe-title">World Graph construction with typed edge classification</p><p class="pipe-body">Admitted events are ingested into the World Graph as nodes with typed causal, temporal, and lateral edges. The graph structure makes relationships between events first-class objects, not derived annotations.</p><p class="pipe-output">Output: World Graph with typed edge set</p></div>
-    <div class="pipe-step reveal"><p class="pipe-num">Stage 03</p><p class="pipe-title">Causal and temporal traversal for Patient Zero identification</p><p class="pipe-body">Depth-first causal traversal identifies origin nodes. Temporal separation analysis identifies co-occurrence without causal linkage. Lateral movement detection is a typed reachability query. All three are deterministic graph operations, not model inferences.</p><p class="pipe-output">Output: Patient Zero candidates, lateral movement chains (D29)</p></div>
-    <div class="pipe-step reveal"><p class="pipe-num">Stage 04</p><p class="pipe-title">Three-ledger investigation chain</p><p class="pipe-body">Findings are committed to three separate ledgers: the evidence ledger (raw admitted events), the inference ledger (derived relationships), and the verification ledger (confirmed findings with statistical gate). The separation is structural and auditable.</p><p class="pipe-output">Output: three-ledger chain (D26)</p></div>
-    <div class="pipe-step reveal"><p class="pipe-num">Stage 05</p><p class="pipe-title">Claim-label discipline with statistical verification gate</p><p class="pipe-body">Every finding carries one of three epistemic labels: OBSERVED (directly evidenced), INFERRED (derived by graph traversal), or VERIFIED (passed the statistical gate: CMI + permutation p-value + bootstrap CI). An analyst can act on VERIFIED findings with legal defensibility.</p><p class="pipe-output">Output: labelled findings with epistemic status (D28)</p></div>
-    <div class="pipe-step reveal"><p class="pipe-num">Stage 06</p><p class="pipe-title">Analyst artefact bundle with reproducibility envelope</p><p class="pipe-body">The investigation produces a complete artefact bundle: findings with labels, the World Graph snapshot, the three-ledger chain, the reproducibility manifest (input hash, processing version, output hash), and MITRE ATT&amp;CK tactic bindings. Any analyst, on any platform, at any future date, can reproduce the investigation from the manifest.</p><p class="pipe-output">Output: analyst artefact bundle, reproducibility envelope (D27, D30)</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Step 01</p><p class="pipe-title">Admit and filter the event stream</p><p class="pipe-body">Events are checked before entering the investigation graph. Low-value or out-of-bounds material is filtered early so the analyst is not overwhelmed.</p><p class="pipe-output">Output: admitted event set</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Step 02</p><p class="pipe-title">Build and traverse the World Graph</p><p class="pipe-body">The system maps causal, temporal, and lateral relationships between events, then uses graph traversal to trace origin points and movement paths.</p><p class="pipe-output">Output: investigation graph and candidate findings</p></div>
+    <div class="pipe-step reveal"><p class="pipe-num">Step 03</p><p class="pipe-title">Produce a reproducible analyst record</p><p class="pipe-body">Findings are labelled, logged, and exported with the supporting evidence needed to reproduce the investigation later.</p><p class="pipe-output">Output: analyst artefact bundle</p></div>
   </div>
 </section>
 <hr class="divider">
@@ -239,59 +226,22 @@ footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
 <section class="section">
   <div class="reveal">
     <p class="section-label">Epistemic governance</p>
-    <h2 class="section-h2">OBSERVED / INFERRED / VERIFIED: the only honest claim labels in forensic AI</h2>
-    <p class="section-sub">The distinction between observation and inference is legally and operationally material. No existing AI SOC platform enforces this distinction structurally. AxoDen makes it a first-class design requirement.</p>
+    <h2 class="section-h2">Three claim labels an analyst can trust</h2>
+    <p class="section-sub">The page does not need the full statistical detail on first read. The important point is that the system distinguishes between direct evidence, derived links, and fully checked findings.</p>
   </div>
   <div class="labels-row">
-    <div class="label-card reveal"><span class="label-tag l-obs">OBSERVED</span><p class="label-desc">Directly evidenced by a raw event in the admitted event stream. No model inference involved. The event is in the evidence ledger. An OBSERVED claim is the strongest possible claim in a forensic investigation.</p><p class="label-gate">Gate: admission to evidence ledger</p></div>
-    <div class="label-card reveal"><span class="label-tag l-inf">INFERRED</span><p class="label-desc">Derived by causal or temporal graph traversal from OBSERVED events. No model inference involved &mdash; this is a graph operation. An INFERRED claim can be independently reproduced from the World Graph by any analyst with access to the evidence ledger.</p><p class="label-gate">Gate: causal or temporal graph edge traversal</p></div>
-    <div class="label-card reveal"><span class="label-tag l-ver">VERIFIED</span><p class="label-desc">Passed a three-part statistical gate: Conditional Mutual Information (CMI) to confirm the relationship is not spurious; permutation p-value to establish significance under the null hypothesis; bootstrap confidence interval to bound the effect size. VERIFIED findings carry legal defensibility.</p><p class="label-gate">Gate: CMI + permutation p-value + bootstrap CI</p></div>
+    <div class="label-card reveal"><span class="label-tag l-obs">OBSERVED</span><p class="label-desc">Directly supported by admitted evidence.</p><p class="label-gate">Gate: evidence ledger</p></div>
+    <div class="label-card reveal"><span class="label-tag l-inf">INFERRED</span><p class="label-desc">Derived from graph traversal across the admitted evidence.</p><p class="label-gate">Gate: graph operation</p></div>
+    <div class="label-card reveal"><span class="label-tag l-ver">VERIFIED</span><p class="label-desc">Passed an added statistical check and can be treated as the strongest analyst-ready claim.</p><p class="label-gate">Gate: verification stage</p></div>
   </div>
 </section>
 <hr class="divider">
 
 <section class="section">
-  <div class="reveal">
-    <p class="section-label">Competitive position</p>
-    <h2 class="section-h2">AxoDen Forensic Intelligence vs. conventional AI SOC tools</h2>
-  </div>
-  <div class="comp-wrap reveal">
-    <table class="comp-table">
-      <thead><tr><th>Capability</th><th>Conventional AI SOC Tools</th><th>AxoDen Forensic Intelligence</th></tr></thead>
-      <tbody>
-        <tr><td>Patient Zero identification</td><td>Model-dependent classification</td><td><em>Deterministic graph causal traversal &mdash; no model required</em></td></tr>
-        <tr><td>Lateral movement detection</td><td>Signature matching + anomaly scoring</td><td><em>Typed graph reachability query &mdash; no signatures, no model</em></td></tr>
-        <tr><td>Reproducibility</td><td>Non-deterministic &mdash; results vary per run</td><td><em>Bit-exact replay guaranteed &mdash; reproducibility manifest included</em></td></tr>
-        <tr><td>Epistemic labelling</td><td>None &mdash; all outputs presented as findings</td><td><em>OBSERVED / INFERRED / VERIFIED enforced structurally</em></td></tr>
-        <tr><td>Alert noise reduction</td><td>Varies &mdash; typically 40-70% with tuning</td><td><em>~95% on MITRE-MORDOR ground-truth dataset</em></td></tr>
-        <tr><td>Model retraining required?</td><td>Yes &mdash; as attack patterns evolve</td><td><em>No &mdash; graph topology is invariant to adversary behaviour</em></td></tr>
-        <tr><td>Legal defensibility of findings</td><td>None &mdash; model outputs are not legally attributable</td><td><em>VERIFIED label + reproducibility envelope = legally defensible record</em></td></tr>
-        <tr><td>Audit trail</td><td>Post-hoc log</td><td><em>Three-ledger chain with structural separation of evidence, inference, and verification</em></td></tr>
-        <tr><td>Certification path</td><td>None</td><td><em>ASIL-M L2/L3 artefact bundle available for regulated environments</em></td></tr>
-        <tr><td>Integration</td><td>API or SIEM plugin</td><td><em>Dockerised &mdash; deploys alongside existing SIEM/SOAR stack</em></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Registered differentiators &mdash; D25 through D30</p>
-    <h2 class="section-h2">Six technical innovations with no equivalent in existing platforms</h2>
-  </div>
-  <div class="diff-grid">
-    <div class="diff-card reveal"><p class="diff-id">D25</p><p class="diff-title">Entropy tri-band admissibility classification</p><p class="diff-body">Incoming events classified into three entropy bands before World Graph admission. Events outside the normative envelope are rejected and logged. No existing SIEM or SOAR platform performs entropy-based admissibility gating.</p></div>
-    <div class="diff-card reveal"><p class="diff-id">D26</p><p class="diff-title">Three-ledger investigation chain</p><p class="diff-body">Structural separation of the evidence ledger, inference ledger, and verification ledger. The separation is enforced at write time, not annotated retrospectively. No existing forensic platform provides this structural separation.</p></div>
-    <div class="diff-card reveal"><p class="diff-id">D27 &mdash; High patent potential</p><p class="diff-title">Reproducibility envelope as a first-class artefact</p><p class="diff-body">The investigation manifest records input hash, processing version, and output hash, enabling bit-exact reproduction of any investigation by any analyst at any future date. No existing forensic platform treats reproducibility as a first-class deliverable.</p><p class="diff-patent">Patent evaluation in progress</p></div>
-    <div class="diff-card reveal"><p class="diff-id">D28 &mdash; High patent potential</p><p class="diff-title">Claim-label discipline with statistical verification gate</p><p class="diff-body">The OBSERVED / INFERRED / VERIFIED label system is enforced structurally. VERIFIED requires passing CMI + permutation p-value + bootstrap CI. No existing AI SOC platform enforces epistemic claim labels with statistical gates.</p><p class="diff-patent">Patent evaluation in progress</p></div>
-    <div class="diff-card reveal"><p class="diff-id">D29</p><p class="diff-title">Temporal and counterfactual traversal analytics</p><p class="diff-body">Counterfactual traversal enables investigators to query the World Graph for events that would have occurred under alternative hypotheses. This is a structural capability of the graph, not a model capability.</p></div>
-    <div class="diff-card reveal"><p class="diff-id">D30</p><p class="diff-title">Analyst artefact bundle with multi-format output</p><p class="diff-body">The investigation produces a structured artefact bundle including findings, World Graph snapshot, three-ledger chain, reproducibility manifest, and MITRE ATT&amp;CK tactic bindings. Designed for SOC workflow integration, not raw data export.</p></div>
-  </div>
-  <div style="margin-top:2.5rem;padding:2rem;background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px" class="reveal">
-    <p style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.75rem">Current productisation path &mdash; CIX deployment line</p>
-    <p style="font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem">Kernel-governed graph investigation workflow for SOC teams</p>
-    <p style="font-size:0.78rem;line-height:1.75;color:var(--text-m)">The current deployment path builds Forensic Intelligence into a kernel-governed investigation workflow with reproducibility manifests, graph-backed analyst outputs, and structured export for downstream SOC tooling. The certifiable substrate is the forensic middleware and World Graph layer described on this page; productisation sits above it, not beside it as a separate wedge.</p>
+  <div style="margin-top:1rem;padding:2rem;background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px" class="reveal">
+    <p style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.75rem">Current deployment path</p>
+    <p style="font-size:0.82rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem">Kernel-governed investigation workflow for SOC teams</p>
+    <p style="font-size:0.78rem;line-height:1.75;color:var(--text-m)">The current deployment path places Forensic Intelligence alongside existing SIEM and SOAR tooling, with graph-backed investigation output and reproducibility records for analysts.</p>
   </div>
   <div style="margin-top:2.5rem" class="reveal">
     <a href="index.html#contact" class="btn-primary">Request evaluation briefing</a>
