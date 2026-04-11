@@ -6,6 +6,12 @@
 <title>AxoDen — Bounded Trust for High-Stakes AI | Luminesce Limited</title>
 <meta name="description" content="AxoDen is a governance layer for high-stakes AI. It helps regulated teams review evidence, control boundaries, and safety constraints around AI systems.">
 <link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="canonical" href="https://axoden.io/">
+<meta property="og:title" content="AxoDen — Bounded Trust for High-Stakes AI">
+<meta property="og:description" content="AxoDen is a governance layer for high-stakes AI. It helps regulated teams review evidence, control boundaries, and safety constraints around AI systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://axoden.io/">
+<link rel="stylesheet" href="shared.css">
 <style>
 /* Using system stacks to avoid broken asset references in the static deploy. */
 
@@ -341,6 +347,7 @@ nav{display:flex;align-items:center;gap:2rem}
 }
 .s-live{background:rgba(40,167,69,0.1);color:#4caf50;border:1px solid rgba(40,167,69,0.2)}
 .s-mvp{background:rgba(200,168,75,0.1);color:var(--gold);border:1px solid rgba(200,168,75,0.2)}
+.s-research{background:rgba(0,174,204,0.08);color:var(--cyan);border:1px solid rgba(0,174,204,0.2)}
 .s-design{background:rgba(100,100,180,0.1);color:#8888cc;border:1px solid rgba(100,100,180,0.2)}
 .ptile-domain{
   font-family:var(--mono);font-size:0.71rem;letter-spacing:0.14em;
@@ -533,7 +540,7 @@ footer{
   text-transform:uppercase;color:var(--text-d);
   margin-bottom:1.5rem;
 }
-.routing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.routing-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
 .route-card{
   background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;
   padding:1.75rem;display:flex;flex-direction:column;gap:0.6rem;
@@ -603,12 +610,22 @@ footer{
       <a href="kernel.html" class="nav-link">Kernel</a>
       <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
       <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
       <a href="research.html" class="nav-link">Research</a>
-      <a href="privacy.html" class="nav-link">Privacy</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </nav>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-overlay').classList.toggle('open');this.classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="mobile-overlay">
+  <a href="index.html" class="active">Home</a>
+  <a href="kernel.html">Kernel</a>
+  <a href="forensic-intelligence.html">Forensic Intelligence</a>
+  <a href="spectrum-bridge.html">Spectrum Bridge</a>
+  <a href="grid-flight-recorder.html">Grid Flight Recorder</a>
+  <a href="research.html">Research</a>
+  <a href="#contact" class="nav-cta" onclick="document.querySelector('.mobile-overlay').classList.remove('open');document.querySelector('.hamburger').classList.remove('open')">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -633,7 +650,7 @@ footer{
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-n">19</span><span class="stat-l">DOI-listed records in the maintained canonical list</span></div>
-        <div class="stat"><span class="stat-n">10</span><span class="stat-l">Formally proved theorems</span></div>
+        <div class="stat"><span class="stat-n">6 / 10</span><span class="stat-l">Theorems formally proved out of 10 compositional theorems</span></div>
         <div class="stat"><span class="stat-n">1M+</span><span class="stat-l">MITRE-MORDOR events processed in wedge validation</span></div>
         <div class="stat"><span class="stat-n">v0.9.0</span><span class="stat-l">Kernel runtime posture in the March 2026 canon</span></div>
         <div class="stat"><span class="stat-n">2</span><span class="stat-l">Active commercial wedge lines</span></div>
@@ -690,6 +707,12 @@ footer{
         <p class="route-title">For defence programmes</p>
         <p class="route-desc">SIGINT, radar, and RF-AI teams needing a certification-grade bridge between sensor physics and AI reasoning. Start with Spectrum Bridge.</p>
         <span class="route-cta">Spectrum Bridge &rarr;</span>
+      </a>
+      <a href="grid-flight-recorder.html" class="route-card">
+        <p class="route-icon">&#9670;</p>
+        <p class="route-title">For cyber-physical systems</p>
+        <p class="route-desc">Safety-critical actuation teams needing verified control over queued AI commands. TLA+ verified across 2.4M states. Addresses the Zombie Intent Hazard.</p>
+        <span class="route-cta">Grid Flight Recorder &rarr;</span>
       </a>
     </div>
   </div>
@@ -766,8 +789,8 @@ footer{
 <section class="section" id="products">
   <div class="reveal">
     <p class="section-label">The product stack</p>
-    <h2 class="section-h2">One platform. Two wedges. Multiple domain instantiations.</h2>
-    <p class="section-sub">The Kernel is the core platform. Forensic Intelligence and Spectrum Bridge are the two current commercial wedges. Grid Flight Recorder and related cyber-physical work show how the same Kernel can be applied in other domains.</p>
+    <h2 class="section-h2">One platform. Three domain instantiations.</h2>
+    <p class="section-sub">The Kernel is the core platform. Forensic Intelligence and Spectrum Bridge are the two commercial wedges. Grid Flight Recorder is a research instantiation demonstrating how the same Kernel governs cyber-physical actuation.</p>
   </div>
   <div class="product-tiles">
 
@@ -777,7 +800,7 @@ footer{
       <p class="ptile-bestfor">Best for: defence primes and CNI operators needing a certifiable governance layer for any AI system</p>
       <p class="ptile-name">AxoDen Kernel</p>
       <p class="ptile-body">The core governance layer for high-stakes AI. It keeps evidence, control, and independence inside defined limits so assessors can review the system in a structured way.</p>
-      <p class="ptile-proof"><span>10 formally proved theorems</span> &middot; 103 registered differentiators &middot; TLA+ verified &middot; DO-178C / IEC 61508 / DEF STAN 00-56 aligned</p>
+      <p class="ptile-proof"><span>10 compositional theorems (6 formally proved)</span> &middot; 103 registered differentiators &middot; TLA+ verified &middot; DO-178C / IEC 61508 / DEF STAN 00-56 aligned</p>
       <span class="ptile-link">Kernel technical detail &rarr;</span>
     </a>
 
@@ -801,9 +824,16 @@ footer{
       <span class="ptile-link">Spectrum Bridge detail &rarr;</span>
     </a>
 
-  </div>
-  <div class="thesis-wrap reveal" style="margin-top:2rem">
-    <p class="thesis-statement">Cyber-physical work such as Grid Flight Recorder and the Zombie Intent Hazard remains part of the AxoDen portfolio as a kernel domain instantiation and research proof point. It is not presented as a separate commercial wedge.</p>
+    <a href="grid-flight-recorder.html" class="ptile reveal">
+      <span class="ptile-status s-research">Research instantiation &mdash; prior art February 2026</span>
+      <p class="ptile-domain">Cyber-Physical Systems &middot; Micro-Grid &middot; Actuation Safety</p>
+      <p class="ptile-bestfor">Best for: teams building safety-critical cyber-physical systems where stale AI commands could cause irreversible harm</p>
+      <p class="ptile-name">AxoDen Grid Flight Recorder</p>
+      <p class="ptile-body">Runtime execution assurance for cyber-physical systems. Addresses the Zombie Intent Hazard &mdash; a structural failure where queued AI commands execute under stale conditions after state changes.</p>
+      <p class="ptile-proof"><span>TLA+ verified &mdash; 2.4M reachable states, 0 counterexamples</span> &middot; 3 core safety invariants &middot; DOI: 10.5281/zenodo.18757292</p>
+      <span class="ptile-link">Grid Flight Recorder detail &rarr;</span>
+    </a>
+
   </div>
 </section>
 
@@ -817,7 +847,7 @@ footer{
     <div class="cred-grid">
       <div class="cred-numbers">
         <div class="cred-num reveal"><p class="cred-n">19</p><p class="cred-l">DOI-listed records in the maintained canonical list</p></div>
-        <div class="cred-num reveal"><p class="cred-n">10</p><p class="cred-l">Formally proved compositional theorems</p></div>
+        <div class="cred-num reveal"><p class="cred-n">6 / 10</p><p class="cred-l">Compositional theorems formally proved</p></div>
         <div class="cred-num reveal"><p class="cred-n">2</p><p class="cred-l">Active commercial wedge lines</p></div>
         <div class="cred-num reveal"><p class="cred-n">3yrs</p><p class="cred-l">Solo development &mdash; zero external funding until 2026</p></div>
         <div class="cred-num reveal"><p class="cred-n">3</p><p class="cred-l">Active platform and wedge surfaces</p></div>
@@ -890,6 +920,7 @@ footer{
       <a href="kernel.html" class="footer-link">Kernel</a>
       <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
       <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
+      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
       <a href="research.html" class="footer-link">Research</a>
       <a href="privacy.html" class="footer-link">Privacy</a>
     </div>

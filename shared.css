@@ -1,0 +1,38 @@
+/* ── MOBILE HAMBURGER ── */
+.hamburger{
+  display:none;
+  background:none;border:none;cursor:pointer;
+  padding:0.5rem;z-index:200;
+  flex-direction:column;gap:5px;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--text-m);
+  transition:transform 0.3s,opacity 0.3s;
+}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+.mobile-overlay{
+  display:none;position:fixed;inset:0;z-index:150;
+  background:rgba(7,11,20,0.97);
+  backdrop-filter:blur(16px);
+  flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+  padding:2rem;
+}
+.mobile-overlay.open{display:flex}
+.mobile-overlay a{
+  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--text-m);
+  transition:color 0.2s;padding:0.5rem 1rem;
+}
+.mobile-overlay a:hover,.mobile-overlay a.active{color:var(--cyan)}
+.mobile-overlay .nav-cta{
+  color:var(--bg);background:var(--cyan);border-radius:2px;
+  padding:0.6rem 1.4rem;margin-top:1rem;
+}
+
+@media(max-width:900px){
+  .hamburger{display:flex}
+}
