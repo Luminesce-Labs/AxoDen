@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /privacy.html
 
-Sitemap: https://axoden.io/sitemap.xml
+Sitemap: https://luminescelimited.com/sitemap.xml

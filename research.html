@@ -1,621 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AxoDen Research — Research Record | Luminesce Limited</title>
-<meta name="description" content="AxoDen's public research record, maintained canonical publication list, and formally proved theorem set across AI safety, topology, cyber defence, quantum-classical assurance, and information physics. ORCID: 0009-0008-6435-3530.">
-<link rel="icon" type="image/png" href="favicon-32.png">
-<link rel="canonical" href="https://axoden.io/research.html">
-<meta property="og:title" content="AxoDen Research — Zenodo Publication Record">
-<meta property="og:description" content="DOI-registered publications and research record. 19 canonical records. 10 compositional theorems, 6 formally proved.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://axoden.io/research.html">
-<link rel="stylesheet" href="shared.css">
-<style>
-/* Using system stacks to avoid broken asset references in the static deploy. */
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#070b14;color:#b8d0e4;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-:root{
-  --bg:#070b14;--bg-card:#0f1828;--bg-rule:rgba(255,255,255,0.07);
-  --cyan:#00aecc;--cyan-b:#00d4f5;--gold:#c8a84b;--red:#e05555;--green:#4caf50;
-  --text-h:#dce9f2;--text-b:#b8d0e4;--text-m:#7a9cb8;--text-d:#3d607a;
-  --mono:'DM Mono',monospace;--serif:'Syne',system-ui,sans-serif;
-  --max:1280px;--pad:clamp(1.5rem,4vw,3rem);
-}
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bg-rule);height:64px;display:flex;align-items:center;padding:0 var(--pad)}
-.header-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.logo-link{display:flex;align-items:center;gap:0.75rem}
-.logo-name{font-family:var(--mono);font-size:0.8rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-h)}
-nav{display:flex;align-items:center;gap:2rem}
-.nav-link{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-m);transition:color 0.2s}
-.nav-link:hover,.nav-link.active{color:var(--cyan)}
-.nav-cta{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.45rem 1.1rem;transition:background 0.2s}
-.nav-cta:hover{background:var(--cyan-b)}
-.page-hero{padding:calc(64px + 5rem) var(--pad) 4rem;background:#070b14;position:relative;overflow:hidden;border-bottom:1px solid var(--bg-rule)}
-.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,174,204,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,174,204,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);z-index:0}
-.page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
-.breadcrumb{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
-.breadcrumb a{color:var(--text-d);transition:color 0.2s}.breadcrumb a:hover{color:var(--cyan)}
-.page-eyebrow{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.8;margin-bottom:1rem}
-.page-h1{letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;font-weight:700;color:var(--text-h);line-height:1.15;margin-bottom:1.5rem;max-width:800px}
-.page-lead{font-size:1rem;line-height:1.8;color:var(--text-b);max-width:700px;margin-bottom:2rem;border-left:2px solid rgba(0,174,204,0.3);padding-left:1.25rem}
-.page-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.page-badge{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid;background:rgba(0,174,204,0.08);color:var(--cyan);border-color:rgba(0,174,204,0.2)}
-.content-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-.section{padding:5rem 0}
-.section-label{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);opacity:0.75;margin-bottom:0.75rem}
-.section-h2{letter-spacing:-0.02em;font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:400;color:var(--text-h);line-height:1.2;margin-bottom:1rem}
-.section-sub{font-size:0.88rem;line-height:1.8;color:var(--text-m);max-width:700px;margin-bottom:2.5rem}
-.divider{border:none;border-top:1px solid var(--bg-rule);margin:0}
-
-/* STATS ROW */
-.stats-row{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;padding:2rem;background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px}
-.rstat{display:flex;flex-direction:column;gap:0.2rem}
-.rstat-n{font-family:var(--mono);font-size:1.6rem;font-weight:500;color:var(--text-h);letter-spacing:-0.02em}
-.rstat-l{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-d)}
-
-/* PAPER CARDS */
-.papers-list{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem}
-.paper-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:2rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;transition:border-color 0.2s}
-.paper-card:hover{border-color:rgba(0,174,204,0.2)}
-.paper-type{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem;padding:0.2rem 0.5rem;border-radius:2px;display:inline-block}
-.t-found{background:rgba(0,174,204,0.08);color:var(--cyan);border:1px solid rgba(0,174,204,0.2)}
-.t-sec{background:rgba(224,85,85,0.08);color:var(--red);border:1px solid rgba(224,85,85,0.2)}
-.t-app{background:rgba(200,168,75,0.08);color:var(--gold);border:1px solid rgba(200,168,75,0.2)}
-.t-phys{background:rgba(100,140,200,0.08);color:#7aa0d4;border:1px solid rgba(100,140,200,0.2)}
-.paper-title{font-size:0.95rem;font-weight:600;color:var(--text-h);margin-bottom:0.5rem;line-height:1.4}
-.paper-abstract{font-size:0.86rem;line-height:1.75;color:var(--text-m)}
-.paper-doi-col{display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;min-width:200px}
-.paper-doi-link{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--cyan);opacity:0.75;word-break:break-all;text-align:right;text-decoration:underline;text-underline-offset:3px;transition:opacity 0.2s}
-.paper-doi-link:hover{opacity:1}
-.paper-ver{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-d)}
-
-/* COLLAB */
-.collab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
-.collab-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.75rem}
-.collab-role{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--cyan);opacity:0.7;margin-bottom:0.5rem}
-.collab-name{font-size:0.92rem;font-weight:600;color:var(--text-h);margin-bottom:0.25rem}
-.collab-inst{font-size:0.86rem;color:var(--text-m);margin-bottom:0.5rem}
-.collab-orcid{font-family:var(--mono);font-size:0.75rem;color:var(--text-d)}
-.collab-orcid a{color:var(--cyan);opacity:0.75;text-decoration:underline;text-underline-offset:3px}
-.collab-body{font-size:0.82rem;line-height:1.65;color:var(--text-m);margin-top:0.75rem}
-
-/* EXPLORER */
-.explorer-band{background:linear-gradient(135deg,#0d1e36,#091528);border:1px solid rgba(0,174,204,0.12);border-radius:6px;padding:3rem;position:relative;overflow:hidden;margin:3rem 0}
-.explorer-band::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,174,204,0.4),transparent)}
-.explorer-inner{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
-.explorer-body p{font-size:0.88rem;line-height:1.8;color:var(--text-m);margin-bottom:0.75rem}
-.explorer-body p:last-child{margin-bottom:0}
-.explorer-body strong{color:var(--text-b)}
-.explorer-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--cyan);border-radius:2px;padding:0.7rem 1.4rem;white-space:nowrap;transition:background 0.2s}
-.explorer-link:hover{background:var(--cyan-b)}
-
-/* ID BLOCK */
-.id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
-.id-card{background:var(--bg-card);border:1px solid var(--bg-rule);border-radius:4px;padding:1.5rem}
-.id-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-d);margin-bottom:0.3rem}
-.id-val{font-family:var(--mono);font-size:0.82rem;color:var(--text-b);line-height:1.5}
-.id-val a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;opacity:0.85}
-
-.reveal{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
-.reveal.will-animate{opacity:0;transform:translateY(16px)}
-.reveal.visible{opacity:1;transform:none}
-.no-js .reveal{opacity:1;transform:none}
-footer{border-top:1px solid var(--bg-rule);padding:2.5rem var(--pad)}
-.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.footer-copy{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;color:var(--text-d)}
-.footer-links{display:flex;gap:1.5rem}
-.footer-link{font-family:var(--mono);font-size:0.71rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}.footer-link:hover{color:var(--cyan)}
-@media(max-width:900px){nav{display:none}.collab-grid,.id-grid{grid-template-columns:1fr}.paper-card{grid-template-columns:1fr}.paper-doi-col{align-items:flex-start}.explorer-inner{grid-template-columns:1fr}}
-@media(max-width:600px){.collab-grid{grid-template-columns:1fr}.id-grid{grid-template-columns:1fr 1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | Luminesce Limited</title>
+  <meta name="description" content="Research record for Luminesce Limited, including AxoDen, APASES, DOI publications and current theorem-level work." />
+  <link rel="canonical" href="https://luminescelimited.com/research.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Luminesce Limited" />
+  <meta property="og:title" content="Research | Luminesce Limited" />
+  <meta property="og:description" content="Research record for Luminesce Limited, including AxoDen, APASES, DOI publications and current theorem-level work." />
+  <meta property="og:url" content="https://luminescelimited.com/research.html" />
+  <meta property="og:image" content="https://luminescelimited.com/luminesce-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Research | Luminesce Limited" />
+  <meta name="twitter:description" content="AxoDen, APASES, DOI publications and current theorem-level work." />
+  <meta name="twitter:image" content="https://luminescelimited.com/luminesce-logo.png" />
+  <link rel="icon" href="./favicon-32.png" />
+  <link rel="preload" as="font" href="./source-serif-4-latin-600-normal.woff2" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./shared.css?v=7" />
 </head>
 <body>
-<header>
-  <div class="header-inner">
-    <a href="index.html" class="logo-link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="36" height="36" style="flex-shrink:0"><defs><filter id="ng" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="400" height="400" fill="#05080F"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#1A4570" stroke-width="7" stroke-linejoin="round"/><polygon points="200,72 304,132 304,252 200,312 96,252 96,132" fill="none" stroke="#2E6FA0" stroke-width="1.5" stroke-linejoin="round"/><line x1="30" y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5"/><line x1="30" y1="192" x2="92" y2="192" stroke="#00D4F5" stroke-width="2.5"/><line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5"/><circle cx="30" cy="192" r="9" fill="#00AECC" filter="url(#ng)"/><circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/><rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#ng)"/><rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/><text x="200" y="184" text-anchor="end" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#DCE9F2">AXO</text><text x="200" y="234" text-anchor="start" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#2A9DC4">DEN</text></svg>
-      <span class="logo-name">AxoDen</span>
-    </a>
-    <nav>
-      <a href="kernel.html" class="nav-link">Kernel</a>
-      <a href="forensic-intelligence.html" class="nav-link">Forensic Intelligence</a>
-      <a href="spectrum-bridge.html" class="nav-link">Spectrum Bridge</a>
-      <a href="grid-flight-recorder.html" class="nav-link">Grid Flight Recorder</a>
-      <a href="research.html" class="nav-link active">Research</a>
-      <a href="index.html#contact" class="nav-cta">Contact</a>
-    </nav>
-    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-overlay').classList.toggle('open');this.classList.toggle('open')"><span></span><span></span><span></span></button>
-  </div>
-</header>
-<div class="mobile-overlay">
-  <a href="index.html">Home</a>
-  <a href="kernel.html">Kernel</a>
-  <a href="forensic-intelligence.html">Forensic Intelligence</a>
-  <a href="spectrum-bridge.html">Spectrum Bridge</a>
-  <a href="grid-flight-recorder.html">Grid Flight Recorder</a>
-  <a href="research.html" class="active">Research</a>
-  <a href="index.html#contact" class="nav-cta">Contact</a>
-</div>
-
-<div class="page-hero">
-  <div class="page-hero-grid"></div>
-  <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">AxoDen</a><span>&rsaquo;</span><span>Research</span></div>
-    <p class="page-eyebrow">Zenodo &middot; ORCID 0009-0008-6435-3530 &middot; Prior art dated and registered</p>
-    <h1 class="page-h1">Research record. 10 compositional theorems, 6 formally proved.</h1>
-    <p class="page-lead">This page brings together AxoDen's public research record and a small set of related notes. The maintained canonical list sits in the dataroom and contains 19 DOI entries as of 30 March 2026.</p>
-    <div class="page-meta-row">
-      <span class="page-badge">19 DOI-listed canonical records</span>
-      <span class="page-badge">10 theorems &middot; 6 proved</span>
-      <span class="page-badge">7 maintained categories</span>
-      <span class="page-badge">Updated 30 Mar 2026</span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="Luminesce Limited home">
+        <span class="brand-mark">LL</span>
+        <span><span class="brand-name">Luminesce Limited</span><span class="brand-sub">AI assurance &amp; evidence systems</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="./index.html">Home</a>
+        <a href="./index.html#services">Services</a>
+        <a href="./kernel.html">AxoDen</a>
+        <a href="./defence.html">Defence</a>
+        <a href="./forensic-intelligence.html">Forensics</a>
+        <a class="active" href="./research.html">Research</a>
+        <a class="nav-cta" href="./index.html#contact">Contact</a>
+      </nav>
+      <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span class="hamburger-lines"></span></button>
     </div>
-  </div>
-</div>
-
-<div style="background:#0b1220;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:3rem clamp(1.5rem,4vw,3rem)">
-  <div style="max-width:1280px;margin:0 auto">
-    <p style="font-family:'DM Mono',monospace;font-size:0.71rem;letter-spacing:0.13em;text-transform:uppercase;color:#c8a84b;opacity:0.8;margin-bottom:1rem">Core idea</p>
-    <p style="font-family:'Syne',system-ui,sans-serif;font-weight:700;font-size:clamp(1.1rem,1.9vw,1.4rem);font-style:italic;color:#dce9f2;line-height:1.55;border-left:2px solid #00aecc;padding-left:1.5rem;max-width:860px">&ldquo;Certifiable AI depends on the structure of the evidence chain, not just the model's final output.&rdquo;</p>
-  </div>
-</div>
-
-<div class="content-wrap">
-
-<section class="section">
-  <div class="reveal">
-    <div class="stats-row">
-      <div class="rstat"><p class="rstat-n">19</p><p class="rstat-l">DOI-listed canonical records</p></div>
-      <div class="rstat"><p class="rstat-n">6 / 10</p><p class="rstat-l">Compositional theorems formally proved</p></div>
-      <div class="rstat"><p class="rstat-n">7</p><p class="rstat-l">Canonical publication categories</p></div>
-      <div class="rstat"><p class="rstat-n">2025-26</p><p class="rstat-l">Date range of maintained list</p></div>
-      <div class="rstat"><p class="rstat-n">30 Mar</p><p class="rstat-l">Latest canonical inventory sync</p></div>
-      <div class="rstat"><p class="rstat-n">ORCID</p><p class="rstat-l">0009-0008-6435-3530</p></div>
+    <div class="mobile-overlay" id="mobile-menu">
+      <nav aria-label="Mobile navigation">
+        <a href="./index.html">Home</a>
+        <a href="./index.html#services">Services</a>
+        <a href="./kernel.html">AxoDen</a>
+        <a href="./defence.html">Defence</a>
+        <a href="./forensic-intelligence.html">Forensics</a>
+        <a href="./research.html">Research</a>
+        <a href="./index.html#contact">Contact</a>
+      </nav>
     </div>
-    <p class="section-sub" style="margin-bottom:0">This page follows the maintained canonical inventory in <code>301_Zenodo_Canonical_List.md</code>. Other wedge papers, draft product material, and prior-art notes may appear elsewhere in the dataroom, but they are not counted in the 19-record headline unless they are in that list.</p>
-  </div>
+  </header>
 
-  <div class="explorer-band reveal">
-    <div class="explorer-inner">
-      <div class="explorer-body">
-        <p><strong>Mathematical Lineage Explorer</strong> shows how theorems and core ideas connect across the AxoDen corpus.</p>
-        <p>Use it to trace proof lineage and dependencies. It supports this page, but it is not the maintained publication list itself.</p>
+  <main id="main">
+    <section class="page-hero">
+      <h1>Research that supports product judgement.</h1>
+      <p class="company-line">Research and publications</p>
+      <p class="lead">Luminesce uses research as a working discipline: to define concepts clearly, test assurance claims, and decide which AxoDen capabilities deserve commercial pilot work.</p>
+    </section>
+
+    <section class="proof-strip" aria-label="Research evidence">
+      <div class="proof-inner">
+        <div class="metric"><strong>20+</strong><span>DOI publications on Zenodo</span></div>
+        <div class="metric"><strong>29</strong><span>theorem-level results in the current register</span></div>
+        <div class="metric"><strong>24</strong><span>results currently ESTABLISHED with proof or empirical evidence</span></div>
+        <div class="metric"><strong>24</strong><span>results currently cleared for publication</span></div>
+        <div class="metric"><strong>ORCID</strong><span>0009-0008-6435-3530</span></div>
       </div>
-      <a href="https://luminesce-labs.github.io/axoden-math-foundations" target="_blank" class="explorer-link">Open Explorer &rarr;</a>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><h2>Research themes</h2></div>
+        <p>The public research record should support commercial clarity. Each theme below maps to a service or product direction on the Luminesce site.</p>
+      </div>
+      <div class="grid three">
+        <article class="card tint-teal">
+          <h3>AxoDen compositional safety</h3>
+          <p>Work on deterministic controls, admissibility checks, replayable evidence and bounded trust for AI-enabled systems.</p>
+        </article>
+        <article class="card">
+          <h3>Evidence architecture</h3>
+          <p>Research into how incomplete, contradictory or noisy evidence can be structured for audit, investigation and assurance.</p>
+        </article>
+        <article class="card tint-blue">
+          <h3>APASES reasoning discipline</h3>
+          <p>A governed human-AI reasoning architecture for traceable analysis, structured retrieval and cross-domain synthesis.</p>
+        </article>
+        <article class="card">
+          <h3>RF-AI boundary</h3>
+          <p>Assurance patterns for systems that convert radio-frequency observations into AI-mediated decisions.</p>
+        </article>
+        <article class="card tint-gold">
+          <h3>Forensic intelligence</h3>
+          <p>Evidence graphs, contradiction handling and replayable investigation records for cyber and technical incident review.</p>
+        </article>
+        <article class="card">
+          <h3>Commercial option synthesis</h3>
+          <p>Structured assessment of where a research engine fits real buyer pain, procurement maturity and pilot feasibility.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-band">
+      <div class="section split">
+        <div>
+          <h2>How the research is used</h2>
+          <p class="lead">The research record is a source of method, vocabulary and evidence. It does not replace buyer validation, operational testing or procurement due diligence.</p>
+          <p>For commercial work, Luminesce treats research claims as inputs to be checked against system context. A theorem, paper or benchmark can support a pilot hypothesis. It still has to be translated into a scoped product question, a dataset, an acceptance test and a decision about what happens if the evidence is weak.</p>
+        </div>
+        <aside class="panel">
+          <h3>Useful links</h3>
+          <ul class="feature-list">
+            <li><a href="https://orcid.org/0009-0008-6435-3530">ORCID profile</a></li>
+            <li><a href="https://zenodo.org/search?q=Erkan%20Yalcinkaya">Zenodo publication search</a></li>
+            <li><a href="./kernel.html">AxoDen Kernel overview</a></li>
+            <li><a href="./index.html#contact">Discuss a research translation question</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><h2>Research-to-service map</h2></div>
+        <p>This is the page structure for buyers who want to understand what the research becomes in practice.</p>
+      </div>
+      <table class="table">
+        <thead>
+          <tr><th>Research area</th><th>Commercial expression</th><th>Typical output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AxoDen Kernel</td><td>AI assurance and bounded trust review</td><td>Control map, evidence schema, refusal logic and pilot plan</td></tr>
+          <tr><td>Structural gap inference</td><td>Regulated dossier and submission review</td><td>Missing-evidence report and remediation sequence</td></tr>
+          <tr><td>Forensic graphs</td><td>Cyber incident and root-cause support</td><td>Evidence graph, contradiction log and replayable investigation pack</td></tr>
+          <tr><td>RF-AI assurance</td><td>Spectrum-derived AI decision review</td><td>Threat model, admission criteria and test harness proposal</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="./luminesce-logo.png" alt="Luminesce Limited" width="48" height="48" loading="lazy" />
+          <span>
+            <strong>Luminesce Limited</strong>
+            <span>AI assurance &amp; evidence systems · Guildford, UK</span>
+          </span>
+        </div>
+        <p>Research-led AI assurance and evidence systems.</p>
+        <a class="footer-axoden" href="./kernel.html" aria-label="AxoDen product line">
+          <img src="./axoden-logo.svg" alt="" width="22" height="22" loading="lazy" />
+          <span>AxoDen · Luminesce product &amp; research line</span>
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="./privacy.html">Privacy</a>
+        <a href="./index.html#contact">Contact</a>
+        <a href="./kernel.html">AxoDen</a>
+      </div>
     </div>
-  </div>
+  </footer>
 
-  <div class="reveal">
-    <p class="section-label">Foundations</p>
-    <h2 class="section-h2">Physical limits, entropy, and architectural control</h2>
-    <p class="section-sub">These three records set out the top-level AxoDen view: intelligence is physically bounded, safety depends on system design, and uncertainty has to be controlled rather than merely measured.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.18146418" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-phys">Preprint &middot; Open</span>
-        <p class="paper-title">The Thermodynamics of Agency: Why Unbounded Intelligence Fails and How Architecture Restores Control</p>
-        <p class="paper-abstract">Explains why modern AI systems become unstable when uncertainty is allowed to build up, and argues that the fix has to come from architecture rather than patchwork controls.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18146418</span>
-        <span class="paper-ver">2026-01-04 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.17709557" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Report &middot; Restricted</span>
-        <p class="paper-title">Entropy-Bounded Data Pipelines and Entropy-Frugal Intelligence: A Compositional Framework</p>
-        <p class="paper-abstract">Sets out the assurance model behind bounded uncertainty, compositional design, and runtime controls for industrial AI systems.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17709557</span>
-        <span class="paper-ver">2025-11-25 &middot; Report</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.17506920" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-phys">Tech Note &middot; Restricted</span>
-        <p class="paper-title">Entropy-Frugal Intelligence: A Conjecture on Physically-Bounded Cognition in Machine Systems</p>
-        <p class="paper-abstract">Introduces the EFI conjecture and argues that machine cognition must work within physical and knowledge limits.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17506920</span>
-        <span class="paper-ver">2025-11-02 &middot; Tech Note</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Formal verification and certifiable reasoning</p>
-    <h2 class="section-h2">Topology, evidence structure, and certifiable AI</h2>
-    <p class="section-sub">This is the main mathematical assurance cluster in the maintained list. It covers the unified backbone, evidence certification, and the Reflexive Epistemic Fabric update published in March 2026.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.19296673" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Tech Note &middot; Open</span>
-        <p class="paper-title">A Topological Invariant for Adversarial Detection in AI Safety: Graph Cohomology in the Reflexive Epistemic Fabric</p>
-        <p class="paper-abstract">Presents the March 2026 cohomology result and treats adversarial non-orientability as a structural property of the evidence graph.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.19296673</span>
-        <span class="paper-ver">2026-03-28 &middot; Tech Note</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.19295830" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Preprint &middot; Restricted</span>
-        <p class="paper-title">Reflexive Epistemic Fabric</p>
-        <p class="paper-abstract">Extends AxoDen into runtime epistemic topology by treating assumptions, dependencies, and failure modes as a monitored graph.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.19295830</span>
-        <span class="paper-ver">2026-03-28 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.18700538" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Preprint &middot; Open</span>
-        <p class="paper-title">THE TOPOLOGY OF REASONING - Structural Invariants for Certifiable AI</p>
-        <p class="paper-abstract">Builds the structural theory for certifiable AI evidence graphs, including reachability, orientability, and Topological Slack.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18700538</span>
-        <span class="paper-ver">2026-02-19 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.18743583" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Manuscript &middot; Controlled</span>
-        <p class="paper-title">THE TOPOLOGY OF REASONING, Part II: ER-topo.cert Architecture and Implementation</p>
-        <p class="paper-abstract">Defines the ER-topo.cert certificate architecture and verification process that turns the theory into a usable evidence artefact.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18743583</span>
-        <span class="paper-ver">2026-02 &middot; Manuscript</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.18633407" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Preprint &middot; Restricted</span>
-        <p class="paper-title">AxoDen Unified Mathematical Backbone A Compositional Theory...</p>
-        <p class="paper-abstract">Brings the main AxoDen ideas into one compositional safety framework, linking bounded uncertainty, engineered independence, coherence, and closed-loop verification.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18633407</span>
-        <span class="paper-ver">2026-02-13 &middot; Preprint</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Safety-critical execution and cyber defence</p>
-    <h2 class="section-h2">Deterministic containment, execution control, and hazard classes</h2>
-    <p class="section-sub">These records cover cyber defence, ransomware containment, and the write-ahead hazard result behind the Grid Flight Recorder and related cyber-physical work.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.18757292" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-sec">Preprint &middot; Restricted</span>
-        <p class="paper-title">The Zombie Intent Hazard: A Safety Violation in Write-Ahead Audit Architectures for Safety-Critical Systems</p>
-        <p class="paper-abstract">Identifies the risk of replaying stale intent in write-ahead actuation systems and introduces session-bound verification as the fix, supported by TLA+ safety properties.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18757292</span>
-        <span class="paper-ver">2026-02-17 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.18212915" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-sec">Preprint &middot; Open</span>
-        <p class="paper-title">Execution-Path Assurance for Ransomware Containment</p>
-        <p class="paper-abstract">Shows how ransomware response can be redesigned as reversible, evidence-first execution instead of opaque automated mitigation.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18212915</span>
-        <span class="paper-ver">2026-01-11 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.18000738" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-sec">Preprint &middot; Restricted</span>
-        <p class="paper-title">AxoDen-R: Deterministic Inline Control for Certifiable Ransomware Prevention</p>
-        <p class="paper-abstract">Treats ransomware as an information-control problem and defines the deterministic containment architecture needed for certifiable prevention.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18000738</span>
-        <span class="paper-ver">2025-12-20 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.17989744" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-sec">Preprint &middot; Restricted</span>
-        <p class="paper-title">AxoDen-K: A Deterministic Architecture for Safety-Critical Cyber Defense</p>
-        <p class="paper-abstract">Defines the deterministic cyber-defence architecture that later domain work builds on, especially where response time and irreversible loss matter.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17989744</span>
-        <span class="paper-ver">2025-12-19 &middot; Preprint</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Systemic resilience and multi-root trust</p>
-    <h2 class="section-h2">Engineered independence and trust-plane design</h2>
-    <p class="section-sub">This pair covers the trust and independence layer in the maintained list: the ASIL-M architecture and the Coprime-Factor Security note beneath it.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.17690760" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-app">Report &middot; Restricted</span>
-        <p class="paper-title">ASIL-M: AI Safety Integrity Level - Multi-Root Trust Architecture</p>
-        <p class="paper-abstract">Defines the multi-root trust plane, attestation posture, and independence gates used to keep correlated-failure risk under architectural control.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17690760</span>
-        <span class="paper-ver">2025-11-23 &middot; Report</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.17690358" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Tech Note &middot; Restricted</span>
-        <p class="paper-title">Coprime-Factor Security Architecture</p>
-        <p class="paper-abstract">Introduces the engineered-independence architecture beneath ASIL-M and treats trust diversity as something to design, measure, and audit.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17690358</span>
-        <span class="paper-ver">2025-11-23 &middot; Tech Note</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Extreme environments and observability limits</p>
-    <h2 class="section-h2">Assurance when internal state cannot be fully inspected</h2>
-    <p class="section-sub">These two records extend the AxoDen framework into partly observable systems, especially hybrid quantum-classical systems where measurement changes the state.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.18282922" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-phys">Preprint &middot; Restricted</span>
-        <p class="paper-title">Systems &amp; Certification Engineering, Runtime Enforcement... for Hybrid Quantum-Classical AI Safety</p>
-        <p class="paper-abstract">Defines the runtime architecture, auditable control points, and enforcement rules needed to keep hybrid quantum-classical workloads inside a certifiable safety envelope.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18282922</span>
-        <span class="paper-ver">2026-01-17 &middot; Preprint</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.18213048" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-phys">Preprint &middot; Restricted</span>
-        <p class="paper-title">A Compositional Information-Theoretic Framework for Hybrid Quantum-Classical AI Safety</p>
-        <p class="paper-abstract">Extends bounded-uncertainty and admissible-action control into systems where internal state can only be partly observed.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.18213048</span>
-        <span class="paper-ver">2026-01-11 &middot; Preprint</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Cognitive architecture and multi-agent systems</p>
-    <h2 class="section-h2">Formal coordination models beside the main AxoDen spine</h2>
-    <p class="section-sub">These two records cover the coordination and orchestration branch of the maintained corpus.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.17680541" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Model &middot; Restricted</span>
-        <p class="paper-title">Cognitive Quad (C4): Formal Mathematical Specification</p>
-        <p class="paper-abstract">Provides the formal model for the Cognitive Quad coordination framework across human teams and AI agent orchestration.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17680541</span>
-        <span class="paper-ver">2025-11-22 &middot; Model</span>
-      </div>
-    </a>
-
-    <a href="https://doi.org/10.5281/zenodo.17680358" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-found">Model &middot; Open</span>
-        <p class="paper-title">Cognitive Quad - Applied Coordination Framework</p>
-        <p class="paper-abstract">The applied companion to the formal C4 specification, focused on team composition and coordination outcomes in practice.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17680358</span>
-        <span class="paper-ver">2025-11-22 &middot; Model</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Philosophical and interdisciplinary foundations</p>
-    <h2 class="section-h2">The broadest framing layer in the maintained list</h2>
-    <p class="section-sub">The maintained canonical inventory currently ends with one open-access interdisciplinary book that sits outside the technical AxoDen spine but remains part of the public record.</p>
-  </div>
-  <div class="papers-list">
-    <a href="https://doi.org/10.5281/zenodo.17507073" target="_blank" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-phys">Book &middot; Open</span>
-        <p class="paper-title">In the Labyrinth of a Curious Mind: Exploring Human Nature, Technology, and Thought</p>
-        <p class="paper-abstract">An interdisciplinary exploration of technology, thought, and human nature that sets the wider context around the engineering work.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">10.5281/zenodo.17507073</span>
-        <span class="paper-ver">2025-11-02 &middot; Book</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Outside the maintained list</p>
-    <h2 class="section-h2">Adjacent domain material and public-facing wedge content</h2>
-    <p class="section-sub">Some public-facing wedge pages, product notes, and prior-art material sit outside the maintained 19-record canonical list. Use the product pages for current commercial positioning and the dataroom canon for maintained publication counts.</p>
-  </div>
-  <div class="papers-list">
-    <a href="kernel.html" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-app">Platform</span>
-        <p class="paper-title">AxoDen Kernel</p>
-        <p class="paper-abstract">The current platform narrative, certification pathway, and governance position sit on the Kernel page rather than in the maintained publication count.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">kernel.html</span>
-        <span class="paper-ver">Current site entry point</span>
-      </div>
-    </a>
-
-    <a href="forensic-intelligence.html" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-sec">Wedge</span>
-        <p class="paper-title">AxoDen Forensic Intelligence</p>
-        <p class="paper-abstract">Forensic Intelligence does not currently have a standalone canonical wedge paper in the maintained list; use the product page for MITRE-MORDOR validation and pilot posture.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">forensic-intelligence.html</span>
-        <span class="paper-ver">Product page</span>
-      </div>
-    </a>
-
-    <a href="spectrum-bridge.html" class="paper-card reveal">
-      <div>
-        <span class="paper-type t-app">Wedge</span>
-        <p class="paper-title">AxoDen Spectrum Bridge and Grid Flight Recorder</p>
-        <p class="paper-abstract">Spectrum Bridge and Grid Flight Recorder remain important public-facing domain materials, but they sit outside the maintained 19-record inventory used for headline publication counts.</p>
-      </div>
-      <div class="paper-doi-col">
-        <span class="paper-doi-link">spectrum-bridge.html</span>
-        <span class="paper-ver">Product and domain pages</span>
-      </div>
-    </a>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Academic collaboration</p>
-    <h2 class="section-h2">Active collaborators and institutional partners</h2>
-  </div>
-  <div class="collab-grid">
-    <div class="collab-card reveal">
-      <p class="collab-role">Primary academic collaborator &mdash; est. February 2026</p>
-      <p class="collab-name">Professor Yanguo Jing</p>
-      <p class="collab-inst">Dean and Professor of AI, University of Cumbria</p>
-      <p class="collab-orcid">ORCID: <a href="https://orcid.org/0000-0001-9581-4215" target="_blank">0000-0001-9581-4215</a></p>
-      <p class="collab-body">Fortnightly collaboration sessions since February 2026, with co-authorship planned on forthcoming publications. The University of Cumbria recognised the significance of building a compositional AI safety framework with a working kernel and domain-specific applications.</p>
-    </div>
-    <div class="collab-card reveal">
-      <p class="collab-role">Reference &mdash; Cybersecurity</p>
-      <p class="collab-name">Professor Ioana Boureanu</p>
-      <p class="collab-inst">Professor of Cybersecurity, University of Surrey</p>
-      <p class="collab-orcid">&nbsp;</p>
-      <p class="collab-body">Reference for AxoDen Forensic Intelligence and the CFS independence architecture. University of Surrey, Department of Computer Science.</p>
-    </div>
-    <div class="collab-card reveal">
-      <p class="collab-role">Reference &mdash; Robotics and Cyber-Physical</p>
-      <p class="collab-name">Professor Tom Carlson</p>
-      <p class="collab-inst">Professor of Robotics, University College London</p>
-      <p class="collab-orcid">&nbsp;</p>
-      <p class="collab-body">Reference for AxoDen Grid Flight Recorder and the Zombie Intent Hazard in cyber-physical autonomous systems. UCL Department of Computer Science.</p>
-    </div>
-  </div>
-</section>
-<hr class="divider">
-
-<section class="section">
-  <div class="reveal">
-    <p class="section-label">Academic and institutional identifiers</p>
-    <h2 class="section-h2">Persistent identifiers for citation and grant use</h2>
-  </div>
-  <div class="id-grid">
-    <div class="id-card reveal"><p class="id-label">ORCID</p><p class="id-val"><a href="https://orcid.org/0009-0008-6435-3530" target="_blank">0009-0008-6435-3530</a></p></div>
-    <div class="id-card reveal"><p class="id-label">Zenodo profile</p><p class="id-val"><a href="https://zenodo.org" target="_blank">zenodo.org &mdash; Erkan Yalcinkaya</a></p></div>
-    <div class="id-card reveal"><p class="id-label">GitHub</p><p class="id-val"><a href="https://github.com/Luminesce-Labs" target="_blank">Luminesce-Labs</a></p></div>
-    <div class="id-card reveal"><p class="id-label">ISNI</p><p class="id-val">0000000529733416</p></div>
-    <div class="id-card reveal"><p class="id-label">Ringgold</p><p class="id-val">847099</p></div>
-    <div class="id-card reveal"><p class="id-label">D-U-N-S</p><p class="id-val">231242963</p></div>
-    <div class="id-card reveal"><p class="id-label">Companies House</p><p class="id-val">15317429</p></div>
-    <div class="id-card reveal"><p class="id-label">VAT</p><p class="id-val">474096567</p></div>
-    <div class="id-card reveal"><p class="id-label">Copyright</p><p class="id-val">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. Academic use permitted with citation. Commercial use requires a licence.</p></div>
-  </div>
-</section>
-
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <p class="footer-copy">&copy; 2026 Erkan Yalcinkaya and Luminesce Limited. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="index.html" class="footer-link">Home</a>
-      <a href="kernel.html" class="footer-link">Kernel</a>
-      <a href="forensic-intelligence.html" class="footer-link">Forensic Intel</a>
-      <a href="spectrum-bridge.html" class="footer-link">Spectrum Bridge</a>
-      <a href="grid-flight-recorder.html" class="footer-link">Grid Flight Recorder</a>
-      <a href="research.html" class="footer-link">Research</a>
-      <a href="privacy.html" class="footer-link">Privacy</a>
-    </div>
-  </div>
-</footer>
-<script>
-// Progressive reveal — elements start visible; JS hides off-screen ones then reveals on scroll
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.remove('will-animate');
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
-revealEls.forEach(el => {
-  const rect = el.getBoundingClientRect();
-  if (rect.top > window.innerHeight) {
-    el.classList.add('will-animate');
-    io.observe(el);
-  }
-});
-</script>
+  <script defer src="./script.js?v=1"></script>
 </body>
 </html>

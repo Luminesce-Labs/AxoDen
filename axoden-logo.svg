@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <filter id="nodeGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="#05080F"/>
+
+  <!--
+    Line y=192
+    Arial Narrow Bold 48px cap height ≈ 34px
+
+    AXO sits ABOVE line:
+      baseline = line_y - gap = 192 - 8 = 184
+      cap top  = 184 - 34 = 150  ✓ well above line
+
+    DEN sits BELOW line:
+      cap top  = line_y + gap = 192 + 8 = 200
+      baseline = cap_top + cap_height = 200 + 34 = 234
+
+    Gap above line (from line to AXO baseline): 8px
+    Gap below line (from line to DEN cap top):  8px
+    Symmetric. ✓
+  -->
+
+  <!-- HEXAGON -->
+  <polygon
+    points="200,72 304,132 304,252 200,312 96,252 96,132"
+    fill="none"
+    stroke="#1A4570"
+    stroke-width="7"
+    stroke-linejoin="round"
+  />
+  <polygon
+    points="200,72 304,132 304,252 200,312 96,252 96,132"
+    fill="none"
+    stroke="#2E6FA0"
+    stroke-width="1.5"
+    stroke-linejoin="round"
+  />
+
+  <!-- SIGNAL LINE -->
+  <line x1="30"  y1="192" x2="370" y2="192" stroke="#00AECC" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="30"  y1="192" x2="92"  y2="192" stroke="#00D4F5" stroke-width="2.5" stroke-linecap="butt"/>
+  <line x1="308" y1="192" x2="370" y2="192" stroke="#00D4F5" stroke-width="2.5" stroke-linecap="butt"/>
+
+  <!-- ENTRY: circle -->
+  <circle cx="30" cy="192" r="14" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+  <circle cx="30" cy="192" r="9"  fill="#00AECC" filter="url(#nodeGlow)"/>
+  <circle cx="30" cy="192" r="5.5" fill="#E0F5FF"/>
+
+  <!-- EXIT: square -->
+  <rect x="356" y="178" width="28" height="28" fill="none" stroke="#00D4F5" stroke-width="1" opacity="0.3"/>
+  <rect x="361" y="183" width="18" height="18" fill="#00AECC" filter="url(#nodeGlow)"/>
+  <rect x="365" y="187" width="10" height="10" fill="#E0F5FF"/>
+
+  <!-- AXO: baseline y=184, cap bottom 8px above line -->
+  <text
+    x="200"
+    y="184"
+    text-anchor="end"
+    font-family="'Arial Narrow', 'Arial', sans-serif"
+    font-weight="700"
+    font-size="48"
+    letter-spacing="3"
+    fill="#DCE9F2"
+  >AXO</text>
+
+  <!-- DEN: cap top 8px below line, baseline y=234 -->
+  <text
+    x="200"
+    y="234"
+    text-anchor="start"
+    font-family="'Arial Narrow', 'Arial', sans-serif"
+    font-weight="700"
+    font-size="48"
+    letter-spacing="3"
+    fill="#2A9DC4"
+  >DEN</text>
+
+  <!-- Attribution -->
+  <text
+    x="200"
+    y="368"
+    text-anchor="middle"
+    font-family="'Arial Narrow', 'Arial', sans-serif"
+    font-weight="400"
+    font-size="11"
+    letter-spacing="4"
+    fill="#57C8F3"
+  >LUMINESCE LIMITED</text>
+
+</svg>
