@@ -18,17 +18,17 @@
   <meta name="twitter:image" content="https://luminescelimited.com/luminesce-logo.png" />
   <link rel="icon" href="./favicon-32.png" />
   <link rel="preload" as="font" href="./source-serif-4-latin-600-normal.woff2" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="./shared.css?v=7" />
+  <link rel="stylesheet" href="./shared.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="./index.html" aria-label="Luminesce Limited home"><span class="brand-mark">LL</span><span><span class="brand-name">Luminesce Limited</span><span class="brand-sub">AI assurance &amp; evidence systems</span></span></a>
-      <nav class="nav" aria-label="Primary navigation"><a href="./index.html">Home</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a class="active" href="./defence.html">Defence</a><a href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a class="nav-cta" href="./index.html#contact">Contact</a></nav>
+      <nav class="nav" aria-label="Primary navigation"><a href="./index.html">Home</a><a href="./index.html#about">About</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a class="active" href="./defence.html">Defence</a><a href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a class="nav-cta" href="./index.html#contact">Contact</a></nav>
       <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span class="hamburger-lines"></span></button>
     </div>
-    <div class="mobile-overlay" id="mobile-menu"><nav aria-label="Mobile navigation"><a href="./index.html">Home</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">Defence</a><a href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a href="./index.html#contact">Contact</a></nav></div>
+    <div class="mobile-overlay" id="mobile-menu"><nav aria-label="Mobile navigation"><a href="./index.html">Home</a><a href="./index.html#about">About</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">Defence</a><a href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a href="./index.html#contact">Contact</a></nav></div>
   </header>
 
   <main id="main">
@@ -82,7 +82,7 @@
             <h3>4. Audit and replay</h3>
             <p>Every admission, refusal, degradation and action is recorded once and bit-for-bit replayable from genesis.</p>
             <ul>
-              <li>Hash-chained ledger; not vendor-attested logs.</li>
+              <li>Cryptographic hash chain; integrity verifiable by any holder.</li>
               <li>Replayable by any party who holds the ledger.</li>
             </ul>
           </article>
@@ -92,29 +92,29 @@
 
     <section class="section">
       <div class="section-head">
-        <div><h2>Why nobody else has this</h2></div>
-        <p>Five compressed claims, each against a named industry failure mode. The differentiator registry sits behind each line for engineering due diligence.</p>
+        <div><h2>Technical differentiators to test</h2></div>
+        <p>Five differentiators for engineering due diligence. Each should be tested against the selected pilot use case and evidence corpus.</p>
       </div>
       <div class="grid two">
         <article class="card">
           <h3>Refusal as evidence</h3>
-          <p>Most defence-AI stacks <strong>detect failures</strong>. AxoDen <strong>emits refusals as signed first-class evidence</strong>.</p>
+          <p>Refusals are signed evidence events, recorded once and replayable as first-class outputs.</p>
         </article>
         <article class="card">
-          <h3>Structurally separated survival loop</h3>
-          <p>Most autonomy stacks <strong>degrade gracefully</strong>. AxoDen has a <strong>survival loop that is jam-immune by construction</strong>.</p>
+          <h3>Separated survival and mission logic</h3>
+          <p>Survival continuity and mission continuity are handled as distinct control questions when RF, GNSS or AI evidence is refused.</p>
         </article>
         <article class="card">
           <h3>Hash-chain replay</h3>
-          <p>Most replay stories are <strong>vendor-attested logs</strong>. AxoDen replays <strong>bit-for-bit from a hash chain, by anyone who holds the ledger</strong>.</p>
+          <p>Admissions, refusals, degradations and permitted actions are recorded so the decision path can be replayed from the ledger.</p>
         </article>
         <article class="card">
           <h3>Write-side admission</h3>
-          <p>Most AI safety frames are <strong>post-hoc filters</strong>. AxoDen's gates are <strong>write-side admission predicates</strong>: bad inputs never enter the graph.</p>
+          <p>Evidence gates run before downstream reasoning, so inadmissible inputs do not silently enter the graph.</p>
         </article>
         <article class="card">
-          <h3>Status discipline as moat</h3>
-          <p>Most certifiability stories are <strong>mapped retrospectively to standards</strong>. AxoDen's status discipline (<strong>ESTABLISHED / CLAIMED / UNVERIFIED CONJECTURE</strong>) is the moat at this market stage.</p>
+          <h3>Explicit status discipline</h3>
+          <p>Claims are separated by status, including <span class="status-token">Established</span> results, <span class="status-token">Claimed</span> results and proof-obligation-bound work.</p>
         </article>
       </div>
     </section>
@@ -123,21 +123,22 @@
       <div class="section">
         <div class="section-head">
           <div><h2>Threat surface and honest status</h2></div>
-          <p>Eight defence-relevant threats. Five closed today; three carry named proof obligations and bounded delivery paths. Open work is named. Most defence pitches paper over this.</p>
+          <p>The current internal register tracks eight defence-relevant threats. Five are marked closed in the current status record; three remain open with named proof obligations or pilot validation paths. These statuses should be verified against the current engineering record before procurement or safety-critical use.</p>
         </div>
         <table class="table">
+          <caption>AxoDen Defence threat register: status as of current internal review.</caption>
           <thead>
-            <tr><th>#</th><th>Threat</th><th>Status</th></tr>
+            <tr><th scope="col">#</th><th scope="col">Threat</th><th scope="col">Status</th></tr>
           </thead>
           <tbody>
-            <tr><td>T1</td><td>Hallucinated perception under jamming</td><td>Closed</td></tr>
-            <tr><td>T2</td><td>Buffer / overload pressure</td><td>Closed</td></tr>
-            <tr><td>T3</td><td>Replay / injection / stale intent</td><td>Closed</td></tr>
-            <tr><td>T4</td><td>Single-vendor / monoculture compromise</td><td>Closed at L4</td></tr>
-            <tr><td>T5</td><td>Zombie Intent</td><td>Closed; PO2 validated at L1</td></tr>
-            <tr><td>T6</td><td>Forged negative evidence</td><td>Open: PO6, bounded sprint</td></tr>
-            <tr><td>T7</td><td>Predicate-burn race</td><td>Open: PO3, bounded sprint</td></tr>
-            <tr><td>T8</td><td>Control-kernel root leak</td><td>Open: PO1, pilot programme</td></tr>
+            <tr><th scope="row">T1</th><td>Hallucinated perception under jamming</td><td>Closed</td></tr>
+            <tr><th scope="row">T2</th><td>Buffer / overload pressure</td><td>Closed</td></tr>
+            <tr><th scope="row">T3</th><td>Replay / injection / stale intent</td><td>Closed</td></tr>
+            <tr><th scope="row">T4</th><td>Single-vendor / monoculture compromise</td><td>Closed at L4</td></tr>
+            <tr><th scope="row">T5</th><td>Zombie Intent</td><td>Closed; PO2 validated at L1</td></tr>
+            <tr><th scope="row">T6</th><td>Forged negative evidence</td><td>Open: PO6, bounded sprint</td></tr>
+            <tr><th scope="row">T7</th><td>Predicate-burn race</td><td>Open: PO3, bounded sprint</td></tr>
+            <tr><th scope="row">T8</th><td>Control-kernel root leak</td><td>Open: PO1, pilot programme</td></tr>
           </tbody>
         </table>
       </div>
@@ -156,9 +157,23 @@
         </ul>
       </div>
       <aside class="panel">
-        <h3>Engagement output</h3>
-        <p>A defence engagement produces a concise threat model, evidence admission criteria, a proposed test harness, and a decision about whether the use case is suitable for an AxoDen-style pilot. The capability gate at the end states scope honestly. It is not a procurement claim.</p>
+        <h3>Executive output</h3>
+        <p>For sponsors and procurement reviewers, a defence engagement produces a concise threat model, evidence admission criteria, proposed test harness and capability-gate decision. The gate states whether the use case should proceed, narrow or stop. It is not a procurement claim.</p>
       </aside>
+    </section>
+
+    <section class="section-band">
+      <div class="section">
+        <div class="section-head">
+          <div><h2>Engineering pilot shape</h2></div>
+          <p>A defence pilot is bounded, scoped to one contested-signal use case and one decision point where refusal is acceptable or required.</p>
+        </div>
+        <div class="grid three">
+          <article class="card tint-teal"><h3>Input</h3><p>A defined contested-signal use case, known platform or mission boundary, available RF/GNSS/sensor evidence, and a decision point where refusal is acceptable or required.</p></article>
+          <article class="card tint-blue"><h3>Build</h3><p>Admission predicates, authority-binding model, refusal cascade, replay ledger and failure-mode test harness.</p></article>
+          <article class="card tint-gold"><h3>Output</h3><p>Threat model, evidence boundary design, pilot findings, open proof obligations and a recommendation on whether the use case should proceed, narrow or stop.</p></article>
+        </div>
+      </div>
     </section>
   </main>
 

@@ -562,6 +562,15 @@ h3 {
   font-size: 0.9rem;
 }
 
+.table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   background: #111a22;
@@ -926,6 +935,32 @@ a.card:hover h3 {
 /* Tabular nums on metric strongs (cleaner alignment in proof strips) */
 .metric strong {
   font-feature-settings: "tnum" on;
+}
+
+/* Status tokens (ESTABLISHED, CLAIMED, UNVERIFIED CONJECTURE) rendered
+   as small caps with letter-spacing rather than baked-in all-caps text. */
+.status-token {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Sub-group label inside a section that contains multiple grids
+   (e.g. Discovery engagements / Delivery engagements). Sits visually
+   below the section h2 but above grid cards, as an eyebrow label. */
+.subgroup-head {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 40px 0 8px;
+}
+
+.subgroup-head + p {
+  margin: 0 0 20px;
+  color: var(--text);
+  max-width: 760px;
 }
 
 /* Section dividers — subtle horizontal accents between major sections */

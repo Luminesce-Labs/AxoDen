@@ -2,15 +2,33 @@
 
 ## Homepage
 
+### Navigation
+
+Home
+
+About
+
+Services
+
+AxoDen
+
+Defence
+
+Forensics
+
+Research
+
+Contact
+
 ### Hero
 
-AI assurance and evidence systems for high-stakes decisions.
+AI control, evidence systems and enterprise transformation for high-stakes environments.
 
 Luminesce Limited · Guildford, UK · founded 2023
 
-Luminesce Limited helps organisations design, review and deploy systems that must be trusted, audited, defended or certified.
+Luminesce Limited combines AxoDen deep-tech IP with 25 years of regulated enterprise transformation, integration, data migration and carve-out delivery experience.
 
-The company combines senior transformation delivery experience with AxoDen, a research and product line for deterministic evidence controls, replayable decision records and safety architecture around AI-enabled systems.
+AxoDen is the company's compositional AI control and evidence framework, grounded in topology, graph theory, information physics and formal methods. Alongside AxoDen, Luminesce provides senior advisory and delivery support for complex technology programmes that must survive governance, audit, procurement and operating pressure.
 
 Primary call to action: View services
 
@@ -24,86 +42,158 @@ Founder, Luminesce Limited. Engineering physicist and systems architect.
 
 ### Evidence Strip
 
-25+ yrs: regulated enterprise and technology delivery
+25+ years: regulated enterprise and technology delivery
 
 £200M+: transformation programmes led or shaped
 
 £9B: M&A integration environment supported
 
-200TB+: regulated data migration experience
+200 TB+: regulated data migration experience
 
 20: DOI research publications on Zenodo
 
+### About Luminesce and AxoDen
+
+Luminesce Limited is a UK company founded by Erkan Yalcinkaya, an engineering physicist and systems architect with 25 years of experience building regulated enterprise, data, integration and transformation systems.
+
+The company has two connected service pillars. The first is AxoDen: deep-tech AI control, evidence architecture and assurance for systems that must be trusted, explained, refused or replayed. The second is enterprise transformation advisory: programme leadership, architecture, migration, integration, carve-out and vendor-control work in regulated or operationally complex environments.
+
+The two pillars converge in regulated transformation programmes preparing to deploy AI into operational, data, compliance or decision workflows. That is where Luminesce can review both the AI-control question and the delivery environment around it.
+
+AxoDen is Luminesce's main technical product and research line: a compositional AI control and evidence framework grounded in topology, graph theory, information physics and formal methods.
+
+AxoDen addresses three unresolved problems in high-stakes AI: trust, explainability and autonomy under contested conditions. Current application surfaces are cyber-forensic intelligence, RF systems and AI integration, and cyber-physical grid integrity. AxoDen also drives automated pre-audit and compliance diagnostics for GxP/pharma and aerospace supplier dossiers.
+
+The enterprise advisory work draws on delivery experience across pharmaceuticals and life sciences, telecommunications, financial services, consumer goods and large-scale enterprise change.
+
 ### Services
 
-Engagements are scoped around evidence, system risk and commercial decision points. The aim is to make weak assumptions visible before they become delivery, procurement or assurance failures.
+Engagements are scoped around two fronts: AxoDen-led evidence and AI-control work, and senior transformation advisory under the Luminesce umbrella. The common thread is disciplined handling of risk, evidence, dependencies, governance and delivery reality.
 
-#### AI assurance and control architecture
+#### AI Assurance Readiness Review
 
-Review AI-enabled systems for evidence capture, refusal behaviour, control boundaries, replayability and certification readiness.
+A bridge engagement for regulated transformation programmes preparing to introduce AI into operational, data, compliance or decision workflows.
 
-- AI assurance review
-- Safety case evidence structure
-- Control and audit model design
+- Current-state review of AI use case, evidence flow, data dependencies and governance constraints
+- Gap assessment against auditability, explainability, refusal and human-oversight needs
+- Readiness map for pilot, procurement, vendor challenge or internal approval
+- Practical recommendations for controls, evidence capture, operating model and delivery risk
 
-#### Regulated evidence and dossier audit
+#### AxoDen Kernel: AI safety, assurance and runtime control
 
-Find missing or weak evidence in submissions, tender packs, compliance dossiers and technical assurance files.
+Design or review AI-enabled systems where evidence capture, refusal behaviour, control boundaries, replayability and certification readiness matter.
 
-- Completeness analysis
-- Schema-to-evidence mapping
-- Executive remediation briefings
+- Compositional AI safety architecture design and review
+- Integrate a deterministic runtime control kernel
+- Evidence and certification architecture for high-stakes AI deployments
+- Multi-root trust and attestation architecture
+- Governed human-AI reasoning architecture
+- Formal methods advisory for deterministic control surfaces
 
-#### Forensic evidence graphs
+#### AxoDen Forensic Intelligence
 
-Turn fragmented incident evidence into structured graphs that expose contradictions, missing observations and defensible investigation paths.
+Turn fragmented SOC, incident or technical evidence into inspectable investigation structures.
 
-- Cyber incident evidence modelling
-- Root-cause analysis support
-- Replayable investigation records
+- SOC telemetry to campaign-level evidence pipelines
+- SIEM/SOAR augmentation with deterministic operator stacks
+- Evidence-bounded investigation packaging
+- Design append-only evidence trails for analyst workflows
+- Ransomware containment architecture review
 
-#### Defence and spectrum assurance
+#### AxoDen Dossier Intelligence
 
-Assess systems where RF, GNSS or sensor evidence is converted into AI decisions, especially under jamming, spoofing or contested signal conditions. Backed by the AxoDen Defence runtime.
+Automated pre-audit and compliance diagnostics for regulated supplier dossiers, with GxP/pharma and aerospace supplier assurance as the first named wedges.
 
+- Missing-evidence and contradiction detection
+- Schema-to-evidence mapping for audit and compliance requirements
+- Calibration-freshness and temporal-dependency review
+- Brittleness and load-bearing-node analysis
+- Supplier-risk and remediation briefing
+
+#### AxoDen Defence and RF/sensor systems
+
+Assess systems where RF, GNSS or sensor evidence is converted into AI decisions, especially under jamming, spoofing or contested signal conditions.
+
+- Governed evidence boundary design between contested signals and AI inference
 - RF-to-AI admission checks
-- Spectrum and signal-integrity review
-- Autonomy, refusal and survival-loop risk analysis
+- Replayable mission ledger and authority-binding design
+- Mission continuity assurance under contested RF/GNSS conditions
+- Failure-mode isolation suites for bounded pilot work
 
-#### Proxy integrity and Goodhart risk
+#### Cyber-physical integrity
 
-Examine whether a system is optimising the measurable proxy while losing sight of the intended operational goal.
+Apply evidence architecture to grid, SCADA, DER, microgrid and critical-infrastructure control events.
 
-- KPI gaming analysis
-- Model drift evidence review
-- Governance control recommendations
+- Grid Flight Recorder concept design
+- Replayable control-event evidence
+- SCADA boundary integrity architecture
+- Authority-binding for hazardous actuation
+- Post-incident replay forensics
 
-**Scope.** Detection covers noise and bounded adversarial pressure. Freshness-suppression masking is a known open problem. We surface it where present and do not claim to detect it.
+#### APASES executive reasoning and decision decomposition
 
-#### Technical strategy and challenge response
+Structured advisory for boards, sponsors and technical leaders facing complex AI, procurement, transformation or research-to-product decisions.
 
-Support founders, boards and programme teams with structured technical argument, commercial option analysis and proposal response.
+Typical use cases include a board deciding whether to approve an LLM-based customer-facing tool, a sponsor weighing two vendor architectures, or a research lead deciding which AxoDen capability is mature enough for pilot work.
 
-- Commercial option synthesis
-- Product and pilot design
-- Investor and procurement narrative
+- Decision decomposition into claims, evidence, assumptions and dependencies
+- Traceable human-AI analysis workflow
+- Cross-domain synthesis for technical, commercial and governance questions
+- Executive decision brief with unresolved assumptions made explicit
 
-### Founder-Led Technical Judgement
+#### Enterprise transformation, M&A and carve-out advisory
+
+Support complex technology programmes where integration, separation, migration, vendors, governance and business continuity have to be managed together.
+
+- Technical due diligence on target IT estates
+- Day-1 readiness and bridging architecture
+- IT separation and cutover governance
+- Multi-vendor, multi-country delivery oversight
+- Programme recovery, project audit and corrective action
+
+#### Enterprise architecture, data migration and regulated archiving
+
+Design practical architecture and data controls for regulated estates with legacy platforms, cloud migration pressure and retirement obligations.
+
+- First-principles enterprise architecture
+- Cloud architecture and governance
+- ERP and core platform strategy
+- Legacy portfolio rationalisation and system retirement
+- GxP-regulated data migration and archiving controls
+
+#### Commercial governance, vendor control and executive advisory
+
+Support boards, founders, sponsors and programme teams when technical choices, commercial commitments and delivery risk need to be made explicit.
+
+- RFP design, evaluation and response leadership
+- Vendor exit governance under regulatory deadlines
+- Commercial oversight for transformation portfolios
+- Board and C-suite briefings on AI risk, governance and assurance
+- Independent reviewer or second-opinion role for high-stakes vendor, architecture or programme claims
+- Translation of formal technical claims into operational and commercial risk language
+
+### About the Founder
 
 Luminesce is built around first-principles systems thinking, delivery discipline and research translation.
 
-Erkan Yalcinkaya has worked across pharma, telecoms, financial services and enterprise transformation, including regulated data migration, large-scale platform change, carve-out delivery and operational integration. That delivery background shapes the company position: evidence systems have to survive contact with governance, procurement, audit and real operational constraints.
+Erkan Yalcinkaya has worked across pharma, telecoms, financial services and enterprise transformation, including regulated data migration, large-scale platform change, carve-out delivery and operational integration. That delivery background shapes the company position: evidence systems need to work inside real operating constraints, including governance, procurement, audit and delivery pressure.
 
-#### Relevant Background
+The pattern began early: at Unilever Turkey, Erkan designed a virtual-warehouse system that reduced fleet investment and won a Unilever global best-practice award. The same operating instinct now runs through Luminesce: model the system, find the load-bearing constraint, and make the decision path inspectable.
+
+Later work included large regulated and transformation environments, including GxP-scale data migration, a £9B M&A integration environment, a £200M transformation programme context, and carve-out/separation delivery. AxoDen extends that background into AI-era evidence, refusal and replay problems while preserving the enterprise advisory work.
+
+#### Relevant background
 
 - Engineering Physics degree, Istanbul Technical University.
 - Global IT separation and transformation delivery across regulated environments.
 - Architect of AxoDen and APASES research systems.
-- Current internal AxoDen kernel test record: 420+ automated tests, verify before procurement use.
+- 420+ automated tests in the internal AxoDen Kernel record. Verify against the current engineering record before procurement use.
 
 ### AxoDen Product Line
 
-AxoDen is the main technical product and research line inside Luminesce. It is positioned as evidence infrastructure for AI-enabled, cyber-physical and regulated decision systems.
+AxoDen is the main technical product and research line inside Luminesce. It is a compositional AI control and evidence framework grounded in topology, graph theory, information physics and formal methods.
+
+It is positioned as evidence infrastructure for AI-enabled, cyber-physical and regulated decision systems. Current application surfaces include cyber-forensic intelligence, RF systems and AI integration, and cyber-physical grid integrity, alongside automated pre-audit and compliance diagnostics for GxP/pharma and aerospace supplier dossiers.
 
 #### AxoDen Kernel
 
@@ -117,35 +207,45 @@ Refusal-capable autonomy under contested conditions. Admissibility, action permi
 
 Structured reasoning over incomplete, contradictory or noisy incident evidence.
 
+#### AxoDen Dossier Intelligence
+
+Automated pre-audit and compliance diagnostics for regulated supplier dossiers, focused on missing evidence, contradictions, stale dependencies, brittle attestations and supplier-risk signals. Initial wedge areas include GxP/pharma supplier dossiers and aerospace supplier assurance.
+
 #### Grid Flight Recorder
 
 Replayable evidence records for cyber-physical grid events and resilience review.
 
 ### Engagement Models
 
-Work can begin as a short diagnostic review, a bounded pilot, an embedded build role or a commercial strategy engagement.
+Work can begin through a discovery engagement or a delivery engagement, depending on whether the buyer needs a decision, a pilot, or hands-on execution.
 
-#### Diagnostic review
+#### Discovery engagements
 
-Fast review of a system, dossier, architecture or decision process with a short findings pack.
+Lower-commitment entry points for buyers who need clarity before committing to a pilot or programme role.
 
-#### Pilot project
+- **AI Assurance Readiness Review.** Short bridge engagement for transformation teams, CIO/CTO sponsors, compliance leaders or vendors preparing to deploy AI in a regulated or operationally sensitive context.
+- **Diagnostic review.** Fast review of a system, dossier, architecture or decision process with a short findings pack.
+- **Executive briefing.** Closed-room briefing for boards, sponsors or senior teams on AI risk, evidence architecture, refusal behaviour and operational assurance choices.
 
-Focused proof of value using a defined corpus, evidence schema and success criteria.
+#### Delivery engagements
 
-#### Embedded build
+Execution-shaped work for buyers who already have a defined problem, active programme or decision deadline.
 
-Hands-on architecture, delivery and assurance support inside a programme team.
+- **Pilot project.** Focused proof of value using a defined corpus, evidence schema and success criteria.
+- **Embedded build.** Hands-on architecture, delivery and assurance support inside a programme team.
+- **Challenge response.** Structured commercial, investor, academic or procurement response where the argument has to hold.
 
-#### Challenge response
+### Confidentiality and Evidence Handling
 
-Structured commercial, investor, academic or procurement response where the argument has to hold.
+Many Luminesce engagements involve sensitive technical, commercial, regulated or security-relevant evidence. Work can begin under NDA, with engagement data kept to the agreed working environment and access model for the pilot or review.
+
+Pilot closeout should state what was received, what was produced, what must be returned or deleted, and which claims remain dependent on source review, integration testing or external validation. Luminesce is willing to work under source-review and controlled-data conditions when procurement, regulated or safety-critical use requires it.
 
 ### Contact Section
 
-Discuss a system, dossier or product pilot.
+Discuss a system, dossier, transformation or product pilot.
 
-The best starting point is a concrete evidence problem: a submission that may be incomplete, an AI system that needs assurance, a forensic workflow that needs structure, or a product pilot that needs a defensible wedge.
+The best starting point is a concrete problem: an AI system that needs assurance, a supplier dossier that needs pre-audit diagnostics, a forensic workflow that needs structure, a cyber-physical event that needs replay, or a transformation programme that needs independent technical judgement.
 
 Email: contact@luminescelimited.com
 
@@ -173,13 +273,13 @@ Luminesce uses research as a working discipline: to define concepts clearly, tes
 
 ### Research Evidence
 
-20+: DOI publications on Zenodo
+Current website research register: May 2026.
+
+20: DOI-registered publications on Zenodo
 
 29: theorem-level results in the current register
 
 24: results currently ESTABLISHED with proof or empirical evidence
-
-24: results currently cleared for publication
 
 ORCID: 0009-0008-6435-3530
 
@@ -189,7 +289,7 @@ The public research record should support commercial clarity. Each theme below m
 
 #### AxoDen compositional safety
 
-Work on deterministic controls, admissibility checks, replayable evidence and bounded trust for AI-enabled systems.
+Work on deterministic controls, admissibility checks, replayable evidence and bounded trust for AI-enabled systems, grounded in topology, graph theory, information physics and formal methods.
 
 #### Evidence architecture
 
@@ -197,7 +297,7 @@ Research into how incomplete, contradictory or noisy evidence can be structured 
 
 #### APASES reasoning discipline
 
-A governed human-AI reasoning architecture for traceable analysis, structured retrieval and cross-domain synthesis.
+A governed human-AI reasoning architecture for traceable analysis, structured retrieval, decision decomposition and cross-domain synthesis.
 
 #### RF-AI boundary
 
@@ -217,7 +317,7 @@ The research record is a source of method, vocabulary and evidence. It does not 
 
 For commercial work, Luminesce treats research claims as inputs to be checked against system context. A theorem, paper or benchmark can support a pilot hypothesis. It still has to be translated into a scoped product question, a dataset, an acceptance test and a decision about what happens if the evidence is weak.
 
-#### Useful Links
+#### Useful links
 
 - ORCID profile: https://orcid.org/0009-0008-6435-3530
 - Zenodo publication search: https://zenodo.org/search?q=Erkan%20Yalcinkaya
@@ -229,9 +329,13 @@ For commercial work, Luminesce treats research claims as inputs to be checked ag
 | Research area | Commercial expression | Typical output |
 |---|---|---|
 | AxoDen Kernel | AI assurance and bounded trust review | Control map, evidence schema, refusal logic and pilot plan |
-| Structural gap inference | Regulated dossier and submission review | Missing-evidence report and remediation sequence |
+| APASES reasoning discipline | Executive reasoning and decision-decomposition engagement | Structured question map, evidence plan, assumptions register and decision brief |
+| Structural gap inference | Automated pre-audit and compliance diagnostics for supplier dossiers | Missing-evidence report, contradiction register, supplier-risk briefing and remediation sequence |
 | Forensic graphs | Cyber incident and root-cause support | Evidence graph, contradiction log and replayable investigation pack |
 | AxoDen Defence | Refusal-capable autonomy and spectrum-derived AI decision review | Threat model, admission criteria, refusal-cascade test harness |
+| Grid Flight Recorder | Cyber-physical resilience and infrastructure event review | Evidence model, replay timeline, uncertainty register and control recommendations |
+| Enterprise transformation evidence | AI Assurance Readiness Review | Current-state evidence map, governance gaps, readiness decision and control recommendations |
+| Commercial option synthesis | Challenge response or executive advisory | Option map, assumptions register, buyer-risk analysis and recommended next step |
 
 ### Footer
 
@@ -277,10 +381,11 @@ The Kernel is relevant when an AI-enabled workflow needs a defensible answer to 
 
 Typical candidates include regulated AI assurance, safety case review, forensic workflows, RF-derived autonomy, compliance dossiers and decision support systems where auditability matters. The Kernel is best assessed through a bounded pilot against a real evidence corpus.
 
-#### Current Engineering Posture
+#### Current engineering posture
 
 - Current CV record states 420+ automated tests for the runtime kernel.
 - Fail-closed enforcement is the stated operating posture.
+- Standards-facing attestation work, including IETF RATS / ASIL-M material where relevant, provides review context. Certification claims require separate, formal evaluation.
 - Procurement or safety-critical use requires source review, integration testing and claim verification.
 
 ### Pilot Shape
@@ -289,7 +394,7 @@ A pilot should be narrow enough to test the evidence model and valuable enough t
 
 #### Input
 
-A known workflow, a defined evidence corpus and a decision point with current pain.
+Bring a known workflow, a defined evidence corpus and a decision point that currently causes pain.
 
 #### Build
 
@@ -313,7 +418,9 @@ Refusal-capable autonomy under contested conditions.
 
 AxoDen Defence
 
-Most defence-AI stacks degrade. AxoDen Defence refuses, then emits the refusal as signed, replayable evidence. The product line covers admissibility, action permission, jam-tolerant flight and mission control, and audit-grade replay.
+AxoDen Defence is designed to govern the boundary between contested physical signals and AI-enabled decisions. It converts RF, GNSS and sensor inputs into profile-bound evidence objects, admits them only when declared checks pass, and records admissions and refusals in a replayable evidence ledger.
+
+The product line covers admissibility, action permission, mission continuity under degraded signal conditions, and audit-grade replay.
 
 **Pilot-stage runtime.** The Defence runtime is currently pilot-stage and intentionally DSP-light. Engagements are scoped as bounded pilots, not production deployments. Procurement or safety-critical use requires source review, integration testing and claim verification.
 
@@ -350,22 +457,22 @@ Survival and mission split when RF, GNSS or AI evidence is refused.
 
 Every admission, refusal, degradation and action is recorded once and bit-for-bit replayable from genesis.
 
-- Hash-chained ledger; not vendor-attested logs.
+- Cryptographic hash chain; integrity verifiable by any holder.
 - Replayable by any party who holds the ledger.
 
-### Why Nobody Else Has This
+### Technical Differentiators to Test
 
-Five compressed claims, each against a named industry failure mode.
+Five differentiators for engineering due diligence. Each should be tested against the selected pilot use case and evidence corpus.
 
-- **Refusal as evidence.** Most defence-AI stacks detect failures. AxoDen emits refusals as signed first-class evidence.
-- **Structurally separated survival loop.** Most autonomy stacks degrade gracefully. AxoDen has a survival loop that is jam-immune by construction.
-- **Hash-chain replay.** Most replay stories are vendor-attested logs. AxoDen replays bit-for-bit from a hash chain, by anyone who holds the ledger.
-- **Write-side admission.** Most AI safety frames are post-hoc filters. AxoDen's gates are write-side admission predicates: bad inputs never enter the graph.
-- **Status discipline as moat.** Most certifiability stories are mapped retrospectively to standards. AxoDen's status discipline (ESTABLISHED / CLAIMED / UNVERIFIED CONJECTURE) is the moat at this market stage.
+- **Refusal as evidence.** Refusals are signed evidence events, recorded once and replayable as first-class outputs.
+- **Separated survival and mission logic.** Survival continuity and mission continuity are handled as distinct control questions when RF, GNSS or AI evidence is refused.
+- **Hash-chain replay.** Admissions, refusals, degradations and permitted actions are recorded so the decision path can be replayed from the ledger.
+- **Write-side admission.** Evidence gates run before downstream reasoning, so inadmissible inputs do not silently enter the graph.
+- **Explicit status discipline.** Claims are separated by status, including established results, claimed results and proof-obligation-bound work.
 
 ### Threat Surface and Honest Status
 
-Eight defence-relevant threats. Five closed today; three carry named proof obligations and bounded delivery paths.
+The current internal register tracks eight defence-relevant threats. Five are marked closed in the current status record; three remain open with named proof obligations or pilot validation paths. These statuses should be verified against the current engineering record before procurement or safety-critical use.
 
 | # | Threat | Status |
 |---|---|---|
@@ -388,9 +495,23 @@ AxoDen Defence is most relevant where AI confidence can be detached from signal 
 - 5G and 6G base-station integrity.
 - Space-domain awareness and anomalous emission review.
 
-### Engagement Output
+### Executive Output
 
-A defence engagement produces a concise threat model, evidence admission criteria, a proposed test harness, and a decision about whether the use case is suitable for an AxoDen-style pilot. The capability gate at the end states scope honestly. It is not a procurement claim.
+For sponsors and procurement reviewers, a defence engagement produces a concise threat model, evidence admission criteria, proposed test harness and capability-gate decision. The gate states whether the use case should proceed, narrow or stop. It is not a procurement claim.
+
+### Engineering Pilot Shape
+
+#### Input
+
+A defined contested-signal use case, known platform or mission boundary, available RF/GNSS/sensor evidence, and a decision point where refusal is acceptable or required.
+
+#### Build
+
+Admission predicates, authority-binding model, refusal cascade, replay ledger and failure-mode test harness.
+
+#### Output
+
+Threat model, evidence boundary design, pilot findings, open proof obligations and a recommendation on whether the use case should proceed, narrow or stop.
 
 ### Footer
 
@@ -430,12 +551,12 @@ Keep a record of accepted evidence, rejected evidence and unresolved uncertainty
 
 ### Use Cases
 
-The strongest fit is a technical investigation where the buyer already has logs, reports or case notes and needs a clearer path from evidence to decision.
+The strongest fit is a cyber or technical investigation where the buyer already has telemetry, logs, reports or case notes and needs a clearer path from evidence to decision.
 
 - Cyber incident triage and post-incident review.
-- Industrial failure analysis across components, telemetry and maintenance records.
-- Insurance claim evidence review for large-value technical or operational claims.
-- Safety investigation support where contradictory sources must be separated from unresolved gaps.
+- SOC escalation review where SIEM/SOAR output needs campaign-level structure.
+- Ransomware containment and post-incident evidence review.
+- Technical root-cause analysis where logs, telemetry and human reports conflict.
 
 ### Pilot Output
 
@@ -443,6 +564,20 @@ The strongest fit is a technical investigation where the buyer already has logs,
 - Contradiction and missing-evidence register.
 - Decision replay pack for reviewer inspection.
 - Integration notes for existing SOC, legal or assurance workflows.
+
+### Pilot Shape
+
+#### Input
+
+A bounded incident corpus, current investigation workflow, relevant telemetry/log sources and one or two investigation questions that matter to the buyer.
+
+#### Build
+
+Evidence graph schema, deterministic operator stack, gap and contradiction checks, replay ledger and analyst-facing findings pack.
+
+#### Output
+
+Campaign-level evidence package, pivots, unsupported-claim register, next-investigation recommendations and integration notes.
 
 ### Footer
 
@@ -494,6 +629,20 @@ Turn the record into practical controls, response changes and investment priorit
 - Gap and contradiction register.
 - Recommended control, monitoring or process changes.
 
+### Pilot Shape
+
+#### Input
+
+A defined grid, SCADA, DER, microgrid or infrastructure event class, available telemetry/log sources, authority model and review question.
+
+#### Build
+
+Evidence schema, event replay model, uncertainty markers, authority-binding review and gap/contradiction checks.
+
+#### Output
+
+Replayable event timeline, evidence gaps, control recommendations and a decision on whether a fuller Grid Flight Recorder architecture is justified.
+
 ### Footer
 
 Luminesce Limited
@@ -512,7 +661,7 @@ This page explains how Luminesce Limited handles personal data submitted through
 
 ### Who We Are
 
-Luminesce Limited is a UK company providing AI assurance, evidence architecture, research translation and related consultancy services.
+Luminesce Limited is a UK company providing AI assurance, evidence architecture, research translation, enterprise transformation advisory and related consultancy services.
 
 ### What We Collect
 
@@ -525,6 +674,12 @@ We use enquiry data to respond to your message, assess whether we can help, prov
 ### Sharing
 
 We do not sell personal data. We may share information with professional advisers, service providers or authorities where needed for lawful business operation or legal compliance.
+
+### Engagement Confidentiality
+
+Some Luminesce engagements involve sensitive technical, commercial, regulated or security-relevant material. Engagement-specific evidence, source material, logs, dossiers or technical artefacts are handled according to the agreed NDA, scope of work and working environment for that engagement.
+
+For pilots and reviews, closeout should identify what material was received, what outputs were produced, and whether engagement data should be retained, returned or deleted subject to legal, contractual and business-record requirements.
 
 ### Retention
 

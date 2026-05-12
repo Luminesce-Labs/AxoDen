@@ -18,17 +18,17 @@
   <meta name="twitter:image" content="https://luminescelimited.com/luminesce-logo.png" />
   <link rel="icon" href="./favicon-32.png" />
   <link rel="preload" as="font" href="./source-serif-4-latin-600-normal.woff2" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="./shared.css?v=7" />
+  <link rel="stylesheet" href="./shared.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="./index.html" aria-label="Luminesce Limited home"><span class="brand-mark">LL</span><span><span class="brand-name">Luminesce Limited</span><span class="brand-sub">AI assurance &amp; evidence systems</span></span></a>
-      <nav class="nav" aria-label="Primary navigation"><a href="./index.html">Home</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">Defence</a><a class="active" href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a class="nav-cta" href="./index.html#contact">Contact</a></nav>
+      <nav class="nav" aria-label="Primary navigation"><a href="./index.html">Home</a><a href="./index.html#about">About</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">Defence</a><a class="active" href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a class="nav-cta" href="./index.html#contact">Contact</a></nav>
       <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span class="hamburger-lines"></span></button>
     </div>
-    <div class="mobile-overlay" id="mobile-menu"><nav aria-label="Mobile navigation"><a href="./index.html">Home</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">Defence</a><a href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a href="./index.html#contact">Contact</a></nav></div>
+    <div class="mobile-overlay" id="mobile-menu"><nav aria-label="Mobile navigation"><a href="./index.html">Home</a><a href="./index.html#about">About</a><a href="./index.html#services">Services</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">Defence</a><a href="./forensic-intelligence.html">Forensics</a><a href="./research.html">Research</a><a href="./index.html#contact">Contact</a></nav></div>
   </header>
 
   <main id="main">
@@ -63,12 +63,12 @@
     <section class="section split">
       <div>
         <h2>Use cases</h2>
-        <p class="lead">The strongest fit is a technical investigation where the buyer already has logs, reports or case notes and needs a clearer path from evidence to decision.</p>
+        <p class="lead">The strongest fit is a cyber or technical investigation where the buyer already has telemetry, logs, reports or case notes and needs a clearer path from evidence to decision.</p>
         <ul class="feature-list">
           <li>Cyber incident triage and post-incident review.</li>
-          <li>Industrial failure analysis across components, telemetry and maintenance records.</li>
-          <li>Insurance claim evidence review for large-value technical or operational claims.</li>
-          <li>Safety investigation support where contradictory sources must be separated from unresolved gaps.</li>
+          <li>SOC escalation review where SIEM/SOAR output needs campaign-level structure.</li>
+          <li>Ransomware containment and post-incident evidence review.</li>
+          <li>Technical root-cause analysis where logs, telemetry and human reports conflict.</li>
         </ul>
       </div>
       <aside class="panel">
@@ -80,6 +80,20 @@
           <li>Integration notes for existing SOC, legal or assurance workflows.</li>
         </ul>
       </aside>
+    </section>
+
+    <section class="section-band">
+      <div class="section">
+        <div class="section-head">
+          <div><h2>Pilot shape</h2></div>
+          <p>A forensic pilot is scoped around one investigation question and one bounded evidence corpus the buyer already holds.</p>
+        </div>
+        <div class="grid three">
+          <article class="card tint-teal"><h3>Input</h3><p>A bounded incident corpus, current investigation workflow, relevant telemetry/log sources and one or two investigation questions that matter to the buyer.</p></article>
+          <article class="card tint-blue"><h3>Build</h3><p>Evidence graph schema, deterministic operator stack, gap and contradiction checks, replay ledger and analyst-facing findings pack.</p></article>
+          <article class="card tint-gold"><h3>Output</h3><p>Campaign-level evidence package, pivots, unsupported-claim register, next-investigation recommendations and integration notes.</p></article>
+        </div>
+      </div>
     </section>
   </main>
 
