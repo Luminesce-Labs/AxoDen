@@ -344,7 +344,7 @@ For commercial work, Luminesce treats research claims as inputs to be checked ag
 #### Useful links
 
 - ORCID profile: https://orcid.org/0009-0008-6435-3530
-- Zenodo publication search: https://zenodo.org/search?q=Erkan%20Yalcinkaya
+- Zenodo publication search: https://zenodo.org/search?q=metadata.creators.person_or_org.identifiers.identifier%3A0009-0008-6435-3530&l=list&p=1&s=10&sort=bestmatch
 - AxoDen Kernel overview: kernel.html
 - Discuss a research translation question: index.html#contact
 
