@@ -1,0 +1,2650 @@
+╭─── Claude Code v2.1.138 ─────────────────────────────────────────────────────╮
+│                                              │ Tips for getting started      │
+│              Welcome back Erkan!             │ ✔ Run /init to create a CLAU… │
+│                                              │ ───────────────────────────── │
+│                    ▐▛███▜▌                   │ What's new                    │
+│                   ▝▜█████▛▘                  │ Internal fixes                │
+│                     ▘▘ ▝▝                    │ [VSCode] Fixed extension fai… │
+│                                              │ Added `CLAUDE_CODE_ENABLE_FE… │
+│   Opus 4.7 · Claude Max · Erkan Yalcinkaya   │ /release-notes for more       │
+│          ~/projects/AxoDen-Website           │                               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ /skills 
+  ⎿  Skills dialog dismissed
+
+❯ /init                                                                         
+
+  Searched for 3 patterns, read 3 files, listed 2 directories (ctrl+o to expand)
+
+⏺ Write(CLAUDE.md)
+  ⎿  Wrote 45 lines to CLAUDE.md
+      2 # CLAUDE.md
+      3 This file provides guidance to Claude Code (claude.ai/code) when 
+      4 working with code in this repository.
+      5 ## What this repo is
+      6 
+        .com), served as plain files — no build step, no framework, no pa
+        ckage manager. The repo directory is still named `AxoDen-Website`
+        uminesce, not the company.AxoDen is now the product line within L
+      8 
+      9 ## Stack
+     … +74 lines (ctrl+o to expand)
+
+⏺ Created CLAUDE.md at the repo root. Highlights captured:
+
+  - Static site, no build/lint/test — serve with python3 -m http.server.
+  - Repo is named AxoDen-Website but the live brand is Luminesce Limited (AxoDen
+   is now a product line).
+  - Cache-busting ?v=N on shared.css and script.js must be bumped across all 7 
+  HTML files together.
+  - sitemap.xml and robots.txt are hand-maintained; per-page SEO/OG/Twitter tags
+   follow a duplicated pattern.
+  - Luminesce_Website_Content.md is the canonical copy source.
+  - Mobile menu in script.js requires specific markup (.hamburger +
+  #mobile-menu).
+  - Accessibility hooks (skip link, focus-visible, aria attrs) are pre-existing
+  — preserve when editing.
+  - Design tokens live as CSS custom properties in shared.css.
+
+✻ Baked for 55s
+
+❯ can you run /web and /words for                                               
+  /Users/erkanyalcinkaya/projects/AxoDen-Website/Luminesce_Website_Content.md   
+
+⏺ Skill(web)
+  ⎿  Successfully loaded skill · 7 tools allowed
+
+⏺ Skill(words)
+  ⎿  Successfully loaded skill · 5 tools allowed
+
+  Searched for 1 pattern, read 6 files, listed 2 directories (ctrl+o to expand)
+
+⏺ Loaded the WORDS corpus from
+  /Users/erkanyalcinkaya/projects/ai_projects/Words/ (the skill's /mnt/project/
+  reference resolves there on this machine). Reviewed
+  Luminesce_Website_Content.md (704 lines, 7-page content master).
+
+  ---
+  /web — review
+
+  Mode: review | targets: html (as rendered from .md), seo, a11y-of-content,
+  scannability
+
+  The file is the source-of-truth for HTML copy, so findings are scoped to what
+  affects rendered pages.
+
+  Critical
+
+  - Luminesce_Website_Content.md:5-21 — Nav list states Home, About, Services, 
+  AxoDen, Defence, Forensics, Research, Contact. Live index.html:35-41 has no
+  About link. Either add an About anchor/page or drop "About" from this list so
+  the master document and the rendered nav stop drifting.
+  - Luminesce_Website_Content.md:284 — ORCID: 0009-0008-6435-3530 appears as a
+  bare ID, not as a link. ORCID's display convention is the full
+  https://orcid.org/... URL; verify the rendered research.html wraps it in an
+  <a>.
+  - Luminesce_Website_Content.md:33-35, 356-358, 427-429, 532-534, 598-600 —
+  CTAs are documented in prose ("Primary call to action: Discuss a pilot"). That
+   is fine as a content note, but the rendered page should expose them as <a 
+  class="button"> elements with :focus-visible and a tap target ≥ 24×24. Confirm
+   each page's hero block delivers that.
+
+  Major
+
+  - Luminesce_Website_Content.md:43-53 — Evidence Strip number formatting is
+  inconsistent: 200TB+ (no space — should be 200 TB+ per SI), £200M+ vs £9B (one
+   has the +, one does not, and one uses lowercase B). Pick one style across the
+   strip; this block is the most-screenshotted on the homepage.
+  - Luminesce_Website_Content.md:278-282 — 20, 29, 24 lead lines in the Research
+   Evidence block. As rendered metric tiles these should match the homepage
+  Evidence Strip's typographic pattern; right now the master doc gives them in
+  two different shapes.
+  - Luminesce_Website_Content.md:329-338 — Research-to-Service table has eight
+  rows. Confirm research.html renders it with a <caption> and a row scope on the
+   header (<th scope="col">) for screen-reader navigation, otherwise this is the
+   kind of marketing table that becomes opaque on AT.
+  - Headings inside the master use mixed casing: Where the Kernel Fits, How the 
+  Research Is Used, What We Defend (Title Case) vs Pilot output, Pilot shape,
+  Use cases, Engagement Models, Discovery engagements (Sentence case). Pick one
+  and apply globally before rendering — currently each HTML page risks
+  inheriting the inconsistency.
+
+  Minor
+
+  - Luminesce_Website_Content.md:254 — LinkedIn: linkedin.com/in/eyk is a bare
+  slug. Render as a full https://www.linkedin.com/in/eyk <a> with descriptive
+  link text ("LinkedIn profile, Erkan Yalcinkaya").
+  - Luminesce_Website_Content.md:250, 252, 696 — Email addresses appear as plain
+   text. Rendered HTML should wrap them in mailto: links.
+  - Luminesce_Website_Content.md:323 — Useful Link reads Zenodo publication 
+  search: https://zenodo.org/search?q=Erkan%20Yalcinkaya — descriptive enough,
+  fine. But AxoDen Kernel overview: kernel.html and index.html#contact are
+  relative paths in a content doc that may also be reused for off-site material.
+   Keep the rendered links relative; flag in the content doc that these are
+  site-internal so future translators don't paste them whole into external
+  assets.
+  - Luminesce_Website_Content.md:282 — ESTABLISHED in all-caps mid-sentence
+  reads as shouting on the web. Render in normal case with the status-set
+  treated typographically (small caps or a <span class="status"> token) rather
+  than baked into the copy.
+  - Luminesce_Website_Content.md:190 — "AxoDen kernel test record" lowercases
+  the brand. Compare to AxoDen Kernel everywhere else. Brand consistency.
+
+  Top issue: Nav drift between this master doc and index.html.
+  Quickest win: Standardise the Evidence Strip number formatting.
+  Biggest risk: SEO meta and titles are not in this file at all — they live only
+   in the HTML <head>s. Treat this doc as canonical for body copy only and add a
+   separate per-page meta block (title ≤60, description ≤160) to the master if
+  you want titles/descriptions reviewed alongside the prose.
+
+  ---
+  /words — review
+
+  Mode: review | tone=engineering-grade, authoritative |
+  audience=technical/commercial buyers
+  Modules: MOD00, MOD01
+
+  The document is in clean British English and free of em dashes. The voice is
+  consistent and appropriate for the audience. Findings below are tightening
+  passes, not structural problems.
+
+  Key issues
+
+  1. Contrast-phrasing residue. MOD00 bans defining by contrast. Two instances:
+    - :460 — Hash-chained ledger; not vendor-attested logs. Rewrite:
+  Hash-chained ledger, replayable by any party holding it. (Move the contrast
+  into a separate sentence if you want to keep the comparison.)
+    - :467 — Refusals are treated as signed evidence events, not only as runtime
+   errors or after-action log entries. Rewrite: Refusals are signed evidence 
+  events. The runtime treats them as first-class outputs, recorded once and 
+  replayable.
+    - :500 — It is not a procurement claim. Acceptable as a disclaimer in this
+  position; flagging only for awareness.
+  2. Bullet parallelism risks stacking. :86-91 (six AxoDen Kernel bullets) and
+  :97-101 (five Forensic bullets) each open with similar noun-phrase patterns.
+  Read aloud, the cadence flattens. Break one bullet in each list with a
+  verb-led opening to introduce asymmetry, e.g. Integrate a deterministic 
+  runtime control kernel instead of Deterministic runtime control kernel 
+  integration.
+  3. Service-section template duplication. Pilot Shape blocks on Kernel,
+  Defence, Forensic and Grid Flight Recorder pages all run Input → Build → 
+  Output. The template is useful, but the prose inside each block currently
+  repeats sentence shapes (A defined ___, a known ___ and a decision ___). Vary
+  opening word and length across at least one of the four to avoid a single
+  voice across pages reading as a stencil.
+  4. Number and abbreviation drift.
+    - 25+ yrs (:45) vs 25 years (:57) — pick one and apply consistently. In
+  serious sales copy 25 years is stronger.
+    - £200M+ / £9B / 200TB+ — see /web finding above; same issue from a prose
+  perspective.
+    - 420+ automated tests, verify before procurement use. (:190) — the verify
+  clause is grafted on. Split: 420+ automated tests in the internal kernel 
+  record. Verify against the current engineering record before procurement use.
+  5. "AxoDen" capitalisation. :190 uses AxoDen kernel (lowercase kernel);
+  elsewhere AxoDen Kernel is the named product. Apply title-case to the product
+  line consistently.
+  6. Heading case inconsistency. Title Case headings (Where the Kernel Fits, How
+   the Research Is Used, What We Defend) sit alongside Sentence case ones (Pilot
+   output, Use cases). Decide one and apply across all seven page sections in
+  this master before the HTML inherits it.
+
+  Cadence pass — passed
+
+  - No em dashes detected.
+  - No banned transitions (moreover, furthermore, in today's landscape, it is 
+  worth noting).
+  - No banned adjective set (powerful, compelling, cutting-edge, transformative,
+   impactful). "Deep-tech" appears twice — borderline marketing register, but
+  used as a category descriptor; acceptable.
+  - British spelling consistent (behaviour, organisation, programme,
+  rationalisation, prioritisation).
+  - Sentence-length variation across the homepage and Research page is healthy.
+
+  Targeted micro-edits worth applying
+
+  Line: :31
+  Current: "have to survive governance, audit, procurement and operational
+    pressure"
+  Proposed: "must survive governance, audit, procurement and operating pressure"
+
+    — operational pressure is filler; operating pressure is concrete and
+  shorter.
+  ────────────────────────────────────────
+  Line: :65
+  Current: "Its current application surfaces span cyber-forensic intelligence,
+  RF
+    systems and AI integration, automated pre-audit and compliance diagnostics
+    for GxP/pharma and aerospace supplier dossiers, and cyber-physical grid
+    integrity."
+  Proposed: Break into two sentences. The list is doing too much in one breath.
+  ────────────────────────────────────────
+  Line: :181
+  Current: "The same operating instinct now runs through Luminesce: model the
+    system, find the load-bearing constraint, and make the decision path
+    inspectable."
+  Proposed: Strong line. Keep. Consider promoting to a pull-quote on the founder
+
+    page.
+  ────────────────────────────────────────
+  Line: :226
+  Current: "preparing to deploy AI in a regulated or operationally sensitive
+    setting."
+  Proposed: "preparing to deploy AI in a regulated or operationally sensitive
+    context." (Avoid setting directly after operationally sensitive — both
+    abstract.)
+  ────────────────────────────────────────
+  Line: :242
+  Current: "controlled-data conditions where that is required for procurement,
+    regulated or safety-critical use."
+  Proposed: "controlled-data conditions when procurement, regulated or
+    safety-critical use requires it." (Active.)
+  ────────────────────────────────────────
+  Line: :316
+  Current: "The research record is a source of method, vocabulary and evidence."
+  Proposed: Keep. Strong opening sentence.
+
+  Revised version
+
+  Not produced as a full rewrite — the document is too long and the edits above
+  are local rather than structural. If you want a full pass on a specific
+  section (Hero, Services, About the Founder, or any single product page), name
+  it and I will produce the revision and 1–2 variants per MOD01 output format.
+
+  ---
+  Next steps
+
+  1. Decide nav contents (resolve the About drift) and align master doc + all 7
+  HTML files.
+  2. Standardise Evidence Strip number formatting, then mirror it on the
+  Research page metric block.
+  3. Pick one heading case (Sentence vs Title) and apply across the master
+  before the HTML re-renders inherit the inconsistency.
+
+✻ Worked for 2m 15s
+
+❯ next steps do not seem to include all your recommendations. Can you handle    
+  the words suggestions first and update the md document                        
+
+⏺ Applying the /words edits to the master document.
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      28  
+      29  Luminesce Limited combines AxoDen deep-tech IP with 25 years of
+           regulated enterprise transformation, integration, data migrati
+          on and carve-out delivery experience.
+      30  
+      31 -AxoDen is the company's compositional AI control and evidence f
+         -ramework, grounded in topology, graph theory, information physi
+         -cs and formal methods. Alongside AxoDen, Luminesce provides sen
+         -ior advisory and delivery support for complex technology progra
+         -mmes that have to survive governance, audit, procurement and op
+         -erational pressure.                                            
+      31 +AxoDen is the company's compositional AI control and evidence f
+         +ramework, grounded in topology, graph theory, information physi
+         +cs and formal methods. Alongside AxoDen, Luminesce provides sen
+         +ior advisory and delivery support for complex technology progra
+         +mmes that must survive governance, audit, procurement and opera
+         +ting pressure.                                                 
+      32  
+      33  Primary call to action: View services
+      34  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 2 lines, removed 2 lines
+      42  
+      43  ### Evidence Strip
+      44  
+      45 -25+ yrs: regulated enterprise and technology delivery          
+      45 +25+ years: regulated enterprise and technology delivery        
+      46  
+      47  £200M+: transformation programmes led or shaped
+      48  
+      49  £9B: M&A integration environment supported
+      50  
+      51 -200TB+: regulated data migration experience                    
+      51 +200 TB+: regulated data migration experience                   
+      52  
+      53  20: DOI research publications on Zenodo
+      54  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      62  
+      63  AxoDen is Luminesce's main technical product and research line:
+           a compositional AI control and evidence framework grounded in 
+          topology, graph theory, information physics and formal methods.
+      64  
+      65 -AxoDen addresses three unresolved problems in high-stakes AI: t
+         -rust, explainability and autonomy under contested conditions. I
+         -ts current application surfaces span cyber-forensic intelligenc
+         -e, RF systems and AI integration, automated pre-audit and compl
+         -iance diagnostics for GxP/pharma and aerospace supplier dossier
+         -s, and cyber-physical grid integrity.                          
+      65 +AxoDen addresses three unresolved problems in high-stakes AI: t
+         +rust, explainability and autonomy under contested conditions. C
+         +urrent application surfaces are cyber-forensic intelligence, RF
+         + systems and AI integration, and cyber-physical grid integrity.
+         + AxoDen also drives automated pre-audit and compliance diagnost
+         +ics for GxP/pharma and aerospace supplier dossiers.            
+      66  
+      67  The enterprise advisory work draws on delivery experience acros
+          s pharmaceuticals and life sciences, telecommunications, financ
+          ial services, consumer goods and large-scale enterprise change.
+      68  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      84  Design or review AI-enabled systems where evidence capture, ref
+          usal behaviour, control boundaries, replayability and certifica
+          tion readiness matter.
+      85  
+      86  - Compositional AI safety architecture design and review
+      87 -- Deterministic runtime control kernel integration             
+      87 +- Integrate a deterministic runtime control kernel             
+      88  - Evidence and certification architecture for high-stakes AI de
+          ployments
+      89  - Multi-root trust and attestation architecture
+      90  - Governed human-AI reasoning architecture
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+       97  - SOC telemetry to campaign-level evidence pipelines
+       98  - SIEM/SOAR augmentation with deterministic operator stacks
+       99  - Evidence-bounded investigation packaging
+      100 -- Append-only evidence trail design for analyst workflows     
+      100 +- Design append-only evidence trails for analyst workflows    
+      101  - Ransomware containment architecture review
+      102  
+      103  #### AxoDen Dossier Intelligence
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 2 lines, removed 2 lines
+      182  
+      183  Later work included large regulated and transformation environ
+           ments, including GxP-scale data migration, a £9B M&A integrati
+           on environment, a £200M transformation programme context, and 
+           carve-out/separation delivery. AxoDen extends that background 
+           into AI-era evidence, refusal and replay problems rather than 
+           replacing the enterprise advisory work.
+      184  
+      185 -#### Relevant Background                                      
+      185 +#### Relevant background                                      
+      186  
+      187  - Engineering Physics degree, Istanbul Technical University.
+      188  - Global IT separation and transformation delivery across regu
+           lated environments.
+      189  - Architect of AxoDen and APASES research systems.
+      190 -- Current internal AxoDen kernel test record: 420+ automated t
+          -ests, verify before procurement use.                          
+      190 +- 420+ automated tests in the internal AxoDen Kernel record. V
+          +erify against the current engineering record before procuremen
+          +t use.                                                        
+      191  
+      192  ### AxoDen Product Line
+      193  
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      193  
+      194  AxoDen is the main technical product and research line inside 
+           Luminesce. It is a compositional AI control and evidence frame
+           work grounded in topology, graph theory, information physics a
+           nd formal methods.
+      195  
+      196 -It is positioned as evidence infrastructure for AI-enabled, cy
+          -ber-physical and regulated decision systems, with current appl
+          -ication surfaces in cyber-forensic intelligence, RF systems an
+          -d AI integration, automated pre-audit and compliance diagnosti
+          -cs for GxP/pharma and aerospace supplier dossiers, and cyber-p
+          -hysical grid integrity.                                       
+      196 +It is positioned as evidence infrastructure for AI-enabled, cy
+          +ber-physical and regulated decision systems. Current applicati
+          +on surfaces include cyber-forensic intelligence, RF systems an
+          +d AI integration, and cyber-physical grid integrity, alongside
+          + automated pre-audit and compliance diagnostics for GxP/pharma
+          + and aerospace supplier dossiers.                             
+      197  
+      198  #### AxoDen Kernel
+      199  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      223  
+      224  Lower-commitment entry points for buyers who need clarity befo
+           re committing to a pilot or programme role.
+      225  
+      226 -- **AI Assurance Readiness Review.** Short bridge engagement f
+          -or transformation teams, CIO/CTO sponsors, compliance leaders 
+          -or vendors preparing to deploy AI in a regulated or operationa
+          -lly sensitive setting.                                        
+      226 +- **AI Assurance Readiness Review.** Short bridge engagement f
+          +or transformation teams, CIO/CTO sponsors, compliance leaders 
+          +or vendors preparing to deploy AI in a regulated or operationa
+          +lly sensitive context.                                        
+      227  - **Diagnostic review.** Fast review of a system, dossier, arc
+           hitecture or decision process with a short findings pack.
+      228  - **Executive briefing.** Closed-room briefing for boards, spo
+           nsors or senior teams on AI risk, evidence architecture, refus
+           al behaviour and operational assurance choices.
+      229  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      239  
+      240  Many Luminesce engagements involve sensitive technical, commer
+           cial, regulated or security-relevant evidence. Work can begin 
+           under NDA, with engagement data kept to the agreed working env
+           ironment and access model for the pilot or review.
+      241  
+      242 -Pilot closeout should state what was received, what was produc
+          -ed, what must be returned or deleted, and which claims remain 
+          -dependent on source review, integration testing or external va
+          -lidation. Luminesce is willing to work under source-review and
+          - controlled-data conditions where that is required for procure
+          -ment, regulated or safety-critical use.                       
+      242 +Pilot closeout should state what was received, what was produc
+          +ed, what must be returned or deleted, and which claims remain 
+          +dependent on source review, integration testing or external va
+          +lidation. Luminesce is willing to work under source-review and
+          + controlled-data conditions when procurement, regulated or saf
+          +ety-critical use requires it.                                 
+      243  
+      244  ### Contact Section
+      245  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      394  
+      395  #### Input
+      396  
+      397 -A known workflow, a defined evidence corpus and a decision poi
+          -nt with current pain.                                         
+      397 +Bring a known workflow, a defined evidence corpus and a decisi
+          +on point that currently causes pain.                          
+      398  
+      399  #### Build
+      400  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      381  
+      382  Typical candidates include regulated AI assurance, safety case
+            review, forensic workflows, RF-derived autonomy, compliance d
+           ossiers and decision support systems where auditability matter
+           s. The Kernel is best assessed through a bounded pilot against
+            a real evidence corpus.
+      383  
+      384 -#### Current Engineering Posture                              
+      384 +#### Current engineering posture                              
+      385  
+      386  - Current CV record states 420+ automated tests for the runtim
+           e kernel.
+      387  - Fail-closed enforcement is the stated operating posture.
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      457  
+      458  Every admission, refusal, degradation and action is recorded o
+           nce and bit-for-bit replayable from genesis.
+      459  
+      460 -- Hash-chained ledger; not vendor-attested logs.              
+      460 +- Cryptographic hash chain; integrity verifiable by any holder
+          +.                                                             
+      461  - Replayable by any party who holds the ledger.
+      462  
+      463  ### Technical Differentiators to Test
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      464  
+      465  Five differentiators for engineering due diligence. Each shoul
+           d be tested against the selected pilot use case and evidence c
+           orpus.
+      466  
+      467 -- **Refusal as evidence.** Refusals are treated as signed evid
+          -ence events, not only as runtime errors or after-action log en
+          -tries.                                                        
+      467 +- **Refusal as evidence.** Refusals are signed evidence events
+          +, recorded once and replayable as first-class outputs.        
+      468  - **Separated survival and mission logic.** Survival continuit
+           y and mission continuity are handled as distinct control quest
+           ions when RF, GNSS or AI evidence is refused.
+      469  - **Hash-chain replay.** Admissions, refusals, degradations an
+           d permitted actions are recorded so the decision path can be r
+           eplayed from the ledger.
+      470  - **Write-side admission.** Evidence gates run before downstre
+           am reasoning, so inadmissible inputs do not silently enter the
+            graph.
+
+⏺ Now verify the changes landed and the document still reads cleanly.
+
+  Searched for 2 patterns (ctrl+o to expand)
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      317  
+      318  For commercial work, Luminesce treats research claims as input
+           s to be checked against system context. A theorem, paper or be
+           nchmark can support a pilot hypothesis. It still has to be tra
+           nslated into a scoped product question, a dataset, an acceptan
+           ce test and a decision about what happens if the evidence is w
+           eak.
+      319  
+      320 -#### Useful Links                                             
+      320 +#### Useful links                                             
+      321  
+      322  - ORCID profile: https://orcid.org/0009-0008-6435-3530
+      323  - Zenodo publication search: https://zenodo.org/search?q=Erkan
+           %20Yalcinkaya
+
+  Searched for 1 pattern (ctrl+o to expand)
+
+⏺ All /words edits applied to Luminesce_Website_Content.md. Final scans show no
+  em dashes, no banned transitions, no banned adjectives, no contrast-definition
+   residue, and consistent heading case (Title Case at ###, Sentence case at
+  #### except brand names).
+
+  Changes made
+
+  Line: 31
+  Change: have to survive … operational pressure → must survive … operating 
+    pressure
+  ────────────────────────────────────────
+  Line: 45
+  Change: 25+ yrs → 25+ years
+  ────────────────────────────────────────
+  Line: 51
+  Change: 200TB+ → 200 TB+
+  ────────────────────────────────────────
+  Line: 65
+  Change: Split the run-on application-surfaces sentence into two
+  ────────────────────────────────────────
+  Line: 87
+  Change: Deterministic runtime control kernel integration → Integrate a 
+    deterministic runtime control kernel (breaks bullet parallelism)
+  ────────────────────────────────────────
+  Line: 100
+  Change: Append-only evidence trail design for analyst workflows → Design 
+    append-only evidence trails for analyst workflows
+  ────────────────────────────────────────
+  Line: 185
+  Change: Relevant Background → Relevant background
+  ────────────────────────────────────────
+  Line: 190
+  Change: Current internal AxoDen kernel test record: 420+ automated tests, 
+    verify before procurement use. → 420+ automated tests in the internal AxoDen
+   
+    Kernel record. Verify against the current engineering record before 
+    procurement use.
+  ────────────────────────────────────────
+  Line: 196
+  Change: Split the duplicate application-surfaces run-on
+  ────────────────────────────────────────
+  Line: 226
+  Change: operationally sensitive setting → operationally sensitive context
+  ────────────────────────────────────────
+  Line: 242
+  Change: where that is required for procurement … → when procurement … requires
+   
+    it (active)
+  ────────────────────────────────────────
+  Line: 320
+  Change: Useful Links → Useful links
+  ────────────────────────────────────────
+  Line: 384
+  Change: Current Engineering Posture → Current engineering posture
+  ────────────────────────────────────────
+  Line: 395
+  Change: A known workflow, a defined evidence corpus and a decision point with 
+    current pain. → Bring a known workflow, a defined evidence corpus and a 
+    decision point that currently causes pain. (verb-led, breaks the Pilot Shape
+
+    template stencil)
+  ────────────────────────────────────────
+  Line: 460
+  Change: Hash-chained ledger; not vendor-attested logs. → Cryptographic hash 
+    chain; integrity verifiable by any holder. (affirmative)
+  ────────────────────────────────────────
+  Line: 467
+  Change: Refusals are treated as signed evidence events, not only as runtime 
+    errors or after-action log entries. → Refusals are signed evidence events, 
+    recorded once and replayable as first-class outputs.
+
+  Not applied (out of scope for /words)
+
+  - Nav drift between this doc and index.html (markup change in HTML).
+  - ORCID/Zenodo/LinkedIn URL linkification (HTML rendering).
+  - mailto: and email link wrapping (HTML).
+  - Research-to-Service table accessibility (HTML <caption>/<th scope>).
+  - ESTABLISHED rendered as small caps via CSS token (presentation, not copy).
+
+  These are the /web items — say the word and I'll work through the HTML files
+  next.
+
+✻ Brewed for 2m 55s
+
+❯ proceed with all - reference for decisions: the content md document.          
+
+⏺ Reading all 7 HTML files to cross-check the rendered copy against the updated
+  master.
+
+  Read 7 files (ctrl+o to expand)
+
+⏺ Cross-checking the master doc against the HTML. Several master /words edits
+  map to HTML text; a few don't (the rendered hero, defence "Why nobody else has
+   this" section, and Services grid have copy that differs from the master
+  entirely — flagging those at the end).
+
+  Searched for 4 patterns, read 1 file (ctrl+o to expand)
+
+⏺ Adding the CSS bits first, then applying edits per file.
+
+⏺ Update(shared.css)
+  ⎿  Added 9 lines
+      562    font-size: 0.9rem;
+      563  }
+      564  
+      565 +.table caption {                                              
+      566 +  caption-side: top;                                          
+      567 +  text-align: left;                                           
+      568 +  padding: 0 0 10px;                                          
+      569 +  color: var(--muted);                                        
+      570 +  font-size: 0.9rem;                                          
+      571 +  font-weight: 600;                                           
+      572 +}                                                             
+      573 +                                                              
+      574  .site-footer {
+      575    border-top: 1px solid var(--line);
+      576    background: #111a22;
+
+⏺ Update(shared.css)  ⎿  Added 8 lines
+      937    font-feature-settings: "tnum" on;
+      938  }
+      939  
+      940 +/* Status tokens (ESTABLISHED, CLAIMED, UNVERIFIED CONJECTURE)
+          + rendered                                                     
+      941 +   as small caps with letter-spacing rather than baked-in all-
+          +caps text. */                                                 
+      942 +.status-token {                                               
+      943 +  font-variant-caps: all-small-caps;                          
+      944 +  letter-spacing: 0.06em;                                     
+      945 +  font-weight: 600;                                           
+      946 +}                                                             
+      947 +                                                              
+      948  /* Section dividers — subtle horizontal accents between major 
+           sections */
+      949  .section-band + .section,
+      950  .section + .section-band {
+
+⏺ Now bumping the CSS cache version across all 7 pages.
+
+⏺ Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(kernel.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(defence.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(forensic-intelligence.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(grid-flight-recorder.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(research.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(privacy.html)
+  ⎿  Added 1 line, removed 1 line
+       9    <link rel="canonical" href="https://luminescelimited.com/priv
+          acy.html" />
+      10    <link rel="icon" href="./favicon-32.png" />
+      11    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      12 -  <link rel="stylesheet" href="./shared.css?v=7" />            
+      12 +  <link rel="stylesheet" href="./shared.css?v=8" />            
+      13  </head>
+      14  <body>
+      15    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Now applying the per-page edits.
+
+  index.html — nav About link, rename #founder → #about, Evidence Strip number
+  formats, test record bullet rewrite.
+
+⏺ Update(index.html)
+  ⎿  Added 1 line
+      33        </a>
+      34        <nav class="nav" aria-label="Primary navigation">
+      35          <a class="active" href="./index.html">Home</a>
+      36 +        <a href="#about">About</a>                             
+      37          <a href="#services">Services</a>
+      38          <a href="./kernel.html">AxoDen</a>
+      39          <a href="./defence.html">Defence</a>
+
+⏺ Update(index.html)
+  ⎿  Added 1 line
+      48      <div class="mobile-overlay" id="mobile-menu">
+      49        <nav aria-label="Mobile navigation">
+      50          <a href="./index.html">Home</a>
+      51 +        <a href="#about">About</a>                             
+      52          <a href="#services">Services</a>
+      53          <a href="./kernel.html">AxoDen</a>
+      54          <a href="./defence.html">Defence</a>
+
+⏺ Update(index.html)
+  ⎿  Added 2 lines, removed 2 lines
+      86  
+      87      <section class="proof-strip" aria-label="Founder and compan
+          y evidence">
+      88        <div class="proof-inner">
+      89 -        <div class="metric"><strong>25+ yrs</strong><span>regul
+         -ated enterprise and technology delivery</span></div>           
+      89 +        <div class="metric"><strong>25+ years</strong><span>reg
+         +ulated enterprise and technology delivery</span></div>         
+      90          <div class="metric"><strong>&pound;200M+</strong><span>
+          transformation programmes led or shaped</span></div>
+      91          <div class="metric"><strong>&pound;9B</strong><span>M&a
+          mp;A integration environment supported</span></div>
+      92 -        <div class="metric"><strong>200TB+</strong><span>regula
+         -ted data migration experience</span></div>                     
+      92 +        <div class="metric"><strong>200 TB+</strong><span>regul
+         +ated data migration experience</span></div>                    
+      93          <div class="metric"><strong>20</strong><span>DOI resear
+          ch publications on Zenodo</span></div>
+      94        </div>
+      95      </section>
+
+⏺ Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      161      </section>
+      162  
+      163      <section class="section-band">
+      164 -      <div class="section split" id="founder">                
+      164 +      <div class="section split" id="about">                  
+      165          <div>
+      166            <h2>Founder-led technical judgement</h2>
+      167            <p class="lead">Luminesce is built around first-prin
+           ciples systems thinking, delivery discipline and research tran
+           slation.</p>
+
+⏺ Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      173              <li>Engineering Physics degree, Istanbul Technical
+            University.</li>
+      174              <li>Global IT separation and transformation delive
+           ry across regulated environments.</li>
+      175              <li>Architect of AxoDen and APASES research system
+           s.</li>
+      176 -            <li>Current internal AxoDen kernel test record: 42
+          -0+ automated tests, verify before procurement use.</li>       
+      176 +            <li>420+ automated tests in the internal AxoDen Ke
+          +rnel record. Verify against the current engineering record bef
+          +ore procurement use.</li>                                     
+      177            </ul>
+      178          </aside>
+      179        </div>
+
+⏺ kernel.html — nav About link, Pilot Shape Input rewrite.
+
+⏺ Update(kernel.html)
+  ⎿  Added 1 line, removed 1 line
+      26      <div class="header-inner">
+      27        <a class="brand" href="./index.html" aria-label="Luminesc
+          e Limited home"><span class="brand-mark">LL</span><span><span c
+          lass="brand-name">Luminesce Limited</span><span class="brand-su
+          b">AI assurance &amp; evidence systems</span></span></a>
+      28        <nav class="nav" aria-label="Primary navigation">
+      29 -        <a href="./index.html">Home</a><a href="./index.html#se
+         -rvices">Services</a><a class="active" href="./kernel.html">AxoD
+         -en</a><a href="./defence.html">Defence</a><a href="./forensic-i
+         -ntelligence.html">Forensics</a><a href="./research.html">Resear
+         -ch</a><a class="nav-cta" href="./index.html#contact">Contact</a
+         ->                                                              
+      29 +        <a href="./index.html">Home</a><a href="./index.html#ab
+         +out">About</a><a href="./index.html#services">Services</a><a cl
+         +ass="active" href="./kernel.html">AxoDen</a><a href="./defence.
+         +html">Defence</a><a href="./forensic-intelligence.html">Forensi
+         +cs</a><a href="./research.html">Research</a><a class="nav-cta" 
+         +href="./index.html#contact">Contact</a>                        
+      30        </nav>
+      31        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      32      </div>
+
+⏺ Update(kernel.html)
+  ⎿  Added 1 line, removed 1 line
+      30        </nav>
+      31        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      32      </div>
+      33 -    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         -l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         -/index.html#services">Services</a><a href="./kernel.html">AxoDe
+         -n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+         -telligence.html">Forensics</a><a href="./research.html">Researc
+         -h</a><a href="./index.html#contact">Contact</a></nav></div>    
+      33 +    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         +l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         +/index.html#about">About</a><a href="./index.html#services">Ser
+         +vices</a><a href="./kernel.html">AxoDen</a><a href="./defence.h
+         +tml">Defence</a><a href="./forensic-intelligence.html">Forensic
+         +s</a><a href="./research.html">Research</a><a href="./index.htm
+         +l#contact">Contact</a></nav></div>                             
+      34    </header>
+      35  
+      36    <main id="main">
+
+⏺ Update(kernel.html)
+  ⎿  Error editing file
+
+  Read 1 file (ctrl+o to expand)
+
+⏺ Update(kernel.html)
+  ⎿  Added 1 line, removed 1 line
+      84          <p>A pilot should be narrow enough to test the evidence
+           model and valuable enough to inform a commercial decision.</p>
+      85        </div>
+      86        <div class="grid three">
+      87 -        <article class="card tint-teal"><h3>Input</h3><p>A know
+         -n workflow, a defined evidence corpus and a decision point with
+         - current pain.</p></article>                                   
+      87 +        <article class="card tint-teal"><h3>Input</h3><p>Bring 
+         +a known workflow, a defined evidence corpus and a decision poin
+         +t that currently causes pain.</p></article>                    
+      88          <article class="card tint-blue"><h3>Build</h3><p>Eviden
+          ce schema, admissibility rules, replay ledger and refusal or es
+          calation criteria.</p></article>
+      89          <article class="card tint-gold"><h3>Output</h3><p>Demon
+          strator, findings report, integration risks and a decision on t
+          he next commercial step.</p></article>
+      90        </div>
+
+⏺ defence.html — nav About, Hash-chained ledger bullet, ESTABLISHED span, table
+  caption + th scope.
+
+⏺ Update(defence.html)  ⎿  Added 1 line, removed 1 line
+      25    <header class="site-header">
+      26      <div class="header-inner">
+      27        <a class="brand" href="./index.html" aria-label="Luminesc
+          e Limited home"><span class="brand-mark">LL</span><span><span c
+          lass="brand-name">Luminesce Limited</span><span class="brand-su
+          b">AI assurance &amp; evidence systems</span></span></a>
+      28 -      <nav class="nav" aria-label="Primary navigation"><a href=
+         -"./index.html">Home</a><a href="./index.html#services">Services
+         -</a><a href="./kernel.html">AxoDen</a><a class="active" href=".
+         -/defence.html">Defence</a><a href="./forensic-intelligence.html
+         -">Forensics</a><a href="./research.html">Research</a><a class="
+         -nav-cta" href="./index.html#contact">Contact</a></nav>         
+      28 +      <nav class="nav" aria-label="Primary navigation"><a href=
+         +"./index.html">Home</a><a href="./index.html#about">About</a><a
+         + href="./index.html#services">Services</a><a href="./kernel.htm
+         +l">AxoDen</a><a class="active" href="./defence.html">Defence</a
+         +><a href="./forensic-intelligence.html">Forensics</a><a href=".
+         +/research.html">Research</a><a class="nav-cta" href="./index.ht
+         +ml#contact">Contact</a></nav>                                  
+      29        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      30      </div>
+      31      <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+          l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+          /index.html#services">Services</a><a href="./kernel.html">AxoDe
+          n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+          telligence.html">Forensics</a><a href="./research.html">Researc
+          h</a><a href="./index.html#contact">Contact</a></nav></div>
+
+⏺ Update(defence.html)
+  ⎿  Added 1 line, removed 1 line
+      28        <nav class="nav" aria-label="Primary navigation"><a href=
+          "./index.html">Home</a><a href="./index.html#about">About</a><a
+           href="./index.html#services">Services</a><a href="./kernel.htm
+          l">AxoDen</a><a class="active" href="./defence.html">Defence</a
+          ><a href="./forensic-intelligence.html">Forensics</a><a href=".
+          /research.html">Research</a><a class="nav-cta" href="./index.ht
+          ml#contact">Contact</a></nav>
+      29        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      30      </div>
+      31 -    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         -l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         -/index.html#services">Services</a><a href="./kernel.html">AxoDe
+         -n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+         -telligence.html">Forensics</a><a href="./research.html">Researc
+         -h</a><a href="./index.html#contact">Contact</a></nav></div>    
+      31 +    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         +l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         +/index.html#about">About</a><a href="./index.html#services">Ser
+         +vices</a><a href="./kernel.html">AxoDen</a><a href="./defence.h
+         +tml">Defence</a><a href="./forensic-intelligence.html">Forensic
+         +s</a><a href="./research.html">Research</a><a href="./index.htm
+         +l#contact">Contact</a></nav></div>                             
+      32    </header>
+      33  
+      34    <main id="main">
+
+⏺ Update(defence.html)
+  ⎿  Added 1 line, removed 1 line
+      82              <h3>4. Audit and replay</h3>
+      83              <p>Every admission, refusal, degradation and action
+           is recorded once and bit-for-bit replayable from genesis.</p>
+      84              <ul>
+      85 -              <li>Hash-chained ledger; not vendor-attested logs
+         -.</li>                                                         
+      85 +              <li>Cryptographic hash chain; integrity verifiabl
+         +e by any holder.</li>                                          
+      86                <li>Replayable by any party who holds the ledger.
+          </li>
+      87              </ul>
+      88            </article>
+
+⏺ Update(defence.html)
+  ⎿  Added 1 line, removed 1 line
+      114          </article>
+      115          <article class="card">
+      116            <h3>Status discipline as moat</h3>
+      117 -          <p>Most certifiability stories are <strong>mapped re
+          -trospectively to standards</strong>. AxoDen's status disciplin
+          -e (<strong>ESTABLISHED / CLAIMED / UNVERIFIED CONJECTURE</stro
+          -ng>) is the moat at this market stage.</p>                    
+      117 +          <p>Most certifiability stories are <strong>mapped re
+          +trospectively to standards</strong>. AxoDen's status disciplin
+          +e (<strong><span class="status-token">Established</span> / <sp
+          +an class="status-token">Claimed</span> / <span class="status-t
+          +oken">Unverified conjecture</span></strong>) is the moat at th
+          +is market stage.</p>                                          
+      118          </article>
+      119        </div>
+      120      </section>
+
+⏺ Update(defence.html)
+  ⎿  Added 10 lines, removed 9 lines
+      126            <p>Eight defence-relevant threats. Five closed today
+           ; three carry named proof obligations and bounded delivery pat
+           hs. Open work is named. Most defence pitches paper over this.<
+           /p>
+      127          </div>
+      128          <table class="table">
+      129 +          <caption>AxoDen Defence threat register: status as o
+          +f current internal review.</caption>                          
+      130            <thead>
+      130 -            <tr><th>#</th><th>Threat</th><th>Status</th></tr> 
+      131 +            <tr><th scope="col">#</th><th scope="col">Threat</
+          +th><th scope="col">Status</th></tr>                           
+      132            </thead>
+      133            <tbody>
+      133 -            <tr><td>T1</td><td>Hallucinated perception under j
+          -amming</td><td>Closed</td></tr>                               
+      134 -            <tr><td>T2</td><td>Buffer / overload pressure</td>
+          -<td>Closed</td></tr>                                          
+      135 -            <tr><td>T3</td><td>Replay / injection / stale inte
+          -nt</td><td>Closed</td></tr>                                   
+      136 -            <tr><td>T4</td><td>Single-vendor / monoculture com
+          -promise</td><td>Closed at L4</td></tr>                        
+      137 -            <tr><td>T5</td><td>Zombie Intent</td><td>Closed; P
+          -O2 validated at L1</td></tr>                                  
+      138 -            <tr><td>T6</td><td>Forged negative evidence</td><t
+          -d>Open: PO6, bounded sprint</td></tr>                         
+      139 -            <tr><td>T7</td><td>Predicate-burn race</td><td>Ope
+          -n: PO3, bounded sprint</td></tr>                              
+      140 -            <tr><td>T8</td><td>Control-kernel root leak</td><t
+          -d>Open: PO1, pilot programme</td></tr>                        
+      134 +            <tr><th scope="row">T1</th><td>Hallucinated percep
+          +tion under jamming</td><td>Closed</td></tr>                   
+      135 +            <tr><th scope="row">T2</th><td>Buffer / overload p
+          +ressure</td><td>Closed</td></tr>                              
+      136 +            <tr><th scope="row">T3</th><td>Replay / injection 
+          +/ stale intent</td><td>Closed</td></tr>                       
+      137 +            <tr><th scope="row">T4</th><td>Single-vendor / mon
+          +oculture compromise</td><td>Closed at L4</td></tr>            
+      138 +            <tr><th scope="row">T5</th><td>Zombie Intent</td><
+          +td>Closed; PO2 validated at L1</td></tr>                      
+      139 +            <tr><th scope="row">T6</th><td>Forged negative evi
+          +dence</td><td>Open: PO6, bounded sprint</td></tr>             
+      140 +            <tr><th scope="row">T7</th><td>Predicate-burn race
+          +</td><td>Open: PO3, bounded sprint</td></tr>                  
+      141 +            <tr><th scope="row">T8</th><td>Control-kernel root
+          + leak</td><td>Open: PO1, pilot programme</td></tr>            
+      142            </tbody>
+      143          </table>
+      144        </div>
+
+⏺ forensic-intelligence.html — nav About link.
+
+⏺ Update(forensic-intelligence.html)
+  ⎿  Added 1 line, removed 1 line
+      25    <header class="site-header">
+      26      <div class="header-inner">
+      27        <a class="brand" href="./index.html" aria-label="Luminesc
+          e Limited home"><span class="brand-mark">LL</span><span><span c
+          lass="brand-name">Luminesce Limited</span><span class="brand-su
+          b">AI assurance &amp; evidence systems</span></span></a>
+      28 -      <nav class="nav" aria-label="Primary navigation"><a href=
+         -"./index.html">Home</a><a href="./index.html#services">Services
+         -</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">
+         -Defence</a><a class="active" href="./forensic-intelligence.html
+         -">Forensics</a><a href="./research.html">Research</a><a class="
+         -nav-cta" href="./index.html#contact">Contact</a></nav>         
+      28 +      <nav class="nav" aria-label="Primary navigation"><a href=
+         +"./index.html">Home</a><a href="./index.html#about">About</a><a
+         + href="./index.html#services">Services</a><a href="./kernel.htm
+         +l">AxoDen</a><a href="./defence.html">Defence</a><a class="acti
+         +ve" href="./forensic-intelligence.html">Forensics</a><a href=".
+         +/research.html">Research</a><a class="nav-cta" href="./index.ht
+         +ml#contact">Contact</a></nav>                                  
+      29        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      30      </div>
+      31      <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+          l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+          /index.html#services">Services</a><a href="./kernel.html">AxoDe
+          n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+          telligence.html">Forensics</a><a href="./research.html">Researc
+          h</a><a href="./index.html#contact">Contact</a></nav></div>
+
+⏺ Update(forensic-intelligence.html)
+  ⎿  Added 1 line, removed 1 line
+      28        <nav class="nav" aria-label="Primary navigation"><a href=
+          "./index.html">Home</a><a href="./index.html#about">About</a><a
+           href="./index.html#services">Services</a><a href="./kernel.htm
+          l">AxoDen</a><a href="./defence.html">Defence</a><a class="acti
+          ve" href="./forensic-intelligence.html">Forensics</a><a href=".
+          /research.html">Research</a><a class="nav-cta" href="./index.ht
+          ml#contact">Contact</a></nav>
+      29        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      30      </div>
+      31 -    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         -l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         -/index.html#services">Services</a><a href="./kernel.html">AxoDe
+         -n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+         -telligence.html">Forensics</a><a href="./research.html">Researc
+         -h</a><a href="./index.html#contact">Contact</a></nav></div>    
+      31 +    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         +l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         +/index.html#about">About</a><a href="./index.html#services">Ser
+         +vices</a><a href="./kernel.html">AxoDen</a><a href="./defence.h
+         +tml">Defence</a><a href="./forensic-intelligence.html">Forensic
+         +s</a><a href="./research.html">Research</a><a href="./index.htm
+         +l#contact">Contact</a></nav></div>                             
+      32    </header>
+      33  
+      34    <main id="main">
+
+⏺ grid-flight-recorder.html — nav About.
+
+⏺ Update(grid-flight-recorder.html)
+  ⎿  Added 1 line, removed 1 line
+      25    <header class="site-header">
+      26      <div class="header-inner">
+      27        <a class="brand" href="./index.html" aria-label="Luminesc
+          e Limited home"><span class="brand-mark">LL</span><span><span c
+          lass="brand-name">Luminesce Limited</span><span class="brand-su
+          b">AI assurance &amp; evidence systems</span></span></a>
+      28 -      <nav class="nav" aria-label="Primary navigation"><a href=
+         -"./index.html">Home</a><a href="./index.html#services">Services
+         -</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">
+         -Defence</a><a href="./forensic-intelligence.html">Forensics</a>
+         -<a href="./research.html">Research</a><a class="nav-cta" href="
+         -./index.html#contact">Contact</a></nav>                        
+      28 +      <nav class="nav" aria-label="Primary navigation"><a href=
+         +"./index.html">Home</a><a href="./index.html#about">About</a><a
+         + href="./index.html#services">Services</a><a href="./kernel.htm
+         +l">AxoDen</a><a href="./defence.html">Defence</a><a href="./for
+         +ensic-intelligence.html">Forensics</a><a href="./research.html"
+         +>Research</a><a class="nav-cta" href="./index.html#contact">Con
+         +tact</a></nav>                                                 
+      29        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      30      </div>
+      31      <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+          l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+          /index.html#services">Services</a><a href="./kernel.html">AxoDe
+          n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+          telligence.html">Forensics</a><a href="./research.html">Researc
+          h</a><a href="./index.html#contact">Contact</a></nav></div>
+
+⏺ Update(grid-flight-recorder.html)
+  ⎿  Added 1 line, removed 1 line
+      28        <nav class="nav" aria-label="Primary navigation"><a href=
+          "./index.html">Home</a><a href="./index.html#about">About</a><a
+           href="./index.html#services">Services</a><a href="./kernel.htm
+          l">AxoDen</a><a href="./defence.html">Defence</a><a href="./for
+          ensic-intelligence.html">Forensics</a><a href="./research.html"
+          >Research</a><a class="nav-cta" href="./index.html#contact">Con
+          tact</a></nav>
+      29        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      30      </div>
+      31 -    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         -l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         -/index.html#services">Services</a><a href="./kernel.html">AxoDe
+         -n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+         -telligence.html">Forensics</a><a href="./research.html">Researc
+         -h</a><a href="./index.html#contact">Contact</a></nav></div>    
+      31 +    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         +l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         +/index.html#about">About</a><a href="./index.html#services">Ser
+         +vices</a><a href="./kernel.html">AxoDen</a><a href="./defence.h
+         +tml">Defence</a><a href="./forensic-intelligence.html">Forensic
+         +s</a><a href="./research.html">Research</a><a href="./index.htm
+         +l#contact">Contact</a></nav></div>                             
+      32    </header>
+      33  
+      34    <main id="main">
+
+⏺ research.html — nav About, ORCID linkify, ESTABLISHED span,
+  research-to-service table caption + scope.
+
+⏺ Update(research.html)
+  ⎿  Added 1 line
+      30        </a>
+      31        <nav class="nav" aria-label="Primary navigation">
+      32          <a href="./index.html">Home</a>
+      33 +        <a href="./index.html#about">About</a>                 
+      34          <a href="./index.html#services">Services</a>
+      35          <a href="./kernel.html">AxoDen</a>
+      36          <a href="./defence.html">Defence</a>
+
+⏺ Update(research.html)
+  ⎿  Added 1 line
+      43      <div class="mobile-overlay" id="mobile-menu">
+      44        <nav aria-label="Mobile navigation">
+      45          <a href="./index.html">Home</a>
+      46 +        <a href="./index.html#about">About</a>                 
+      47          <a href="./index.html#services">Services</a>
+      48          <a href="./kernel.html">AxoDen</a>
+      49          <a href="./defence.html">Defence</a>
+
+⏺ Update(research.html)
+  ⎿  Added 2 lines, removed 2 lines
+      65        <div class="proof-inner">
+      66          <div class="metric"><strong>20+</strong><span>DOI publi
+          cations on Zenodo</span></div>
+      67          <div class="metric"><strong>29</strong><span>theorem-le
+          vel results in the current register</span></div>
+      68 -        <div class="metric"><strong>24</strong><span>results cu
+         -rrently ESTABLISHED with proof or empirical evidence</span></di
+         -v>                                                             
+      68 +        <div class="metric"><strong>24</strong><span>results cu
+         +rrently <span class="status-token">Established</span> with proo
+         +f or empirical evidence</span></div>                           
+      69          <div class="metric"><strong>24</strong><span>results cu
+          rrently cleared for publication</span></div>
+      70 -        <div class="metric"><strong>ORCID</strong><span>0009-00
+         -08-6435-3530</span></div>                                      
+      70 +        <div class="metric"><strong>ORCID</strong><span><a href
+         +="https://orcid.org/0009-0008-6435-3530">0009-0008-6435-3530</a
+         +></span></div>                                                 
+      71        </div>
+      72      </section>
+      73  
+
+⏺ Update(research.html)
+  ⎿  Added 6 lines, removed 5 lines
+      129          <p>This is the page structure for buyers who want to u
+           nderstand what the research becomes in practice.</p>
+      130        </div>
+      131        <table class="table">
+      132 +        <caption>How each research area becomes a commercial e
+          +ngagement and what the buyer receives.</caption>              
+      133          <thead>
+      133 -          <tr><th>Research area</th><th>Commercial expression<
+          -/th><th>Typical output</th></tr>                              
+      134 +          <tr><th scope="col">Research area</th><th scope="col
+          +">Commercial expression</th><th scope="col">Typical output</th
+          +></tr>                                                        
+      135          </thead>
+      136          <tbody>
+      136 -          <tr><td>AxoDen Kernel</td><td>AI assurance and bound
+          -ed trust review</td><td>Control map, evidence schema, refusal 
+          -logic and pilot plan</td></tr>                                
+      137 -          <tr><td>Structural gap inference</td><td>Regulated d
+          -ossier and submission review</td><td>Missing-evidence report a
+          -nd remediation sequence</td></tr>                             
+      138 -          <tr><td>Forensic graphs</td><td>Cyber incident and r
+          -oot-cause support</td><td>Evidence graph, contradiction log an
+          -d replayable investigation pack</td></tr>                     
+      139 -          <tr><td>RF-AI assurance</td><td>Spectrum-derived AI 
+          -decision review</td><td>Threat model, admission criteria and t
+          -est harness proposal</td></tr>                                
+      137 +          <tr><th scope="row">AxoDen Kernel</th><td>AI assuran
+          +ce and bounded trust review</td><td>Control map, evidence sche
+          +ma, refusal logic and pilot plan</td></tr>                    
+      138 +          <tr><th scope="row">Structural gap inference</th><td
+          +>Regulated dossier and submission review</td><td>Missing-evide
+          +nce report and remediation sequence</td></tr>                 
+      139 +          <tr><th scope="row">Forensic graphs</th><td>Cyber in
+          +cident and root-cause support</td><td>Evidence graph, contradi
+          +ction log and replayable investigation pack</td></tr>         
+      140 +          <tr><th scope="row">RF-AI assurance</th><td>Spectrum
+          +-derived AI decision review</td><td>Threat model, admission cr
+          +iteria and test harness proposal</td></tr>                    
+      141          </tbody>
+      142        </table>
+      143      </section>
+
+⏺ privacy.html — nav About link only.
+
+⏺ Update(privacy.html)
+  ⎿  Added 1 line, removed 1 line
+      16    <header class="site-header">
+      17      <div class="header-inner">
+      18        <a class="brand" href="./index.html" aria-label="Luminesc
+          e Limited home"><span class="brand-mark">LL</span><span><span c
+          lass="brand-name">Luminesce Limited</span><span class="brand-su
+          b">AI assurance &amp; evidence systems</span></span></a>
+      19 -      <nav class="nav" aria-label="Primary navigation"><a href=
+         -"./index.html">Home</a><a href="./index.html#services">Services
+         -</a><a href="./kernel.html">AxoDen</a><a href="./defence.html">
+         -Defence</a><a href="./forensic-intelligence.html">Forensics</a>
+         -<a href="./research.html">Research</a><a class="nav-cta" href="
+         -./index.html#contact">Contact</a></nav>                        
+      19 +      <nav class="nav" aria-label="Primary navigation"><a href=
+         +"./index.html">Home</a><a href="./index.html#about">About</a><a
+         + href="./index.html#services">Services</a><a href="./kernel.htm
+         +l">AxoDen</a><a href="./defence.html">Defence</a><a href="./for
+         +ensic-intelligence.html">Forensics</a><a href="./research.html"
+         +>Research</a><a class="nav-cta" href="./index.html#contact">Con
+         +tact</a></nav>                                                 
+      20        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      21      </div>
+      22      <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+          l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+          /index.html#services">Services</a><a href="./kernel.html">AxoDe
+          n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+          telligence.html">Forensics</a><a href="./research.html">Researc
+          h</a><a href="./index.html#contact">Contact</a></nav></div>
+
+⏺ Update(privacy.html)
+  ⎿  Added 1 line, removed 1 line
+      19        <nav class="nav" aria-label="Primary navigation"><a href=
+          "./index.html">Home</a><a href="./index.html#about">About</a><a
+           href="./index.html#services">Services</a><a href="./kernel.htm
+          l">AxoDen</a><a href="./defence.html">Defence</a><a href="./for
+          ensic-intelligence.html">Forensics</a><a href="./research.html"
+          >Research</a><a class="nav-cta" href="./index.html#contact">Con
+          tact</a></nav>
+      20        <button class="hamburger" type="button" aria-label="Open 
+          menu" aria-expanded="false" aria-controls="mobile-menu"><span c
+          lass="hamburger-lines"></span></button>
+      21      </div>
+      22 -    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         -l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         -/index.html#services">Services</a><a href="./kernel.html">AxoDe
+         -n</a><a href="./defence.html">Defence</a><a href="./forensic-in
+         -telligence.html">Forensics</a><a href="./research.html">Researc
+         -h</a><a href="./index.html#contact">Contact</a></nav></div>    
+      22 +    <div class="mobile-overlay" id="mobile-menu"><nav aria-labe
+         +l="Mobile navigation"><a href="./index.html">Home</a><a href=".
+         +/index.html#about">About</a><a href="./index.html#services">Ser
+         +vices</a><a href="./kernel.html">AxoDen</a><a href="./defence.h
+         +tml">Defence</a><a href="./forensic-intelligence.html">Forensic
+         +s</a><a href="./research.html">Research</a><a href="./index.htm
+         +l#contact">Contact</a></nav></div>                             
+      23    </header>
+      24  
+      25    <main id="main">
+
+⏺ Verification scan.
+
+  Searched for 1 pattern (ctrl+o to expand)
+
+⏺ All targeted /web edits applied and verified. Cache ?v=8 on all 7 pages, About
+   nav link present on all 7, no residue of old phrasings, and the ORCID is now
+  properly wrapped in an <a>.
+
+  Summary of changes
+
+  shared.css — added .table caption and .status-token styles.
+
+  Per-page edits
+
+  File: index.html
+  Changes: About in nav (desktop + mobile); renamed #founder → #about; 25+ yrs →
+
+    25+ years; 200TB+ → 200 TB+; test-record bullet rewritten to affirmative
+  form
+  ────────────────────────────────────────
+  File: kernel.html
+  Changes: About in nav; Pilot Shape Input recast as verb-led
+  ────────────────────────────────────────
+  File: defence.html
+  Changes: About in nav; Hash-chained ledger bullet → Cryptographic hash chain; 
+    integrity verifiable by any holder.; ESTABLISHED / CLAIMED / UNVERIFIED 
+    CONJECTURE wrapped in <span class="status-token"> (sentence case, rendered
+  as
+     small caps via CSS); threat table now has <caption> and scope="col" /
+    scope="row"
+  ────────────────────────────────────────
+  File: forensic-intelligence.html
+  Changes: About in nav
+  ────────────────────────────────────────
+  File: grid-flight-recorder.html
+  Changes: About in nav
+  ────────────────────────────────────────
+  File: research.html
+  Changes: About in nav; ORCID metric ID wrapped in <a 
+    href="https://orcid.org/0009-0008-6435-3530">; ESTABLISHED wrapped in <span 
+    class="status-token">; research-to-service table now has <caption> and
+    scope="col" / scope="row"
+  ────────────────────────────────────────
+  File: privacy.html
+  Changes: About in nav
+
+  Content drift not reconciled
+
+  The master doc and the rendered HTML diverge in several places that go beyond
+  the /web checklist. Flagging so you can decide whether to reconcile next:
+
+  1. Homepage Hero — master is AxoDen-led positioning ("AI control, evidence
+  systems and enterprise transformation…"); rendered Hero is services-led ("AI
+  assurance and evidence systems for high-stakes decisions… helps organisations
+  design, review and deploy systems…"). Different copy entirely.
+  2. Homepage Services grid — master has 11 services (AI Assurance Readiness 
+  Review, AxoDen Kernel, AxoDen Forensic Intelligence, AxoDen Dossier 
+  Intelligence, AxoDen Defence and RF/sensor systems, Cyber-physical integrity,
+  APASES executive reasoning and decision decomposition, Enterprise 
+  transformation, M&A and carve-out advisory, Enterprise architecture, data 
+  migration and regulated archiving, Commercial governance, vendor control and 
+  executive advisory, plus the readiness review); rendered has 6 different
+  cards.
+  3. Homepage About section — the master's "About Luminesce and AxoDen" content
+  (two-pillar company description) is not rendered anywhere. The new About nav
+  link currently points at the founder block, which covers a different angle.
+  4. Defence "Why nobody else has this" — five "Most X. AxoDen Y." contrast
+  statements (lines 99–119 of defence.html). Direct MOD00 violation. The
+  master's Technical Differentiators to Test section is the affirmative version
+  of the same content and would replace it cleanly.
+  5. Engagement Models — master splits Discovery vs Delivery (with AI Assurance 
+  Readiness Review as a named discovery offer); rendered presents 4 flat cards.
+  6. Research proof-strip — rendered has 24 results currently cleared for 
+  publication (a fifth metric not in the master). Master has 20: DOI 
+  publications, 29: theorem-level results, 24: ESTABLISHED with proof, ORCID.
+
+  These are substantive copy/structure changes; happy to work through them next
+  if you want the HTML to fully track the master doc.
+
+✻ Worked for 5m 53s
+
+※ recap: Goal is bringing the Luminesce site copy and HTML into alignment with the master content doc. Completed /words edits to the master and surgical /web fixes across all 7 HTML pages. Next: decide whether to reconcile the six remaining master-vs-HTML content drifts. (disable recaps in /config)
+
+❯ It is small & static html docs, less than 10. Proceed                         
+⏺ Big content reconciliation now. Let me sweep the CSS for relevant selectors so
+   I don't break styling.
+
+  Searched for 2 patterns, read 1 file (ctrl+o to expand)
+
+⏺ Fixing two more rather than constructions in the master first, then executing
+  the HTML reconciliation.
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      180  
+      181  The pattern began early: at Unilever Turkey, Erkan designed a 
+           virtual-warehouse system that reduced fleet investment and won
+            a Unilever global best-practice award. The same operating ins
+           tinct now runs through Luminesce: model the system, find the l
+           oad-bearing constraint, and make the decision path inspectable
+           .
+      182  
+      183 -Later work included large regulated and transformation environ
+          -ments, including GxP-scale data migration, a £9B M&A integrati
+          -on environment, a £200M transformation programme context, and 
+          -carve-out/separation delivery. AxoDen extends that background 
+          -into AI-era evidence, refusal and replay problems rather than 
+          -replacing the enterprise advisory work.                       
+      183 +Later work included large regulated and transformation environ
+          +ments, including GxP-scale data migration, a £9B M&A integrati
+          +on environment, a £200M transformation programme context, and 
+          +carve-out/separation delivery. AxoDen extends that background 
+          +into AI-era evidence, refusal and replay problems while preser
+          +ving the enterprise advisory work.                            
+      184  
+      185  #### Relevant background
+      186  
+
+⏺ Update(Luminesce_Website_Content.md)
+  ⎿  Added 1 line, removed 1 line
+      385  
+      386  - Current CV record states 420+ automated tests for the runtim
+           e kernel.
+      387  - Fail-closed enforcement is the stated operating posture.
+      388 -- Standards-facing attestation work, including IETF RATS / ASI
+          -L-M material where relevant, can be used as review context rat
+          -her than treated as certification.                            
+      388 +- Standards-facing attestation work, including IETF RATS / ASI
+          +L-M material where relevant, provides review context. Certific
+          +ation claims require separate, formal evaluation.             
+      389  - Procurement or safety-critical use requires source review, i
+           ntegration testing and claim verification.
+      390  
+      391  ### Pilot Shape
+
+⏺ Now adding the .subgroup-head style.
+
+⏺ Update(shared.css)
+  ⎿  Added 18 lines
+      945    font-weight: 600;
+      946  }
+      947  
+      948 +/* Sub-group label inside a section that contains multiple gri
+          +ds                                                            
+      949 +   (e.g. Discovery engagements / Delivery engagements). Sits v
+          +isually                                                       
+      950 +   below the section h2 but above grid cards, as an eyebrow la
+          +bel. */                                                       
+      951 +.subgroup-head {                                              
+      952 +  font-family: Inter, ui-sans-serif, system-ui, sans-serif;   
+      953 +  font-size: 0.78rem;                                         
+      954 +  letter-spacing: 0.14em;                                     
+      955 +  text-transform: uppercase;                                  
+      956 +  color: var(--muted);                                        
+      957 +  margin: 40px 0 8px;                                         
+      958 +}                                                             
+      959 +                                                              
+      960 +.subgroup-head + p {                                          
+      961 +  margin: 0 0 20px;                                           
+      962 +  color: var(--text);                                         
+      963 +  max-width: 760px;                                           
+      964 +}                                                             
+      965 +                                                              
+      966  /* Section dividers — subtle horizontal accents between major 
+           sections */
+      967  .section-band + .section,
+      968  .section + .section-band {
+
+⏺ Bumping cache to v=9 since CSS gained a new rule.
+
+⏺ Update(index.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(kernel.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(defence.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(forensic-intelligence.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(grid-flight-recorder.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(research.html)
+  ⎿  Added 1 line, removed 1 line
+      18    <meta name="twitter:image" content="https://luminescelimited.
+          com/luminesce-logo.png" />
+      19    <link rel="icon" href="./favicon-32.png" />
+      20    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      21 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      21 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      22  </head>
+      23  <body>
+      24    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Update(privacy.html)
+  ⎿  Added 1 line, removed 1 line
+       9    <link rel="canonical" href="https://luminescelimited.com/priv
+          acy.html" />
+      10    <link rel="icon" href="./favicon-32.png" />
+      11    <link rel="preload" as="font" href="./source-serif-4-latin-60
+          0-normal.woff2" type="font/woff2" crossorigin />
+      12 -  <link rel="stylesheet" href="./shared.css?v=8" />            
+      12 +  <link rel="stylesheet" href="./shared.css?v=9" />            
+      13  </head>
+      14  <body>
+      15    <a class="skip-link" href="#main">Skip to content</a>
+
+⏺ Now the substantive content reconciliation. index.html — hero copy, new About
+  section, expanded founder section, new Services grid (10 services),
+  restructured Engagement Models, updated Contact heading.
+
+⏺ Update(index.html)
+  ⎿  Added 3 lines, removed 3 lines
+      62    <main id="main">
+      63      <section class="hero">
+      64        <div>
+      65 -        <h1>AI assurance and evidence systems for high-stakes d
+         -ecisions.</h1>                                                 
+      65 +        <h1>AI control, evidence systems and enterprise transfo
+         +rmation for high-stakes environments.</h1>                     
+      66          <p class="company-line">Luminesce Limited · Guildford, 
+          UK · founded 2023</p>
+      67 -        <p class="lead">Luminesce Limited helps organisations d
+         -esign, review and deploy systems that must be trusted, audited,
+         - defended or certified.</p>                                    
+      68 -        <p class="body-large">The company combines senior trans
+         -formation delivery experience with AxoDen, a research and produ
+         -ct line for deterministic evidence controls, replayable decisio
+         -n records and safety architecture around AI-enabled systems.</p
+         ->                                                              
+      67 +        <p class="lead">Luminesce Limited combines AxoDen deep-
+         +tech IP with 25 years of regulated enterprise transformation, i
+         +ntegration, data migration and carve-out delivery experience.</
+         +p>                                                             
+      68 +        <p class="body-large">AxoDen is the company's compositi
+         +onal AI control and evidence framework, grounded in topology, g
+         +raph theory, information physics and formal methods. Alongside 
+         +AxoDen, Luminesce provides senior advisory and delivery support
+         + for complex technology programmes that must survive governance
+         +, audit, procurement and operating pressure.</p>               
+      69          <div class="actions">
+      70            <a class="button" href="#services">View services</a>
+      71            <a class="button secondary" href="./research.html">Re
+          search record</a>
+
+⏺ Now insert the About section, then rewrite the Services grid. Doing both as a
+  single Edit replacing the entire Services section, with the new About section
+  inserted before it.
+
+⏺ Update(index.html)
+  ⎿  Added 117 lines, removed 33 lines
+       94        </div>
+       95      </section>
+       96  
+       97 +    <section class="section" id="about">                      
+       98 +      <div class="section-head">                              
+       99 +        <div>                                                 
+      100 +          <h2>About Luminesce and AxoDen</h2>                 
+      101 +        </div>                                                
+      102 +        <p>Luminesce Limited is a UK company founded by Erkan 
+          +Yalcinkaya, an engineering physicist and systems architect wit
+          +h 25 years of experience building regulated enterprise, data, 
+          +integration and transformation systems.</p>                   
+      103 +      </div>                                                  
+      104 +      <div class="grid two">                                  
+      105 +        <article class="card">                                
+      106 +          <h3>Two connected service pillars</h3>              
+      107 +          <p>The first pillar is AxoDen: deep-tech AI control,
+          + evidence architecture and assurance for systems that must be 
+          +trusted, explained, refused or replayed. The second is enterpr
+          +ise transformation advisory: programme leadership, architectur
+          +e, migration, integration, carve-out and vendor-control work i
+          +n regulated or operationally complex environments.</p>        
+      108 +        </article>                                            
+      109 +        <article class="card">                                
+      110 +          <h3>Where the pillars converge</h3>                 
+      111 +          <p>The two pillars converge in regulated transformat
+          +ion programmes preparing to deploy AI into operational, data, 
+          +compliance or decision workflows. That is where Luminesce can 
+          +review both the AI-control question and the delivery environme
+          +nt around it.</p>                                             
+      112 +        </article>                                            
+      113 +        <article class="card tint-teal">                      
+      114 +          <h3>AxoDen as product and research line</h3>        
+      115 +          <p>AxoDen is Luminesce's main technical product and 
+          +research line: a compositional AI control and evidence framewo
+          +rk grounded in topology, graph theory, information physics and
+          + formal methods.</p>                                          
+      116 +          <p>AxoDen addresses three unresolved problems in hig
+          +h-stakes AI: trust, explainability and autonomy under conteste
+          +d conditions. Current application surfaces are cyber-forensic 
+          +intelligence, RF systems and AI integration, and cyber-physica
+          +l grid integrity. AxoDen also drives automated pre-audit and c
+          +ompliance diagnostics for GxP/pharma and aerospace supplier do
+          +ssiers.</p>                                                   
+      117 +        </article>                                            
+      118 +        <article class="card">                                
+      119 +          <h3>Enterprise advisory depth</h3>                  
+      120 +          <p>The enterprise advisory work draws on delivery ex
+          +perience across pharmaceuticals and life sciences, telecommuni
+          +cations, financial services, consumer goods and large-scale en
+          +terprise change.</p>                                          
+      121 +        </article>                                            
+      122 +      </div>                                                  
+      123 +    </section>                                                
+      124 +                                                              
+      125      <section class="section" id="services">
+      126        <div class="section-head">
+      127          <div>
+      128            <h2>Services</h2>
+      129          </div>
+      102 -        <p>Engagements are scoped around evidence, system risk
+          - and commercial decision points. The aim is to make weak assum
+          -ptions visible before they become delivery, procurement or ass
+          -urance failures.</p>                                          
+      130 +        <p>Engagements are scoped around two fronts: AxoDen-le
+          +d evidence and AI-control work, and senior transformation advi
+          +sory under the Luminesce umbrella. The common thread is discip
+          +lined handling of risk, evidence, dependencies, governance and
+          + delivery reality.</p>                                        
+      131        </div>
+      104 -      <div class="grid three">                                
+      132 +      <div class="grid two">                                  
+      133          <article class="card tint-teal">
+      106 -          <h3>AI assurance and control architecture</h3>      
+      107 -          <p>Review AI-enabled systems for evidence capture, r
+          -efusal behaviour, control boundaries, replayability and certif
+          -ication readiness.</p>                                        
+      134 +          <h3>AI Assurance Readiness Review</h3>              
+      135 +          <p>A bridge engagement for regulated transformation 
+          +programmes preparing to introduce AI into operational, data, c
+          +ompliance or decision workflows.</p>                          
+      136            <ul>
+      109 -            <li>AI assurance review</li>                      
+      110 -            <li>Safety case evidence structure</li>           
+      111 -            <li>Control and audit model design</li>           
+      137 +            <li>Current-state review of AI use case, evidence 
+          +flow, data dependencies and governance constraints</li>       
+      138 +            <li>Gap assessment against auditability, explainab
+          +ility, refusal and human-oversight needs</li>                 
+      139 +            <li>Readiness map for pilot, procurement, vendor c
+          +hallenge or internal approval</li>                            
+      140 +            <li>Practical recommendations for controls, eviden
+          +ce capture, operating model and delivery risk</li>            
+      141            </ul>
+      142          </article>
+      143          <article class="card">
+      115 -          <h3>Regulated evidence and dossier audit</h3>       
+      116 -          <p>Find missing or weak evidence in submissions, ten
+          -der packs, compliance dossiers and technical assurance files.<
+          -/p>                                                           
+      144 +          <h3>AxoDen Kernel: AI safety, assurance and runtime 
+          +control</h3>                                                  
+      145 +          <p>Design or review AI-enabled systems where evidenc
+          +e capture, refusal behaviour, control boundaries, replayabilit
+          +y and certification readiness matter.</p>                     
+      146            <ul>
+      118 -            <li>Completeness analysis</li>                    
+      119 -            <li>Schema-to-evidence mapping</li>               
+      120 -            <li>Executive remediation briefings</li>          
+      147 +            <li>Compositional AI safety architecture design an
+          +d review</li>                                                 
+      148 +            <li>Integrate a deterministic runtime control kern
+          +el</li>                                                       
+      149 +            <li>Evidence and certification architecture for hi
+          +gh-stakes AI deployments</li>                                 
+      150 +            <li>Multi-root trust and attestation architecture<
+          +/li>                                                          
+      151 +            <li>Governed human-AI reasoning architecture</li> 
+      152 +            <li>Formal methods advisory for deterministic cont
+          +rol surfaces</li>                                             
+      153            </ul>
+      154          </article>
+      155          <article class="card tint-blue">
+      124 -          <h3>Forensic evidence graphs</h3>                   
+      125 -          <p>Turn fragmented incident evidence into structured
+          - graphs that expose contradictions, missing observations and d
+          -efensible investigation paths.</p>                            
+      156 +          <h3>AxoDen Forensic Intelligence</h3>               
+      157 +          <p>Turn fragmented SOC, incident or technical eviden
+          +ce into inspectable investigation structures.</p>             
+      158            <ul>
+      127 -            <li>Cyber incident evidence modelling</li>        
+      128 -            <li>Root-cause analysis support</li>              
+      129 -            <li>Replayable investigation records</li>         
+      159 +            <li>SOC telemetry to campaign-level evidence pipel
+          +ines</li>                                                     
+      160 +            <li>SIEM/SOAR augmentation with deterministic oper
+          +ator stacks</li>                                              
+      161 +            <li>Evidence-bounded investigation packaging</li> 
+      162 +            <li>Design append-only evidence trails for analyst
+          + workflows</li>                                               
+      163 +            <li>Ransomware containment architecture review</li
+          +>                                                             
+      164            </ul>
+      165          </article>
+      166          <article class="card">
+      133 -          <h3>Defence and spectrum assurance</h3>             
+      134 -          <p>Assess systems where RF, GNSS or sensor evidence 
+          -is converted into AI decisions, especially under jamming, spoo
+          -fing or contested signal conditions. Backed by the AxoDen Defe
+          -nce runtime.</p>                                              
+      167 +          <h3>AxoDen Dossier Intelligence</h3>                
+      168 +          <p>Automated pre-audit and compliance diagnostics fo
+          +r regulated supplier dossiers, with GxP/pharma and aerospace s
+          +upplier assurance as the first named wedges.</p>              
+      169            <ul>
+      136 -            <li>RF-to-AI admission checks</li>                
+      137 -            <li>Spectrum and signal-integrity review</li>     
+      138 -            <li>Autonomy, refusal and survival-loop risk analy
+          -sis</li>                                                      
+      170 +            <li>Missing-evidence and contradiction detection</
+          +li>                                                           
+      171 +            <li>Schema-to-evidence mapping for audit and compl
+          +iance requirements</li>                                       
+      172 +            <li>Calibration-freshness and temporal-dependency 
+          +review</li>                                                   
+      173 +            <li>Brittleness and load-bearing-node analysis</li
+          +>                                                             
+      174 +            <li>Supplier-risk and remediation briefing</li>   
+      175            </ul>
+      176          </article>
+      177          <article class="card tint-gold">
+      142 -          <h3>Proxy integrity and Goodhart risk</h3>          
+      143 -          <p>Examine whether a system is optimising the measur
+          -able proxy while losing sight of the intended operational goal
+          -.</p>                                                         
+      178 +          <h3>AxoDen Defence and RF/sensor systems</h3>       
+      179 +          <p>Assess systems where RF, GNSS or sensor evidence 
+          +is converted into AI decisions, especially under jamming, spoo
+          +fing or contested signal conditions.</p>                      
+      180            <ul>
+      145 -            <li>KPI gaming analysis</li>                      
+      146 -            <li>Model drift evidence review</li>              
+      147 -            <li>Governance control recommendations</li>       
+      181 +            <li>Governed evidence boundary design between cont
+          +ested signals and AI inference</li>                           
+      182 +            <li>RF-to-AI admission checks</li>                
+      183 +            <li>Replayable mission ledger and authority-bindin
+          +g design</li>                                                 
+      184 +            <li>Mission continuity assurance under contested R
+          +F/GNSS conditions</li>                                        
+      185 +            <li>Failure-mode isolation suites for bounded pilo
+          +t work</li>                                                   
+      186            </ul>
+      149 -          <p class="scope"><strong>Scope:</strong> detection c
+          -overs noise and bounded adversarial pressure. Freshness-suppre
+          -ssion masking is a known open problem. We surface it where pre
+          -sent and do not claim to detect it.</p>                       
+      187          </article>
+      188          <article class="card">
+      152 -          <h3>Technical strategy and challenge response</h3>  
+      153 -          <p>Support founders, boards and programme teams with
+          - structured technical argument, commercial option analysis and
+          - proposal response.</p>                                       
+      189 +          <h3>Cyber-physical integrity</h3>                   
+      190 +          <p>Apply evidence architecture to grid, SCADA, DER, 
+          +microgrid and critical-infrastructure control events.</p>     
+      191            <ul>
+      155 -            <li>Commercial option synthesis</li>              
+      156 -            <li>Product and pilot design</li>                 
+      157 -            <li>Investor and procurement narrative</li>       
+      192 +            <li>Grid Flight Recorder concept design</li>      
+      193 +            <li>Replayable control-event evidence</li>        
+      194 +            <li>SCADA boundary integrity architecture</li>    
+      195 +            <li>Authority-binding for hazardous actuation</li>
+      196 +            <li>Post-incident replay forensics</li>           
+      197            </ul>
+      198          </article>
+      199 +        <article class="card tint-teal">                      
+      200 +          <h3>APASES executive reasoning and decision decompos
+          +ition</h3>                                                    
+      201 +          <p>Structured advisory for boards, sponsors and tech
+          +nical leaders facing complex AI, procurement, transformation o
+          +r research-to-product decisions.</p>                          
+      202 +          <p class="scope">Typical use cases include a board d
+          +eciding whether to approve an LLM-based customer-facing tool, 
+          +a sponsor weighing two vendor architectures, or a research lea
+          +d deciding which AxoDen capability is mature enough for pilot 
+          +work.</p>                                                     
+      203 +          <ul>                                                
+      204 +            <li>Decision decomposition into claims, evidence, 
+          +assumptions and dependencies</li>                             
+      205 +            <li>Traceable human-AI analysis workflow</li>     
+      206 +            <li>Cross-domain synthesis for technical, commerci
+          +al and governance questions</li>                              
+      207 +            <li>Executive decision brief with unresolved assum
+          +ptions made explicit</li>                                     
+      208 +          </ul>                                               
+      209 +        </article>                                            
+      210 +        <article class="card">                                
+      211 +          <h3>Enterprise transformation, M&amp;A and carve-out
+          + advisory</h3>                                                
+      212 +          <p>Support complex technology programmes where integ
+          +ration, separation, migration, vendors, governance and busines
+          +s continuity have to be managed together.</p>                 
+      213 +          <ul>                                                
+      214 +            <li>Technical due diligence on target IT estates</
+          +li>                                                           
+      215 +            <li>Day-1 readiness and bridging architecture</li>
+      216 +            <li>IT separation and cutover governance</li>     
+      217 +            <li>Multi-vendor, multi-country delivery oversight
+          +</li>                                                         
+      218 +            <li>Programme recovery, project audit and correcti
+          +ve action</li>                                                
+      219 +          </ul>                                               
+      220 +        </article>                                            
+      221 +        <article class="card tint-blue">                      
+      222 +          <h3>Enterprise architecture, data migration and regu
+          +lated archiving</h3>                                          
+      223 +          <p>Design practical architecture and data controls f
+          +or regulated estates with legacy platforms, cloud migration pr
+          +essure and retirement obligations.</p>                        
+      224 +          <ul>                                                
+      225 +            <li>First-principles enterprise architecture</li> 
+      226 +            <li>Cloud architecture and governance</li>        
+      227 +            <li>ERP and core platform strategy</li>           
+      228 +            <li>Legacy portfolio rationalisation and system re
+          +tirement</li>                                                 
+      229 +            <li>GxP-regulated data migration and archiving con
+          +trols</li>                                                    
+      230 +          </ul>                                               
+      231 +        </article>                                            
+      232 +        <article class="card">                                
+      233 +          <h3>Commercial governance, vendor control and execut
+          +ive advisory</h3>                                             
+      234 +          <p>Support boards, founders, sponsors and programme 
+          +teams when technical choices, commercial commitments and deliv
+          +ery risk need to be made explicit.</p>                        
+      235 +          <ul>                                                
+      236 +            <li>RFP design, evaluation and response leadership
+          +</li>                                                         
+      237 +            <li>Vendor exit governance under regulatory deadli
+          +nes</li>                                                      
+      238 +            <li>Commercial oversight for transformation portfo
+          +lios</li>                                                     
+      239 +            <li>Board and C-suite briefings on AI risk, govern
+          +ance and assurance</li>                                       
+      240 +            <li>Independent reviewer or second-opinion role fo
+          +r high-stakes vendor, architecture or programme claims</li>   
+      241 +            <li>Translation of formal technical claims into op
+          +erational and commercial risk language</li>                   
+      242 +          </ul>                                               
+      243 +        </article>                                            
+      244        </div>
+      245      </section>
+      246  
+
+⏺ Now the founder section expansion. Rename the anchor back to #founder since
+  About now exists separately, and add the Unilever Turkey + £9B/£200M
+  paragraphs.
+
+⏺ Update(index.html)
+  ⎿  Added 5 lines, removed 3 lines
+      245      </section>
+      246  
+      247      <section class="section-band">
+      248 -      <div class="section split" id="about">                  
+      248 +      <div class="section split" id="founder">                
+      249          <div>
+      250 -          <h2>Founder-led technical judgement</h2>            
+      250 +          <h2>About the Founder</h2>                          
+      251            <p class="lead">Luminesce is built around first-prin
+           ciples systems thinking, delivery discipline and research tran
+           slation.</p>
+      252 -          <p>Erkan Yalcinkaya has worked across pharma, teleco
+          -ms, financial services and enterprise transformation, includin
+          -g regulated data migration, large-scale platform change, carve
+          --out delivery and operational integration. That delivery backg
+          -round shapes the company position: evidence systems have to su
+          -rvive contact with governance, procurement, audit and real ope
+          -rational constraints.</p>                                     
+      252 +          <p>Erkan Yalcinkaya has worked across pharma, teleco
+          +ms, financial services and enterprise transformation, includin
+          +g regulated data migration, large-scale platform change, carve
+          +-out delivery and operational integration. That delivery backg
+          +round shapes the company position: evidence systems need to wo
+          +rk inside real operating constraints, including governance, pr
+          +ocurement, audit and delivery pressure.</p>                   
+      253 +          <p>The pattern began early: at Unilever Turkey, Erka
+          +n designed a virtual-warehouse system that reduced fleet inves
+          +tment and won a Unilever global best-practice award. The same 
+          +operating instinct now runs through Luminesce: model the syste
+          +m, find the load-bearing constraint, and make the decision pat
+          +h inspectable.</p>                                            
+      254 +          <p>Later work included large regulated and transform
+          +ation environments, including GxP-scale data migration, a &pou
+          +nd;9B M&amp;A integration environment, a &pound;200M transform
+          +ation programme context, and carve-out/separation delivery. Ax
+          +oDen extends that background into AI-era evidence, refusal and
+          + replay problems while preserving the enterprise advisory work
+          +.</p>                                                         
+      255          </div>
+      256          <aside class="panel">
+      257            <h3>Relevant background</h3>
+
+⏺ Now restructure Engagement Models to Discovery / Delivery sub-groups.
+
+⏺ Update(index.html)  ⎿  Added 37 lines, removed 2 lines
+      302            <div>
+      303              <h2>Engagement models</h2>
+      304            </div>
+      305 -          <p>Work can begin as a short diagnostic review, a bo
+          -unded pilot, an embedded build role or a commercial strategy e
+          -ngagement.</p>                                                
+      305 +          <p>Work can begin through a discovery engagement or 
+          +a delivery engagement, depending on whether the buyer needs a 
+          +decision, a pilot, or hands-on execution.</p>                 
+      306          </div>
+      307 -        <div class="grid four">                               
+      307 +                                                              
+      308 +        <h3 class="subgroup-head">Discovery engagements</h3>  
+      309 +        <p>Lower-commitment entry points for buyers who need c
+          +larity before committing to a pilot or programme role.</p>    
+      310 +        <div class="grid three">                              
+      311            <article class="card">
+      312 +            <h3>AI Assurance Readiness Review</h3>            
+      313 +            <p>Short bridge engagement for transformation team
+          +s, CIO/CTO sponsors, compliance leaders or vendors preparing t
+          +o deploy AI in a regulated or operationally sensitive context.
+          +</p>                                                          
+      314 +          </article>                                          
+      315 +          <article class="card">                              
+      316              <h3>Diagnostic review</h3>
+      317              <p>Fast review of a system, dossier, architecture 
+           or decision process with a short findings pack.</p>
+      318            </article>
+      319            <article class="card">
+      320 +            <h3>Executive briefing</h3>                       
+      321 +            <p>Closed-room briefing for boards, sponsors or se
+          +nior teams on AI risk, evidence architecture, refusal behaviou
+          +r and operational assurance choices.</p>                      
+      322 +          </article>                                          
+      323 +        </div>                                                
+      324 +                                                              
+      325 +        <h3 class="subgroup-head">Delivery engagements</h3>   
+      326 +        <p>Execution-shaped work for buyers who already have a
+          + defined problem, active programme or decision deadline.</p>  
+      327 +        <div class="grid three">                              
+      328 +          <article class="card">                              
+      329              <h3>Pilot project</h3>
+      330              <p>Focused proof of value using a defined corpus, 
+           evidence schema and success criteria.</p>
+      331            </article>
+     ...
+      341        </div>
+      342      </section>
+      343  
+      344 +    <section class="section">                                 
+      345 +      <div class="section split">                             
+      346 +        <div>                                                 
+      347 +          <h2>Confidentiality and evidence handling</h2>      
+      348 +          <p>Many Luminesce engagements involve sensitive tech
+          +nical, commercial, regulated or security-relevant evidence. Wo
+          +rk can begin under NDA, with engagement data kept to the agree
+          +d working environment and access model for the pilot or review
+          +.</p>                                                         
+      349 +          <p>Pilot closeout should state what was received, wh
+          +at was produced, what must be returned or deleted, and which c
+          +laims remain dependent on source review, integration testing o
+          +r external validation. Luminesce is willing to work under sour
+          +ce-review and controlled-data conditions when procurement, reg
+          +ulated or safety-critical use requires it.</p>                
+      350 +        </div>                                                
+      351 +        <aside class="panel">                                 
+      352 +          <h3>What this means in practice</h3>                
+      353 +          <ul class="feature-list">                           
+      354 +            <li>NDA before sensitive material is shared.</li> 
+      355 +            <li>Agreed working environment and access model.</
+          +li>                                                           
+      356 +            <li>Closeout that names retained, returned and del
+          +eted material.</li>                                           
+      357 +            <li>Source review and controlled-data working avai
+          +lable on request.</li>                                        
+      358 +          </ul>                                               
+      359 +        </aside>                                              
+      360 +      </div>                                                  
+      361 +    </section>                                                
+      362 +                                                              
+      363      <section class="section split" id="contact">
+      364        <div>
+      365          <h2>Discuss a system, dossier or product pilot</h2>
+
+⏺ Update the Contact section h2 and lead text to match master.
+
+⏺ Update(index.html)
+  ⎿  Added 2 lines, removed 2 lines
+      362  
+      363      <section class="section split" id="contact">
+      364        <div>
+      365 -        <h2>Discuss a system, dossier or product pilot</h2>   
+      366 -        <p class="lead">The best starting point is a concrete 
+          -evidence problem: a submission that may be incomplete, an AI s
+          -ystem that needs assurance, a forensic workflow that needs str
+          -ucture, or a product pilot that needs a defensible wedge.</p> 
+      365 +        <h2>Discuss a system, dossier, transformation or produ
+          +ct pilot</h2>                                                 
+      366 +        <p class="lead">The best starting point is a concrete 
+          +problem: an AI system that needs assurance, a supplier dossier
+          + that needs pre-audit diagnostics, a forensic workflow that ne
+          +eds structure, a cyber-physical event that needs replay, or a 
+          +transformation programme that needs independent technical judg
+          +ement.</p>                                                    
+      367        </div>
+      368        <aside class="panel dark">
+      369          <h3>Contact</h3>
+
+⏺ kernel.html — add the Standards-facing attestation bullet (affirmative form)
+  to the engineering posture panel.
+
+⏺ Update(kernel.html)
+  ⎿  Added 1 line
+      73          <ul class="feature-list">
+      74            <li>Current CV record states 420+ automated tests for
+           the runtime kernel.</li>
+      75            <li>Fail-closed enforcement is the stated operating p
+          osture.</li>
+      76 +          <li>Standards-facing attestation work, including IETF
+         + RATS / ASIL-M material where relevant, provides review context
+         +. Certification claims require separate, formal evaluation.</li
+         +>                                                              
+      77            <li>Procurement or safety-critical use requires sourc
+          e review, integration testing and claim verification.</li>
+      78          </ul>
+      79        </aside>
+
+⏺ defence.html — replace "Why nobody else has this" contrast section with
+  master's affirmative "Technical differentiators to test", update
+  threat-surface intro paragraph and Executive Output paragraph, add Engineering
+   Pilot Shape section.
+
+⏺ Update(defence.html)
+  ⎿  Added 9 lines, removed 9 lines
+       92  
+       93      <section class="section">
+       94        <div class="section-head">
+       95 -        <div><h2>Why nobody else has this</h2></div>          
+       96 -        <p>Five compressed claims, each against a named indust
+          -ry failure mode. The differentiator registry sits behind each 
+          -line for engineering due diligence.</p>                       
+       95 +        <div><h2>Technical differentiators to test</h2></div> 
+       96 +        <p>Five differentiators for engineering due diligence.
+          + Each should be tested against the selected pilot use case and
+          + evidence corpus.</p>                                         
+       97        </div>
+       98        <div class="grid two">
+       99          <article class="card">
+      100            <h3>Refusal as evidence</h3>
+      101 -          <p>Most defence-AI stacks <strong>detect failures</s
+          -trong>. AxoDen <strong>emits refusals as signed first-class ev
+          -idence</strong>.</p>                                          
+      101 +          <p>Refusals are signed evidence events, recorded onc
+          +e and replayable as first-class outputs.</p>                  
+      102          </article>
+      103          <article class="card">
+      104 -          <h3>Structurally separated survival loop</h3>       
+      105 -          <p>Most autonomy stacks <strong>degrade gracefully</
+          -strong>. AxoDen has a <strong>survival loop that is jam-immune
+          - by construction</strong>.</p>                                
+      104 +          <h3>Separated survival and mission logic</h3>       
+      105 +          <p>Survival continuity and mission continuity are ha
+          +ndled as distinct control questions when RF, GNSS or AI eviden
+          +ce is refused.</p>                                            
+      106          </article>
+      107          <article class="card">
+      108            <h3>Hash-chain replay</h3>
+      109 -          <p>Most replay stories are <strong>vendor-attested l
+          -ogs</strong>. AxoDen replays <strong>bit-for-bit from a hash c
+          -hain, by anyone who holds the ledger</strong>.</p>            
+      109 +          <p>Admissions, refusals, degradations and permitted 
+          +actions are recorded so the decision path can be replayed from
+          + the ledger.</p>                                              
+      110          </article>
+      111          <article class="card">
+      112            <h3>Write-side admission</h3>
+      113 -          <p>Most AI safety frames are <strong>post-hoc filter
+          -s</strong>. AxoDen's gates are <strong>write-side admission pr
+          -edicates</strong>: bad inputs never enter the graph.</p>      
+      113 +          <p>Evidence gates run before downstream reasoning, s
+          +o inadmissible inputs do not silently enter the graph.</p>    
+      114          </article>
+      115          <article class="card">
+      116 -          <h3>Status discipline as moat</h3>                  
+      117 -          <p>Most certifiability stories are <strong>mapped re
+          -trospectively to standards</strong>. AxoDen's status disciplin
+          -e (<strong><span class="status-token">Established</span> / <sp
+          -an class="status-token">Claimed</span> / <span class="status-t
+          -oken">Unverified conjecture</span></strong>) is the moat at th
+          -is market stage.</p>                                          
+      116 +          <h3>Explicit status discipline</h3>                 
+      117 +          <p>Claims are separated by status, including <span c
+          +lass="status-token">Established</span> results, <span class="s
+          +tatus-token">Claimed</span> results and proof-obligation-bound
+          + work.</p>                                                    
+      118          </article>
+      119        </div>
+      120      </section>
+
+⏺ Update(defence.html)
+  ⎿  Added 1 line, removed 1 line
+      123        <div class="section">
+      124          <div class="section-head">
+      125            <div><h2>Threat surface and honest status</h2></div>
+      126 -          <p>Eight defence-relevant threats. Five closed today
+          -; three carry named proof obligations and bounded delivery pat
+          -hs. Open work is named. Most defence pitches paper over this.<
+          -/p>                                                           
+      126 +          <p>The current internal register tracks eight defenc
+          +e-relevant threats. Five are marked closed in the current stat
+          +us record; three remain open with named proof obligations or p
+          +ilot validation paths. These statuses should be verified again
+          +st the current engineering record before procurement or safety
+          +-critical use.</p>                                            
+      127          </div>
+      128          <table class="table">
+      129            <caption>AxoDen Defence threat register: status as o
+           f current internal review.</caption>
+
+⏺ Update(defence.html)
+  ⎿  Added 16 lines, removed 2 lines
+      157          </ul>
+      158        </div>
+      159        <aside class="panel">
+      160 -        <h3>Engagement output</h3>                            
+      161 -        <p>A defence engagement produces a concise threat mode
+          -l, evidence admission criteria, a proposed test harness, and a
+          - decision about whether the use case is suitable for an AxoDen
+          --style pilot. The capability gate at the end states scope hone
+          -stly. It is not a procurement claim.</p>                      
+      160 +        <h3>Executive output</h3>                             
+      161 +        <p>For sponsors and procurement reviewers, a defence e
+          +ngagement produces a concise threat model, evidence admission 
+          +criteria, proposed test harness and capability-gate decision. 
+          +The gate states whether the use case should proceed, narrow or
+          + stop. It is not a procurement claim.</p>                     
+      162        </aside>
+      163      </section>
+      164 +                                                              
+      165 +    <section class="section-band">                            
+      166 +      <div class="section">                                   
+      167 +        <div class="section-head">                            
+      168 +          <div><h2>Engineering pilot shape</h2></div>         
+      169 +          <p>A defence pilot is bounded, scoped to one contest
+          +ed-signal use case and one decision point where refusal is acc
+          +eptable or required.</p>                                      
+      170 +        </div>                                                
+      171 +        <div class="grid three">                              
+      172 +          <article class="card tint-teal"><h3>Input</h3><p>A d
+          +efined contested-signal use case, known platform or mission bo
+          +undary, available RF/GNSS/sensor evidence, and a decision poin
+          +t where refusal is acceptable or required.</p></article>      
+      173 +          <article class="card tint-blue"><h3>Build</h3><p>Adm
+          +ission predicates, authority-binding model, refusal cascade, r
+          +eplay ledger and failure-mode test harness.</p></article>     
+      174 +          <article class="card tint-gold"><h3>Output</h3><p>Th
+          +reat model, evidence boundary design, pilot findings, open pro
+          +of obligations and a recommendation on whether the use case sh
+          +ould proceed, narrow or stop.</p></article>                   
+      175 +        </div>                                                
+      176 +      </div>                                                  
+      177 +    </section>                                                
+      178    </main>
+      179  
+      180    <footer class="site-footer">
+
+⏺ forensic-intelligence.html — update Use Cases to match master, add Pilot Shape
+   Input/Build/Output section.
+
+⏺ Update(forensic-intelligence.html)
+  ⎿  Added 18 lines, removed 4 lines
+      63      <section class="section split">
+      64        <div>
+      65          <h2>Use cases</h2>
+      66 -        <p class="lead">The strongest fit is a technical invest
+         -igation where the buyer already has logs, reports or case notes
+         - and needs a clearer path from evidence to decision.</p>       
+      66 +        <p class="lead">The strongest fit is a cyber or technic
+         +al investigation where the buyer already has telemetry, logs, r
+         +eports or case notes and needs a clearer path from evidence to 
+         +decision.</p>                                                  
+      67          <ul class="feature-list">
+      68            <li>Cyber incident triage and post-incident review.</
+          li>
+      69 -          <li>Industrial failure analysis across components, te
+         -lemetry and maintenance records.</li>                          
+      70 -          <li>Insurance claim evidence review for large-value t
+         -echnical or operational claims.</li>                           
+      71 -          <li>Safety investigation support where contradictory 
+         -sources must be separated from unresolved gaps.</li>           
+      69 +          <li>SOC escalation review where SIEM/SOAR output need
+         +s campaign-level structure.</li>                               
+      70 +          <li>Ransomware containment and post-incident evidence
+         + review.</li>                                                  
+      71 +          <li>Technical root-cause analysis where logs, telemet
+         +ry and human reports conflict.</li>                            
+      72          </ul>
+      73        </div>
+      74        <aside class="panel">
+     ...
+       81          </ul>
+       82        </aside>
+       83      </section>
+       84 +                                                              
+       85 +    <section class="section-band">                            
+       86 +      <div class="section">                                   
+       87 +        <div class="section-head">                            
+       88 +          <div><h2>Pilot shape</h2></div>                     
+       89 +          <p>A forensic pilot is scoped around one investigati
+          +on question and one bounded evidence corpus the buyer already 
+          +holds.</p>                                                    
+       90 +        </div>                                                
+       91 +        <div class="grid three">                              
+       92 +          <article class="card tint-teal"><h3>Input</h3><p>A b
+          +ounded incident corpus, current investigation workflow, releva
+          +nt telemetry/log sources and one or two investigation question
+          +s that matter to the buyer.</p></article>                     
+       93 +          <article class="card tint-blue"><h3>Build</h3><p>Evi
+          +dence graph schema, deterministic operator stack, gap and cont
+          +radiction checks, replay ledger and analyst-facing findings pa
+          +ck.</p></article>                                             
+       94 +          <article class="card tint-gold"><h3>Output</h3><p>Ca
+          +mpaign-level evidence package, pivots, unsupported-claim regis
+          +ter, next-investigation recommendations and integration notes.
+          +</p></article>                                                
+       95 +        </div>                                                
+       96 +      </div>                                                  
+       97 +    </section>                                                
+       98    </main>
+       99  
+      100    <footer class="site-footer">
+
+⏺ grid-flight-recorder.html — add Pilot Shape section.
+
+⏺ Update(grid-flight-recorder.html)
+  ⎿  Added 14 lines
+      80          </ul>
+      81        </aside>
+      82      </section>
+      83 +                                                               
+      84 +    <section class="section-band">                             
+      85 +      <div class="section">                                    
+      86 +        <div class="section-head">                             
+      87 +          <div><h2>Pilot shape</h2></div>                      
+      88 +          <p>A Grid Flight Recorder pilot is scoped around one 
+         +event class and one review question, against telemetry and logs
+         + the buyer can release for review.</p>                         
+      89 +        </div>                                                 
+      90 +        <div class="grid three">                               
+      91 +          <article class="card tint-teal"><h3>Input</h3><p>A de
+         +fined grid, SCADA, DER, microgrid or infrastructure event class
+         +, available telemetry/log sources, authority model and review q
+         +uestion.</p></article>                                         
+      92 +          <article class="card tint-blue"><h3>Build</h3><p>Evid
+         +ence schema, event replay model, uncertainty markers, authority
+         +-binding review and gap/contradiction checks.</p></article>    
+      93 +          <article class="card tint-gold"><h3>Output</h3><p>Rep
+         +layable event timeline, evidence gaps, control recommendations 
+         +and a decision on whether a fuller Grid Flight Recorder archite
+         +cture is justified.</p></article>                              
+      94 +        </div>                                                 
+      95 +      </div>                                                   
+      96 +    </section>                                                 
+      97    </main>
+      98  
+      99    <footer class="site-footer">
+
+⏺ research.html — proof-strip alignment with master (drop the extra metric, 20+
+  → 20, DOI publications → DOI-registered publications); research themes copy
+  updates; expand research-to-service map from 4 to 8 rows.
+
+⏺ Update(research.html)
+  ⎿  Added 1 line, removed 2 lines
+      63  
+      64      <section class="proof-strip" aria-label="Research evidence"
+          >
+      65        <div class="proof-inner">
+      66 -        <div class="metric"><strong>20+</strong><span>DOI publi
+         -cations on Zenodo</span></div>                                 
+      66 +        <div class="metric"><strong>20</strong><span>DOI-regist
+         +ered publications on Zenodo</span></div>                       
+      67          <div class="metric"><strong>29</strong><span>theorem-le
+          vel results in the current register</span></div>
+      68          <div class="metric"><strong>24</strong><span>results cu
+          rrently <span class="status-token">Established</span> with proo
+          f or empirical evidence</span></div>
+      69 -        <div class="metric"><strong>24</strong><span>results cu
+         -rrently cleared for publication</span></div>                   
+      69          <div class="metric"><strong>ORCID</strong><span><a href
+          ="https://orcid.org/0009-0008-6435-3530">0009-0008-6435-3530</a
+          ></span></div>
+      70        </div>
+      71      </section>
+
+⏺ Update(research.html)
+  ⎿  Added 2 lines, removed 2 lines
+      78        <div class="grid three">
+      79          <article class="card tint-teal">
+      80            <h3>AxoDen compositional safety</h3>
+      81 -          <p>Work on deterministic controls, admissibility chec
+         -ks, replayable evidence and bounded trust for AI-enabled system
+         -s.</p>                                                         
+      81 +          <p>Work on deterministic controls, admissibility chec
+         +ks, replayable evidence and bounded trust for AI-enabled system
+         +s, grounded in topology, graph theory, information physics and 
+         +formal methods.</p>                                            
+      82          </article>
+      83          <article class="card">
+      84            <h3>Evidence architecture</h3>
+     ...
+      86          </article>
+      87          <article class="card tint-blue">
+      88            <h3>APASES reasoning discipline</h3>
+      89 -          <p>A governed human-AI reasoning architecture for tra
+         -ceable analysis, structured retrieval and cross-domain synthesi
+         -s.</p>                                                         
+      89 +          <p>A governed human-AI reasoning architecture for tra
+         +ceable analysis, structured retrieval, decision decomposition a
+         +nd cross-domain synthesis.</p>                                 
+      90          </article>
+      91          <article class="card">
+      92            <h3>RF-AI boundary</h3>
+
+⏺ Update(research.html)
+  ⎿  Added 6 lines, removed 2 lines
+      134          </thead>
+      135          <tbody>
+      136            <tr><th scope="row">AxoDen Kernel</th><td>AI assuran
+           ce and bounded trust review</td><td>Control map, evidence sche
+           ma, refusal logic and pilot plan</td></tr>
+      137 -          <tr><th scope="row">Structural gap inference</th><td
+          ->Regulated dossier and submission review</td><td>Missing-evide
+          -nce report and remediation sequence</td></tr>                 
+      137 +          <tr><th scope="row">APASES reasoning discipline</th>
+          +<td>Executive reasoning and decision-decomposition engagement<
+          +/td><td>Structured question map, evidence plan, assumptions re
+          +gister and decision brief</td></tr>                           
+      138 +          <tr><th scope="row">Structural gap inference</th><td
+          +>Automated pre-audit and compliance diagnostics for supplier d
+          +ossiers</td><td>Missing-evidence report, contradiction registe
+          +r, supplier-risk briefing and remediation sequence</td></tr>  
+      139            <tr><th scope="row">Forensic graphs</th><td>Cyber in
+           cident and root-cause support</td><td>Evidence graph, contradi
+           ction log and replayable investigation pack</td></tr>
+      139 -          <tr><th scope="row">RF-AI assurance</th><td>Spectrum
+          --derived AI decision review</td><td>Threat model, admission cr
+          -iteria and test harness proposal</td></tr>                    
+      140 +          <tr><th scope="row">AxoDen Defence</th><td>Refusal-c
+          +apable autonomy and spectrum-derived AI decision review</td><t
+          +d>Threat model, admission criteria, refusal-cascade test harne
+          +ss</td></tr>                                                  
+      141 +          <tr><th scope="row">Grid Flight Recorder</th><td>Cyb
+          +er-physical resilience and infrastructure event review</td><td
+          +>Evidence model, replay timeline, uncertainty register and con
+          +trol recommendations</td></tr>                                
+      142 +          <tr><th scope="row">Enterprise transformation eviden
+          +ce</th><td>AI Assurance Readiness Review</td><td>Current-state
+          + evidence map, governance gaps, readiness decision and control
+          + recommendations</td></tr>                                    
+      143 +          <tr><th scope="row">Commercial option synthesis</th>
+          +<td>Challenge response or executive advisory</td><td>Option ma
+          +p, assumptions register, buyer-risk analysis and recommended n
+          +ext step</td></tr>                                            
+      144          </tbody>
+      145        </table>
+      146      </section>
+
+⏺ privacy.html — extend "Who we are" to include enterprise transformation
+  advisory; add Engagement Confidentiality section.
+
+⏺ Update(privacy.html)
+  ⎿  Added 1 line, removed 1 line
+      33        <div class="grid two">
+      34          <article class="card">
+      35            <h3>Who we are</h3>
+      36 -          <p>Luminesce Limited is a UK company providing AI ass
+         -urance, evidence architecture, research translation and related
+         - consultancy services.</p>                                     
+      36 +          <p>Luminesce Limited is a UK company providing AI ass
+         +urance, evidence architecture, research translation, enterprise
+         + transformation advisory and related consultancy services.</p> 
+      37          </article>
+      38          <article class="card">
+      39            <h3>What we collect</h3>
+
+⏺ Update(privacy.html)
+  ⎿  Added 5 lines
+      48            <p>We do not sell personal data. We may share informa
+          tion with professional advisers, service providers or authoriti
+          es where needed for lawful business operation or legal complian
+          ce.</p>
+      49          </article>
+      50          <article class="card">
+      51 +          <h3>Engagement confidentiality</h3>                  
+      52 +          <p>Some Luminesce engagements involve sensitive techn
+         +ical, commercial, regulated or security-relevant material. Enga
+         +gement-specific evidence, source material, logs, dossiers or te
+         +chnical artefacts are handled according to the agreed NDA, scop
+         +e of work and working environment for that engagement.</p>     
+      53 +          <p>For pilots and reviews, closeout should identify w
+         +hat material was received, what outputs were produced, and whet
+         +her engagement data should be retained, returned or deleted sub
+         +ject to legal, contractual and business-record requirements.</p
+         +>                                                              
+      54 +        </article>                                             
+      55 +        <article class="card">                                 
+      56            <h3>Retention</h3>
+      57            <p>We keep enquiry and client information only for as
+           long as needed for the purpose collected, legitimate business 
+          records or legal obligations.</p>
+      58          </article>
+
+⏺ Update sitemap lastmod to today's date.
+
+⏺ Write(sitemap.xml)
+  ⎿  Error writing file
+
+  Read 1 file (ctrl+o to expand)
+
+⏺ Update(sitemap.xml)
+  ⎿  Added 6 lines, removed 6 lines
+      1  <?xml version="1.0" encoding="UTF-8"?>
+      2  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      3 -  <url><loc>https://luminescelimited.com/</loc><lastmod>2026-05-
+        -10</lastmod><priority>1.0</priority></url>                      
+      4 -  <url><loc>https://luminescelimited.com/kernel.html</loc><lastm
+        -od>2026-05-10</lastmod><priority>0.9</priority></url>           
+      5 -  <url><loc>https://luminescelimited.com/defence.html</loc><last
+        -mod>2026-05-10</lastmod><priority>0.9</priority></url>          
+      6 -  <url><loc>https://luminescelimited.com/forensic-intelligence.h
+        -tml</loc><lastmod>2026-05-10</lastmod><priority>0.8</priority></
+        -url>                                                            
+      7 -  <url><loc>https://luminescelimited.com/grid-flight-recorder.ht
+        -ml</loc><lastmod>2026-05-10</lastmod><priority>0.7</priority></u
+        -rl>                                                             
+      8 -  <url><loc>https://luminescelimited.com/research.html</loc><las
+        -tmod>2026-05-10</lastmod><priority>0.8</priority></url>         
+      3 +  <url><loc>https://luminescelimited.com/</loc><lastmod>2026-05-
+        +11</lastmod><priority>1.0</priority></url>                      
+      4 +  <url><loc>https://luminescelimited.com/kernel.html</loc><lastm
+        +od>2026-05-11</lastmod><priority>0.9</priority></url>           
+      5 +  <url><loc>https://luminescelimited.com/defence.html</loc><last
+        +mod>2026-05-11</lastmod><priority>0.9</priority></url>          
+      6 +  <url><loc>https://luminescelimited.com/forensic-intelligence.h
+        +tml</loc><lastmod>2026-05-11</lastmod><priority>0.8</priority></
+        +url>                                                            
+      7 +  <url><loc>https://luminescelimited.com/grid-flight-recorder.ht
+        +ml</loc><lastmod>2026-05-11</lastmod><priority>0.7</priority></u
+        +rl>                                                             
+      8 +  <url><loc>https://luminescelimited.com/research.html</loc><las
+        +tmod>2026-05-11</lastmod><priority>0.8</priority></url>         
+      9  </urlset>
+
+⏺ Verification pass.
+  Searched for 1 pattern (ctrl+o to expand)
+
+⏺ All checks pass. Sweeping summary:
+
+  Files changed in this reconciliation
+
+  Master doc (Luminesce_Website_Content.md) — two more rather than contrast
+  constructions converted to affirmative form.
+
+  shared.css — added .subgroup-head style for in-section group labels (used by
+  Engagement Models).
+
+  index.html — hero copy rewritten to AxoDen-led positioning per master; new
+  #about section with master's two-pillar narrative; founder section restored to
+   #founder, expanded with Unilever Turkey + £9B/£200M paragraphs; Services grid
+   rewritten from 6 cards to all 10 cards from master; Engagement Models
+  restructured with Discovery / Delivery sub-groups; new Confidentiality and
+  Evidence Handling section; Contact h2 and lead text aligned with master.
+
+  kernel.html — added Standards-facing attestation bullet in the engineering
+  posture panel (affirmative form: provides review context + certification is
+  separate).
+
+  defence.html — replaced contrast-phrased "Why nobody else has this" section
+  with master's affirmative "Technical differentiators to test"; threat-surface
+  intro paragraph aligned with master's measured wording; Executive output
+  paragraph aligned; new Engineering pilot shape section (Input / Build /
+  Output).
+
+  forensic-intelligence.html — Use cases list reworked to master's SOC / SIEM /
+  ransomware / root-cause focus; new Pilot shape section.
+
+  grid-flight-recorder.html — new Pilot shape section.
+
+  research.html — proof-strip aligned with master (dropped the extra "cleared
+  for publication" metric, 20+ → 20, label → DOI-registered publications);
+  research-themes copy updates (AxoDen safety grounding phrase, APASES
+  decomposition); Research-to-service map expanded from 4 to 8 rows.
+
+  privacy.html — "Who we are" extended with enterprise transformation advisory;
+  new Engagement confidentiality card.
+
+  sitemap.xml — lastmod bumped to 2026-05-11 across all entries.
+
+  Cache — shared.css?v=9 across all 7 HTML files.
+
+  Verification scan
+
+  - Cache v=9 on 7/7 pages.
+  - About link on 7/7 pages.
+  - No residue of the old contrast phrasings or stale copy (Why nobody else has 
+  this, Hash-chained ledger;, 200TB without space, 20+ DOI publications, cleared
+   for publication, etc.).
+  - The em-dash matches in the scan are only in CLAUDE.md (an internal
+  dev-tooling doc, not site output).
+
+  What I did not touch
+
+  - HTML <title> and <meta description> tags. Those weren't in the master
+  content doc; left as-is. Worth a separate /web pass when you want to lock in
+  SEO meta against the new positioning.
+  - Robots.txt and the noindex on privacy.html — unchanged.
+
+  Suggested next move
+
+  Spin up python3 -m http.server 8000 from the repo root and walk through
+  index.html → kernel.html → defence.html → forensic-intelligence.html →
+  grid-flight-recorder.html → research.html → privacy.html. Three things worth
+  eyeballing specifically:
+
+  1. Services grid — 10 cards in a 2-column grid is long. Confirm the page still
+   scrolls cleanly on mobile and the bullet lists don't blow out the card height
+   ratio.
+  2. Engagement Models sub-groups — the new .subgroup-head eyebrow label is
+  styled small uppercase; check it sits well above the card grid and reads as a
+  divider rather than as a card.
+  3. Defence threat table — the <th scope="row"> cells now render with the same
+  wash background as the column headers. If that looks wrong, override with
+  tbody th { background: var(--paper); } in shared.css.
+
+✻ Cooked for 8m 0s
+
+※ recap: Reconciling the static site so HTML pages track Luminesce_Website_Content.md as canonical source; all /words and /web edits applied across 7 HTML files, shared.css, and sitemap. Next: spin up a local server and eyeball the rendered pages. (disable recaps in /config)

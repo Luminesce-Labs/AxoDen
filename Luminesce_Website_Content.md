@@ -22,17 +22,17 @@ Contact
 
 ### Hero
 
-AI control, evidence systems and enterprise transformation for high-stakes environments.
+Technology consulting, AI assurance and delivery support for complex change.
 
 Luminesce Limited · Guildford, UK · founded 2023
 
-Luminesce Limited combines AxoDen deep-tech IP with 25 years of regulated enterprise transformation, integration, data migration and carve-out delivery experience.
+Luminesce Limited is an independent UK consultancy led by Erkan Yalcinkaya. It helps senior teams shape, review and deliver complex technology programmes across AI assurance, data migration, integration, carve-outs and regulated enterprise change.
 
-AxoDen is the company's compositional AI control and evidence framework, grounded in topology, graph theory, information physics and formal methods. Alongside AxoDen, Luminesce provides senior advisory and delivery support for complex technology programmes that must survive governance, audit, procurement and operating pressure.
+AxoDen is the company's AI assurance and evidence systems work. It supports consulting engagements where AI-enabled systems need clearer controls, audit evidence, decision records and governance before they are piloted, procured or scaled.
 
-Primary call to action: View services
+Primary call to action: View consulting services
 
-Secondary call to action: Research record
+Secondary call to action: See AxoDen work
 
 ### Founder Card
 
@@ -52,11 +52,35 @@ Founder, Luminesce Limited. Engineering physicist and systems architect.
 
 20: DOI research publications on Zenodo
 
+### Consulting and advisory services
+
+Luminesce can be engaged as an independent adviser, reviewer or hands-on delivery support where technology decisions carry commercial, regulatory or operational consequences.
+
+#### Programme and transformation advisory
+
+Support for sponsors and delivery teams on complex technology programmes, including operating model, governance, dependency mapping, delivery risk and recovery planning.
+
+#### M&A, integration and carve-out support
+
+Advisory and delivery input for due diligence, Day-1 readiness, separation planning, cutover governance and multi-vendor execution.
+
+#### Data migration, architecture and regulated archiving
+
+Practical architecture and control design for legacy estates, regulated data movement, system retirement, cloud governance and audit-facing evidence.
+
+#### AI assurance, vendor challenge and governance
+
+Independent review of AI use cases, vendor claims, evidence flow, human oversight, auditability and readiness for pilot, procurement or scale-up.
+
+Primary call to action: See detailed service areas
+
+Secondary call to action: Discuss an engagement
+
 ### About Luminesce and AxoDen
 
 Luminesce Limited is a UK company founded by Erkan Yalcinkaya, an engineering physicist and systems architect with 25 years of experience building regulated enterprise, data, integration and transformation systems.
 
-The company has two connected service pillars. The first is AxoDen: deep-tech AI control, evidence architecture and assurance for systems that must be trusted, explained, refused or replayed. The second is enterprise transformation advisory: programme leadership, architecture, migration, integration, carve-out and vendor-control work in regulated or operationally complex environments.
+The company has two connected service pillars. The first is consulting and advisory: programme leadership, architecture, migration, integration, carve-out and vendor-control work in regulated or operationally complex environments. The second is AxoDen: AI assurance, evidence architecture and control design for systems that must be trusted, explained, refused or replayed.
 
 The two pillars converge in regulated transformation programmes preparing to deploy AI into operational, data, compliance or decision workflows. That is where Luminesce can review both the AI-control question and the delivery environment around it.
 
@@ -66,9 +90,9 @@ AxoDen addresses three unresolved problems in high-stakes AI: trust, explainabil
 
 The enterprise advisory work draws on delivery experience across pharmaceuticals and life sciences, telecommunications, financial services, consumer goods and large-scale enterprise change.
 
-### Services
+### Detailed service areas
 
-Engagements are scoped around two fronts: AxoDen-led evidence and AI-control work, and senior transformation advisory under the Luminesce umbrella. The common thread is disciplined handling of risk, evidence, dependencies, governance and delivery reality.
+The service areas below combine consulting/advisory work and AxoDen-led assurance. They can be scoped as short reviews, executive briefings, pilots or embedded delivery support.
 
 #### AI Assurance Readiness Review
 
@@ -701,4 +725,4 @@ Last updated: May 2026.
 
 Luminesce Limited
 
-AI assurance and evidence systems.
+Technology consulting and AI assurance.
