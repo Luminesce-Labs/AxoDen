@@ -536,11 +536,17 @@ h3 {
   background: #101820;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid var(--line);
   background: var(--paper);
+  min-width: 640px;
 }
 
 .table th,

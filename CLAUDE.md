@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Static marketing site for **Luminesce Limited** (luminescelimited.com), served as plain files — no build step, no framework, no package manager. The repo directory is still named `AxoDen-Website` from before the rebrand; AxoDen is now the product line within Luminesce, not the company.
+Static marketing site for **Luminesce Limited** (luminescelimited.com), served as plain files. There is no build step, no framework and no package manager. AxoDen is the platform in development at axoden.io. This repository is the company site. The repo directory is still named `AxoDen-Website`.
 
 ## Stack
 
@@ -24,13 +24,13 @@ Then open `http://localhost:8000/`. There is no dev/prod distinction.
 
 ## Things that are easy to miss
 
-**Cache-busting via query string.** Every page links assets as `shared.css?v=7` and `script.js?v=1`. When you change `shared.css` or `script.js`, bump the `v=` on **every HTML file** (currently 7 pages), otherwise returning visitors get stale assets. Keep the version identical across pages.
+**Cache-busting via query string.** Every page links assets as `shared.css?v=11` and `script.js?v=1`. When you change `shared.css` or `script.js`, bump the `v=` on **every HTML file** (currently 10 pages), otherwise returning visitors get stale assets. Keep the version identical across pages.
 
 **Sitemap and SEO are hand-maintained.** `sitemap.xml` lists each public page with an absolute `https://luminescelimited.com/...` URL and a `lastmod` date — update both when you add, remove, or meaningfully change a page. `robots.txt` disallows `/privacy.html`; new private/legal pages should be added there. Each HTML file has its own `<title>`, meta description, canonical, OG, and Twitter card tags — duplicate the pattern when creating a new page rather than inventing a new shape.
 
 **Content source of truth.** `Luminesce_Website_Content.md` is the long-form copy document the HTML is rendered from. When copy changes are requested, update both the markdown and the HTML; treat the markdown as the canonical text.
 
-**Pages and primary nav.** Public pages: `index.html`, `kernel.html` (AxoDen Kernel), `defence.html`, `forensic-intelligence.html`, `grid-flight-recorder.html`, `research.html`. Plus `privacy.html` (not in nav, not in sitemap). The header/footer nav block is duplicated in every page — when adding a page to nav, edit each HTML file.
+**Pages and primary nav.** Primary nav: Home (`index.html`), Dossier (`dossier.html`), Kernel (`kernel.html`), Applications (`applications.html`), Research (`research.html`), About (`about.html`), Contact (`index.html#contact`). `defence.html` and `forensic-intelligence.html` are short `noindex` entry points whose canonical target is `applications.html`. `grid-flight-recorder.html` is a research-concept note and is omitted from the sitemap. `privacy.html` is not in the nav or the sitemap. The header/footer nav block is duplicated in every page. When adding a page to the nav, edit each HTML file.
 
 **Mobile menu.** The hamburger toggle in `script.js` requires a `.hamburger` button with `aria-controls="mobile-menu"` and a `#mobile-menu` overlay containing the nav `<a>` elements. New pages must include both, or the script silently no-ops.
 
