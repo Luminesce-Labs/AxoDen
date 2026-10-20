@@ -1,6 +1,7 @@
 # AxoDen Website Services Content
 
-Status: draft website copy  
+Status: superseded on 20 October 2026. The canonical public copy is `Luminesce_Website_Content.md`. Do not use this draft for the company site.
+
 Audience: regulated organisations, engineering teams, evidence-heavy operators, technical partners  
 Tone: precise, grounded, commercially usable  
 

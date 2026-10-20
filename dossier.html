@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dossier Intelligence | Luminesce Limited</title>
+  <meta name="description" content="Dossier Intelligence reviews supplier evidence for aerospace and defence. The MVP is in expert evaluation. A contracted trial is still to be agreed." />
+  <link rel="canonical" href="https://luminescelimited.com/dossier.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Luminesce Limited" />
+  <meta property="og:title" content="Dossier Intelligence | Luminesce Limited" />
+  <meta property="og:description" content="Supplier-evidence review for aerospace and defence. The MVP is in expert evaluation. A contracted trial is still to be agreed." />
+  <meta property="og:url" content="https://luminescelimited.com/dossier.html" />
+  <meta property="og:image" content="https://luminescelimited.com/luminesce-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Dossier Intelligence | Luminesce Limited" />
+  <meta name="twitter:description" content="Supplier-evidence review for aerospace and defence. The MVP is in expert evaluation." />
+  <meta name="twitter:image" content="https://luminescelimited.com/luminesce-logo.png" />
+  <link rel="icon" href="./favicon-32.png" />
+  <link rel="preload" as="font" href="./source-serif-4-latin-600-normal.woff2" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./shared.css?v=11" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="Luminesce Limited home">
+        <img class="brand-mark" src="./luminesce-logo.png" alt="" width="42" height="42" />
+        <span>
+          <span class="brand-name">Luminesce Limited</span>
+          <span class="brand-sub">Develops the AxoDen platform</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="./index.html">Home</a>
+        <a class="active" href="./dossier.html">Dossier</a>
+        <a href="./kernel.html">Kernel</a>
+        <a href="./applications.html">Applications</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+        <a class="nav-cta" href="./index.html#contact">Contact</a>
+      </nav>
+      <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="hamburger-lines"></span>
+      </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-menu">
+      <nav aria-label="Mobile navigation">
+        <a href="./index.html">Home</a>
+        <a href="./dossier.html">Dossier</a>
+        <a href="./kernel.html">Kernel</a>
+        <a href="./applications.html">Applications</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+        <a href="./index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero wide">
+      <div class="axoden-mark">
+        <img src="./axoden-logo.svg" alt="" width="56" height="56" />
+        <span class="axoden-mark-text">
+          <strong>Dossier Intelligence</strong>
+          <span>Initial commercial focus</span>
+        </span>
+      </div>
+      <h1>Supplier-evidence review for aerospace and defence.</h1>
+      <p class="company-line">AxoDen application · Luminesce Limited</p>
+      <p class="lead">Dossier Intelligence connects suppliers and parts to qualification requirements and supporting documents. The intended value is a traceable basis for review, with less avoidable manual investigation.</p>
+      <p class="notice"><strong>Expert evaluation.</strong> Four subject-matter experts at a prospective defence and aerospace manufacturer are evaluating the MVP, as reported in October 2026. A contract and a formal pilot remain to be established.</p>
+      <div class="actions">
+        <a class="button" href="./index.html#contact">Discuss a defined trial</a>
+        <a class="button secondary" href="./kernel.html">Shared kernel</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>What a reviewer can inspect</h2>
+        </div>
+        <p>The backend keeps source evidence, accepted records, review decisions and audit runs distinct, so a reviewer can inspect an accepted result and its provenance.</p>
+      </div>
+      <div class="grid three">
+        <article class="card tint-teal">
+          <h3>Evidence intake</h3>
+          <ul>
+            <li>Immutable evidence intake.</li>
+            <li>Deterministic CSV mapping.</li>
+            <li>Field-level provenance.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Review and audit</h3>
+          <ul>
+            <li>Human review and promotion.</li>
+            <li>Frozen audit runs.</li>
+            <li>PostgreSQL persistence and durable jobs.</li>
+          </ul>
+        </article>
+        <article class="card tint-blue">
+          <h3>Graph projection</h3>
+          <ul>
+            <li>Versioned Neo4j projections.</li>
+            <li>Linked supplier, part, requirement and document views.</li>
+            <li>Provenance, support, contradiction and dependency through the domain schema.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-band">
+      <div class="section split">
+        <div>
+          <h2>Why the relationships matter</h2>
+          <p class="lead">Consider an expired supplier document. It supported a qualification claim relevant to a part. That claim helped satisfy a requirement. A reviewer relied on its validity.</p>
+          <p>The useful question goes past the expired file: which claims and decisions depended on it, and does other current evidence still support them?</p>
+          <p>Current software provides evidence intake, provenance, review records, frozen audit runs and graph projections. Implementing and validating the automatic path from expiry to a revised decision is further work.</p>
+        </div>
+        <aside class="panel">
+          <h3>Further development</h3>
+          <ul class="feature-list">
+            <li>Automatic expiry-to-decision reassessment.</li>
+            <li>General document extraction.</li>
+            <li>Production connectors.</li>
+            <li>Measured operating capacity.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>From expert evaluation to a defined trial</h2>
+        </div>
+        <p>Pricing and repeatable customer value remain to be established. The next engagement should produce the evidence for those, inside an agreed trial.</p>
+      </div>
+      <div class="grid three">
+        <article class="card tint-teal">
+          <h3>Agree</h3>
+          <p>Representative evidence, a trial sponsor, a purchasing decision-maker and acceptance criteria.</p>
+        </article>
+        <article class="card">
+          <h3>Assess</h3>
+          <p>Review quality, reviewer effort, traceability, failure cases and integration needs.</p>
+        </article>
+        <article class="card tint-gold">
+          <h3>Then decide</h3>
+          <p>Whether the trial establishes a basis for paid use.</p>
+        </article>
+      </div>
+      <div class="actions">
+        <a class="button" href="./index.html#contact">Contact Luminesce</a>
+        <a class="button secondary" href="./applications.html">Other applications</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="./luminesce-logo.png" alt="Luminesce Limited" width="48" height="48" loading="lazy" />
+          <span>
+            <strong>Luminesce Limited</strong>
+            <span>Guildford, UK · luminescelimited.com</span>
+          </span>
+        </div>
+        <p>Luminesce Limited develops AxoDen. The platform is at <a href="https://axoden.io">axoden.io</a>.</p>
+      </div>
+      <div class="footer-links">
+        <a href="./privacy.html">Privacy</a>
+        <a href="./dossier.html">Dossier</a>
+        <a href="./research.html">Research</a>
+        <a href="./index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script defer src="./script.js?v=1"></script>
+</body>
+</html>
